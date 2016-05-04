@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_graydark"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="right"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="@color/color_white"
+                    android:layout_height="fill_parent"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="right"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="@color/color_white"
+                    android:layout_height="fill_parent"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="right"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="1dp"
+                    android:background="@color/color_white"
+                    android:layout_height="fill_parent"></View>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:background="@color/color_white"
+                    android:layout_height="1dp"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:background="@color/color_white"
+                    android:layout_height="1dp"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:background="@color/color_white"
+                    android:layout_height="1dp"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="bottom"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:background="@color/color_white"
+                    android:layout_height="1dp"></View>
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/txtme"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/plus_floating"
+            app:backgroundTint="@color/color_blue" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

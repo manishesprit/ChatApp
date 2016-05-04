@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_gray">
+
+
+    <ImageView
+        android:id="@+id/txtlogo"
+        android:layout_width="@dimen/splash_logo_size"
+        android:layout_height="@dimen/splash_logo_size"
+        android:layout_centerInParent="true"
+        android:src="@drawable/iconlogo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtlogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/padding_ten"
+        android:text="@string/app_name"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/extraLargeText" />
+</RelativeLayout>

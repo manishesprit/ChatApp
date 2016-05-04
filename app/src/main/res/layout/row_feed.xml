@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_gray"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_ten">
+
+    <RelativeLayout
+        android:id="@+id/rlFeedHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_five">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="@dimen/user_avatar_size"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/iconlogo" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_toRightOf="@+id/imgAvatar"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_ten">
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manish Rathod"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/extraMediumText" />
+
+            <TextView
+                android:id="@+id/txtFeedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:text="2h ago"
+                android:textColor="@color/color_whitedark"
+                android:textSize="@dimen/smallText" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtCaption"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_five"
+        android:textColor="@color/color_whitedark"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imgFeed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:padding="@dimen/padding_five"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ravi" />
+
+    <RelativeLayout
+        android:id="@+id/rlFeedFooter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_five">
+
+        <ImageView
+            android:id="@+id/imgLikeUnlike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/love_gray" />
+
+
+        <TextView
+            android:id="@+id/txtComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:text=" Comments"
+            android:textColor="@color/color_whitedark" />
+
+        <TextView
+            android:id="@+id/txtNoComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/txtComment"
+            android:paddingLeft="@dimen/padding_twenty"
+            android:text="100"
+            android:textColor="@color/color_white" />
+
+        <TextView
+            android:id="@+id/txtlike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/txtNoComment"
+            android:text=" Likes"
+            android:textColor="@color/color_whitedark" />
+
+        <TextView
+            android:id="@+id/txtNolike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/txtlike"
+            android:text="25"
+            android:textColor="@color/color_white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

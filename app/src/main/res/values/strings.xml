@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+
+    <string name="txtlike">&#9758;</string>
+    <string name="txtliked">&#9755;</string>
+</resources>

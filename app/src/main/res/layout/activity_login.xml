@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_gray">
+
+
+    <ImageView
+        android:id="@+id/txtlogo"
+        android:layout_width="@dimen/login_logo_size"
+        android:layout_height="@dimen/login_logo_size"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/padding_thrty"
+        android:src="@drawable/iconlogo" />
+
+    <TextView
+        android:id="@+id/txtappName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtlogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/padding_ten"
+        android:text="@string/app_name"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/largeText" />
+
+
+    <LinearLayout
+        android:id="@+id/tbMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtappName"
+        android:layout_margin="@dimen/padding_twenty"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_twenty">
+
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_gray"
+            android:hint="Email/Username"
+            android:padding="@dimen/padding_five"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_whitedark"
+            android:textSize="@dimen/extraMediumText" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_whitedark"></View>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_ten"
+            android:background="@color/color_gray"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="@dimen/padding_five"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_whitedark"
+            android:textSize="@dimen/extraMediumText" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_whitedark"></View>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLogin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbMain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/padding_twenty"
+        android:layout_marginRight="@dimen/padding_twenty"
+        android:layout_marginTop="@dimen/padding_ten"
+        android:paddingLeft="@dimen/padding_twenty"
+        android:paddingRight="@dimen/padding_twenty">
+
+        <TextView
+            android:id="@+id/txtlogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tbMain"
+            android:background="@color/color_dark"
+            android:gravity="center"
+            android:padding="@dimen/padding_ten"
+            android:text="Login"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/largeText" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/padding_twenty"
+        android:text="Forgot Password ?"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/medium1Text" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_graydark"
+        android:gravity="center"
+        android:padding="@dimen/padding_ten"
+        android:text="Sign Up"
+        android:textColor="@color/color_whitedark"
+        android:textSize="@dimen/largeText" />
+
+</RelativeLayout>
