@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 
 import com.esp.chatapp.R;
@@ -35,17 +34,17 @@ public class MoreActivity extends AppCompatActivity {
         rlmain = (RelativeLayout) findViewById(R.id.rlmain);
 
 
-        ViewTreeObserver vto = rlmain.getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            public boolean onPreDraw() {
-                rlmain.getViewTreeObserver().removeOnPreDrawListener(this);
-                MeasurateHeight = rlmain.getMeasuredHeight();
-                MeasurateWidth = rlmain.getMeasuredWidth();
-
-                System.out.println("=====MeasurateWidth===" + MeasurateWidth + "======MeasurateHeight===" + MeasurateHeight);
-                return true;
-            }
-        });
+//        ViewTreeObserver vto = rlmain.getViewTreeObserver();
+//        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//            public boolean onPreDraw() {
+//                rlmain.getViewTreeObserver().removeOnPreDrawListener(this);
+//                MeasurateHeight = rlmain.getMeasuredHeight();
+//                MeasurateWidth = rlmain.getMeasuredWidth();
+//
+//                System.out.println("=====MeasurateWidth===" + MeasurateWidth + "======MeasurateHeight===" + MeasurateHeight);
+//                return true;
+//            }
+//        });
 
         MultiTouchListener touchListener = new MultiTouchListener(MoreActivity.this);
         txtme.setOnTouchListener(touchListener);
