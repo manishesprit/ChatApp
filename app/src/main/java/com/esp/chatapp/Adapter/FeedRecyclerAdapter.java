@@ -3,6 +3,7 @@ package com.esp.chatapp.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +29,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
     private ArrayList<PostBean> mItemList;
     private Context context;
     private PostBean postBean;
+    private MediaPlayer mpLike;
 
     public FeedRecyclerAdapter(Context context, ArrayList<PostBean> itemList) {
         this.mItemList = itemList;
@@ -46,7 +48,6 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         postBean = mItemList.get(position);
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
-
         Glide.with(context).load(postBean.avatar)
                 .asBitmap()
                 .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
@@ -82,14 +83,19 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
             holder.txtCaption.setText(postBean.caption);
         }
 
-        Glide.with(context).load(postBean.post_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
-            @Override
-            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-                holder.imgFeed.setImageBitmap(resource);
-            }
-        });
+        if (!postBean.post_url.toString().equals("")) {
+            holder.imgFeed.setVisibility(View.VISIBLE);
+            Glide.with(context).load(postBean.post_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+                @Override
+                public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                    holder.imgFeed.setImageBitmap(resource);
+                }
+            });
+        } else {
+            holder.imgFeed.setVisibility(View.GONE);
+        }
 
-
+        holder.imgLikeUnlike.setSoundEffectsEnabled(false);
         holder.imgLikeUnlike.setImageResource(postBean.islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
         holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +104,14 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
                     postBean.islike = false;
                     holder.imgLikeUnlike.setImageResource(R.drawable.love_gray);
                 } else {
+                    if (mpLike != null) {
+                        if (mpLike.isPlaying()) {
+                            mpLike.release();
+                            mpLike = null;
+                        }
+                    }
+                    mpLike = MediaPlayer.create(context, R.raw.beep);
+                    mpLike.start();
                     postBean.islike = true;
                     holder.imgLikeUnlike.setImageResource(R.drawable.love_white_filled);
                 }

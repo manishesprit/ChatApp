@@ -1,5 +1,6 @@
 package com.esp.chatapp.Ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.esp.chatapp.R;
 
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * Created by admin on 2/5/16.
  */
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -40,6 +42,10 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(1);
+
+        fabButton=(FloatingActionButton)findViewById(R.id.fabButton);
+        fabButton.setOnClickListener(this);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -48,6 +54,17 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(new ProfileFragment(), "Profile");
         adapter.addFragment(new PeopleFragment(), "People");
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.fabButton:
+                Intent intent=new Intent(HomeActivity.this,CreatePostActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -79,4 +96,5 @@ public class HomeActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 }

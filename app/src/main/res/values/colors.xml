@@ -10,4 +10,6 @@
     <color name="color_graydark">#223e4b</color>
 
     <color name="color_dark">#06232e</color>
+
+    <color name="colortrans">#BE000000</color>
 </resources>
