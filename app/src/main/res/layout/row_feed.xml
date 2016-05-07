@@ -1,9 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_gray"
+    android:layout_margin="@dimen/padding_ten"
+    android:background="@color/color_graydark"
+    android:elevation="3dp"
     android:orientation="vertical"
-    android:padding="@dimen/padding_ten">
+    android:paddingBottom="@dimen/padding_five"
+    android:paddingTop="@dimen/padding_five">
 
     <RelativeLayout
         android:id="@+id/rlFeedHeader"
@@ -59,10 +62,10 @@
         android:id="@+id/imgFeed"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:elevation="3dp"
-        android:padding="@dimen/padding_five"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ravi" />
+        android:adjustViewBounds="true"
+        android:paddingBottom="@dimen/padding_five"
+        android:paddingTop="@dimen/padding_five"
+        android:scaleType="centerCrop" />
 
     <RelativeLayout
         android:id="@+id/rlFeedFooter"
@@ -76,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:padding="3dp"
             android:src="@drawable/love_gray" />
 
 

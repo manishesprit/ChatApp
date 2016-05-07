@@ -1,4 +1,4 @@
-package com.esp.chatapp.UC;
+package com.esp.chatapp.Uc;
 
 import android.content.Context;
 import android.content.res.TypedArray;

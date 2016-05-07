@@ -9,16 +9,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.SplashActivity">
+        <activity android:name=".Ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.LoginActivity"></activity>
-        <activity android:name=".UI.HomeActivity"></activity>
-        <activity android:name=".UI.MoreActivity"></activity>
+        <activity android:name=".Ui.LoginActivity"></activity>
+        <activity android:name=".Ui.SignUpActivity"></activity>
+        <activity android:name=".Ui.HomeActivity"></activity>
+        <activity android:name=".Ui.ProfileActivity"></activity>
+        <activity android:name=".Ui.ProfileDetailActivity"></activity>
+        <activity android:name=".Ui.MoreActivity"></activity>
     </application>
 
 </manifest>

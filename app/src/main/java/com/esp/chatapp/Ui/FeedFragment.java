@@ -1,4 +1,4 @@
-package com.esp.chatapp.UI;
+package com.esp.chatapp.Ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,25 +17,30 @@ import java.util.ArrayList;
 /**
  * Created by admin on 2/5/16.
  */
-public class FeedFragment extends Fragment {
+public class FeedFragment extends Fragment implements View.OnClickListener {
 
 
-    private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
     private FeedRecyclerAdapter feedRecyclerAdapter;
     private ArrayList<String> postlist;
-
+    private View mview;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_feed, container, false);
-        setupRecyclerView();
-        return recyclerView;
+        mview = inflater.inflate(R.layout.fragment_feed, container, false);
+        return mview;
     }
 
-    private void setupRecyclerView() {
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        recyclerView=(RecyclerView)mview.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         feedRecyclerAdapter = new FeedRecyclerAdapter(getContext(), Utils.getPOstlist());
         recyclerView.setAdapter(feedRecyclerAdapter);
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

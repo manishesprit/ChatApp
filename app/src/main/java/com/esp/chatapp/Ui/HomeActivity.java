@@ -1,4 +1,4 @@
-package com.esp.chatapp.UI;
+package com.esp.chatapp.Ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -39,10 +39,7 @@ public class HomeActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
-
-//        fabButton = (FloatingActionButton) findViewById(R.id.fabButton);
-//        MultiTouchListener touchListener = new MultiTouchListener(this);
-//        fabButton.setOnTouchListener(touchListener);
+        viewPager.setOffscreenPageLimit(1);
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -56,6 +53,7 @@ public class HomeActivity extends AppCompatActivity {
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
+
 
         public ViewPagerAdapter(FragmentManager manager) {
             super(manager);

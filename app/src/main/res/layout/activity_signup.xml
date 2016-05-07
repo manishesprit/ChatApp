@@ -36,7 +36,7 @@
 
 
         <EditText
-            android:id="@+id/edtEmial"
+            android:id="@+id/edtEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_gray"
@@ -70,10 +70,48 @@
             android:layout_width="fill_parent"
             android:layout_height="0.5dp"
             android:background="@color/color_whitedark"></View>
+
+        <EditText
+            android:id="@+id/edtRePassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_ten"
+            android:background="@color/color_gray"
+            android:hint="Retype password"
+            android:inputType="textPassword"
+            android:padding="@dimen/padding_five"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_whitedark"
+            android:textSize="@dimen/extraMediumText" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_whitedark"></View>
+
+        <EditText
+            android:id="@+id/edtMobile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_ten"
+            android:background="@color/color_gray"
+            android:digits="1234567890+"
+            android:hint="Mobile number"
+            android:padding="@dimen/padding_five"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_whitedark"
+            android:textSize="@dimen/extraMediumText" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_whitedark"></View>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llLogin"
+        android:id="@+id/llSign"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tbMain"
@@ -85,34 +123,23 @@
         android:paddingRight="@dimen/padding_twenty">
 
         <TextView
-            android:id="@+id/txtlogin"
+            android:id="@+id/txtsignup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tbMain"
             android:background="@color/color_dark"
             android:gravity="center"
             android:padding="@dimen/padding_ten"
-            android:text="Login"
+            android:text="Register now"
             android:textColor="@color/color_white"
             android:textSize="@dimen/largeText" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtForgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/llLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/padding_twenty"
-        android:text="Forgot Password ?"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/extraMediumText" />
 
     <LinearLayout
         android:id="@+id/llSosocial"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtForgot"
+        android:layout_below="@+id/llSign"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/padding_thrty"
         android:gravity="center"
@@ -127,22 +154,11 @@
         <ImageView
             android:id="@+id/imgInsta"
             android:layout_width="@dimen/user_avatar_size"
-            android:padding="3dp"
             android:layout_height="@dimen/user_avatar_size"
-            android:layout_marginLeft="@dimen/padding_ten" />
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:padding="3dp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtRegisterNow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/color_graydark"
-        android:gravity="center"
-        android:padding="@dimen/padding_ten"
-        android:text="Register now"
-        android:textColor="@color/color_whitedark"
-        android:textSize="@dimen/largeText" />
 
 </RelativeLayout>

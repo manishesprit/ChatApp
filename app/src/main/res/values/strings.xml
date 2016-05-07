@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ChatApp</string>
 
+    <string name="insta_id">b42e5f174f5443eb934df4325591647a</string>
+    <string name="insta_secrate">7d1c8666ce7341d5b15eb9165cc7105b</string>
     <string name="txtlike">&#9758;</string>
     <string name="txtliked">&#9755;</string>
 </resources>

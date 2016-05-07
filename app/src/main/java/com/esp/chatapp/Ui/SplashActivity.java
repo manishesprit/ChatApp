@@ -1,4 +1,4 @@
-package com.esp.chatapp.UI;
+package com.esp.chatapp.Ui;
 
 import android.content.Intent;
 import android.os.Bundle;

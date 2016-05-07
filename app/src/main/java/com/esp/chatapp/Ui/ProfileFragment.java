@@ -1,4 +1,4 @@
-package com.esp.chatapp.UI;
+package com.esp.chatapp.Ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 
 import com.esp.chatapp.Adapter.ProfileRecyclerAdapter;
 import com.esp.chatapp.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.esp.chatapp.Utils.Utils;
 
 /**
  * Created by admin on 2/5/16.
@@ -27,17 +25,8 @@ public class ProfileFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ProfileRecyclerAdapter profileRecyclerAdapter = new ProfileRecyclerAdapter(getContext(), createItemList());
+        ProfileRecyclerAdapter profileRecyclerAdapter = new ProfileRecyclerAdapter(getContext(), Utils.getPOstlist());
         recyclerView.setAdapter(profileRecyclerAdapter);
 
-    }
-
-    private List<String> createItemList() {
-        List<String> itemList = new ArrayList<>();
-        itemList.add("Esprit IT Solution");
-        for (int i = 0; i < 15; i++) {
-            itemList.add("User " + i);
-        }
-        return itemList;
     }
 }

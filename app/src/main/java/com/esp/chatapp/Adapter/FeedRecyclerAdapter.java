@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,17 +17,17 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
-import com.esp.chatapp.UI.MoreActivity;
+import com.esp.chatapp.Ui.ProfileActivity;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
 
 
-public class FeedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapter.PostBeanHolder> {
 
     private ArrayList<PostBean> mItemList;
-    private RecyclerItemViewHolder holder;
     private Context context;
+    private PostBean postBean;
 
     public FeedRecyclerAdapter(Context context, ArrayList<PostBean> itemList) {
         this.mItemList = itemList;
@@ -36,22 +35,21 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PostBeanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_feed, parent, false);
-        RecyclerItemViewHolder vh = new RecyclerItemViewHolder(v);
+        PostBeanHolder vh = new PostBeanHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
-        holder = (RecyclerItemViewHolder) viewHolder;
+    public void onBindViewHolder(final PostBeanHolder holder, int position) {
+        postBean = mItemList.get(position);
 
-        Utils.setDefaultRoundImage(context, holder.imgAvatar);
+        Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
 
-//        if (Utils.isOnline(context)) {
-        Glide.with(context).load(mItemList.get(position).avatar)
+        Glide.with(context).load(postBean.avatar)
                 .asBitmap()
-                .error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                 RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
@@ -59,86 +57,76 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 holder.imgAvatar.setImageDrawable(circularBitmapDrawable);
             }
         });
-//        }
 
-        holder.txtUserName.setText(mItemList.get(position).username);
+        holder.txtUserName.setText(postBean.username);
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MoreActivity.class);
+                Intent intent = new Intent(context, ProfileActivity.class);
                 context.startActivity(intent);
             }
         });
-        holder.txtFeedTime.setText(mItemList.get(position).posttime);
-        if (mItemList.get(position).caption.trim().toString().equalsIgnoreCase("")) {
+        holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProfileActivity.class);
+                context.startActivity(intent);
+            }
+        });
+        holder.txtFeedTime.setText(postBean.posttime);
+
+        if (postBean.caption.trim().toString().equalsIgnoreCase("")) {
             holder.txtCaption.setVisibility(View.GONE);
         } else {
             holder.txtCaption.setVisibility(View.VISIBLE);
-            holder.txtCaption.setText(mItemList.get(position).caption);
+            holder.txtCaption.setText(postBean.caption);
         }
 
-//        if (Utils.isOnline(context)) {
-        Glide.with(context).load(mItemList.get(position).post_url).asBitmap().error(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+        Glide.with(context).load(postBean.post_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-
-                int intendedWidth = holder.imgFeed.getWidth();
-
-                int originalWidth = resource.getWidth();
-                int originalHeight = resource.getHeight();
-
-                float scale = (float) intendedWidth / originalWidth;
-                int newHeight = (int) Math.round(originalHeight * scale);
-
-
-                holder.imgFeed.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                holder.imgFeed.getLayoutParams().width = intendedWidth;
-                holder.imgFeed.getLayoutParams().height = newHeight;
-
                 holder.imgFeed.setImageBitmap(resource);
             }
         });
-//        }
 
 
-        holder.imgLikeUnlike.setImageResource(mItemList.get(position).islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
+        holder.imgLikeUnlike.setImageResource(postBean.islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
         holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mItemList.get(position).islike == true) {
-                    mItemList.get(position).islike = false;
+                if (postBean.islike == true) {
+                    postBean.islike = false;
                     holder.imgLikeUnlike.setImageResource(R.drawable.love_gray);
                 } else {
-                    mItemList.get(position).islike = true;
+                    postBean.islike = true;
                     holder.imgLikeUnlike.setImageResource(R.drawable.love_white_filled);
                 }
             }
         });
 
-        holder.txtNolike.setText("" + mItemList.get(position).noOflike);
-        holder.txtNoComment.setText("" + mItemList.get(position).noOfcomment);
+        holder.txtNolike.setText("" + postBean.noOflike);
+        holder.txtNoComment.setText("" + postBean.noOfcomment);
     }
+
 
     @Override
     public int getItemCount() {
         return mItemList == null ? 0 : mItemList.size();
     }
 
+    class PostBeanHolder extends RecyclerView.ViewHolder {
 
-    class RecyclerItemViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imgAvatar;
+        private TextView txtUserName;
+        private TextView txtFeedTime;
+        private TextView txtCaption;
+        private ImageView imgFeed;
+        private ImageView imgLikeUnlike;
+        private TextView txtNoComment;
+        private TextView txtNolike;
 
-        private final ImageView imgAvatar;
-        private final TextView txtUserName;
-        private final TextView txtFeedTime;
-        private final TextView txtCaption;
-        private final ImageView imgFeed;
-        private final ImageView imgLikeUnlike;
-        private final TextView txtNoComment;
-        private final TextView txtNolike;
-
-        public RecyclerItemViewHolder(View itemView) {
+        public PostBeanHolder(View itemView) {
             super(itemView);
-
             imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
             txtUserName = (TextView) itemView.findViewById(R.id.txtUserName);
             txtFeedTime = (TextView) itemView.findViewById(R.id.txtFeedTime);
@@ -148,5 +136,8 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             txtNoComment = (TextView) itemView.findViewById(R.id.txtNoComment);
             txtNolike = (TextView) itemView.findViewById(R.id.txtNolike);
         }
+
     }
+
+
 }

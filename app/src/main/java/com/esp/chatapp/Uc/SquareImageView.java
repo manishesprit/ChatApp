@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.esp.chatapp.UC;
+package com.esp.chatapp.Uc;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-public class SquareImageView  extends ImageView {
+public class SquareImageView extends ImageView {
 
     public SquareImageView(Context context) {
         super(context);

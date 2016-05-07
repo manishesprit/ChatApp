@@ -1,4 +1,4 @@
-package com.esp.chatapp.UI;
+package com.esp.chatapp.Ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,5 +40,11 @@ public class PeopleFragment extends Fragment {
             itemList.add("User " + i);
         }
         return itemList;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("=======PeopleFragment======onResume==========");
     }
 }

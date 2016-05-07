@@ -45,5 +45,5 @@
         android:src="@drawable/plus_floating"
         app:backgroundTint="@color/color_blue"
         app:borderWidth="0dp"
-        app:layout_behavior="com.esp.chatapp.UC.ScrollingFABBehavior" />
+        app:layout_behavior="com.esp.chatapp.Uc.ScrollingFABBehavior" />
 </android.support.design.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.esp.chatapp.UC;
+package com.esp.chatapp.Uc;
 
 import android.app.Activity;
 import android.view.MotionEvent;
