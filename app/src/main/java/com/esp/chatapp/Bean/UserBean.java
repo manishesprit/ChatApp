@@ -6,9 +6,12 @@ package com.esp.chatapp.Bean;
 public class UserBean {
     public int userid;
     public String username;
+    public String password;
     public String email;
     public int noOfpost;
     public int noOffollowers;
     public int noOffollowing;
     public String avatar;
+    public String latlong;
+    public String udID;
 }

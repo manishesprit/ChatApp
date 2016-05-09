@@ -9,7 +9,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.esp.chatapp.Backend.LoginAPI;
+import com.esp.chatapp.Backend.ResponseListener;
+import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 /**
@@ -26,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ImageView imgInsta;
     private TextView txtRegisterNow;
     public static Activity activity;
+    private LoginAPI loginAPI;
+    private UserBean userBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +45,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         imgFacebook = (ImageView) findViewById(R.id.imgFacebook);
         imgInsta = (ImageView) findViewById(R.id.imgInsta);
 
-        Utils.setDefaultRoundImage(LoginActivity.this,imgInsta,R.drawable.insta);
-        Utils.setDefaultRoundImage(LoginActivity.this,imgFacebook,R.drawable.facebook);
+        Utils.setDefaultRoundImage(LoginActivity.this, imgInsta, R.drawable.insta);
+        Utils.setDefaultRoundImage(LoginActivity.this, imgFacebook, R.drawable.facebook);
 
 
         txtlogin.setOnClickListener(this);
@@ -53,9 +59,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()) {
             case R.id.txtlogin:
-                intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                if (edtEmial.getText().toString().trim().equals("")) {
+                } else if (edtEmial.getText().toString().trim().length() < 8) {
+
+                } else if (edtPassword.getText().toString().trim().equals("")) {
+
+                } else if (!Utils.isOnline(LoginActivity.this)) {
+
+                } else {
+                    userBean.username = edtEmial.getText().toString().trim();
+                    userBean.password = edtPassword.getText().toString().trim();
+                    userBean.udID = "";
+                    userBean.latlong = "";
+                    loginAPI = new LoginAPI(LoginActivity.this, responseListener, userBean);
+                    loginAPI.execute();
+                }
+
                 break;
 
             case R.id.txtRegisterNow:
@@ -70,4 +89,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
+    private ResponseListener responseListener = new ResponseListener() {
+        @Override
+        public void onResponce(String tag, int result, Object obj) {
+
+            if (result == Config.API_SUCCESS) {
+                if (tag == Config.TAG_LOGIN) {
+                    intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            } else {
+
+            }
+        }
+    };
 }

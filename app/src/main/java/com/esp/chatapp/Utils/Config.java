@@ -22,22 +22,27 @@ public class Config
     public static String API_KEY = "INKSKILL@#2016!";
     public static String API_VERSION = "v1";
 
-    public static String ORIGINAL_HOST = "http://inkskill.esprit-apps.com";
+    public static String ORIGINAL_HOST = "http://manikom.net23.net/"; //http://manikom.net23.net/login.php
 
-    public static String HOST = ORIGINAL_HOST + "/api/" + API_VERSION;
+    public static String HOST = "http://manikom.net23.net/";
     public static String HOST_IMAGE = ORIGINAL_HOST + "/public/media/";
 
-    public static String IMAGE_PATH_WEB_AVATARS = HOST_IMAGE + "avatars/";
-    public static String IMAGE_PATH_WEB_WALLPAPERS = HOST_IMAGE + "wallpapers/";
-    public static String IMAGE_FEED_PATH = HOST_IMAGE + "feeds/";
-    public static String IMAGE_FEED_STYLE = HOST_IMAGE + "feed_style/";
+//    public static String IMAGE_PATH_WEB_AVATARS = HOST_IMAGE + "avatars/";
+//    public static String IMAGE_PATH_WEB_WALLPAPERS = HOST_IMAGE + "wallpapers/";
+//    public static String IMAGE_FEED_PATH = HOST_IMAGE + "feeds/";
+//    public static String IMAGE_FEED_STYLE = HOST_IMAGE + "feed_style/";
 
 
     /* API CALL & TAG */
     public static String API_REGISTER = "";
-    public static String API_REGISTER_JSON = "/user/register";
+    public static String API_REGISTER_JSON = "login.php";
     public static String API_REGISTER_FB_JSON = "/user/register_with_fb";
     public static String TAG_REGISTER = "TAG_REGISTER";
+
+    public static String API_LOGIN = "";
+    public static String API_LOGIN_JSON = "login.php?";
+    public static String API_LOGIN_FB_JSON = "login.php?";
+    public static String TAG_LOGIN = "TAG_LOGIN";
 
     /*
      * Error and Warnings
@@ -81,12 +86,25 @@ public class Config
     public static HashMap<String, Activity> screenStack;
 
     public static String PREF_USER_ID = "PREF_USER_ID";
+    public static String PREF_USERNAME = "PREF_USERNAME";
+    public static String PREF_NAME = "PREF_NAME";
+    public static String PREF_EMAIL = "PREF_EMAIL";
+    public static String PREF_NOOFPOST = "PREF_NOOFPOST";
+    public static String PREF_NOOFFOLLOWERS = "PREF_NOOFFOLLOWERS";
+    public static String PREF_NOOFFOLLING= "PREF_NOOFFOLLING";
 
     //    UnFollowerAPI
     public static String code = "code";
     public static String message = "message";
+    public static String username ="username";
+    public static String password ="password";
+    public static String udid ="udid";
+    public static String latlong ="latlong";
     public static String no_followers = "no_followers";
     public static String no_following = "no_following";
     public static String no_posts = "artist_posts";
     public static String avatar = "avatar";
+    public static String id = "id";
+    public static String name = "name";
+
 }
