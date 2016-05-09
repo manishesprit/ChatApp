@@ -25,7 +25,7 @@
             android:name=".Ui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ui.SignUpActivity"
+            android:name=".Ui.RegistrationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Ui.HomeActivity"
@@ -38,6 +38,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Ui.MoreActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Ui.EditProfileActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Ui.CreatePostActivity"

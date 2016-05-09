@@ -130,7 +130,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
 
                     Utils.compressImage(upload_file.getPath(), CreatePostActivity.this);
                     int degree = Utils.getCameraPhotoOrientation(CreatePostActivity.this, Uri.fromFile(upload_file), upload_file.getPath());
-                    Utils.ConvertImage(Utils.rotateBitmap(BitmapFactory.decodeFile(upload_file.getPath()), degree), upload_file.getName());
+                    Utils.rotateBitmap(BitmapFactory.decodeFile(upload_file.getPath()), degree);
                     imgUploadView.setImageBitmap(null);
                     imgUploadView.setImageBitmap(BitmapFactory.decodeFile(upload_file.getPath()));
                     isPhoto = true;

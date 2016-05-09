@@ -14,4 +14,6 @@ public class UserBean {
     public String avatar;
     public String latlong;
     public String udID;
+    public String name;
+    public String mobile;
 }

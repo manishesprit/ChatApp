@@ -10,6 +10,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.esp.chatapp.R;
@@ -20,12 +22,13 @@ import java.util.List;
 /**
  * Created by admin on 2/5/16.
  */
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FloatingActionButton fabButton;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setOffscreenPageLimit(1);
 
-        fabButton=(FloatingActionButton)findViewById(R.id.fabButton);
+        fabButton = (FloatingActionButton) findViewById(R.id.fabButton);
         fabButton.setOnClickListener(this);
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 2) {
+                    menu.findItem(R.id.action_search).setVisible(true);
+                } else {
+                    menu.findItem(R.id.action_search).setVisible(false);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
@@ -58,10 +82,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.fabButton:
-                Intent intent=new Intent(HomeActivity.this,CreatePostActivity.class);
+                Intent intent = new Intent(HomeActivity.this, CreatePostActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -97,4 +120,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.menu, menu);
+        menu.findItem(R.id.action_search).setVisible(true);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_setting:
+
+                break;
+            case R.id.action_status:
+
+                break;
+
+        }
+        return true;
+    }
 }

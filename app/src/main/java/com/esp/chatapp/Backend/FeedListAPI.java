@@ -12,41 +12,44 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.esp.chatapp.Adapter.Adapter;
+import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
 import com.esp.chatapp.Utils.Pref;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LoginAPI {
+public class FeedListAPI {
     private Context context;
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
     private ResponseListener responseListener;
     private UserBean userBean;
+    private PostBean postBean;
+    private ArrayList<PostBean> postBeanArrayList;
 
 
-    public LoginAPI(Context context, ResponseListener responseListener, UserBean userBean) {
+    public FeedListAPI(Context context, ResponseListener responseListener, int pageno) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON;
+        Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON;
         userBean = userBean;
-        mParams.put(Config.username, userBean.username);
-        mParams.put(Config.password, userBean.password);
-        mParams.put(Config.latlong, userBean.latlong);
-        mParams.put(Config.udid, userBean.udID);
+        mParams.put(Config.id, Pref.getValue(context, Config.PREF_USER_ID, "0"));
+        mParams.put(Config.pageid, String.valueOf(pageno));
 
-        Log.print(":::: API_LOGIN ::::" + Config.API_LOGIN);
+        Log.print(":::: API_FEED_LIST ::::" + Config.API_FEED_LIST);
         this.responseListener = responseListener;
     }
 
     public void execute() {
         this.mAdapter = new Adapter(this.context);
-        this.mAdapter.doGet(Config.TAG_LOGIN, Config.API_LOGIN, mParams,
+        this.mAdapter.doGet(Config.TAG_FEED_LIST, Config.API_FEED_LIST, mParams,
                 new APIResponseListener() {
 
                     @Override
@@ -83,7 +86,7 @@ public class LoginAPI {
                             //
                         }
                         // Inform Caller that the API call is failed
-                        responseListener.onResponce(Config.TAG_LOGIN, Config.API_FAIL, context.getResources()
+                        responseListener.onResponce(Config.TAG_FEED_LIST, Config.API_FAIL, context.getResources()
                                 .getString(
                                         R.string.connectionErrorMessage));
                     }
@@ -103,14 +106,26 @@ public class LoginAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.id));
-                Pref.setValue(context, Config.PREF_USERNAME, jsonObject.getString(Config.username));
-                Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
-                Pref.setValue(context, Config.PREF_NAME, jsonObject.getString(Config.name).toString().equals("") ? jsonObject.getString(Config.username) : jsonObject.getString(Config.name).toString());
-                Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_posts));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, jsonObject.getInt(Config.no_followers));
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getInt(Config.no_following));
-                Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getInt(Config.avatar));
+
+                postBeanArrayList = new ArrayList<>();
+                JSONArray feedListArray = jsonObject.getJSONArray(Config.feedlist);
+                if (feedListArray != null && feedListArray.length() > 0) {
+                    for (int i = 0; i < feedListArray.length(); i++) {
+                        JSONObject jsonObject1 = feedListArray.getJSONObject(i);
+                        postBean = new PostBean();
+                        postBean.feedid = jsonObject1.getInt(Config.feedid);
+                        postBean.userid = jsonObject1.getInt(Config.userid);
+                        postBean.name = jsonObject1.getString(Config.name);
+                        postBean.image_url = jsonObject1.getString(Config.image_url);
+                        postBean.caption = jsonObject1.getString(Config.caption);
+                        postBean.avatar = jsonObject1.getString(Config.avatar);
+                        postBean.noOfcomment = jsonObject1.getInt(Config.no_comment);
+                        postBean.noOflike = jsonObject1.getInt(Config.no_like);
+                        postBean.islike = jsonObject1.getInt(Config.islike) == 0 ? false : true;
+                        postBean.posttime = jsonObject1.getString(Config.posttime);
+                        postBeanArrayList.add(postBean);
+                    }
+                }
             }
 
         } catch (Exception e) {
@@ -120,7 +135,7 @@ public class LoginAPI {
             Log.error(this.getClass() + " :: Exception :: ", e);
             Log.print(this.getClass() + " :: Exception :: ", e);
         }
-        doCallBack(code, mesg, userBean);
+        doCallBack(code, mesg, postBeanArrayList);
 
         /** release variables */
         response = null;
@@ -132,16 +147,16 @@ public class LoginAPI {
      *
      * Status: Successful or Failure Message: Its an Object, if required
      */
-    private void doCallBack(int code, String mesg, UserBean userBean) {
+    private void doCallBack(int code, String mesg, ArrayList<PostBean> postBeanArrayList) {
         try {
             if (code == 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
-                        Config.API_SUCCESS, userBean);
+                responseListener.onResponce(Config.TAG_FEED_LIST,
+                        Config.API_SUCCESS, postBeanArrayList);
             } else if (code > 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_FEED_LIST,
                         Config.API_FAIL, mesg);
             } else if (code < 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_FEED_LIST,
                         Config.API_FAIL, mesg);
             }
         } catch (Exception e) {
@@ -155,7 +170,7 @@ public class LoginAPI {
      */
     public void doCancel() {
         if (mAdapter != null) {
-            mAdapter.doCancel(Config.TAG_LOGIN);
+            mAdapter.doCancel(Config.TAG_FEED_LIST);
         }
     }
 }

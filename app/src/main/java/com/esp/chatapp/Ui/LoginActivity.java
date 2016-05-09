@@ -13,13 +13,15 @@ import com.esp.chatapp.Backend.LoginAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Uc.AlertDailogView;
+import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 /**
  * Created by admin on 2/5/16.
  */
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, OnPopUpDialogButoonClickListener {
 
     private EditText edtEmial;
     private EditText edtPassword;
@@ -42,6 +44,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtRegisterNow = (TextView) findViewById(R.id.txtRegisterNow);
         txtForgot = (TextView) findViewById(R.id.txtForgot);
 
+        edtEmial = (EditText) findViewById(R.id.edtEmial);
+        edtPassword = (EditText) findViewById(R.id.edtPassword);
+
         imgFacebook = (ImageView) findViewById(R.id.imgFacebook);
         imgInsta = (ImageView) findViewById(R.id.imgInsta);
 
@@ -59,26 +64,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()) {
             case R.id.txtlogin:
-                if (edtEmial.getText().toString().trim().equals("")) {
-                } else if (edtEmial.getText().toString().trim().length() < 8) {
-
-                } else if (edtPassword.getText().toString().trim().equals("")) {
-
-                } else if (!Utils.isOnline(LoginActivity.this)) {
-
+                String valid = validation();
+                if (valid == null) {
+                    if (Utils.isOnline(LoginActivity.this)) {
+                        userBean = new UserBean();
+                        userBean.username = edtEmial.getText().toString().trim();
+                        userBean.password = edtPassword.getText().toString().trim();
+                        userBean.udID = "";
+                        userBean.latlong = "";
+                        loginAPI = new LoginAPI(LoginActivity.this, responseListener, userBean);
+                        loginAPI.execute();
+                    } else {
+                        AlertDailogView.showAlert(LoginActivity.this, "Internet not available").show();
+                    }
                 } else {
-                    userBean.username = edtEmial.getText().toString().trim();
-                    userBean.password = edtPassword.getText().toString().trim();
-                    userBean.udID = "";
-                    userBean.latlong = "";
-                    loginAPI = new LoginAPI(LoginActivity.this, responseListener, userBean);
-                    loginAPI.execute();
+                    AlertDailogView.showAlert(LoginActivity.this, valid).show();
                 }
 
                 break;
 
             case R.id.txtRegisterNow:
-                intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
                 break;
 
@@ -88,6 +94,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
         }
+    }
+
+    public String validation() {
+        String valid = null;
+        if (edtEmial.getText().toString().trim().equals("")
+                || edtEmial.getText().toString().trim().equals(null)) {
+            valid = getResources().getString(R.string.validusername);
+            this.edtEmial.requestFocus();
+            this.edtEmial.setSelection(this.edtEmial.length());
+        } else if (edtPassword.getText().toString().trim().equals("")
+                || edtPassword.getText().toString().trim().equals(null)) {
+            valid = getResources().getString(R.string.validblankpassword);
+            this.edtPassword.requestFocus();
+            this.edtPassword.setSelection(this.edtPassword.length());
+        }
+        return valid;
     }
 
     private ResponseListener responseListener = new ResponseListener() {
@@ -105,4 +127,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     };
+
+    @Override
+    public void OnButtonClick(int tag, int buttonIndex, String input) {
+
+    }
 }

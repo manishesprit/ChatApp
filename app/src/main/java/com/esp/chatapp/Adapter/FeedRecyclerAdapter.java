@@ -83,9 +83,9 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
             holder.txtCaption.setText(postBean.caption);
         }
 
-        if (!postBean.post_url.toString().equals("")) {
+        if (!postBean.image_url.toString().equals("")) {
             holder.imgFeed.setVisibility(View.VISIBLE);
-            Glide.with(context).load(postBean.post_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+            Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                     holder.imgFeed.setImageBitmap(resource);

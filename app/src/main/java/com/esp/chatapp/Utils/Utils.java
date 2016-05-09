@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 /**
  * Created by admin on 4/5/16.
@@ -74,16 +75,16 @@ public class Utils {
         ArrayList<PostBean> itemList = new ArrayList<>();
         for (int i = 0; i < 45; i++) {
             PostBean postBean = new PostBean();
-            postBean.postid = i;
+            postBean.feedid = i;
             postBean.userid = i * 3;
             postBean.username = "User " + i;
             postBean.avatar = (i % 2) == 0 ? avarat_sundar : avarar_sachin;
             if ((i % 5) == 0) {
-                postBean.post_url = "";
+                postBean.image_url = "";
             } else if ((i % 2) == 0) {
-                postBean.post_url = post_url2;
+                postBean.image_url = post_url2;
             } else {
-                postBean.post_url = post_url3;
+                postBean.image_url = post_url3;
             }
             postBean.noOfcomment = i * 4;
             postBean.noOflike = i * 7;
@@ -400,21 +401,30 @@ public class Utils {
         return rotate;
     }
 
-    public static void ConvertImage(Bitmap bitmap, String name) {
+    public static void DownloadImage(Bitmap bitmap, String name,String path) {
         System.out.println("width==" + bitmap.getWidth() + "===height===" + bitmap.getHeight());
         try {
 
             Storage.verifyDataPath();
 
-            File imageFile = new File(Config.DIR_USERDATA, name);
+            File imageFile = new File(path, name);
 
             OutputStream os;
             os = new FileOutputStream(imageFile);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
             os.flush();
             os.close();
+            System.out.println("Download complet");
         } catch (Exception e) {
             System.out.println("Error writing bitmap" + e);
         }
     }
+
+    public final static Pattern EMAIL_ADDRESS_PATTERN = Pattern
+            .compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                    + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                    + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                    + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$");
 }

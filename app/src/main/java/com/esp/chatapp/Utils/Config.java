@@ -5,8 +5,7 @@ import android.os.Environment;
 
 import java.util.HashMap;
 
-public class Config
-{
+public class Config {
     public static String TAG = "ChatApp";
     public static String DB_NAME = "chatapp.db";
     public static String APP_HOME = Environment.getExternalStorageDirectory().getPath() + "/" + TAG;
@@ -34,15 +33,19 @@ public class Config
 
 
     /* API CALL & TAG */
-    public static String API_REGISTER = "";
-    public static String API_REGISTER_JSON = "login.php";
-    public static String API_REGISTER_FB_JSON = "/user/register_with_fb";
-    public static String TAG_REGISTER = "TAG_REGISTER";
+    public static String API_REGISTRATION = "";
+    public static String API_REGISTRATION_JSON = "registration.php?";
+    public static String API_REGISTRATION_FB_JSON = "registration.php?";
+    public static String TAG_REGISTRATION = "TAG_REGISTRATION";
 
     public static String API_LOGIN = "";
     public static String API_LOGIN_JSON = "login.php?";
     public static String API_LOGIN_FB_JSON = "login.php?";
     public static String TAG_LOGIN = "TAG_LOGIN";
+
+    public static String API_FEED_LIST = "";
+    public static String API_FEED_LIST_JSON = "feed.php?";
+    public static String TAG_FEED_LIST = "TAG_FEED_LIST";
 
     /*
      * Error and Warnings
@@ -91,20 +94,33 @@ public class Config
     public static String PREF_EMAIL = "PREF_EMAIL";
     public static String PREF_NOOFPOST = "PREF_NOOFPOST";
     public static String PREF_NOOFFOLLOWERS = "PREF_NOOFFOLLOWERS";
-    public static String PREF_NOOFFOLLING= "PREF_NOOFFOLLING";
+    public static String PREF_NOOFFOLLING = "PREF_NOOFFOLLING";
+    public static String PREF_AVATAR = "PREF_AVATAR";
 
     //    UnFollowerAPI
     public static String code = "code";
     public static String message = "message";
-    public static String username ="username";
-    public static String password ="password";
-    public static String udid ="udid";
-    public static String latlong ="latlong";
+    public static String username = "username";
+    public static String password = "password";
+    public static String email = "email";
+    public static String mobile = "mobile";
+    public static String udid = "udid";
+    public static String latlong = "latlong";
     public static String no_followers = "no_followers";
     public static String no_following = "no_following";
     public static String no_posts = "artist_posts";
+    public static String no_comment = "no_comment";
+    public static String no_like = "no_like";
     public static String avatar = "avatar";
+    public static String islike = "islike";
+    public static String posttime = "posttime";
     public static String id = "id";
+    public static String pageid = "pageid";
     public static String name = "name";
+    public static String feedlist = "feedlist";
+    public static String userid = "userid";
+    public static String feedid = "feedid";
+    public static String image_url = "image_url";
+    public static String caption = "caption";
 
 }

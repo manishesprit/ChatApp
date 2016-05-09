@@ -10,5 +10,19 @@
     <string name="crop__saving">Saving picture…</string>
     <string name="crop__wait">Please wait…</string>
 
-    <string name="connectionErrorMessage">InkSkill is experiencing a connection error</string>
+    <string name="connectionErrorMessage">ChatApp is experiencing a connection error</string>
+    <string name="Alert">Alert</string>
+    <string name="OK">Ok</string>
+
+
+    <!--LOGIN-->
+    <string name="validusername">Username cannot be blank</string>
+    <string name="validblankpassword">Password cannot be blank</string>
+    <string name="validblankemail">Email cannot be blank</string>
+    <string name="validblankmobile">Mobile number cannot be blank</string>
+    <string name="invalidblankemail">Invalid Email address</string>
+    <string name="validblankconfirmpassword">Confirm password cannot be blank</string>
+    <string name="notmatchconfirmpassword">Password or Confirm password cannot be match</string>
+    <string name="validlengthusername">Username min 8 character and max 20 character</string>
+
 </resources>

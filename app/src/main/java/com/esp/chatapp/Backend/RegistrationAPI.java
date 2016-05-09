@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class LoginAPI {
+public class RegistrationAPI {
     private Context context;
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
@@ -30,23 +30,25 @@ public class LoginAPI {
     private UserBean userBean;
 
 
-    public LoginAPI(Context context, ResponseListener responseListener, UserBean userBean) {
+    public RegistrationAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON;
+        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_JSON;
         userBean = userBean;
         mParams.put(Config.username, userBean.username);
         mParams.put(Config.password, userBean.password);
+        mParams.put(Config.email, userBean.email);
+        mParams.put(Config.mobile, userBean.mobile);
         mParams.put(Config.latlong, userBean.latlong);
         mParams.put(Config.udid, userBean.udID);
 
-        Log.print(":::: API_LOGIN ::::" + Config.API_LOGIN);
+        Log.print(":::: API_REGISTRATION ::::" + Config.API_REGISTRATION);
         this.responseListener = responseListener;
     }
 
     public void execute() {
         this.mAdapter = new Adapter(this.context);
-        this.mAdapter.doGet(Config.TAG_LOGIN, Config.API_LOGIN, mParams,
+        this.mAdapter.doGet(Config.TAG_REGISTRATION, Config.API_REGISTRATION, mParams,
                 new APIResponseListener() {
 
                     @Override
@@ -83,7 +85,7 @@ public class LoginAPI {
                             //
                         }
                         // Inform Caller that the API call is failed
-                        responseListener.onResponce(Config.TAG_LOGIN, Config.API_FAIL, context.getResources()
+                        responseListener.onResponce(Config.TAG_REGISTRATION, Config.API_FAIL, context.getResources()
                                 .getString(
                                         R.string.connectionErrorMessage));
                     }
@@ -135,13 +137,13 @@ public class LoginAPI {
     private void doCallBack(int code, String mesg, UserBean userBean) {
         try {
             if (code == 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_REGISTRATION,
                         Config.API_SUCCESS, userBean);
             } else if (code > 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_REGISTRATION,
                         Config.API_FAIL, mesg);
             } else if (code < 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_REGISTRATION,
                         Config.API_FAIL, mesg);
             }
         } catch (Exception e) {
@@ -155,7 +157,7 @@ public class LoginAPI {
      */
     public void doCancel() {
         if (mAdapter != null) {
-            mAdapter.doCancel(Config.TAG_LOGIN);
+            mAdapter.doCancel(Config.TAG_REGISTRATION);
         }
     }
 }

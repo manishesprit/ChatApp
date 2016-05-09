@@ -3,7 +3,7 @@
     package="com.android.volley.test" >
 
     <uses-sdk
-        android:minSdkVersion="21"
+        android:minSdkVersion="12"
         android:targetSdkVersion="23" />
 
     <instrumentation

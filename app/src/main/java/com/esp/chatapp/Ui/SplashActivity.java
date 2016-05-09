@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.esp.chatapp.R;
+import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -19,11 +21,17 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                if (Pref.getValue(SplashActivity.this, Config.PREF_USER_ID, "0").equals("0")) {
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    intent = new Intent(SplashActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
-        }, 3000);
+        }, 2000);
 
     }
 }

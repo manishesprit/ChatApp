@@ -17,8 +17,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
-import com.esp.chatapp.Utils.Utils;
 
 /**
  * Created by admin on 2/5/16.
@@ -27,6 +27,7 @@ public class ProfileDetailActivity extends AppCompatActivity {
 
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ImageView image;
+    private PostBean postBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,11 @@ public class ProfileDetailActivity extends AppCompatActivity {
         initActivityTransitions();
         setContentView(R.layout.activity_profiledetail);
 
+        if (getIntent().getExtras() != null) {
+            postBean = (PostBean) getIntent().getSerializableExtra("beanData");
+        } else {
+            finish();
+        }
         ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), "com.antonioleiva.materializeyourapp.extraImage");
         supportPostponeEnterTransition();
 
@@ -41,12 +47,12 @@ public class ProfileDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle("Manish Rathod");
+        collapsingToolbarLayout.setTitle(postBean.name);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
         image = (ImageView) findViewById(R.id.image);
 
 
-        Glide.with(ProfileDetailActivity.this).load(Utils.avarat_sundar)
+        Glide.with(ProfileDetailActivity.this).load(postBean.avatar)
                 .asBitmap()
                 .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
             @Override

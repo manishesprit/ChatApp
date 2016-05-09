@@ -106,7 +106,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 holder.txtCaption.setText(postBean.caption);
             }
 
-            Glide.with(context).load(postBean.post_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+            Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                     holder.imgFeed.setImageBitmap(resource);
