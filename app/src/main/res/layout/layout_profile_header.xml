@@ -17,20 +17,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/iconlogo" />
 
-    <RelativeLayout
-        android:id="@+id/rlAvatar"
-        android:layout_width="@dimen/profile_avatar_size"
-        android:layout_height="@dimen/profile_avatar_size"
-        android:layout_alignParentTop="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/edit_gray"></ImageView>
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/profile_avatar_size"
@@ -77,6 +63,7 @@
                     android:textSize="@dimen/smallText" />
 
                 <TextView
+                    android:id="@+id/txtNoofPost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="27"
@@ -99,6 +86,7 @@
                     android:textSize="@dimen/smallText" />
 
                 <TextView
+                    android:id="@+id/txtNoofFollowers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1420"
@@ -121,6 +109,7 @@
                     android:textSize="@dimen/smallText" />
 
                 <TextView
+                    android:id="@+id/txtNoofFollowing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="144"
