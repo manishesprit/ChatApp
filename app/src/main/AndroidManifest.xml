@@ -43,6 +43,10 @@
             android:name=".Ui.CreatePostActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyTransparent" />
+
+        <activity
+            android:name=".CropImage.CropImageActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

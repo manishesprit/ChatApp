@@ -5,4 +5,8 @@
     <string name="insta_secrate">7d1c8666ce7341d5b15eb9165cc7105b</string>
     <string name="txtlike">&#9758;</string>
     <string name="txtliked">&#9755;</string>
+
+    <string name="crop__pick_error">No image sources available</string>
+    <string name="crop__saving">Saving picture…</string>
+    <string name="crop__wait">Please wait…</string>
 </resources>

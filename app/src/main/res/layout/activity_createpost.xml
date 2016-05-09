@@ -30,14 +30,43 @@
             android:elevation="2dp"></View>
 
         <EditText
+            android:id="@+id/edtCaption"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_five"
             android:background="@color/color_white"
-            android:hint="what's our mind!"
-            android:padding="@dimen/padding_five"
             android:gravity="top"
-            android:lines="4" />
+            android:hint="what's our mind!"
+            android:lines="4"
+            android:padding="@dimen/padding_five" />
+
+        <RelativeLayout
+            android:id="@+id/rlUploadView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_ten"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/imgUploadView"
+                android:layout_width="@dimen/user_avatar_size"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ravi" />
+
+            <TextView
+                android:id="@+id/txtRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_five"
+                android:layout_toRightOf="@+id/imgUploadView"
+                android:text="remove"
+                android:textColor="@color/color_blue"
+                android:textSize="@dimen/extraSmallText" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -46,6 +75,7 @@
             android:weightSum="2">
 
             <TextView
+                android:id="@+id/txtGallary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -59,6 +89,7 @@
                 android:textSize="@dimen/medium1Text" />
 
             <TextView
+                android:id="@+id/txtCamara"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -72,7 +103,9 @@
                 android:textSize="@dimen/medium1Text" />
         </LinearLayout>
 
+
         <TextView
+            android:id="@+id/txtSubmit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/blue_corner_drawable"

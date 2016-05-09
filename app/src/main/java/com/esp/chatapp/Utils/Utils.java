@@ -204,7 +204,7 @@ public class Utils {
     }
 
 
-    public static String compressImage(String imageUri, Context context, int IsPic) {
+    public static String compressImage(String imageUri, Context context) {
         String filePath = getRealPathFromURI(imageUri, context);
         Bitmap scaledBitmap = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -220,15 +220,8 @@ public class Utils {
         System.out.println("actualHeight :: " + actualHeight);
         System.out.println(" actualWidth :: " + actualWidth);
 
-        float maxWidth = 0;
-        float maxHeight = 0;
-        if (IsPic == 1) {
-            maxWidth = 300.0f;
-            maxHeight = 300.0f;
-        } else if (IsPic == 2) {
-            maxWidth = 760.0f;
-            maxHeight = 400.0f;
-        }
+        float maxWidth = 1000;
+        float maxHeight = 1000;
 
 
         float imgRatio = actualWidth / actualHeight;
