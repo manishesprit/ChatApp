@@ -1,5 +1,6 @@
 package com.esp.chatapp.Ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -33,12 +34,13 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
     private ImageView imgInsta;
     private UserBean userBean;
     private RegistrationAPI registrationAPI;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
+        context=this;
         imgFacebook = (ImageView) findViewById(R.id.imgFacebook);
         imgInsta = (ImageView) findViewById(R.id.imgInsta);
 
@@ -48,8 +50,8 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtMobile = (EditText) findViewById(R.id.edtMobile);
 
-        Utils.setDefaultRoundImage(RegistrationActivity.this, imgInsta, R.drawable.insta);
-        Utils.setDefaultRoundImage(RegistrationActivity.this, imgFacebook, R.drawable.facebook);
+        Utils.setDefaultRoundImage(context, imgInsta, R.drawable.insta);
+        Utils.setDefaultRoundImage(context, imgFacebook, R.drawable.facebook);
 
         txtsignup = (TextView) findViewById(R.id.txtsignup);
         txtsignup.setOnClickListener(new View.OnClickListener() {
@@ -58,21 +60,20 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
 
                 String valid = validation();
                 if (valid == null) {
-                    if (Utils.isOnline(RegistrationActivity.this)) {
+                    if (Utils.isOnline(context)) {
                         userBean = new UserBean();
                         userBean.username = edtUsername.getText().toString().trim();
                         userBean.password = edtPassword.getText().toString().trim();
                         userBean.email = edtEmail.getText().toString().trim();
                         userBean.mobile = edtMobile.getText().toString().trim();
-                        userBean.udID = "";
                         userBean.latlong = "";
-                        registrationAPI = new RegistrationAPI(RegistrationActivity.this, responseListener, userBean);
+                        registrationAPI = new RegistrationAPI(context, responseListener, userBean);
                         registrationAPI.execute();
                     } else {
-                        AlertDailogView.showAlert(RegistrationActivity.this, "Internet not available").show();
+                        AlertDailogView.showAlert(context, "Internet not available").show();
                     }
                 } else {
-                    AlertDailogView.showAlert(RegistrationActivity.this, valid).show();
+                    AlertDailogView.showAlert(context, valid).show();
                 }
 
             }
@@ -130,13 +131,13 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
 
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_REGISTRATION) {
-                    intent = new Intent(RegistrationActivity.this, HomeActivity.class);
+                    intent = new Intent(context, HomeActivity.class);
                     startActivity(intent);
                     LoginActivity.activity.finish();
                     finish();
                 }
             } else {
-                AlertDailogView.showAlert(RegistrationActivity.this, obj.toString()).show();
+                AlertDailogView.showAlert(context, obj.toString()).show();
             }
         }
     };

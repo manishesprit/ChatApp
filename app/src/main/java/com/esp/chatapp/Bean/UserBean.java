@@ -16,4 +16,8 @@ public class UserBean {
     public String udID;
     public String name;
     public String mobile;
+    public String status;
+    public String city;
+    public int pageno;
+    public boolean myFeed;
 }

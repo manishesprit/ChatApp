@@ -1,7 +1,6 @@
 package com.esp.chatapp.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -17,7 +16,6 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
-import com.esp.chatapp.Ui.ProfileDetailActivity;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -58,44 +56,53 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if (mholder instanceof HeaderViewHolder) {
             final HeaderViewHolder headerHolder = (HeaderViewHolder) mholder;
 
-//            Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
-            Glide.with(context).load(Utils.avarat_sundar)
-                    .asBitmap()
-                    .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
-                @Override
-                public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-                    RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    headerHolder.imgProfileAvatar.setImageDrawable(circularBitmapDrawable);
-                }
-            });
-            headerHolder.imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, ProfileDetailActivity.class);
-                    context.startActivity(intent);
-                }
-            });
+            Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
+            if (!postBean.avatar.equalsIgnoreCase("")) {
+                Glide.with(context).load(postBean.avatar)
+                        .asBitmap()
+                        .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                        RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        headerHolder.imgProfileAvatar.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+            }
 
 
-            headerHolder.txtUsername.setText("Sachin Tendulkar");
+//            headerHolder.imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(context, ProfileDetailActivity.class);
+//                    context.startActivity(intent);
+//                }
+//            });
+
+            headerHolder.imgProfileAvatar.setOnClickListener((View.OnClickListener)context);
+            headerHolder.txtUsername.setText(postBean.name);
+            headerHolder.txtNoofPost.setText(postBean.noOfpost);
+            headerHolder.txtNoofFollowers.setText(postBean.noOffollowers);
+            headerHolder.txtNoofFollowing.setText(postBean.noOffollowing);
 
         } else if (mholder instanceof PostBeanHolder) {
             final PostBeanHolder holder = (PostBeanHolder) mholder;
 
             postBean = mItemList.get(position);
 
-//            Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
-            Glide.with(context).load(postBean.avatar)
-                    .asBitmap()
-                    .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
-                @Override
-                public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-                    RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    holder.imgAvatar.setImageDrawable(circularBitmapDrawable);
-                }
-            });
+            Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
+            if (!postBean.avatar.equalsIgnoreCase("")) {
+                Glide.with(context).load(postBean.avatar)
+                        .asBitmap()
+                        .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                        RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                        circularBitmapDrawable.setCircular(true);
+                        holder.imgAvatar.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+            }
 
             holder.txtUserName.setText(postBean.username);
             holder.txtFeedTime.setText(postBean.posttime);
@@ -105,14 +112,17 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 holder.txtCaption.setVisibility(View.VISIBLE);
                 holder.txtCaption.setText(postBean.caption);
             }
-
-            Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
-                @Override
-                public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-                    holder.imgFeed.setImageBitmap(resource);
-                }
-            });
-
+            if (!postBean.image_url.equalsIgnoreCase("")) {
+                holder.imgFeed.setVisibility(View.VISIBLE);
+                Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                        holder.imgFeed.setImageBitmap(resource);
+                    }
+                });
+            }else{
+                holder.imgFeed.setVisibility(View.GONE);
+            }
 
             holder.imgLikeUnlike.setImageResource(postBean.islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
             holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
@@ -156,12 +166,18 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         private ImageView imgProfileAvatar;
         private TextView txtUsername;
+        private TextView txtNoofPost;
+        private TextView txtNoofFollowers;
+        private TextView txtNoofFollowing;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
 
             imgProfileAvatar = (ImageView) itemView.findViewById(R.id.imgProfileAvatar);
             txtUsername = (TextView) itemView.findViewById(R.id.txtUsername);
+            txtNoofPost = (TextView) itemView.findViewById(R.id.txtNoofPost);
+            txtNoofFollowers = (TextView) itemView.findViewById(R.id.txtNoofFollowers);
+            txtNoofFollowing = (TextView) itemView.findViewById(R.id.txtNoofFollowing);
         }
     }
 

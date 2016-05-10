@@ -17,6 +17,7 @@ import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
 import com.esp.chatapp.Utils.Pref;
+import com.esp.chatapp.Utils.Utils;
 
 import org.json.JSONObject;
 
@@ -34,13 +35,13 @@ public class RegistrationAPI {
         this.context = context;
         this.mParams = new HashMap<String, String>();
         Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_JSON;
-        userBean = userBean;
+        this.userBean = userBean;
         mParams.put(Config.username, userBean.username);
         mParams.put(Config.password, userBean.password);
         mParams.put(Config.email, userBean.email);
         mParams.put(Config.mobile, userBean.mobile);
         mParams.put(Config.latlong, userBean.latlong);
-        mParams.put(Config.udid, userBean.udID);
+        mParams.put(Config.udid, Utils.getDeviceID(context));
 
         Log.print(":::: API_REGISTRATION ::::" + Config.API_REGISTRATION);
         this.responseListener = responseListener;
@@ -105,14 +106,17 @@ public class RegistrationAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.id));
-                Pref.setValue(context, Config.PREF_USERNAME, jsonObject.getString(Config.username));
-                Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
-                Pref.setValue(context, Config.PREF_NAME, jsonObject.getString(Config.name).toString().equals("") ? jsonObject.getString(Config.username) : jsonObject.getString(Config.name).toString());
-                Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_posts));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, jsonObject.getInt(Config.no_followers));
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getInt(Config.no_following));
-                Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getInt(Config.avatar));
+                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.userid));
+                Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
+                Pref.setValue(context, Config.PREF_USERNAME, userBean.username);
+                Pref.setValue(context, Config.PREF_EMAIL, userBean.email);
+                Pref.setValue(context, Config.PREF_MOBILE, userBean.mobile);
+                Pref.setValue(context, Config.PREF_NAME, userBean.username);
+
+                Pref.setValue(context, Config.PREF_NOOFPOST, 0);
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, 0);
+                Pref.setValue(context, Config.PREF_NOOFFOLLING, 0);
+                Pref.setValue(context, Config.PREF_AVATAR, "default_user.jpg");
             }
 
         } catch (Exception e) {
@@ -122,7 +126,7 @@ public class RegistrationAPI {
             Log.error(this.getClass() + " :: Exception :: ", e);
             Log.print(this.getClass() + " :: Exception :: ", e);
         }
-        doCallBack(code, mesg, userBean);
+        doCallBack(code, mesg);
 
         /** release variables */
         response = null;
@@ -134,11 +138,11 @@ public class RegistrationAPI {
      *
      * Status: Successful or Failure Message: Its an Object, if required
      */
-    private void doCallBack(int code, String mesg, UserBean userBean) {
+    private void doCallBack(int code, String mesg) {
         try {
             if (code == 0) {
                 responseListener.onResponce(Config.TAG_REGISTRATION,
-                        Config.API_SUCCESS, userBean);
+                        Config.API_SUCCESS, mesg);
             } else if (code > 0) {
                 responseListener.onResponce(Config.TAG_REGISTRATION,
                         Config.API_FAIL, mesg);

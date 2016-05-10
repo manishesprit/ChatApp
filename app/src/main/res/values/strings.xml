@@ -10,6 +10,9 @@
     <string name="crop__saving">Saving picture…</string>
     <string name="crop__wait">Please wait…</string>
 
+    <string name="error_invalid_URL">Invalid URL or Server not available, please try again</string>
+    <string name="error_timeout">Connection timeout, please try again</string>
+    <string name="error_server_not_responding">Invalid URL or Server is not responding, please try again</string>
     <string name="connectionErrorMessage">ChatApp is experiencing a connection error</string>
     <string name="Alert">Alert</string>
     <string name="OK">Ok</string>

@@ -13,12 +13,11 @@ import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-
-import com.esp.chatapp.Bean.PostBean;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +25,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Pattern;
@@ -62,38 +60,11 @@ public class Utils {
         }
     }
 
-
-    public static ArrayList<PostBean> getPOstlist() {
-
-        String caption = "You cry and you scream and you stomp your feet and you shout. You say, 'You know what? I'm giving up, I don't care.' And then you go to bed and you wake up and it's a brand new day, and you pick yourself back up again.\n" +
-                "Read more at: http://www.brainyquote.com/quotes/quotes/n/nicolesche500437.html?src=t_morning";
-
-        String post_url1 = "http://static2.businessinsider.com/image/51f9558c6bb3f71b2d000006/insider-bill-gates-will-not-be-the-next-microsoft-ceo.jpg";
-        String post_url2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkWg913jAlDmdUb1IYn0vMCWqwQdK8y583pHjJMAsW8fnaGxjjrQ";
-        String post_url3 = "http://www.trbimg.com/img-540a42b5/turbine/la-fi-hy-autos-2016-mercedes-amg-gt-photos-201-001/650/650x366";
-
-        ArrayList<PostBean> itemList = new ArrayList<>();
-        for (int i = 0; i < 45; i++) {
-            PostBean postBean = new PostBean();
-            postBean.feedid = i;
-            postBean.userid = i * 3;
-            postBean.username = "User " + i;
-            postBean.avatar = (i % 2) == 0 ? avarat_sundar : avarar_sachin;
-            if ((i % 5) == 0) {
-                postBean.image_url = "";
-            } else if ((i % 2) == 0) {
-                postBean.image_url = post_url2;
-            } else {
-                postBean.image_url = post_url3;
-            }
-            postBean.noOfcomment = i * 4;
-            postBean.noOflike = i * 7;
-            postBean.islike = ((i * 5) % 8) == 0 ? true : false;
-            postBean.caption = (i % 5) == 0 ? caption : "Nice one this app. i like this app...";
-            postBean.posttime = "2 min";
-            itemList.add(postBean);
-        }
-        return itemList;
+    public static String getDeviceID(Context context) {
+        String udid = Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        Pref.setValue(context, Config.PREF_UDID, udid);
+        return udid;
     }
 
     public static void setDefaultRoundImage(Context context, ImageView imageView, int imageResource) {

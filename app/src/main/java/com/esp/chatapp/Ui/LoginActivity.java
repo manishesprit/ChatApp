@@ -1,6 +1,7 @@
 package com.esp.chatapp.Ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,12 +35,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static Activity activity;
     private LoginAPI loginAPI;
     private UserBean userBean;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         activity = this;
+        context = this;
         txtlogin = (TextView) findViewById(R.id.txtlogin);
         txtRegisterNow = (TextView) findViewById(R.id.txtRegisterNow);
         txtForgot = (TextView) findViewById(R.id.txtForgot);
@@ -66,30 +69,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.txtlogin:
                 String valid = validation();
                 if (valid == null) {
-                    if (Utils.isOnline(LoginActivity.this)) {
+                    if (Utils.isOnline(context)) {
                         userBean = new UserBean();
                         userBean.username = edtEmial.getText().toString().trim();
                         userBean.password = edtPassword.getText().toString().trim();
-                        userBean.udID = "";
                         userBean.latlong = "";
-                        loginAPI = new LoginAPI(LoginActivity.this, responseListener, userBean);
+                        loginAPI = new LoginAPI(context, responseListener, userBean);
                         loginAPI.execute();
                     } else {
-                        AlertDailogView.showAlert(LoginActivity.this, "Internet not available").show();
+                        AlertDailogView.showAlert(context, "Internet not available").show();
                     }
                 } else {
-                    AlertDailogView.showAlert(LoginActivity.this, valid).show();
+                    AlertDailogView.showAlert(context, valid).show();
                 }
 
                 break;
 
             case R.id.txtRegisterNow:
-                intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                intent = new Intent(context, RegistrationActivity.class);
                 startActivity(intent);
                 break;
 
             case R.id.txtForgot:
-                intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent = new Intent(context, HomeActivity.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -118,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_LOGIN) {
-                    intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent = new Intent(context, HomeActivity.class);
                     startActivity(intent);
                     finish();
                 }

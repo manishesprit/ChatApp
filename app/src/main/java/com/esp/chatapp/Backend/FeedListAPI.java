@@ -17,7 +17,6 @@ import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
-import com.esp.chatapp.Utils.Pref;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,18 +29,17 @@ public class FeedListAPI {
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
     private ResponseListener responseListener;
-    private UserBean userBean;
     private PostBean postBean;
     private ArrayList<PostBean> postBeanArrayList;
 
 
-    public FeedListAPI(Context context, ResponseListener responseListener, int pageno) {
+    public FeedListAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
         Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON;
-        userBean = userBean;
-        mParams.put(Config.id, Pref.getValue(context, Config.PREF_USER_ID, "0"));
-        mParams.put(Config.pageid, String.valueOf(pageno));
+        mParams.put(Config.id, String.valueOf(userBean.userid));
+        mParams.put(Config.myfeed, userBean.myFeed == false ? "0" : "1");
+        mParams.put(Config.pageid, String.valueOf(userBean.pageno));
 
         Log.print(":::: API_FEED_LIST ::::" + Config.API_FEED_LIST);
         this.responseListener = responseListener;

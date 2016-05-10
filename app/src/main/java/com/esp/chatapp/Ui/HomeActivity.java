@@ -1,5 +1,6 @@
 package com.esp.chatapp.Ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.esp.chatapp.R;
 
@@ -29,12 +31,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private ViewPager viewPager;
     private FloatingActionButton fabButton;
     private Menu menu;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        context = this;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.app_name));
@@ -84,8 +87,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fabButton:
-                Intent intent = new Intent(HomeActivity.this, CreatePostActivity.class);
+                Intent intent = new Intent(context, CreatePostActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.imgProfileAvatar:
+                Toast.makeText(context, "Clickkkkkk=====", Toast.LENGTH_LONG).show();
                 break;
         }
     }

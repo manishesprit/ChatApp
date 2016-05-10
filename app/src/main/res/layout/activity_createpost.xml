@@ -84,7 +84,7 @@
                 android:elevation="3dp"
                 android:gravity="center"
                 android:padding="@dimen/padding_ten"
-                android:text="Gallary"
+                android:text="Gallery"
                 android:textColor="@color/color_bluedark"
                 android:textSize="@dimen/medium1Text" />
 
@@ -98,7 +98,7 @@
                 android:elevation="3dp"
                 android:gravity="center"
                 android:padding="@dimen/padding_ten"
-                android:text="Camara"
+                android:text="Camera"
                 android:textColor="@color/color_bluedark"
                 android:textSize="@dimen/medium1Text" />
         </LinearLayout>

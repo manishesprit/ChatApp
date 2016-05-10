@@ -14,6 +14,7 @@ public class Config {
     // preference file name
     public static final String PREF_FILE = TAG + "_PREF";
     public static String DIR_USERDATA = APP_HOME + "/userdata";
+
     public static String DIR_MAGIC = DIR_USERDATA;
     /*
      * API BASIC INFO
@@ -46,6 +47,14 @@ public class Config {
     public static String API_FEED_LIST = "";
     public static String API_FEED_LIST_JSON = "feed.php?";
     public static String TAG_FEED_LIST = "TAG_FEED_LIST";
+
+    public static String API_UPDATE_PROFILE = "";
+    public static String API_UPDATE_PROFILE_JSON = "update.php?";
+    public static String TAG_UPDATE_PROFILE = "TAG_UPDATE_PROFILE";
+
+    public static String API_CREATE_FEED = "";
+    public static String API_CREATE_FEED_JSON = "create_feed.php?";
+    public static String TAG_CREATE_FEED = "TAG_CREATE_FEED";
 
     /*
      * Error and Warnings
@@ -91,11 +100,15 @@ public class Config {
     public static String PREF_USER_ID = "PREF_USER_ID";
     public static String PREF_USERNAME = "PREF_USERNAME";
     public static String PREF_NAME = "PREF_NAME";
+    public static String PREF_CITY = "PREF_CITY";
+    public static String PREF_STATUS = "PREF_STATUS";
     public static String PREF_EMAIL = "PREF_EMAIL";
+    public static String PREF_MOBILE = "PREF_MOBILE";
     public static String PREF_NOOFPOST = "PREF_NOOFPOST";
     public static String PREF_NOOFFOLLOWERS = "PREF_NOOFFOLLOWERS";
     public static String PREF_NOOFFOLLING = "PREF_NOOFFOLLING";
     public static String PREF_AVATAR = "PREF_AVATAR";
+    public static String PREF_UDID = "PREF_UDID";
 
     //    UnFollowerAPI
     public static String code = "code";
@@ -104,17 +117,20 @@ public class Config {
     public static String password = "password";
     public static String email = "email";
     public static String mobile = "mobile";
+    public static String city = "city";
+    public static String status = "status";
     public static String udid = "udid";
     public static String latlong = "latlong";
-    public static String no_followers = "no_followers";
+    public static String no_follower = "no_follower";
     public static String no_following = "no_following";
-    public static String no_posts = "artist_posts";
+    public static String no_post = "no_post";
     public static String no_comment = "no_comment";
     public static String no_like = "no_like";
     public static String avatar = "avatar";
     public static String islike = "islike";
     public static String posttime = "posttime";
     public static String id = "id";
+    public static String myfeed = "myfeed";
     public static String pageid = "pageid";
     public static String name = "name";
     public static String feedlist = "feedlist";

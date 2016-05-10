@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class LoginAPI {
+public class UpdateProfileAPI {
     private Context context;
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
@@ -31,23 +31,27 @@ public class LoginAPI {
     private UserBean userBean;
 
 
-    public LoginAPI(Context context, ResponseListener responseListener, UserBean userBean) {
+    public UpdateProfileAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON;
+        Config.API_UPDATE_PROFILE = Config.HOST + Config.API_UPDATE_PROFILE_JSON;
         this.userBean = userBean;
-        mParams.put(Config.username, userBean.username);
-        mParams.put(Config.password, userBean.password);
+
+        mParams.put(Config.name, userBean.name);
+        mParams.put(Config.email, userBean.email);
+        mParams.put(Config.mobile, userBean.mobile);
+        mParams.put(Config.city, userBean.city);
+        mParams.put(Config.status, userBean.status);
         mParams.put(Config.latlong, userBean.latlong);
         mParams.put(Config.udid, Utils.getDeviceID(context));
 
-        Log.print(":::: API_LOGIN ::::" + Config.API_LOGIN);
+        Log.print(":::: API_UPDATE_PROFILE ::::" + Config.API_UPDATE_PROFILE);
         this.responseListener = responseListener;
     }
 
     public void execute() {
         this.mAdapter = new Adapter(this.context);
-        this.mAdapter.doGet(Config.TAG_LOGIN, Config.API_LOGIN, mParams,
+        this.mAdapter.doGet(Config.TAG_UPDATE_PROFILE, Config.API_UPDATE_PROFILE, mParams,
                 new APIResponseListener() {
 
                     @Override
@@ -84,7 +88,7 @@ public class LoginAPI {
                             //
                         }
                         // Inform Caller that the API call is failed
-                        responseListener.onResponce(Config.TAG_LOGIN, Config.API_FAIL, context.getResources()
+                        responseListener.onResponce(Config.TAG_UPDATE_PROFILE, Config.API_FAIL, context.getResources()
                                 .getString(
                                         R.string.connectionErrorMessage));
                     }
@@ -104,15 +108,14 @@ public class LoginAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.userid));
-                Pref.setValue(context, Config.PREF_USERNAME, userBean.username);
-                Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
-                Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
-                Pref.setValue(context, Config.PREF_NAME, jsonObject.getString(Config.name).toString().equals("") ? userBean.username : jsonObject.getString(Config.name).toString());
+                Pref.setValue(context, Config.PREF_EMAIL, userBean.email);
+                Pref.setValue(context, Config.PREF_MOBILE, userBean.mobile);
+                Pref.setValue(context, Config.PREF_NAME, userBean.name.equals("") ? Pref.getValue(context, Config.PREF_USERNAME, "") : userBean.name);
+                Pref.setValue(context, Config.PREF_CITY, userBean.city);
+                Pref.setValue(context, Config.PREF_STATUS, userBean.status);
                 Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).split(",").length);
-                Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, jsonObject.getInt(Config.no_followers));
+                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getInt(Config.no_following));
             }
 
         } catch (Exception e) {
@@ -137,13 +140,13 @@ public class LoginAPI {
     private void doCallBack(int code, String mesg, UserBean userBean) {
         try {
             if (code == 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_UPDATE_PROFILE,
                         Config.API_SUCCESS, userBean);
             } else if (code > 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_UPDATE_PROFILE,
                         Config.API_FAIL, mesg);
             } else if (code < 0) {
-                responseListener.onResponce(Config.TAG_LOGIN,
+                responseListener.onResponce(Config.TAG_UPDATE_PROFILE,
                         Config.API_FAIL, mesg);
             }
         } catch (Exception e) {
@@ -157,7 +160,7 @@ public class LoginAPI {
      */
     public void doCancel() {
         if (mAdapter != null) {
-            mAdapter.doCancel(Config.TAG_LOGIN);
+            mAdapter.doCancel(Config.TAG_UPDATE_PROFILE);
         }
     }
 }

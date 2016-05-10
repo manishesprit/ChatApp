@@ -1,5 +1,6 @@
 package com.esp.chatapp.Ui;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,13 +29,14 @@ public class ProfileDetailActivity extends AppCompatActivity {
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ImageView image;
     private PostBean postBean;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActivityTransitions();
         setContentView(R.layout.activity_profiledetail);
-
+        context=this;
         if (getIntent().getExtras() != null) {
             postBean = (PostBean) getIntent().getSerializableExtra("beanData");
         } else {
