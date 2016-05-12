@@ -17,41 +17,34 @@ import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
 import com.esp.chatapp.Utils.Pref;
-import com.esp.chatapp.Utils.Utils;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UpdateProfileAPI {
+public class SearchListAPI {
     private Context context;
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
     private ResponseListener responseListener;
     private UserBean userBean;
+    private ArrayList<UserBean> userBeanArrayList;
 
 
-    public UpdateProfileAPI(Context context, ResponseListener responseListener, UserBean userBean) {
+    public SearchListAPI(Context context, ResponseListener responseListener, String searchtext) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_UPDATE_PROFILE = Config.HOST + Config.API_UPDATE_PROFILE_JSON;
-        this.userBean = userBean;
+        Config.API_SEARCH_LIST = Config.HOST + Config.API_SEARCH_LIST_JSON + Config.userid + "=" + Pref.getValue(context, Config.PREF_USER_ID, 0) + "&" + Config.search_text + "=" + searchtext;
 
-        mParams.put(Config.name, userBean.name);
-        mParams.put(Config.email, userBean.email);
-        mParams.put(Config.mobile, userBean.mobile);
-        mParams.put(Config.city, userBean.city);
-        mParams.put(Config.status, userBean.status);
-        mParams.put(Config.latlong, userBean.latlong);
-        mParams.put(Config.udid, Utils.getDeviceID(context));
-
-        Log.print(":::: API_UPDATE_PROFILE ::::" + Config.API_UPDATE_PROFILE);
+        Log.print(":::: API_SEARCH_LIST ::::" + Config.API_SEARCH_LIST);
         this.responseListener = responseListener;
     }
 
     public void execute() {
         this.mAdapter = new Adapter(this.context);
-        this.mAdapter.doGet(Config.TAG_UPDATE_PROFILE, Config.API_UPDATE_PROFILE, mParams,
+        this.mAdapter.doGet(Config.TAG_SEARCH_LIST, Config.API_SEARCH_LIST, mParams,
                 new APIResponseListener() {
 
                     @Override
@@ -88,7 +81,7 @@ public class UpdateProfileAPI {
                             //
                         }
                         // Inform Caller that the API call is failed
-                        responseListener.onResponce(Config.TAG_UPDATE_PROFILE, Config.API_FAIL, context.getResources()
+                        responseListener.onResponce(Config.TAG_SEARCH_LIST, Config.API_FAIL, context.getResources()
                                 .getString(
                                         R.string.connectionErrorMessage));
                     }
@@ -108,14 +101,26 @@ public class UpdateProfileAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_EMAIL, userBean.email);
-                Pref.setValue(context, Config.PREF_MOBILE, userBean.mobile);
-                Pref.setValue(context, Config.PREF_NAME, userBean.name.equals("") ? Pref.getValue(context, Config.PREF_USERNAME, "") : userBean.name);
-                Pref.setValue(context, Config.PREF_CITY, userBean.city);
-                Pref.setValue(context, Config.PREF_STATUS, userBean.status);
-                Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_following).split(",").length);
+
+                userBeanArrayList = new ArrayList<>();
+                JSONArray feedListArray = jsonObject.getJSONArray(Config.searchlist);
+                if (feedListArray != null && feedListArray.length() > 0) {
+                    for (int i = 0; i < feedListArray.length(); i++) {
+                        JSONObject jsonObject1 = feedListArray.getJSONObject(i);
+                        userBean = new UserBean();
+//                        postBean.feedid = jsonObject1.getInt(Config.feedid);
+//                        postBean.userid = jsonObject1.getInt(Config.userid);
+//                        postBean.name = jsonObject1.getString(Config.name);
+//                        postBean.image_url = jsonObject1.getString(Config.image_url);
+//                        postBean.caption = jsonObject1.getString(Config.caption);
+//                        postBean.avatar = jsonObject1.getString(Config.avatar);
+//                        postBean.noOfcomment = jsonObject1.getInt(Config.no_comment);
+//                        postBean.noOflike = jsonObject1.getInt(Config.no_like);
+//                        postBean.islike = jsonObject1.getInt(Config.islike) == 0 ? false : true;
+//                        postBean.posttime = jsonObject1.getString(Config.posttime);
+                        userBeanArrayList.add(userBean);
+                    }
+                }
             }
 
         } catch (Exception e) {
@@ -125,7 +130,7 @@ public class UpdateProfileAPI {
             Log.error(this.getClass() + " :: Exception :: ", e);
             Log.print(this.getClass() + " :: Exception :: ", e);
         }
-        doCallBack(code, mesg, userBean);
+        doCallBack(code, mesg, userBeanArrayList);
 
         /** release variables */
         response = null;
@@ -137,16 +142,16 @@ public class UpdateProfileAPI {
      *
      * Status: Successful or Failure Message: Its an Object, if required
      */
-    private void doCallBack(int code, String mesg, UserBean userBean) {
+    private void doCallBack(int code, String mesg, ArrayList<UserBean> userBeanArrayList) {
         try {
             if (code == 0) {
-                responseListener.onResponce(Config.TAG_UPDATE_PROFILE,
-                        Config.API_SUCCESS, userBean);
+                responseListener.onResponce(Config.TAG_SEARCH_LIST,
+                        Config.API_SUCCESS, userBeanArrayList);
             } else if (code > 0) {
-                responseListener.onResponce(Config.TAG_UPDATE_PROFILE,
+                responseListener.onResponce(Config.TAG_SEARCH_LIST,
                         Config.API_FAIL, mesg);
             } else if (code < 0) {
-                responseListener.onResponce(Config.TAG_UPDATE_PROFILE,
+                responseListener.onResponce(Config.TAG_SEARCH_LIST,
                         Config.API_FAIL, mesg);
             }
         } catch (Exception e) {
@@ -160,7 +165,7 @@ public class UpdateProfileAPI {
      */
     public void doCancel() {
         if (mAdapter != null) {
-            mAdapter.doCancel(Config.TAG_UPDATE_PROFILE);
+            mAdapter.doCancel(Config.TAG_SEARCH_LIST);
         }
     }
 }

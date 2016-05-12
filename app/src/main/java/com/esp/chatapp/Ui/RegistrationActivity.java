@@ -15,6 +15,7 @@ import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
+import com.esp.chatapp.Uc.ProgressWheel;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
@@ -35,12 +36,13 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
     private UserBean userBean;
     private RegistrationAPI registrationAPI;
     private Context context;
+    private ProgressWheel progressWheel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        context=this;
+        context = this;
         imgFacebook = (ImageView) findViewById(R.id.imgFacebook);
         imgInsta = (ImageView) findViewById(R.id.imgInsta);
 
@@ -49,6 +51,10 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
         edtRePassword = (EditText) findViewById(R.id.edtRePassword);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtMobile = (EditText) findViewById(R.id.edtMobile);
+
+        progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
+        progressWheel.setBarColor(getResources().getColor(R.color.color_white));
+        progressWheel.setRimColor(getResources().getColor(R.color.color_bluedark));
 
         Utils.setDefaultRoundImage(context, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(context, imgFacebook, R.drawable.facebook);
@@ -61,6 +67,7 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
                 String valid = validation();
                 if (valid == null) {
                     if (Utils.isOnline(context)) {
+                        progressWheel.setVisibility(View.VISIBLE);
                         userBean = new UserBean();
                         userBean.username = edtUsername.getText().toString().trim();
                         userBean.password = edtPassword.getText().toString().trim();
@@ -128,7 +135,7 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
     private ResponseListener responseListener = new ResponseListener() {
         @Override
         public void onResponce(String tag, int result, Object obj) {
-
+            progressWheel.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_REGISTRATION) {
                     intent = new Intent(context, HomeActivity.class);

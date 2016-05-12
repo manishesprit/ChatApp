@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/color_gray">
@@ -34,13 +35,12 @@
         android:orientation="vertical"
         android:padding="@dimen/padding_twenty">
 
-
         <EditText
             android:id="@+id/edtUsername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_gray"
-            android:hint="Username"
+            android:hint="Name"
             android:padding="@dimen/padding_five"
             android:singleLine="true"
             android:textColor="@color/color_white"
@@ -95,9 +95,10 @@
             android:id="@+id/edtEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_ten"
             android:background="@color/color_gray"
             android:hint="Email address"
-            android:layout_marginTop="@dimen/padding_ten"
+            android:inputType="textEmailAddress"
             android:padding="@dimen/padding_five"
             android:singleLine="true"
             android:textColor="@color/color_white"
@@ -117,6 +118,7 @@
             android:background="@color/color_gray"
             android:digits="1234567890+"
             android:hint="Mobile number"
+            android:inputType="number"
             android:padding="@dimen/padding_five"
             android:singleLine="true"
             android:textColor="@color/color_white"
@@ -179,5 +181,12 @@
 
     </LinearLayout>
 
-
+    <com.esp.chatapp.Uc.ProgressWheel
+        android:id="@+id/progress_wheel"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        wheel:matProg_barColor="@color/color_blue"
+        wheel:matProg_progressIndeterminate="true" />
 </RelativeLayout>

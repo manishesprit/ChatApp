@@ -45,7 +45,7 @@ public class Config {
     public static String TAG_LOGIN = "TAG_LOGIN";
 
     public static String API_FEED_LIST = "";
-    public static String API_FEED_LIST_JSON = "feed.php?";
+    public static String API_FEED_LIST_JSON = "feed_list.php?";
     public static String TAG_FEED_LIST = "TAG_FEED_LIST";
 
     public static String API_UPDATE_PROFILE = "";
@@ -55,6 +55,26 @@ public class Config {
     public static String API_CREATE_FEED = "";
     public static String API_CREATE_FEED_JSON = "create_feed.php?";
     public static String TAG_CREATE_FEED = "TAG_CREATE_FEED";
+
+    public static String API_UNLIKE = "";
+    public static String API_UNLIKE_JSON = "unkile.php?";
+    public static String TAG_UNLIKE = "TAG_UNLIKE";
+
+    public static String API_LIKE = "";
+    public static String API_LIKE_JSON = "like.php?";
+    public static String TAG_LIKE = "TAG_LIKE";
+
+    public static String API_COMMENT_LIST = "";
+    public static String API_COMMENT_LIST_JSON = "comment_list.php?";
+    public static String TAG_COMMENT_LIST = "TAG_COMMENT_LIST";
+
+    public static String API_LIKE_LIST = "";
+    public static String API_LIKE_LIST_JSON = "like_list.php?";
+    public static String TAG_LIKE_LIST = "TAG_LIKE_LIST";
+
+    public static String API_SEARCH_LIST = "";
+    public static String API_SEARCH_LIST_JSON = "search_list.php?";
+    public static String TAG_SEARCH_LIST = "TAG_SEARCH_LIST";
 
     /*
      * Error and Warnings
@@ -105,7 +125,7 @@ public class Config {
     public static String PREF_EMAIL = "PREF_EMAIL";
     public static String PREF_MOBILE = "PREF_MOBILE";
     public static String PREF_NOOFPOST = "PREF_NOOFPOST";
-    public static String PREF_NOOFFOLLOWERS = "PREF_NOOFFOLLOWERS";
+    public static String PREF_NOOFFOLLOWER = "PREF_NOOFFOLLOWER";
     public static String PREF_NOOFFOLLING = "PREF_NOOFFOLLING";
     public static String PREF_AVATAR = "PREF_AVATAR";
     public static String PREF_UDID = "PREF_UDID";
@@ -138,5 +158,7 @@ public class Config {
     public static String feedid = "feedid";
     public static String image_url = "image_url";
     public static String caption = "caption";
+    public static String search_text = "search_text";
+    public static String searchlist = "searchlist";
 
 }

@@ -34,8 +34,6 @@ import java.util.regex.Pattern;
  */
 public class Utils {
 
-    public static String avarar_sachin = "http://www.iloveindia.com/sports/pics/sachin-tendulkar.jpg";
-    public static String avarat_sundar = "https://pbs.twimg.com/profile_images/481231649128980480/9hpv14pc.jpeg";
 
     public static boolean isOnline(Context context) {
         try {
@@ -55,7 +53,7 @@ public class Utils {
                 return false;
             }
         } catch (Exception e) {
-            System.out.println("Exception " + e);
+            Log.error("Exception", e);
             return false;
         }
     }

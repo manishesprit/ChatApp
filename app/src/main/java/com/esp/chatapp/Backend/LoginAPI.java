@@ -34,13 +34,8 @@ public class LoginAPI {
     public LoginAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON;
+        Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON+Config.username+"="+userBean.username+"&"+Config.password+"="+userBean.password+"&"+Config.latlong+"="+userBean.latlong+"&"+Config.udid+"="+ Utils.getDeviceID(context);
         this.userBean = userBean;
-        mParams.put(Config.username, userBean.username);
-        mParams.put(Config.password, userBean.password);
-        mParams.put(Config.latlong, userBean.latlong);
-        mParams.put(Config.udid, Utils.getDeviceID(context));
-
         Log.print(":::: API_LOGIN ::::" + Config.API_LOGIN);
         this.responseListener = responseListener;
     }
@@ -104,14 +99,14 @@ public class LoginAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.userid));
+                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getInt(Config.userid));
                 Pref.setValue(context, Config.PREF_USERNAME, userBean.username);
                 Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
                 Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
                 Pref.setValue(context, Config.PREF_NAME, jsonObject.getString(Config.name).toString().equals("") ? userBean.username : jsonObject.getString(Config.name).toString());
                 Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_follower).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_following).split(",").length);
                 Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
             }
 

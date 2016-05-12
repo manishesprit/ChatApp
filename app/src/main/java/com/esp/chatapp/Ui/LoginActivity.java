@@ -16,6 +16,7 @@ import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
+import com.esp.chatapp.Uc.ProgressWheel;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LoginAPI loginAPI;
     private UserBean userBean;
     private Context context;
+    private ProgressWheel progressWheel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Utils.setDefaultRoundImage(LoginActivity.this, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(LoginActivity.this, imgFacebook, R.drawable.facebook);
 
+        progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
+        progressWheel.setBarColor(getResources().getColor(R.color.color_white));
+        progressWheel.setRimColor(getResources().getColor(R.color.color_bluedark));
 
         txtlogin.setOnClickListener(this);
         txtRegisterNow.setOnClickListener(this);
@@ -70,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String valid = validation();
                 if (valid == null) {
                     if (Utils.isOnline(context)) {
+                        progressWheel.setVisibility(View.VISIBLE);
                         userBean = new UserBean();
                         userBean.username = edtEmial.getText().toString().trim();
                         userBean.password = edtPassword.getText().toString().trim();
@@ -117,7 +123,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ResponseListener responseListener = new ResponseListener() {
         @Override
         public void onResponce(String tag, int result, Object obj) {
-
+            progressWheel.setVisibility(View.GONE                                                                                                                                                                                                                   );
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_LOGIN) {
                     intent = new Intent(context, HomeActivity.class);
@@ -125,7 +131,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     finish();
                 }
             } else {
-
+                AlertDailogView.showAlert(context, obj.toString()).show();
             }
         }
     };

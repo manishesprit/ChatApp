@@ -1,9 +1,11 @@
 package com.esp.chatapp.Bean;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 4/5/16.
  */
-public class UserBean {
+public class UserBean implements Serializable {
     public int userid;
     public String username;
     public String password;

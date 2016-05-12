@@ -14,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.esp.chatapp.R;
 
@@ -52,26 +51,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fabButton = (FloatingActionButton) findViewById(R.id.fabButton);
         fabButton.setOnClickListener(this);
 
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if (position == 2) {
-                    menu.findItem(R.id.action_search).setVisible(true);
-                } else {
-                    menu.findItem(R.id.action_search).setVisible(false);
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                if (position == 2) {
+//                    menu.findItem(R.id.action_search).setVisible(true);
+//                } else {
+//                    menu.findItem(R.id.action_search).setVisible(false);
+//                }
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
 
     }
 
@@ -79,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FeedFragment(), "Feed");
         adapter.addFragment(new ProfileFragment(), "Profile");
-        adapter.addFragment(new PeopleFragment(), "People");
+        adapter.addFragment(new NotifyFragment(), "Notify");
         viewPager.setAdapter(adapter);
     }
 
@@ -89,10 +88,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fabButton:
                 Intent intent = new Intent(context, CreatePostActivity.class);
                 startActivity(intent);
-                break;
-
-            case R.id.imgProfileAvatar:
-                Toast.makeText(context, "Clickkkkkk=====", Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -137,10 +132,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_setting:
-
+                intent = new Intent(context, MoreActivity.class);
+                startActivity(intent);
                 break;
+
+            case R.id.action_search:
+                intent = new Intent(context, SearchActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.action_status:
 
                 break;

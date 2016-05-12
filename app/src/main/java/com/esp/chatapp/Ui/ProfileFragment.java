@@ -47,9 +47,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         postBean = new PostBean();
         postBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
+        postBean.name = Pref.getValue(getContext(), Config.PREF_NAME, "");
         postBean.avatar = Pref.getValue(getContext(), Config.PREF_AVATAR, "");
+        postBean.email = Pref.getValue(getContext(), Config.PREF_EMAIL, "");
+        postBean.mobile = Pref.getValue(getContext(), Config.PREF_MOBILE, "");
         postBean.noOfpost = Pref.getValue(getContext(), Config.PREF_NOOFPOST, 0);
-        postBean.noOffollowers = Pref.getValue(getContext(), Config.PREF_NOOFFOLLOWERS, 0);
+        postBean.noOffollowers = Pref.getValue(getContext(), Config.PREF_NOOFFOLLOWER, 0);
         postBean.noOffollowing = Pref.getValue(getContext(), Config.PREF_NOOFFOLLING, 0);
         postBean.status = Pref.getValue(getContext(), Config.PREF_STATUS, "");
 
@@ -67,7 +70,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             userBean.myFeed = true;
             userBean.pageno = 0;
             feedListAPI = new FeedListAPI(getContext(), responseListener, userBean);
-//            feedListAPI.execute();
+            feedListAPI.execute();
         }
 
     }
@@ -78,9 +81,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
 
-                    ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
-                    if (postBeanArrayList.size() > 0) {
-                        postBeanArrayList.addAll(postBeanArrayList);
+                    ArrayList<PostBean> postBeanArrayList1 = (ArrayList<PostBean>) obj;
+                    if (postBeanArrayList1.size() > 0) {
+                        postBeanArrayList.addAll(postBeanArrayList1);
                         profileRecyclerAdapter.notifyDataSetChanged();
                     } else {
 

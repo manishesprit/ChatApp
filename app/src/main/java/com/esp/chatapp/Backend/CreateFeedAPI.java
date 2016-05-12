@@ -77,10 +77,11 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.id));
+                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getInt(Config.userid));
                 Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, jsonObject.getInt(Config.no_follower));
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getInt(Config.no_following));
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_follower).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_following).split(",").length);
+                Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
             }
         } catch (Exception e) {
             code = -4;

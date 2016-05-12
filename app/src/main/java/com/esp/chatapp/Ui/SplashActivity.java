@@ -19,11 +19,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        context=this;
+        context = this;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (Pref.getValue(context, Config.PREF_USER_ID, "0").equals("0")) {
+                if (Pref.getValue(context, Config.PREF_USER_ID, 0) == 0) {
                     intent = new Intent(context, LoginActivity.class);
                     startActivity(intent);
                     finish();

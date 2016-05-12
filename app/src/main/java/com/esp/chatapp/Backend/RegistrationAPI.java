@@ -34,14 +34,9 @@ public class RegistrationAPI {
     public RegistrationAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_JSON;
         this.userBean = userBean;
-        mParams.put(Config.username, userBean.username);
-        mParams.put(Config.password, userBean.password);
-        mParams.put(Config.email, userBean.email);
-        mParams.put(Config.mobile, userBean.mobile);
-        mParams.put(Config.latlong, userBean.latlong);
-        mParams.put(Config.udid, Utils.getDeviceID(context));
+        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_JSON + Config.username + "=" + userBean.username + "&" + Config.password + "=" + userBean.password + "&" + Config.email + "=" + userBean.email + "&" + Config.mobile + "=" + userBean.mobile + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context);
+
 
         Log.print(":::: API_REGISTRATION ::::" + Config.API_REGISTRATION);
         this.responseListener = responseListener;
@@ -106,7 +101,7 @@ public class RegistrationAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getString(Config.userid));
+                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getInt(Config.userid));
                 Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
                 Pref.setValue(context, Config.PREF_USERNAME, userBean.username);
                 Pref.setValue(context, Config.PREF_EMAIL, userBean.email);
@@ -114,9 +109,8 @@ public class RegistrationAPI {
                 Pref.setValue(context, Config.PREF_NAME, userBean.username);
 
                 Pref.setValue(context, Config.PREF_NOOFPOST, 0);
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWERS, 0);
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, 0);
                 Pref.setValue(context, Config.PREF_NOOFFOLLING, 0);
-                Pref.setValue(context, Config.PREF_AVATAR, "default_user.jpg");
             }
 
         } catch (Exception e) {

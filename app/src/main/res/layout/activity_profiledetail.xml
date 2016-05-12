@@ -78,13 +78,13 @@
                     android:textSize="@dimen/extraMediumText" />
 
                 <TextView
+                    android:id="@+id/txtMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/padding_twenty"
                     android:paddingLeft="@dimen/padding_twenty"
                     android:paddingRight="@dimen/padding_ten"
                     android:paddingTop="@dimen/padding_five"
-                    android:text="+91 99048 41033"
                     android:textColor="@color/color_whitedark"
                     android:textSize="@dimen/medium1Text" />
 
@@ -105,79 +105,18 @@
                     android:textSize="@dimen/extraMediumText" />
 
                 <TextView
+                    android:id="@+id/txtStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/padding_twenty"
                     android:paddingLeft="@dimen/padding_twenty"
                     android:paddingRight="@dimen/padding_ten"
                     android:paddingTop="@dimen/padding_five"
-                    android:text="happy badday dear..many many returns of the day gundu"
                     android:textColor="@color/color_whitedark"
                     android:textSize="@dimen/medium1Text" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/llGroup"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-               android:layout_below="@+id/llmobile_status"
-                android:layout_margin="@dimen/padding_ten"
-                android:layout_marginBottom="@dimen/padding_twenty"
-                android:background="@color/color_graydark"
-                android:elevation="5dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_ten"
-                    android:paddingLeft="@dimen/padding_ten"
-                    android:paddingRight="@dimen/padding_ten"
-                    android:paddingTop="@dimen/padding_twenty"
-                    android:text="Mobile number"
-                    android:textColor="@color/color_white"
-                    android:textSize="@dimen/extraMediumText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_twenty"
-                    android:paddingLeft="@dimen/padding_twenty"
-                    android:paddingRight="@dimen/padding_ten"
-                    android:paddingTop="@dimen/padding_five"
-                    android:text="+91 99048 41033"
-                    android:textColor="@color/color_whitedark"
-                    android:textSize="@dimen/medium1Text" />
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/color_gray"></View>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_ten"
-                    android:paddingLeft="@dimen/padding_ten"
-                    android:paddingRight="@dimen/padding_ten"
-                    android:paddingTop="@dimen/padding_twenty"
-                    android:text="Status"
-                    android:textColor="@color/color_white"
-                    android:textSize="@dimen/extraMediumText" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_twenty"
-                    android:paddingLeft="@dimen/padding_twenty"
-                    android:paddingRight="@dimen/padding_ten"
-                    android:paddingTop="@dimen/padding_five"
-                    android:text="happy badday dear..many many returns of the day gundu"
-                    android:textColor="@color/color_whitedark"
-                    android:textSize="@dimen/medium1Text" />
-
-            </LinearLayout>
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

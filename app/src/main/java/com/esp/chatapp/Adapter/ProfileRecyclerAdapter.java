@@ -1,6 +1,7 @@
 package com.esp.chatapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -16,6 +17,11 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Ui.ChangeAvatarActivity;
+import com.esp.chatapp.Ui.EditProfileActivity;
+import com.esp.chatapp.Ui.ProfileDetailActivity;
+import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -30,10 +36,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private PostBean postBean;
 
     public ProfileRecyclerAdapter(Context context, ArrayList<PostBean> itemList) {
-        mItemList = new ArrayList<>();
-        postBean = new PostBean();
-        mItemList.add(postBean);
-        mItemList.addAll(itemList);
+        mItemList = itemList;
         this.context = context;
     }
 
@@ -55,6 +58,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void onBindViewHolder(final RecyclerView.ViewHolder mholder, int position) {
         if (mholder instanceof HeaderViewHolder) {
             final HeaderViewHolder headerHolder = (HeaderViewHolder) mholder;
+            postBean = mItemList.get(position);
 
             Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
             if (!postBean.avatar.equalsIgnoreCase("")) {
@@ -71,19 +75,39 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
 
 
-//            headerHolder.imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(context, ProfileDetailActivity.class);
-//                    context.startActivity(intent);
-//                }
-//            });
+            headerHolder.imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (postBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                        Intent intent = new Intent(context, ChangeAvatarActivity.class);
+                        intent.putExtra("beanData", postBean);
+                        context.startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(context, ProfileDetailActivity.class);
+                        intent.putExtra("beanData", postBean);
+                        context.startActivity(intent);
+                    }
+                }
+            });
 
-            headerHolder.imgProfileAvatar.setOnClickListener((View.OnClickListener)context);
-            headerHolder.txtUsername.setText(postBean.name);
-            headerHolder.txtNoofPost.setText(postBean.noOfpost);
-            headerHolder.txtNoofFollowers.setText(postBean.noOffollowers);
-            headerHolder.txtNoofFollowing.setText(postBean.noOffollowing);
+            headerHolder.txtName.setText(postBean.name);
+            headerHolder.txtName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (postBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                        Intent intent = new Intent(context, EditProfileActivity.class);
+                        intent.putExtra("beanData", postBean);
+                        context.startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(context, ProfileDetailActivity.class);
+                        intent.putExtra("beanData", postBean);
+                        context.startActivity(intent);
+                    }
+                }
+            });
+            headerHolder.txtNoofPost.setText("" + postBean.noOfpost);
+            headerHolder.txtNoofFollowers.setText("" + postBean.noOffollowers);
+            headerHolder.txtNoofFollowing.setText("" + postBean.noOffollowing);
 
         } else if (mholder instanceof PostBeanHolder) {
             final PostBeanHolder holder = (PostBeanHolder) mholder;
@@ -92,9 +116,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
             if (!postBean.avatar.equalsIgnoreCase("")) {
-                Glide.with(context).load(postBean.avatar)
-                        .asBitmap()
-                        .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                Glide.with(context).load(postBean.avatar).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                         RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
@@ -104,7 +126,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 });
             }
 
-            holder.txtUserName.setText(postBean.username);
+            holder.txtUserName.setText(postBean.name);
             holder.txtFeedTime.setText(postBean.posttime);
             if (postBean.caption.trim().toString().equalsIgnoreCase("")) {
                 holder.txtCaption.setVisibility(View.GONE);
@@ -114,13 +136,13 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
             if (!postBean.image_url.equalsIgnoreCase("")) {
                 holder.imgFeed.setVisibility(View.VISIBLE);
-                Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+                Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                         holder.imgFeed.setImageBitmap(resource);
                     }
                 });
-            }else{
+            } else {
                 holder.imgFeed.setVisibility(View.GONE);
             }
 
@@ -165,7 +187,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     class HeaderViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imgProfileAvatar;
-        private TextView txtUsername;
+        private TextView txtName;
         private TextView txtNoofPost;
         private TextView txtNoofFollowers;
         private TextView txtNoofFollowing;
@@ -174,7 +196,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             super(itemView);
 
             imgProfileAvatar = (ImageView) itemView.findViewById(R.id.imgProfileAvatar);
-            txtUsername = (TextView) itemView.findViewById(R.id.txtUsername);
+            txtName = (TextView) itemView.findViewById(R.id.txtName);
             txtNoofPost = (TextView) itemView.findViewById(R.id.txtNoofPost);
             txtNoofFollowers = (TextView) itemView.findViewById(R.id.txtNoofFollowers);
             txtNoofFollowing = (TextView) itemView.findViewById(R.id.txtNoofFollowing);

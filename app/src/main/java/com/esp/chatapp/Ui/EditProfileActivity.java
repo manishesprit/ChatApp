@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Backend.UpdateProfileAPI;
+import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
@@ -29,6 +32,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     private TextView txtupdate;
     private Intent intent;
     private UserBean userBean;
+    private PostBean postBean;
     private Context context;
     private UpdateProfileAPI updateProfileAPI;
 
@@ -48,6 +52,18 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
         edtCity = (EditText) findViewById(R.id.edtCity);
         edtStatus = (EditText) findViewById(R.id.edtStatus);
         txtupdate = (TextView) findViewById(R.id.txtupdate);
+
+        if (getIntent().getExtras() != null) {
+            postBean = (PostBean) getIntent().getSerializableExtra("beanData");
+        } else {
+            finish();
+        }
+
+        edtName.setText(postBean.name);
+        edtEmail.setText(postBean.email);
+        edtMobile.setText(postBean.mobile);
+        edtCity.setText(postBean.city);
+        edtStatus.setText(postBean.status);
 
         txtupdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +116,22 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
         }
 
         return valid;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private ResponseListener responseListener = new ResponseListener() {

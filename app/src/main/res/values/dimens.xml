@@ -26,6 +26,9 @@
     <!--Feed USER AVATAR-->
     <dimen name="user_avatar_size">45dp</dimen>
 
+    <dimen name="search_image">34dp</dimen>
+    <dimen name="search_image_half">17dp</dimen>
+
     <!--Profile AVATAR-->
     <dimen name="profile_avatar_size">130dp</dimen>
 
@@ -33,4 +36,5 @@
 
     <dimen name="dailog_frame_margin">15dp</dimen>
     <dimen name="dailog_button_frame_height">55dp</dimen>
+
 </resources>

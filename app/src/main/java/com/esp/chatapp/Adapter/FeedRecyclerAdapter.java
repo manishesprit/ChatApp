@@ -48,18 +48,20 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         postBean = mItemList.get(position);
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
-        Glide.with(context).load(postBean.avatar)
-                .asBitmap()
-                .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
-            @Override
-            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
-                RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                circularBitmapDrawable.setCircular(true);
-                holder.imgAvatar.setImageDrawable(circularBitmapDrawable);
-            }
-        });
+        if (!postBean.avatar.toString().trim().equalsIgnoreCase("")) {
+            Glide.with(context).load(postBean.avatar)
+                    .asBitmap()
+                    .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                @Override
+                public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                    RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    holder.imgAvatar.setImageDrawable(circularBitmapDrawable);
+                }
+            });
+        }
 
-        holder.txtUserName.setText(postBean.username);
+        holder.txtUserName.setText(postBean.name);
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +87,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
 
         if (!postBean.image_url.toString().equals("")) {
             holder.imgFeed.setVisibility(View.VISIBLE);
-            Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.ravi).placeholder(R.drawable.ravi).into(new SimpleTarget<Bitmap>() {
+            Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                     holder.imgFeed.setImageBitmap(resource);

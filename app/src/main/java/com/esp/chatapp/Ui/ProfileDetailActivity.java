@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -30,6 +31,8 @@ public class ProfileDetailActivity extends AppCompatActivity {
     private ImageView image;
     private PostBean postBean;
     private Context context;
+    private TextView txtMobile;
+    private TextView txtStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,13 @@ public class ProfileDetailActivity extends AppCompatActivity {
         initActivityTransitions();
         setContentView(R.layout.activity_profiledetail);
         context=this;
+
         if (getIntent().getExtras() != null) {
             postBean = (PostBean) getIntent().getSerializableExtra("beanData");
         } else {
             finish();
         }
+
         ViewCompat.setTransitionName(findViewById(R.id.app_bar_layout), "com.antonioleiva.materializeyourapp.extraImage");
         supportPostponeEnterTransition();
 
@@ -53,10 +58,13 @@ public class ProfileDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
         image = (ImageView) findViewById(R.id.image);
 
+        txtMobile = (TextView) findViewById(R.id.txtMobile);
+        txtStatus = (TextView) findViewById(R.id.txtStatus);
+
 
         Glide.with(ProfileDetailActivity.this).load(postBean.avatar)
                 .asBitmap()
-                .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                .error(R.drawable.default_user).placeholder(R.drawable.default_user).error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                 image.setImageBitmap(resource);
@@ -68,6 +76,9 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 });
             }
         });
+
+        txtMobile.setText(postBean.mobile);
+        txtStatus.setText(postBean.status);
 
     }
 

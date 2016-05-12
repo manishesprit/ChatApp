@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_gray">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_graydark"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/llAvatar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/color_dark"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_thrty">
+
+            <ImageView
+                android:id="@+id/imgProfileAvatar"
+                android:layout_width="@dimen/splash_logo_size"
+                android:layout_height="@dimen/splash_logo_size"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llmobile_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llAvatar"
+            android:layout_margin="@dimen/padding_ten"
+            android:layout_marginBottom="@dimen/padding_twenty"
+            android:background="@color/color_graydark"
+            android:elevation="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_ten"
+                android:paddingLeft="@dimen/padding_ten"
+                android:paddingRight="@dimen/padding_ten"
+                android:paddingTop="@dimen/padding_twenty"
+                android:text="Mobile number"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/extraMediumText" />
+
+            <TextView
+                android:id="@+id/txtMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_twenty"
+                android:paddingLeft="@dimen/padding_twenty"
+                android:paddingRight="@dimen/padding_ten"
+                android:paddingTop="@dimen/padding_five"
+                android:text="+91 99048 41033"
+                android:textColor="@color/color_whitedark"
+                android:textSize="@dimen/medium1Text" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_gray"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_ten"
+                android:paddingLeft="@dimen/padding_ten"
+                android:paddingRight="@dimen/padding_ten"
+                android:paddingTop="@dimen/padding_twenty"
+                android:text="Status"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/extraMediumText" />
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_twenty"
+                android:paddingLeft="@dimen/padding_twenty"
+                android:paddingRight="@dimen/padding_ten"
+                android:paddingTop="@dimen/padding_five"
+                android:text="happy badday dear..many many returns of the day gundu"
+                android:textColor="@color/color_whitedark"
+                android:textSize="@dimen/medium1Text" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
