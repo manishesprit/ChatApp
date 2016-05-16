@@ -12,4 +12,6 @@
     <color name="color_dark">#06232e</color>
 
     <color name="colortrans">#BE000000</color>
+
+    <color name="color_red">#ff0000</color>
 </resources>

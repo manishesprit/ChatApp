@@ -77,29 +77,41 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private ResponseListener responseListener = new ResponseListener() {
         @Override
-        public void onResponce(String tag, int result, Object obj) {
+        public void onResponce(String tag, int result, Object obj, Object obj1) {
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
+
+                    postBeanArrayList.get(0).userid = ((PostBean) obj1).userid;
+                    postBeanArrayList.get(0).name = ((PostBean) obj1).name;
+                    postBeanArrayList.get(0).avatar = ((PostBean) obj1).avatar;
+                    postBeanArrayList.get(0).status = ((PostBean) obj1).status;
+                    postBeanArrayList.get(0).noOffollowers = ((PostBean) obj1).noOffollowers;
+                    postBeanArrayList.get(0).noOffollowing = ((PostBean) obj1).noOffollowing;
+                    postBeanArrayList.get(0).noOfpost = ((PostBean) obj1).noOfpost;
+                    postBeanArrayList.get(0).mobile = ((PostBean) obj1).mobile;
+                    postBeanArrayList.get(0).email = ((PostBean) obj1).email;
 
                     ArrayList<PostBean> postBeanArrayList1 = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList1.size() > 0) {
                         postBeanArrayList.addAll(postBeanArrayList1);
-                        profileRecyclerAdapter.notifyDataSetChanged();
-                    } else {
 
                     }
+                    profileRecyclerAdapter.notifyDataSetChanged();
                 }
             }
+        }
+
+        public void onResponce(String tag, int result, Object obj) {
+
         }
     };
 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.imgProfileAvatar:
-                Toast.makeText(getContext(),"Click=====",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Click=====", Toast.LENGTH_LONG).show();
                 break;
         }
     }

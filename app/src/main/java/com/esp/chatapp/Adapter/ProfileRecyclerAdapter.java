@@ -60,9 +60,12 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             final HeaderViewHolder headerHolder = (HeaderViewHolder) mholder;
             postBean = mItemList.get(position);
 
+            headerHolder.txtName.setText(postBean.name);
+            headerHolder.txtName.setTag(postBean);
+
             Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
-            if (!postBean.avatar.equalsIgnoreCase("")) {
-                Glide.with(context).load(postBean.avatar)
+            if (!((PostBean) headerHolder.txtName.getTag()).avatar.toString().equalsIgnoreCase("")) {
+                Glide.with(context).load(((PostBean) headerHolder.txtName.getTag()).avatar.toString())
                         .asBitmap()
                         .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -78,29 +81,29 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             headerHolder.imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (postBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         Intent intent = new Intent(context, ChangeAvatarActivity.class);
-                        intent.putExtra("beanData", postBean);
+                        intent.putExtra("beanData", (PostBean) headerHolder.txtName.getTag());
                         context.startActivity(intent);
                     } else {
                         Intent intent = new Intent(context, ProfileDetailActivity.class);
-                        intent.putExtra("beanData", postBean);
+                        intent.putExtra("beanData", (PostBean) headerHolder.txtName.getTag());
                         context.startActivity(intent);
                     }
                 }
             });
 
-            headerHolder.txtName.setText(postBean.name);
+
             headerHolder.txtName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (postBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         Intent intent = new Intent(context, EditProfileActivity.class);
-                        intent.putExtra("beanData", postBean);
+                        intent.putExtra("beanData", (PostBean) headerHolder.txtName.getTag());
                         context.startActivity(intent);
                     } else {
                         Intent intent = new Intent(context, ProfileDetailActivity.class);
-                        intent.putExtra("beanData", postBean);
+                        intent.putExtra("beanData", (PostBean) headerHolder.txtName.getTag());
                         context.startActivity(intent);
                     }
                 }

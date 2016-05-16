@@ -114,8 +114,8 @@ public class UpdateProfileAPI {
                 Pref.setValue(context, Config.PREF_CITY, userBean.city);
                 Pref.setValue(context, Config.PREF_STATUS, userBean.status);
                 Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_following).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
             }
 
         } catch (Exception e) {

@@ -19,6 +19,8 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Ui.ProfileActivity;
+import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -62,18 +64,25 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         }
 
         holder.txtUserName.setText(postBean.name);
+        holder.txtUserName.setTag(postBean);
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ProfileActivity.class);
-                context.startActivity(intent);
+                if (((PostBean) holder.txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    intent.putExtra("beanData", (PostBean) holder.txtUserName.getTag());
+                    context.startActivity(intent);
+                }
             }
         });
         holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ProfileActivity.class);
-                context.startActivity(intent);
+                if (((PostBean) holder.txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    intent.putExtra("beanData", (PostBean) holder.txtUserName.getTag());
+                    context.startActivity(intent);
+                }
             }
         });
         holder.txtFeedTime.setText(postBean.posttime);

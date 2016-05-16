@@ -17,6 +17,7 @@ import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
+import com.esp.chatapp.Utils.Pref;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,10 +32,12 @@ public class FeedListAPI {
     private ResponseListener responseListener;
     private PostBean postBean;
     private ArrayList<PostBean> postBeanArrayList;
+    private UserBean userBean;
 
 
     public FeedListAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
+        this.userBean = userBean;
         this.mParams = new HashMap<String, String>();
         Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON + Config.userid + "=" + userBean.userid + "&" + Config.myfeed + "=" + (userBean.myFeed == false ? 0 : 1) + "&" + Config.pageid + "=" + userBean.pageno;
 
@@ -83,7 +86,7 @@ public class FeedListAPI {
                         // Inform Caller that the API call is failed
                         responseListener.onResponce(Config.TAG_FEED_LIST, Config.API_FAIL, context.getResources()
                                 .getString(
-                                        R.string.connectionErrorMessage));
+                                        R.string.connectionErrorMessage), null);
                     }
                 });
     }
@@ -95,12 +98,60 @@ public class FeedListAPI {
         int code = 0;
         String mesg = null;
         JSONObject jsonObject = null;
+        PostBean postBean1 = null;
         try {
 
             jsonObject = new JSONObject(response);
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
+                if (userBean.myFeed == true && userBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+
+                    postBean1 = new PostBean();
+                    postBean1.userid = userBean.userid;
+                    postBean1.name = jsonObject.getString(Config.name);
+                    postBean1.avatar = jsonObject.getString(Config.avatar);
+                    postBean1.status = jsonObject.getString(Config.status);
+                    postBean1.noOffollowers = jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length;
+                    postBean1.noOffollowing = jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length;
+                    postBean1.noOfpost = jsonObject.getInt(Config.no_post);
+                    postBean1.mobile = jsonObject.getString(Config.mobile);
+                    postBean1.email = jsonObject.getString(Config.email);
+
+                    Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
+                    Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
+                    Pref.setValue(context, Config.PREF_MOBILE, jsonObject.getString(Config.mobile));
+                    Pref.setValue(context, Config.PREF_NAME, jsonObject.getString(Config.name));
+                    Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
+                    Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
+                    Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
+                    Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
+
+                }
+                else if (userBean.myFeed == true) {
+                    postBean1 = new PostBean();
+                    postBean1.userid = userBean.userid;
+                    postBean1.name = jsonObject.getString(Config.name);
+                    postBean1.avatar = jsonObject.getString(Config.avatar);
+                    postBean1.status = jsonObject.getString(Config.status);
+                    postBean1.noOffollowers = jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length;
+                    postBean1.noOffollowing = jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length;
+                    postBean1.noOfpost = jsonObject.getInt(Config.no_post);
+                    postBean1.mobile = jsonObject.getString(Config.mobile);
+                    postBean1.email = jsonObject.getString(Config.email);
+
+                }
+                else
+                {
+                    Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
+                    Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
+                    Pref.setValue(context, Config.PREF_MOBILE, jsonObject.getString(Config.mobile));
+                    Pref.setValue(context, Config.PREF_NAME, jsonObject.getString(Config.name));
+                    Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
+                    Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
+                    Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
+                    Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
+                }
 
                 postBeanArrayList = new ArrayList<>();
                 JSONArray feedListArray = jsonObject.getJSONArray(Config.feedlist);
@@ -130,7 +181,7 @@ public class FeedListAPI {
             Log.error(this.getClass() + " :: Exception :: ", e);
             Log.print(this.getClass() + " :: Exception :: ", e);
         }
-        doCallBack(code, mesg, postBeanArrayList);
+        doCallBack(code, mesg, postBeanArrayList, postBean1);
 
         /** release variables */
         response = null;
@@ -142,17 +193,17 @@ public class FeedListAPI {
      *
      * Status: Successful or Failure Message: Its an Object, if required
      */
-    private void doCallBack(int code, String mesg, ArrayList<PostBean> postBeanArrayList) {
+    private void doCallBack(int code, String mesg, ArrayList<PostBean> postBeanArrayList, PostBean postBean) {
         try {
             if (code == 0) {
                 responseListener.onResponce(Config.TAG_FEED_LIST,
-                        Config.API_SUCCESS, postBeanArrayList);
+                        Config.API_SUCCESS, postBeanArrayList, postBean);
             } else if (code > 0) {
                 responseListener.onResponce(Config.TAG_FEED_LIST,
-                        Config.API_FAIL, mesg);
+                        Config.API_FAIL, mesg, null);
             } else if (code < 0) {
                 responseListener.onResponce(Config.TAG_FEED_LIST,
-                        Config.API_FAIL, mesg);
+                        Config.API_FAIL, mesg, null);
             }
         } catch (Exception e) {
             Log.error(this.getClass() + " :: Exception :: ", e);

@@ -21,7 +21,7 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
     public File file = null;
     public PostBean postBean;
 
-    public CreateFeedAPI(Context context, ResponseListener responseListener,PostBean postBean) {
+    public CreateFeedAPI(Context context, ResponseListener responseListener, PostBean postBean) {
         this.context = context;
         this.responseListener = responseListener;
         this.postBean = postBean;
@@ -79,8 +79,8 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
             if (code == 0) {
                 Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getInt(Config.userid));
                 Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("")?0:jsonObject.getString(Config.no_following).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
+                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
                 Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
             }
         } catch (Exception e) {

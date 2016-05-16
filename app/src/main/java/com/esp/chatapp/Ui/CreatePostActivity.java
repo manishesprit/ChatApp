@@ -127,7 +127,10 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
     }
 
     private ResponseListener responseListener = new ResponseListener() {
-        @Override
+        public void onResponce(String tag, int result, Object obj, Object obj1) {
+
+        }
+
         public void onResponce(String tag, int result, Object obj) {
 
             if (result == Config.API_SUCCESS) {

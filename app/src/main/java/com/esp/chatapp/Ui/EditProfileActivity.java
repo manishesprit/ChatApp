@@ -135,7 +135,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     }
 
     private ResponseListener responseListener = new ResponseListener() {
-        @Override
+
         public void onResponce(String tag, int result, Object obj) {
 
             if (result == Config.API_SUCCESS) {
@@ -148,6 +148,11 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
             } else {
                 AlertDailogView.showAlert(EditProfileActivity.this, obj.toString()).show();
             }
+        }
+
+        @Override
+        public void onResponce(String tag, int result, Object obj, Object obj1) {
+
         }
     };
 

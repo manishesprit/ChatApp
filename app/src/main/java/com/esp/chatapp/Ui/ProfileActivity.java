@@ -44,7 +44,11 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Profile");
 
-        postBean = (PostBean) getIntent().getSerializableExtra("postData");
+        if (getIntent().getExtras() != null) {
+            postBean = (PostBean) getIntent().getSerializableExtra("beanData");
+        } else {
+            finish();
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -60,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
             userBean.myFeed = true;
             userBean.pageno = 0;
             feedListAPI = new FeedListAPI(context, responseListener, userBean);
-//            feedListAPI.execute();
+            feedListAPI.execute();
         }
     }
 
@@ -81,20 +85,32 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private ResponseListener responseListener = new ResponseListener() {
-        @Override
-        public void onResponce(String tag, int result, Object obj) {
+        public void onResponce(String tag, int result, Object obj, Object obj1) {
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
+
+                    postlist.get(0).userid = ((PostBean) obj1).userid;
+                    postlist.get(0).name = ((PostBean) obj1).name;
+                    postlist.get(0).avatar = ((PostBean) obj1).avatar;
+                    postlist.get(0).status = ((PostBean) obj1).status;
+                    postlist.get(0).noOffollowers = ((PostBean) obj1).noOffollowers;
+                    postlist.get(0).noOffollowing = ((PostBean) obj1).noOffollowing;
+                    postlist.get(0).noOfpost = ((PostBean) obj1).noOfpost;
+                    postlist.get(0).mobile = ((PostBean) obj1).mobile;
+                    postlist.get(0).email = ((PostBean) obj1).email;
 
                     ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList.size() > 0) {
                         postlist.addAll(postBeanArrayList);
-                        profileRecyclerAdapter.notifyDataSetChanged();
-                    } else {
 
                     }
+                    profileRecyclerAdapter.notifyDataSetChanged();
                 }
             }
+        }
+
+        public void onResponce(String tag, int result, Object obj) {
+
         }
     };
 }

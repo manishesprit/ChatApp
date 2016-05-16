@@ -49,8 +49,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_email"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
 
         <EditText
@@ -68,8 +69,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_password"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
     </LinearLayout>
 
@@ -146,13 +148,4 @@
         android:text="Register now"
         android:textColor="@color/color_whitedark"
         android:textSize="@dimen/largeText" />
-
-    <com.esp.chatapp.Uc.ProgressWheel
-        android:id="@+id/progress_wheel"
-        android:layout_width="80dp"
-        android:visibility="gone"
-        android:layout_height="80dp"
-        android:layout_centerInParent="true"
-        wheel:matProg_barColor="@color/color_blue"
-        wheel:matProg_progressIndeterminate="true" />
 </RelativeLayout>

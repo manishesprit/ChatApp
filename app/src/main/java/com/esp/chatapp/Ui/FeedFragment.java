@@ -14,6 +14,7 @@ import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Uc.CustomProgressBarDialog;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
@@ -32,7 +33,7 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     private View mview;
     private FeedListAPI feedListAPI;
     private UserBean userBean;
-
+    private CustomProgressBarDialog mProgressDialog;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,18 +45,26 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
         recyclerView = (RecyclerView) mview.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         postlist = new ArrayList<>();
         feedRecyclerAdapter = new FeedRecyclerAdapter(getContext(), postlist);
         recyclerView.setAdapter(feedRecyclerAdapter);
+
+
         if (Utils.isOnline(getContext())) {
-            userBean=new UserBean();
+            mProgressDialog = new CustomProgressBarDialog(
+                    getContext());
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.show();
+
+            userBean = new UserBean();
             userBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
             userBean.pageno = 0;
             userBean.myFeed = false;
             feedListAPI = new FeedListAPI(getContext(), responseListener, userBean);
-//            feedListAPI.execute();
+            feedListAPI.execute();
         }
 
     }
@@ -68,16 +77,20 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     private ResponseListener responseListener = new ResponseListener() {
         @Override
         public void onResponce(String tag, int result, Object obj) {
+
+        }
+
+        public void onResponce(String tag, int result, Object obj, Object obj1) {
+            if (mProgressDialog != null && mProgressDialog.isShowing())
+                mProgressDialog.dismiss();
+            mProgressDialog = null;
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
-
                     ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList.size() > 0) {
                         postlist.addAll(postBeanArrayList);
-                        feedRecyclerAdapter.notifyDataSetChanged();
-                    } else {
-
                     }
+                    feedRecyclerAdapter.notifyDataSetChanged();
                 }
             }
         }

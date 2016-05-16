@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,8 +19,8 @@ import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
+import com.esp.chatapp.Uc.CustomProgressBarDialog;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
-import com.esp.chatapp.Uc.ProgressWheel;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
@@ -37,7 +41,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LoginAPI loginAPI;
     private UserBean userBean;
     private Context context;
-    private ProgressWheel progressWheel;
+    private View view_email;
+    private View view_password;
+    private CustomProgressBarDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +58,63 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtEmial = (EditText) findViewById(R.id.edtEmial);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
 
+        view_email = (View) findViewById(R.id.view_email);
+        view_password = (View) findViewById(R.id.view_password);
+
         imgFacebook = (ImageView) findViewById(R.id.imgFacebook);
         imgInsta = (ImageView) findViewById(R.id.imgInsta);
 
         Utils.setDefaultRoundImage(LoginActivity.this, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(LoginActivity.this, imgFacebook, R.drawable.facebook);
 
-        progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
-        progressWheel.setBarColor(getResources().getColor(R.color.color_white));
-        progressWheel.setRimColor(getResources().getColor(R.color.color_bluedark));
 
         txtlogin.setOnClickListener(this);
         txtRegisterNow.setOnClickListener(this);
         txtForgot.setOnClickListener(this);
+
+        edtEmial.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    view_email.setBackgroundColor(getResources().getColor(R.color.color_whitedark));
+                } else {
+                    view_email.setBackgroundColor(getResources().getColor(R.color.color_red));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        edtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    view_password.setBackgroundColor(getResources().getColor(R.color.color_whitedark));
+                } else {
+                    view_password.setBackgroundColor(getResources().getColor(R.color.color_red));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -75,7 +125,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String valid = validation();
                 if (valid == null) {
                     if (Utils.isOnline(context)) {
-                        progressWheel.setVisibility(View.VISIBLE);
+                        mProgressDialog = new CustomProgressBarDialog(
+                                LoginActivity.this);
+                        mProgressDialog.setCancelable(false);
+                        mProgressDialog.show();
+
                         userBean = new UserBean();
                         userBean.username = edtEmial.getText().toString().trim();
                         userBean.password = edtPassword.getText().toString().trim();
@@ -86,7 +140,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         AlertDailogView.showAlert(context, "Internet not available").show();
                     }
                 } else {
-                    AlertDailogView.showAlert(context, valid).show();
+//                    AlertDailogView.showAlert(context, valid).show();
                 }
 
                 break;
@@ -106,24 +160,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public String validation() {
         String valid = null;
+        Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake_animation);
         if (edtEmial.getText().toString().trim().equals("")
                 || edtEmial.getText().toString().trim().equals(null)) {
             valid = getResources().getString(R.string.validusername);
             this.edtEmial.requestFocus();
             this.edtEmial.setSelection(this.edtEmial.length());
+            edtEmial.startAnimation(shake);
+            view_email.setBackgroundColor(getResources().getColor(R.color.color_red));
+
         } else if (edtPassword.getText().toString().trim().equals("")
                 || edtPassword.getText().toString().trim().equals(null)) {
             valid = getResources().getString(R.string.validblankpassword);
             this.edtPassword.requestFocus();
             this.edtPassword.setSelection(this.edtPassword.length());
+            edtPassword.startAnimation(shake);
+            view_password.setBackgroundColor(getResources().getColor(R.color.color_red));
         }
         return valid;
     }
 
     private ResponseListener responseListener = new ResponseListener() {
         @Override
+        public void onResponce(String tag, int result, Object obj, Object obj1) {
+
+        }
+
         public void onResponce(String tag, int result, Object obj) {
-            progressWheel.setVisibility(View.GONE                                                                                                                                                                                                                   );
+            if (mProgressDialog != null && mProgressDialog.isShowing())
+                mProgressDialog.dismiss();
+            mProgressDialog = null;
+
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_LOGIN) {
                     intent = new Intent(context, HomeActivity.class);
