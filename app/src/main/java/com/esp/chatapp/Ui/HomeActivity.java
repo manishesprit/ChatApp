@@ -31,6 +31,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private FloatingActionButton fabButton;
     private Menu menu;
     private Context context;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,31 +52,30 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fabButton = (FloatingActionButton) findViewById(R.id.fabButton);
         fabButton.setOnClickListener(this);
 
-//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                if (position == 2) {
-//                    menu.findItem(R.id.action_search).setVisible(true);
-//                } else {
-//                    menu.findItem(R.id.action_search).setVisible(false);
-//                }
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 1) {
+//                    ProfileFragment profileFragment = (ProfileFragment) adapter.getFragment(position);
+//                    profileFragment.onResume();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FeedFragment(), "Feed");
         adapter.addFragment(new ProfileFragment(), "Profile");
         adapter.addFragment(new NotifyFragment(), "Notify");
@@ -119,6 +119,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
+        }
+
+        public Fragment getFragment(int pos) {
+            return mFragmentList.get(pos);
         }
     }
 

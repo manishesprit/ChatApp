@@ -34,7 +34,6 @@ public class FeedListAPI {
     private ArrayList<PostBean> postBeanArrayList;
     private UserBean userBean;
 
-
     public FeedListAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.userBean = userBean;
@@ -95,6 +94,7 @@ public class FeedListAPI {
      * Parse the response and prepare for callback
      */
     private void parse(String response) {
+        System.out.println("===========response============"+response);
         int code = 0;
         String mesg = null;
         JSONObject jsonObject = null;

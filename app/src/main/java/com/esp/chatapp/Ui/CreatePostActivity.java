@@ -1,21 +1,24 @@
 package com.esp.chatapp.Ui;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esp.chatapp.Backend.CreateFeedAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.PostBean;
-import com.esp.chatapp.CropImage.Crop;
+import com.esp.chatapp.CropImage.CropImage;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
 import com.esp.chatapp.Utils.Config;
@@ -42,11 +45,14 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
     private RelativeLayout rlUploadView;
     private ImageView imgUploadView;
     private File upload_file;
-    private Uri destination;
     private TextView txtRemove;
     private Context context;
     private PostBean postBean;
     private CreateFeedAPI createFeedAPI;
+
+    int OPEN_GALLARY_CODE = 200;
+    int OPEN_CAMARA_CODE = 400;
+    int OPEN_CROP_CODE = 600;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +87,6 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
             dir.mkdirs();
         }
         upload_file = new File(Config.DIR_USERDATA, "Image" + new SimpleDateFormat("yyyyMMdd_hhmmss").format(new Date()).toString() + ".jpeg");
-        destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
     }
 
     @Override
@@ -94,12 +99,24 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.txtGallary:
                 CreateFolder();
-                Crop.pickImage(CreatePostActivity.this);
+
+                intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+                intent.setType("image/*");
+                startActivityForResult(intent, OPEN_GALLARY_CODE);
+
                 break;
 
             case R.id.txtCamara:
                 CreateFolder();
-                Crop.pickCamara(CreatePostActivity.this, Uri.fromFile(upload_file));
+                intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                try {
+                    Uri mImageCaptureUri = Uri.fromFile(upload_file);
+                    intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
+                    intent.putExtra("return-data", false);
+                    startActivityForResult(intent, OPEN_CAMARA_CODE);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             case R.id.txtSubmit:
@@ -158,21 +175,31 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
 
         if (resultCode == RESULT_OK) {
 
-            if (requestCode == Crop.REQUEST_GALLERY) {
-                Crop.of(data.getData(), destination).start(this);
-            } else if (requestCode == Crop.REQUEST_CAMARA) {
-                Crop.of(Uri.fromFile(upload_file), destination).start(this);
-            } else if (requestCode == Crop.REQUEST_CROP) {
+            if (requestCode == OPEN_GALLARY_CODE)
+            {
                 try {
-
-                    InputStream is = getContentResolver().openInputStream(Crop.getOutput(data));
+                    InputStream is = getContentResolver().openInputStream(data.getData());
                     FileOutputStream fos = new FileOutputStream(upload_file);
                     copyStream(is, fos);
                     fos.close();
                     is.close();
+                    startCropImage();
+                } catch (Exception e) {
+
+                }
+            }
+
+            if (requestCode == OPEN_CAMARA_CODE)
+            {
+                startCropImage();
+            }
+
+            if (requestCode == OPEN_CROP_CODE)
+            {
+                try {
 
                     Utils.compressImage(upload_file.getPath(), context);
-                    int degree = Utils.getCameraPhotoOrientation(CreatePostActivity.this, Uri.fromFile(upload_file), upload_file.getPath());
+                    int degree = Utils.getCameraPhotoOrientation(context, Uri.fromFile(upload_file), upload_file.getPath());
                     Utils.rotateBitmap(BitmapFactory.decodeFile(upload_file.getPath()), degree);
                     imgUploadView.setImageBitmap(null);
                     imgUploadView.setImageBitmap(BitmapFactory.decodeFile(upload_file.getPath()));
@@ -184,5 +211,19 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
                 }
             }
         }
+    }
+
+    private void startCropImage() {
+        try {
+            Intent intent = new Intent(context, CropImage.class);
+            intent.putExtra(CropImage.IMAGE_PATH, upload_file.getPath());
+            intent.putExtra(CropImage.SCALE, true);
+            intent.putExtra(CropImage.ASPECT_X, 0);
+            intent.putExtra(CropImage.ASPECT_Y, 0);
+            startActivityForResult(intent, OPEN_CROP_CODE);
+        } catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+        }
+
     }
 }

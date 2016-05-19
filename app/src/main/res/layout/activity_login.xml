@@ -148,4 +148,19 @@
         android:text="Register now"
         android:textColor="@color/color_whitedark"
         android:textSize="@dimen/largeText" />
+
+    <LinearLayout
+        android:id="@+id/myprogressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </LinearLayout>
 </RelativeLayout>

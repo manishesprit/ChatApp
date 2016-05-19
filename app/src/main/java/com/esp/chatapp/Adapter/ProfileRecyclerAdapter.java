@@ -19,6 +19,7 @@ import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Ui.ChangeAvatarActivity;
 import com.esp.chatapp.Ui.EditProfileActivity;
+import com.esp.chatapp.Ui.LikeListActivity;
 import com.esp.chatapp.Ui.ProfileDetailActivity;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Pref;
@@ -34,10 +35,12 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static final int TYPE_ITEM = 1;
     private Context context;
     private PostBean postBean;
+    private MyOnClickListner myOnClickListner;
 
-    public ProfileRecyclerAdapter(Context context, ArrayList<PostBean> itemList) {
+    public ProfileRecyclerAdapter(Context context, ArrayList<PostBean> itemList, MyOnClickListner myOnClickListner) {
         mItemList = itemList;
         this.context = context;
+        this.myOnClickListner = myOnClickListner;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder mholder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder mholder, final int position) {
         if (mholder instanceof HeaderViewHolder) {
             final HeaderViewHolder headerHolder = (HeaderViewHolder) mholder;
             postBean = mItemList.get(position);
@@ -117,9 +120,17 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             postBean = mItemList.get(position);
 
+
+            holder.txtUserName.setTag(postBean);
+            holder.txtUserName.setText(((PostBean) holder.txtUserName.getTag()).name);
+            holder.txtFeedTime.setText(((PostBean) holder.txtUserName.getTag()).posttime);
+
+            holder.txtNolike.setText("" + ((PostBean) holder.txtUserName.getTag()).noOflike);
+            holder.txtNoComment.setText("" + ((PostBean) holder.txtUserName.getTag()).noOfcomment);
+
             Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
-            if (!postBean.avatar.equalsIgnoreCase("")) {
-                Glide.with(context).load(postBean.avatar).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+            if (!((PostBean) holder.txtUserName.getTag()).avatar.equalsIgnoreCase("")) {
+                Glide.with(context).load(((PostBean) holder.txtUserName.getTag()).avatar).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                         RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
@@ -129,17 +140,16 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 });
             }
 
-            holder.txtUserName.setText(postBean.name);
-            holder.txtFeedTime.setText(postBean.posttime);
-            if (postBean.caption.trim().toString().equalsIgnoreCase("")) {
+
+            if (((PostBean) holder.txtUserName.getTag()).caption.trim().toString().equalsIgnoreCase("")) {
                 holder.txtCaption.setVisibility(View.GONE);
             } else {
                 holder.txtCaption.setVisibility(View.VISIBLE);
-                holder.txtCaption.setText(postBean.caption);
+                holder.txtCaption.setText(((PostBean) holder.txtUserName.getTag()).caption);
             }
-            if (!postBean.image_url.equalsIgnoreCase("")) {
+            if (!((PostBean) holder.txtUserName.getTag()).image_url.equalsIgnoreCase("")) {
                 holder.imgFeed.setVisibility(View.VISIBLE);
-                Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                Glide.with(context).load(((PostBean) holder.txtUserName.getTag()).image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                         holder.imgFeed.setImageBitmap(resource);
@@ -149,22 +159,24 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 holder.imgFeed.setVisibility(View.GONE);
             }
 
-            holder.imgLikeUnlike.setImageResource(postBean.islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
+            holder.imgLikeUnlike.setImageResource(((PostBean) holder.txtUserName.getTag()).islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
             holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (postBean.islike == true) {
-                        postBean.islike = false;
-                        holder.imgLikeUnlike.setImageResource(R.drawable.love_gray);
-                    } else {
-                        postBean.islike = true;
-                        holder.imgLikeUnlike.setImageResource(R.drawable.love_white_filled);
-                    }
+                    myOnClickListner.IsClick(R.id.imgLikeUnlike, (PostBean) holder.txtUserName.getTag());
                 }
             });
 
-            holder.txtNolike.setText("" + postBean.noOflike);
-            holder.txtNoComment.setText("" + postBean.noOfcomment);
+            holder.txtNolike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
+                        Intent intent = new Intent(context, LikeListActivity.class);
+                        intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
+                        context.startActivity(intent);
+                    }
+                }
+            });
 
         }
     }

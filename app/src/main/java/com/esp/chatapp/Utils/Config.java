@@ -56,24 +56,20 @@ public class Config {
     public static String API_CREATE_FEED_JSON = "create_feed.php?";
     public static String TAG_CREATE_FEED = "TAG_CREATE_FEED";
 
-    public static String API_UNLIKE = "";
-    public static String API_UNLIKE_JSON = "unkile.php?";
-    public static String TAG_UNLIKE = "TAG_UNLIKE";
+    public static String API_LIKEUNLIKE = "";
+    public static String API_LIKEUNLIKE_JSON = "feed_likeUnlike.php?";
+    public static String TAG_LIKEUNLIKE = "TAG_LIKEUNLIKE";
 
-    public static String API_LIKE = "";
-    public static String API_LIKE_JSON = "like.php?";
-    public static String TAG_LIKE = "TAG_LIKE";
-
-    public static String API_COMMENT_LIST = "";
-    public static String API_COMMENT_LIST_JSON = "comment_list.php?";
-    public static String TAG_COMMENT_LIST = "TAG_COMMENT_LIST";
+    public static String API_FEED_DETAIL = "";
+    public static String API_FEED_DETAIL_JSON = "feed_detail.php?";
+    public static String TAG_FEED_DETAIL = "TAG_FEED_DETAIL";
 
     public static String API_LIKE_LIST = "";
     public static String API_LIKE_LIST_JSON = "like_list.php?";
     public static String TAG_LIKE_LIST = "TAG_LIKE_LIST";
 
     public static String API_SEARCH_LIST = "";
-    public static String API_SEARCH_LIST_JSON = "search_list.php?";
+    public static String API_SEARCH_LIST_JSON = "search_friend.php?";
     public static String TAG_SEARCH_LIST = "TAG_SEARCH_LIST";
 
     /*
@@ -145,8 +141,10 @@ public class Config {
     public static String no_following = "no_following";
     public static String no_post = "no_post";
     public static String no_comment = "no_comment";
+    public static String liketime = "liketime";
     public static String no_like = "no_like";
     public static String avatar = "avatar";
+    public static String isfollow = "isfollow";
     public static String islike = "islike";
     public static String posttime = "posttime";
     public static String id = "id";
@@ -154,8 +152,10 @@ public class Config {
     public static String pageid = "pageid";
     public static String name = "name";
     public static String feedlist = "feedlist";
+    public static String likelist = "likelist";
     public static String userid = "userid";
     public static String feedid = "feedid";
+    public static String likeid = "likeid";
     public static String image_url = "image_url";
     public static String caption = "caption";
     public static String search_text = "search_text";

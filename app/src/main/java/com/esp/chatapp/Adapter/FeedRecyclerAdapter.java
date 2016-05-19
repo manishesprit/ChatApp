@@ -18,6 +18,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Ui.LikeListActivity;
 import com.esp.chatapp.Ui.ProfileActivity;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Pref;
@@ -32,10 +33,12 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
     private Context context;
     private PostBean postBean;
     private MediaPlayer mpLike;
+    private MyOnClickListner myOnClickListner;
 
-    public FeedRecyclerAdapter(Context context, ArrayList<PostBean> itemList) {
+    public FeedRecyclerAdapter(Context context, ArrayList<PostBean> itemList, MyOnClickListner myOnClickListner) {
         this.mItemList = itemList;
         this.context = context;
+        this.myOnClickListner = myOnClickListner;
     }
 
     @Override
@@ -46,7 +49,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
     }
 
     @Override
-    public void onBindViewHolder(final PostBeanHolder holder, int position) {
+    public void onBindViewHolder(final PostBeanHolder holder, final int position) {
         postBean = mItemList.get(position);
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
@@ -111,23 +114,21 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (postBean.islike == true) {
-                    postBean.islike = false;
-                    holder.imgLikeUnlike.setImageResource(R.drawable.love_gray);
-                } else {
-                    if (mpLike != null) {
-                        if (mpLike.isPlaying()) {
-                            mpLike.release();
-                            mpLike = null;
-                        }
-                    }
-                    mpLike = MediaPlayer.create(context, R.raw.beep);
-                    mpLike.start();
-                    postBean.islike = true;
-                    holder.imgLikeUnlike.setImageResource(R.drawable.love_white_filled);
+                myOnClickListner.IsClick(R.id.imgLikeUnlike, (PostBean) holder.txtUserName.getTag());
+            }
+        });
+
+        holder.txtNolike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
+                    Intent intent = new Intent(context, LikeListActivity.class);
+                    intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
+                    context.startActivity(intent);
                 }
             }
         });
+
 
         holder.txtNolike.setText("" + postBean.noOflike);
         holder.txtNoComment.setText("" + postBean.noOfcomment);

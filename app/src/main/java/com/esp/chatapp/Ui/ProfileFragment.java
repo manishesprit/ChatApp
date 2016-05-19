@@ -7,10 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
+import com.esp.chatapp.Adapter.MyOnClickListner;
 import com.esp.chatapp.Adapter.ProfileRecyclerAdapter;
 import com.esp.chatapp.Backend.FeedListAPI;
+import com.esp.chatapp.Backend.LikeUnlikeAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.Bean.UserBean;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by admin on 2/5/16.
  */
-public class ProfileFragment extends Fragment implements View.OnClickListener {
+public class ProfileFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private View mView;
@@ -33,18 +35,33 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ArrayList<PostBean> postBeanArrayList;
     private FeedListAPI feedListAPI;
     private ProfileRecyclerAdapter profileRecyclerAdapter;
+    private LikeUnlikeAPI likeUnlikeAPI;
+    private LinearLayout myprogressBar;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_profile, container, false);
+
+//        System.out.println("==========ProfileFragment======onCreateView=================");
         return mView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        if (feedListAPI != null) {
+            feedListAPI.doCancel();
+        }
+
+        myprogressBar = (LinearLayout) mView.findViewById(R.id.myprogressBar);
         recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);
-
-
         postBean = new PostBean();
         postBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
         postBean.name = Pref.getValue(getContext(), Config.PREF_NAME, "");
@@ -61,10 +78,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         postBeanArrayList = new ArrayList<>();
 
         postBeanArrayList.add(postBean);
-        profileRecyclerAdapter = new ProfileRecyclerAdapter(getContext(), postBeanArrayList);
+        profileRecyclerAdapter = new ProfileRecyclerAdapter(getContext(), postBeanArrayList, myOnClickListner);
         recyclerView.setAdapter(profileRecyclerAdapter);
 
         if (Utils.isOnline(getContext())) {
+            myprogressBar.setVisibility(View.VISIBLE);
             userBean = new UserBean();
             userBean.userid = postBean.userid;
             userBean.myFeed = true;
@@ -73,11 +91,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             feedListAPI.execute();
         }
 
+        myprogressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     private ResponseListener responseListener = new ResponseListener() {
         @Override
         public void onResponce(String tag, int result, Object obj, Object obj1) {
+            myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
 
@@ -98,6 +124,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     }
                     profileRecyclerAdapter.notifyDataSetChanged();
                 }
+
+                if (tag.equals(Config.TAG_LIKEUNLIKE)) {
+                    postBean.islike = (int) obj == 0 ? false : true;
+                    postBean.noOflike = (int) obj1;
+                    profileRecyclerAdapter.notifyDataSetChanged();
+                }
             }
         }
 
@@ -106,13 +138,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         }
     };
 
-    @Override
-    public void onClick(View v) {
+    MyOnClickListner myOnClickListner = new MyOnClickListner() {
+        @Override
+        public boolean IsClick(int id, PostBean postBean1) {
 
-        switch (v.getId()) {
-            case R.id.imgProfileAvatar:
-                Toast.makeText(getContext(), "Click=====", Toast.LENGTH_LONG).show();
-                break;
+            if (id == R.id.imgLikeUnlike) {
+                if (Utils.isOnline(getContext())) {
+                    myprogressBar.setVisibility(View.VISIBLE);
+                    postBean = postBean1;
+                    likeUnlikeAPI = new LikeUnlikeAPI(getContext(), responseListener, postBean.feedid);
+                    likeUnlikeAPI.execute();
+                }
+            }
+
+            return false;
         }
-    }
+
+    };
 }

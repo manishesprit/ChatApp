@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esp.chatapp.Backend.LoginAPI;
@@ -19,7 +20,6 @@ import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
-import com.esp.chatapp.Uc.CustomProgressBarDialog;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Context context;
     private View view_email;
     private View view_password;
-    private CustomProgressBarDialog mProgressDialog;
+    private LinearLayout myprogressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtlogin = (TextView) findViewById(R.id.txtlogin);
         txtRegisterNow = (TextView) findViewById(R.id.txtRegisterNow);
         txtForgot = (TextView) findViewById(R.id.txtForgot);
+
+        myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
 
         edtEmial = (EditText) findViewById(R.id.edtEmial);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
@@ -125,11 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String valid = validation();
                 if (valid == null) {
                     if (Utils.isOnline(context)) {
-                        mProgressDialog = new CustomProgressBarDialog(
-                                LoginActivity.this);
-                        mProgressDialog.setCancelable(false);
-                        mProgressDialog.show();
-
+                        myprogressBar.setVisibility(View.VISIBLE);
                         userBean = new UserBean();
                         userBean.username = edtEmial.getText().toString().trim();
                         userBean.password = edtPassword.getText().toString().trim();
@@ -137,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         loginAPI = new LoginAPI(context, responseListener, userBean);
                         loginAPI.execute();
                     } else {
-                        AlertDailogView.showAlert(context, "Internet not available").show();
+                        AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
                     }
                 } else {
 //                    AlertDailogView.showAlert(context, valid).show();
@@ -187,10 +185,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         public void onResponce(String tag, int result, Object obj) {
-            if (mProgressDialog != null && mProgressDialog.isShowing())
-                mProgressDialog.dismiss();
-            mProgressDialog = null;
-
+            myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_LOGIN) {
                     intent = new Intent(context, HomeActivity.class);
@@ -205,6 +200,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void OnButtonClick(int tag, int buttonIndex, String input) {
+
+        if (tag == 0) {
+            if (buttonIndex == 2) {
+                txtlogin.performClick();
+            }
+
+            if (buttonIndex == 1) {
+                finish();
+            }
+        }
 
     }
 }

@@ -22,4 +22,5 @@ public class UserBean implements Serializable {
     public String city;
     public int pageno;
     public boolean myFeed;
+    public boolean isFollow;
 }

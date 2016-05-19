@@ -22,7 +22,9 @@ public class FeedDetailActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Detail");
+        setTitle("Feed");
+
+
 
     }
 

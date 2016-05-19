@@ -19,77 +19,88 @@ package com.esp.chatapp.CropImage;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
-/*
- * Modified from original in AOSP.
- */
-class RotateBitmap {
+public class RotateBitmap {
 
-    private Bitmap bitmap;
-    private int rotation;
+    public static final String TAG = "RotateBitmap";
+    private Bitmap mBitmap;
+    private int    mRotation;
+
+    public RotateBitmap(Bitmap bitmap) {
+
+        mBitmap = bitmap;
+        mRotation = 0;
+    }
 
     public RotateBitmap(Bitmap bitmap, int rotation) {
-        this.bitmap = bitmap;
-        this.rotation = rotation % 360;
+
+        mBitmap = bitmap;
+        mRotation = rotation % 360;
     }
 
     public void setRotation(int rotation) {
-        this.rotation = rotation;
+
+        mRotation = rotation;
     }
 
     public int getRotation() {
-        return rotation;
+
+        return mRotation;
     }
 
     public Bitmap getBitmap() {
-        return bitmap;
+
+        return mBitmap;
     }
 
     public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
+
+        mBitmap = bitmap;
     }
 
     public Matrix getRotateMatrix() {
-        // By default this is an identity matrix
+        // By default this is an identity matrix.
         Matrix matrix = new Matrix();
-        if (bitmap != null && rotation != 0) {
+        if (mRotation != 0) {
             // We want to do the rotation at origin, but since the bounding
             // rectangle will be changed after rotation, so the delta values
             // are based on old & new width/height respectively.
-            int cx = bitmap.getWidth() / 2;
-            int cy = bitmap.getHeight() / 2;
+            int cx = mBitmap.getWidth() / 2;
+            int cy = mBitmap.getHeight() / 2;
             matrix.preTranslate(-cx, -cy);
-            matrix.postRotate(rotation);
+            matrix.postRotate(mRotation);
             matrix.postTranslate(getWidth() / 2, getHeight() / 2);
         }
         return matrix;
     }
 
     public boolean isOrientationChanged() {
-        return (rotation / 90) % 2 != 0;
+
+        return (mRotation / 90) % 2 != 0;
     }
 
     public int getHeight() {
-        if (bitmap == null) return 0;
+
         if (isOrientationChanged()) {
-            return bitmap.getWidth();
+            return mBitmap.getWidth();
         } else {
-            return bitmap.getHeight();
+            return mBitmap.getHeight();
         }
     }
 
     public int getWidth() {
-        if (bitmap == null) return 0;
+
         if (isOrientationChanged()) {
-            return bitmap.getHeight();
+            return mBitmap.getHeight();
         } else {
-            return bitmap.getWidth();
+            return mBitmap.getWidth();
         }
     }
 
     public void recycle() {
-        if (bitmap != null) {
-            bitmap.recycle();
-            bitmap = null;
+
+        if (mBitmap != null) {
+            mBitmap.recycle();
+            mBitmap = null;
         }
     }
 }

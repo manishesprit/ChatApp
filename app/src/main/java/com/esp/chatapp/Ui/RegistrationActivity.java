@@ -14,7 +14,6 @@ import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
-import com.esp.chatapp.Uc.CustomProgressBarDialog;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
@@ -36,7 +35,6 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
     private UserBean userBean;
     private RegistrationAPI registrationAPI;
     private Context context;
-    private CustomProgressBarDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +62,6 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
                 String valid = validation();
                 if (valid == null) {
                     if (Utils.isOnline(context)) {
-                        mProgressDialog = new CustomProgressBarDialog(
-                                context);
-                        mProgressDialog.setCancelable(false);
-                        mProgressDialog.show();
 
                         userBean = new UserBean();
                         userBean.username = edtUsername.getText().toString().trim();
@@ -136,9 +130,6 @@ public class RegistrationActivity extends AppCompatActivity implements OnPopUpDi
     private ResponseListener responseListener = new ResponseListener() {
 
         public void onResponce(String tag, int result, Object obj) {
-            if (mProgressDialog != null && mProgressDialog.isShowing())
-                mProgressDialog.dismiss();
-            mProgressDialog = null;
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_REGISTRATION) {
                     intent = new Intent(context, HomeActivity.class);
