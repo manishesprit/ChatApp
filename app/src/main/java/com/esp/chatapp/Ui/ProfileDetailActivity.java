@@ -21,6 +21,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Utils.Config;
 
 /**
  * Created by admin on 2/5/16.
@@ -62,7 +63,7 @@ public class ProfileDetailActivity extends AppCompatActivity {
         txtStatus = (TextView) findViewById(R.id.txtStatus);
 
 
-        Glide.with(ProfileDetailActivity.this).load(postBean.avatar)
+        Glide.with(ProfileDetailActivity.this).load(Config.IMAGE_PATH_WEB_AVATARS+postBean.avatar)
                 .asBitmap()
                 .error(R.drawable.default_user).placeholder(R.drawable.default_user).error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
             @Override

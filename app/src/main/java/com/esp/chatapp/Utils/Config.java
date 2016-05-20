@@ -14,6 +14,8 @@ public class Config {
     // preference file name
     public static final String PREF_FILE = TAG + "_PREF";
     public static String DIR_USERDATA = APP_HOME + "/userdata";
+    public static String DIR_FEEDDATA = APP_HOME + "/feeddata";
+    public static String DIR_DATA = APP_HOME + "/data";
 
     public static String DIR_MAGIC = DIR_USERDATA;
     /*
@@ -25,12 +27,9 @@ public class Config {
     public static String ORIGINAL_HOST = "http://manikom.net23.net/"; //http://manikom.net23.net/login.php
 
     public static String HOST = "http://manikom.net23.net/";
-    public static String HOST_IMAGE = ORIGINAL_HOST + "/public/media/";
 
-//    public static String IMAGE_PATH_WEB_AVATARS = HOST_IMAGE + "avatars/";
-//    public static String IMAGE_PATH_WEB_WALLPAPERS = HOST_IMAGE + "wallpapers/";
-//    public static String IMAGE_FEED_PATH = HOST_IMAGE + "feeds/";
-//    public static String IMAGE_FEED_STYLE = HOST_IMAGE + "feed_style/";
+    public static String IMAGE_PATH_WEB_AVATARS = HOST + "avatar/";
+    public static String IMAGE_PATH_WEB_FEED = HOST + "feed/";
 
 
     /* API CALL & TAG */
@@ -71,6 +70,10 @@ public class Config {
     public static String API_SEARCH_LIST = "";
     public static String API_SEARCH_LIST_JSON = "search_friend.php?";
     public static String TAG_SEARCH_LIST = "TAG_SEARCH_LIST";
+
+    public static String API_CHANGE_AVATAR = "";
+    public static String API_CHANGE_AVATAR_JSON = "upload_profile.php";
+    public static String TAG_CHANGE_AVATAR = "TAG_CHANGE_AVATAR";
 
     /*
      * Error and Warnings
@@ -144,6 +147,7 @@ public class Config {
     public static String liketime = "liketime";
     public static String no_like = "no_like";
     public static String avatar = "avatar";
+    public static String avatarfile = "avatarfile";
     public static String isfollow = "isfollow";
     public static String islike = "islike";
     public static String posttime = "posttime";

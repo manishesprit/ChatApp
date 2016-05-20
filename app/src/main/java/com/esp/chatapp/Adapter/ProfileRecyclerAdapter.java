@@ -68,7 +68,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
             if (!((PostBean) headerHolder.txtName.getTag()).avatar.toString().equalsIgnoreCase("")) {
-                Glide.with(context).load(((PostBean) headerHolder.txtName.getTag()).avatar.toString())
+                Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+((PostBean) headerHolder.txtName.getTag()).avatar.toString())
                         .asBitmap()
                         .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -130,7 +130,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
             if (!((PostBean) holder.txtUserName.getTag()).avatar.equalsIgnoreCase("")) {
-                Glide.with(context).load(((PostBean) holder.txtUserName.getTag()).avatar).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+((PostBean) holder.txtUserName.getTag()).avatar).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                         RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), resource);
@@ -149,7 +149,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
             if (!((PostBean) holder.txtUserName.getTag()).image_url.equalsIgnoreCase("")) {
                 holder.imgFeed.setVisibility(View.VISIBLE);
-                Glide.with(context).load(((PostBean) holder.txtUserName.getTag()).image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+                Glide.with(context).load(Config.IMAGE_PATH_WEB_FEED+((PostBean) holder.txtUserName.getTag()).image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                         holder.imgFeed.setImageBitmap(resource);

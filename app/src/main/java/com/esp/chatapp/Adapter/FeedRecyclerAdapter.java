@@ -54,7 +54,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!postBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(postBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+postBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -99,7 +99,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
 
         if (!postBean.image_url.toString().equals("")) {
             holder.imgFeed.setVisibility(View.VISIBLE);
-            Glide.with(context).load(postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_FEED+postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                     holder.imgFeed.setImageBitmap(resource);

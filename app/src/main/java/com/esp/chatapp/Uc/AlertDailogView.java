@@ -89,8 +89,7 @@ public class AlertDailogView {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.popup_dailog);
         dialog.setCancelable(false);
-        dialog.getWindow().setBackgroundDrawable(
-                new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         TextView txtTitle = (TextView) dialog.findViewById(R.id.txtTitle);
         TextView txt_message = (TextView) dialog

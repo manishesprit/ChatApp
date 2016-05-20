@@ -37,4 +37,7 @@
     <dimen name="dailog_frame_margin">15dp</dimen>
     <dimen name="dailog_button_frame_height">55dp</dimen>
 
+    <dimen name="dialog_width">330dp</dimen>
+    <dimen name="dialog_height">200dp</dimen>
+
 </resources>

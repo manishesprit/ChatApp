@@ -137,8 +137,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
                     }
-                } else {
-//                    AlertDailogView.showAlert(context, valid).show();
                 }
 
                 break;

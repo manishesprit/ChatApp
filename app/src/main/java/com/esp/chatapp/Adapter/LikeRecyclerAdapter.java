@@ -16,6 +16,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.LikeBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class LikeRecyclerAdapter extends RecyclerView.Adapter<LikeRecyclerAdapte
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!likeBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(likeBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+likeBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override

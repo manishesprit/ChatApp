@@ -33,7 +33,7 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
         try {
             multipartReq = new MultipartRequest(context);
             if (this.postBean.image_url != null && (this.postBean.image_url != "" || !this.postBean.image_url.equals("") || !this.postBean.image_url.equals("null"))) {
-                file = new File(Config.DIR_USERDATA + "/" + postBean.image_url);
+                file = new File(Config.DIR_FEEDDATA + "/" + postBean.image_url);
                 if (file.exists()) {
                     multipartReq.addFile(Config.image_url, file.toString(), file.getName());
                 }

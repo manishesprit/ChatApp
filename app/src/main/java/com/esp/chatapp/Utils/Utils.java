@@ -174,7 +174,7 @@ public class Utils {
     }
 
 
-    public static String compressImage(String imageUri, Context context) {
+    public static String compressImage(String imageUri, Context context, int filetype) {
         String filePath = getRealPathFromURI(imageUri, context);
         Bitmap scaledBitmap = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -190,9 +190,16 @@ public class Utils {
         System.out.println("actualHeight :: " + actualHeight);
         System.out.println(" actualWidth :: " + actualWidth);
 
-        float maxWidth = 1000;
-        float maxHeight = 1000;
-
+        float maxWidth;
+        float maxHeight;
+        // 1= avatar 2=feed
+        if (filetype == 1) {
+            maxWidth = 800;
+            maxHeight = 800;
+        } else {
+            maxWidth = 1000;
+            maxHeight = 1000;
+        }
 
         float imgRatio = actualWidth / actualHeight;
         float maxRatio = maxWidth / maxHeight;
@@ -271,13 +278,14 @@ public class Utils {
         String filename = new File(imageUri).getPath();
         try {
             Storage.verifyCategoryPath(Config.DIR_USERDATA);
+            Storage.verifyCategoryPath(Config.DIR_FEEDDATA);
         } catch (IOException e1) {
             e1.printStackTrace();
         }
 
         try {
             out = new FileOutputStream(filename);
-            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -370,7 +378,7 @@ public class Utils {
         return rotate;
     }
 
-    public static void DownloadImage(Bitmap bitmap, String name,String path) {
+    public static void DownloadImage(Bitmap bitmap, String name, String path) {
         System.out.println("width==" + bitmap.getWidth() + "===height===" + bitmap.getHeight());
         try {
 

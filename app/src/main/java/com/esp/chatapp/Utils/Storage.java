@@ -25,14 +25,6 @@ public class Storage {
         dir = null;
     }
 
-    public static void verifyMagicPath() throws IOException {
-        File dir = new File(Config.DIR_MAGIC);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        dir = null;
-    }
-
     public static File verifyLogFile() throws IOException {
         File logFile = new File(Config.DIR_LOG + "/Inkskill_Log_"
                 + new SimpleDateFormat("yyyy_MM_dd").format(new Date())
@@ -133,7 +125,7 @@ public class Storage {
     }
 
     public static void verifyDataPath() throws IOException {
-        File dir = new File(Config.DIR_USERDATA);
+        File dir = new File(Config.DIR_DATA);
 
         if (!dir.exists()) {
             dir.mkdirs();
@@ -156,7 +148,7 @@ public class Storage {
         try {
             verifyDataPath();
             Storage.copy_DB("/data/data/com.esp.inkskill/databases/"
-                    + Config.DB_NAME, Config.DIR_USERDATA + "/" + Config.DB_NAME);
+                    + Config.DB_NAME, Config.DIR_DATA + "/" + Config.DB_NAME);
         } catch (Exception e) {
             e.printStackTrace();
         }

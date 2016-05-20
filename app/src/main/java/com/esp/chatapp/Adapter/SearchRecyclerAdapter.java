@@ -16,6 +16,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -45,11 +46,11 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
         holder.txtUserName.setTag(userBean);
         holder.txtUserName.setText(userBean.name);
-        holder.txtfollowUnfollow.setText(userBean.isFollow==true?"Unfollow":"Follow");
+        holder.txtfollowUnfollow.setText(userBean.isFollow == true ? "Unfollow" : "Follow");
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!userBean.avatar.toString().trim().equalsIgnoreCase("")) {
 
-            Glide.with(context).load(userBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + userBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override

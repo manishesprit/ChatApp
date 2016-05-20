@@ -78,7 +78,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
 
     public void CreateFolder() {
 
-        File dir = new File(Config.DIR_USERDATA);
+        File dir = new File(Config.DIR_FEEDDATA);
         if (dir.exists() == true) {
             System.out.println("delete Derectory");
             dir.delete();
@@ -198,7 +198,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
             {
                 try {
 
-                    Utils.compressImage(upload_file.getPath(), context);
+                    Utils.compressImage(upload_file.getPath(), context,2);
                     int degree = Utils.getCameraPhotoOrientation(context, Uri.fromFile(upload_file), upload_file.getPath());
                     Utils.rotateBitmap(BitmapFactory.decodeFile(upload_file.getPath()), degree);
                     imgUploadView.setImageBitmap(null);
