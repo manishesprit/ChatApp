@@ -47,9 +47,9 @@ public class Config {
     public static String API_FEED_LIST_JSON = "feed_list.php?";
     public static String TAG_FEED_LIST = "TAG_FEED_LIST";
 
-    public static String API_UPDATE_PROFILE = "";
-    public static String API_UPDATE_PROFILE_JSON = "update.php?";
-    public static String TAG_UPDATE_PROFILE = "TAG_UPDATE_PROFILE";
+    public static String API_CHANGE_PROFILE = "";
+    public static String API_CHANGE_PROFILE_JSON = "change_profile.php?";
+    public static String TAG_CHANGE_PROFILE = "TAG_CHANGE_PROFILE";
 
     public static String API_CREATE_FEED = "";
     public static String API_CREATE_FEED_JSON = "create_feed.php?";
@@ -72,8 +72,12 @@ public class Config {
     public static String TAG_SEARCH_LIST = "TAG_SEARCH_LIST";
 
     public static String API_CHANGE_AVATAR = "";
-    public static String API_CHANGE_AVATAR_JSON = "upload_profile.php";
+    public static String API_CHANGE_AVATAR_JSON = "change_avatar.php";
     public static String TAG_CHANGE_AVATAR = "TAG_CHANGE_AVATAR";
+
+    public static String API_FOLLOW_UNFOLLOW = "";
+    public static String API_FOLLOW_UNFOLLOW_JSON = "follow_unfollow.php?";
+    public static String TAG_FOLLOW_UNFOLLOW = "TAG_FOLLOW_UNFOLLOW";
 
     /*
      * Error and Warnings
@@ -158,11 +162,17 @@ public class Config {
     public static String feedlist = "feedlist";
     public static String likelist = "likelist";
     public static String userid = "userid";
+    public static String friendid = "friendid";
     public static String feedid = "feedid";
     public static String likeid = "likeid";
     public static String image_url = "image_url";
     public static String caption = "caption";
     public static String search_text = "search_text";
     public static String searchlist = "searchlist";
+    public static String commentlist = "commentlist";
+    public static String comentid = "comentid";
+    public static String comment = "comment";
+    public static String commenttime = "commenttime";
+
 
 }

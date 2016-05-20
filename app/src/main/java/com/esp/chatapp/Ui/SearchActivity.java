@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,16 +19,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esp.chatapp.Adapter.SearchRecyclerAdapter;
+import com.esp.chatapp.Backend.FollowUnfollowAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Backend.SearchListAPI;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Uc.AlertDailogView;
+import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener, OnPopUpDialogButoonClickListener {
 
     private Intent intent;
     private Toolbar toolbar;
@@ -42,6 +44,8 @@ public class SearchActivity extends AppCompatActivity {
     private SearchRecyclerAdapter searchRecyclerAdapter;
     private ArrayList<UserBean> searchBeanArrayList;
     private LinearLayout myprogressBar;
+    private UserBean userBean;
+    private FollowUnfollowAPI followUnfollowAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,19 +69,9 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
 
-        if (Utils.isOnline(context)) {
+        Call_Search();
 
-            myprogressBar.setVisibility(View.VISIBLE);
-            searchListAPI = new SearchListAPI(context, responseListener, "");
-            searchListAPI.execute();
-        }
-
-        myprogressBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        myprogressBar.setOnClickListener(this);
 
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -91,9 +85,7 @@ public class SearchActivity extends AppCompatActivity {
                     if (searchListAPI != null) {
                         searchListAPI.doCancel();
                     }
-                    myprogressBar.setVisibility(View.VISIBLE);
-                    searchListAPI = new SearchListAPI(context, responseListener, Uri.encode(s.toString().trim()));
-                    searchListAPI.execute();
+                    Call_Search();
                 }
             }
 
@@ -145,9 +137,64 @@ public class SearchActivity extends AppCompatActivity {
                         txtnoofsearch.setVisibility(View.GONE);
                     }
                 }
+                if (tag == Config.TAG_FOLLOW_UNFOLLOW) {
+                    userBean.isFollow = userBean.isFollow == true ? false : true;
+                    searchRecyclerAdapter.notifyDataSetChanged();
+                }
             } else {
 
             }
         }
     };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txtfollowUnfollow:
+                userBean = (UserBean) v.getTag();
+
+                Call_Follow_Unfollow();
+
+                break;
+
+            case R.id.myprogressBar:
+                break;
+        }
+    }
+
+    private void Call_Search() {
+        if (Utils.isOnline(context)) {
+
+            myprogressBar.setVisibility(View.VISIBLE);
+            searchListAPI = new SearchListAPI(context, responseListener, "");
+            searchListAPI.execute();
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 1).show();
+        }
+    }
+
+    private void Call_Follow_Unfollow() {
+        if (Utils.isOnline(context)) {
+            myprogressBar.setVisibility(View.VISIBLE);
+            followUnfollowAPI = new FollowUnfollowAPI(context, responseListener, userBean.userid, userBean.isFollow == true ? 1 : 0);
+            followUnfollowAPI.execute();
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
+        }
+    }
+
+    @Override
+    public void OnButtonClick(int tag, int buttonIndex, String input) {
+        if (tag == 0) {
+            if (buttonIndex == 2) {
+                Call_Follow_Unfollow();
+            }
+        }
+
+        if (tag == 1) {
+            if (buttonIndex == 2) {
+                Call_Search();
+            }
+        }
+    }
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.esp.chatapp.Bean.UserBean;
+import com.esp.chatapp.Bean.CommentBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
@@ -22,35 +22,31 @@ import com.esp.chatapp.Utils.Utils;
 import java.util.ArrayList;
 
 
-public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAdapter.LikeBeanHolder> {
+public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecyclerAdapter.LikeBeanHolder> {
 
-    private ArrayList<UserBean> mItemList;
+    private ArrayList<CommentBean> mItemList;
     private Context context;
-    private UserBean userBean;
+    private CommentBean commentBean;
 
-    public SearchRecyclerAdapter(Context context, ArrayList<UserBean> itemList) {
+    public CommentRecyclerAdapter(Context context, ArrayList<CommentBean> itemList) {
         this.mItemList = itemList;
         this.context = context;
     }
 
     @Override
     public LikeBeanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_people, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_comment, parent, false);
         LikeBeanHolder vh = new LikeBeanHolder(v);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(final LikeBeanHolder holder, final int position) {
-        userBean = mItemList.get(position);
+        commentBean = mItemList.get(position);
 
-        holder.txtUserName.setTag(userBean);
-        holder.txtUserName.setText(userBean.name);
-        holder.txtfollowUnfollow.setText(userBean.isFollow == true ? "Unfollow" : "Follow");
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
-        if (!userBean.avatar.toString().trim().equalsIgnoreCase("")) {
-
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + userBean.avatar)
+        if (!commentBean.avatar.toString().trim().equalsIgnoreCase("")) {
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + commentBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -62,7 +58,10 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
             });
         }
 
-
+        holder.txtUserName.setText(commentBean.name);
+        holder.txtCommentTime.setText(commentBean.commenttime);
+        holder.txtComment.setText(commentBean.comment);
+        holder.txtUserName.setTag(commentBean);
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,9 +83,6 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 //                }
             }
         });
-        holder.txtfollowUnfollow.setTag(userBean);
-        holder.txtfollowUnfollow.setOnClickListener((View.OnClickListener) context);
-
     }
 
 
@@ -99,13 +95,15 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
         private ImageView imgAvatar;
         private TextView txtUserName;
-        private TextView txtfollowUnfollow;
+        private TextView txtCommentTime;
+        private TextView txtComment;
 
         public LikeBeanHolder(View itemView) {
             super(itemView);
             imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
             txtUserName = (TextView) itemView.findViewById(R.id.txtUserName);
-            txtfollowUnfollow = (TextView) itemView.findViewById(R.id.txtfollowUnfollow);
+            txtCommentTime = (TextView) itemView.findViewById(R.id.txtCommentTime);
+            txtComment = (TextView) itemView.findViewById(R.id.txtComment);
         }
 
     }

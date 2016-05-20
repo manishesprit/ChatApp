@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.esp.chatapp.Backend.ResponseListener;
-import com.esp.chatapp.Backend.UpdateProfileAPI;
+import com.esp.chatapp.Backend.ChangeProfileAPI;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
@@ -34,7 +34,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     private UserBean userBean;
     private PostBean postBean;
     private Context context;
-    private UpdateProfileAPI updateProfileAPI;
+    private ChangeProfileAPI changeProfileAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +81,8 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
                         userBean.udID = "";
                         userBean.latlong = "";
 
-                        updateProfileAPI = new UpdateProfileAPI(context, responseListener, userBean);
-                        updateProfileAPI.execute();
+                        changeProfileAPI = new ChangeProfileAPI(context, responseListener, userBean);
+                        changeProfileAPI.execute();
                     } else {
                         AlertDailogView.showAlert(context, "Internet not available").show();
                     }

@@ -15,6 +15,8 @@ import com.esp.chatapp.Backend.LikeListAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.LikeBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Uc.AlertDailogView;
+import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by admin on 2/5/16.
  */
-public class LikeListActivity extends Activity implements View.OnClickListener {
+public class LikeListActivity extends Activity implements OnPopUpDialogButoonClickListener {
 
 
     private Intent intent;
@@ -49,11 +51,7 @@ public class LikeListActivity extends Activity implements View.OnClickListener {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        if (Utils.isOnline(context)) {
-            myprogressBar.setVisibility(View.VISIBLE);
-            likeListAPI = new LikeListAPI(context, responseListener, getIntent().getIntExtra("feedid", 0));
-            likeListAPI.execute();
-        }
+        Call_Like();
 
         myprogressBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,10 +62,14 @@ public class LikeListActivity extends Activity implements View.OnClickListener {
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-
+    private void Call_Like() {
+        if (Utils.isOnline(context)) {
+            myprogressBar.setVisibility(View.VISIBLE);
+            likeListAPI = new LikeListAPI(context, responseListener, getIntent().getIntExtra("feedid", 0));
+            likeListAPI.execute();
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
+        }
     }
 
     private ResponseListener responseListener = new ResponseListener() {
@@ -84,7 +86,7 @@ public class LikeListActivity extends Activity implements View.OnClickListener {
                     if (likeBeanArrayList.size() > 0) {
                         likeRecyclerAdapter = new LikeRecyclerAdapter(context, likeBeanArrayList);
                         recyclerView.setAdapter(likeRecyclerAdapter);
-                        txtNooflikes.setText(likeBeanArrayList.size()+" People like");
+                        txtNooflikes.setText(likeBeanArrayList.size() + " People like");
                     } else {
 
                     }
@@ -94,4 +96,17 @@ public class LikeListActivity extends Activity implements View.OnClickListener {
             }
         }
     };
+
+    @Override
+    public void OnButtonClick(int tag, int buttonIndex, String input) {
+        if (tag == 0) {
+            if (buttonIndex == 2) {
+                Call_Like();
+            }
+
+            if (buttonIndex == 1) {
+                finish();
+            }
+        }
+    }
 }

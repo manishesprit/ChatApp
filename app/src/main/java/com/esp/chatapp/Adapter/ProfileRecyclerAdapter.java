@@ -68,6 +68,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
             if (!((PostBean) headerHolder.txtName.getTag()).avatar.toString().equalsIgnoreCase("")) {
+                System.out.println("==========AVATAR====="+Config.IMAGE_PATH_WEB_AVATARS+((PostBean) headerHolder.txtName.getTag()).avatar.toString());
                 Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+((PostBean) headerHolder.txtName.getTag()).avatar.toString())
                         .asBitmap()
                         .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {

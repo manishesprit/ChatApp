@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_graydark"
+    android:elevation="3dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlFeedHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_ten"
+        android:paddingLeft="@dimen/padding_five"
+        android:paddingRight="@dimen/padding_five"
+        android:paddingTop="@dimen/padding_ten">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="@dimen/user_avatar_size"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imgAvatar"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_ten">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="Manish Rathod"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/extraMediumText" />
+
+                <TextView
+                    android:id="@+id/txtCommentTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Manish Rathod"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/mediumText" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_five"
+                android:text="Manish Rathodasdasldk;asfsdflskfdl; sdlfklsd sdlfklsdfkld l;dk adlasl;d l;skdasl;dk; lsd;lk "
+                android:textColor="@color/color_whitedark"
+                android:textSize="@dimen/medium1Text" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_gray"></View>
+
+</LinearLayout>

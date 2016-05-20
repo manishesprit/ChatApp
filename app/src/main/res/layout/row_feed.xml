@@ -33,7 +33,7 @@
                 android:id="@+id/txtUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manish Rathod"
+                android:text=""
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/extraMediumText" />
 
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
-                android:text="2h ago"
+                android:text=""
                 android:textColor="@color/color_whitedark"
                 android:textSize="@dimen/smallText" />
         </LinearLayout>
@@ -82,42 +82,58 @@
             android:src="@drawable/love_gray" />
 
 
-        <TextView
-            android:id="@+id/txtComment"
+        <LinearLayout
+            android:id="@+id/llComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:text=" Comments"
-            android:textColor="@color/color_whitedark" />
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtNoComment"
+            <TextView
+                android:id="@+id/txtNoComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/padding_twenty"
+                android:text=""
+                android:textColor="@color/color_white" />
+
+            <TextView
+                android:id="@+id/txtComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Comments"
+                android:textColor="@color/color_whitedark" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@id/txtComment"
-            android:paddingLeft="@dimen/padding_twenty"
-            android:text="100"
-            android:textColor="@color/color_white" />
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/llComment"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtlike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@id/txtNoComment"
-            android:text=" Likes"
-            android:textColor="@color/color_whitedark" />
+            <TextView
+                android:id="@+id/txtNolike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/color_white" />
 
-        <TextView
-            android:id="@+id/txtNolike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@id/txtlike"
-            android:text="25"
-            android:textColor="@color/color_white" />
+            <TextView
+                android:id="@+id/txtlike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=" Likes"
+                android:textColor="@color/color_whitedark" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +19,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Ui.FeedDetailActivity;
 import com.esp.chatapp.Ui.LikeListActivity;
 import com.esp.chatapp.Ui.ProfileActivity;
 import com.esp.chatapp.Utils.Config;
@@ -118,11 +120,22 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
             }
         });
 
-        holder.txtNolike.setOnClickListener(new View.OnClickListener() {
+        holder.llLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
                     Intent intent = new Intent(context, LikeListActivity.class);
+                    intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
+                    context.startActivity(intent);
+                }
+            }
+        });
+
+        holder.llComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
+                    Intent intent = new Intent(context, FeedDetailActivity.class);
                     intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
                     context.startActivity(intent);
                 }
@@ -150,6 +163,8 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         private ImageView imgLikeUnlike;
         private TextView txtNoComment;
         private TextView txtNolike;
+        private LinearLayout llComment;
+        private LinearLayout llLike;
 
         public PostBeanHolder(View itemView) {
             super(itemView);
@@ -161,6 +176,8 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
             imgLikeUnlike = (ImageView) itemView.findViewById(R.id.imgLikeUnlike);
             txtNoComment = (TextView) itemView.findViewById(R.id.txtNoComment);
             txtNolike = (TextView) itemView.findViewById(R.id.txtNolike);
+            llComment = (LinearLayout) itemView.findViewById(R.id.llComment);
+            llLike = (LinearLayout) itemView.findViewById(R.id.llLike);
         }
 
     }
