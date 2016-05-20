@@ -121,7 +121,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
 
             case R.id.txtSubmit:
                 postBean.caption = edtCaption.getText().toString().trim();
-                if (postBean.caption.equals("") || postBean.image_url.equals("")) {
+                if (!postBean.caption.equals("") || !postBean.image_url.equals("")) {
 
                     if (Utils.isOnline(context)) {
                         postBean.latlong = "";

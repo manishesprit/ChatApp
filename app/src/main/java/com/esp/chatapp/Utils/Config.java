@@ -52,7 +52,7 @@ public class Config {
     public static String TAG_CHANGE_PROFILE = "TAG_CHANGE_PROFILE";
 
     public static String API_CREATE_FEED = "";
-    public static String API_CREATE_FEED_JSON = "create_feed.php?";
+    public static String API_CREATE_FEED_JSON = "create_feed.php";
     public static String TAG_CREATE_FEED = "TAG_CREATE_FEED";
 
     public static String API_LIKEUNLIKE = "";
@@ -152,6 +152,7 @@ public class Config {
     public static String no_like = "no_like";
     public static String avatar = "avatar";
     public static String avatarfile = "avatarfile";
+    public static String feedfile = "feedfile";
     public static String isfollow = "isfollow";
     public static String islike = "islike";
     public static String posttime = "posttime";
