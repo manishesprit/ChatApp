@@ -71,6 +71,14 @@
             android:theme="@style/Theme.MyTransparent" />
 
         <activity
+            android:name=".Ui.FollowerListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Ui.FollowingListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".CropImage.CropImage"
             android:screenOrientation="portrait"></activity>
     </application>

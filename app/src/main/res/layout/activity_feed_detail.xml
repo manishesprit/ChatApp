@@ -28,11 +28,11 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
             android:layout_margin="@dimen/padding_ten"
             android:background="@color/color_graydark"
-            android:elevation="3dp"
             android:orientation="vertical"
             android:paddingBottom="@dimen/padding_five"
             android:paddingTop="@dimen/padding_five">
@@ -169,9 +169,12 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="@dimen/padding_ten" />
+                android:layout_marginTop="@dimen/padding_twenty"
+                android:background="@color/color_gray"
+                android:padding="@dimen/padding_five" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/myprogressBar"
             android:layout_width="fill_parent"
