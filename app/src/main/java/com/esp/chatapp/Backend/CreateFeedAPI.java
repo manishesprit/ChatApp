@@ -7,7 +7,6 @@ import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
 import com.esp.chatapp.Utils.Pref;
-import com.esp.chatapp.Utils.Utils;
 
 import org.json.JSONObject;
 
@@ -32,7 +31,7 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
         int result = -1;
         try {
             multipartReq = new MultipartRequest(context);
-            if (this.postBean.image_url != null && (this.postBean.image_url != "" || !this.postBean.image_url.equals("") || !this.postBean.image_url.equals("null"))) {
+            if (this.postBean.image_url != null && this.postBean.image_url != "" ) {
                 file = new File(Config.DIR_FEEDDATA + "/" + postBean.image_url);
                 if (file.exists()) {
                     multipartReq.addFile(Config.feedfile, file.toString(), file.getName());
@@ -41,8 +40,6 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
 
             multipartReq.addString(Config.caption, postBean.caption);
             multipartReq.addString(Config.userid, String.valueOf(Pref.getValue(context, Config.PREF_USER_ID, 0)));
-            multipartReq.addString(Config.latlong, postBean.latlong);
-            multipartReq.addString(Config.udid, Utils.getDeviceID(context));
 
 
             Config.API_CREATE_FEED = Config.HOST + Config.API_CREATE_FEED_JSON;
@@ -60,10 +57,10 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
 
         if (result == 0) {
             // successful
-            this.responseListener.onResponce(Config.API_CREATE_FEED,
+            this.responseListener.onResponce(Config.TAG_CREATE_FEED,
                     Config.API_SUCCESS, mesg);
         } else {
-            this.responseListener.onResponce(Config.API_CREATE_FEED,
+            this.responseListener.onResponce(Config.TAG_CREATE_FEED,
                     Config.API_FAIL, mesg);
         }
     }
@@ -77,11 +74,11 @@ public class CreateFeedAPI extends AsyncTask<Void, Void, Integer> {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getInt(Config.userid));
-                Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
-                Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
+//                Pref.setValue(context, Config.PREF_USER_ID, jsonObject.getInt(Config.userid));
+//                Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
+//                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
+//                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
+//                Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
             }
         } catch (Exception e) {
             code = -4;

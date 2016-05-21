@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
     private Context context;
     private PostBean postBean;
     private CreateFeedAPI createFeedAPI;
+    private LinearLayout myprogressBar;
 
     int OPEN_GALLARY_CODE = 200;
     int OPEN_CAMARA_CODE = 400;
@@ -66,6 +68,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
         txtSubmit = (TextView) findViewById(R.id.txtSubmit);
         imgUploadView = (ImageView) findViewById(R.id.imgUploadView);
         rlUploadView = (RelativeLayout) findViewById(R.id.rlUploadView);
+        myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
 
         txtRemove.setOnClickListener(this);
         txtGallary.setOnClickListener(this);
@@ -87,7 +90,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
         } else {
             dir.mkdirs();
         }
-        upload_file = new File(Config.DIR_USERDATA, "Image" + new SimpleDateFormat("yyyyMMdd_hhmmss").format(new Date()).toString() + ".jpeg");
+        upload_file = new File(Config.DIR_FEEDDATA, "Image" + new SimpleDateFormat("yyyyMMdd_hhmmss").format(new Date()).toString() + ".jpeg");
     }
 
     @Override
@@ -127,7 +130,8 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
                 if (!postBean.caption.equals("") || !postBean.image_url.equals("")) {
 
                     if (Utils.isOnline(context)) {
-                        postBean.latlong = "";
+                        System.out.println("=======postBean.image_url=====" + postBean.image_url);
+                        myprogressBar.setVisibility(View.VISIBLE);
                         createFeedAPI = new CreateFeedAPI(context, responseListener, postBean);
                         createFeedAPI.execute();
                     } else {
@@ -152,14 +156,14 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
         }
 
         public void onResponce(String tag, int result, Object obj) {
-
+            myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_CREATE_FEED) {
                     setResult(RESULT_OK);
                     finish();
                 }
             } else {
-
+                AlertDailogView.showAlert(context, "Feed uploaded fail").show();
             }
         }
     };

@@ -22,6 +22,7 @@ import com.esp.chatapp.Ui.ChangeAvatarActivity;
 import com.esp.chatapp.Ui.EditProfileActivity;
 import com.esp.chatapp.Ui.FeedDetailActivity;
 import com.esp.chatapp.Ui.FollowerListActivity;
+import com.esp.chatapp.Ui.FollowingListActivity;
 import com.esp.chatapp.Ui.LikeListActivity;
 import com.esp.chatapp.Ui.ProfileDetailActivity;
 import com.esp.chatapp.Utils.Config;
@@ -123,7 +124,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
                             Intent intent = new Intent(context, FollowerListActivity.class);
-                            intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).feedid);
+                            intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
                             context.startActivity(intent);
                         }
                     }
@@ -135,8 +136,8 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
-                            Intent intent = new Intent(context, FollowerListActivity.class);
-                            intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).feedid);
+                            Intent intent = new Intent(context, FollowingListActivity.class);
+                            intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
                             context.startActivity(intent);
                         }
                     }

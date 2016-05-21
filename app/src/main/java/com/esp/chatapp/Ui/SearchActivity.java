@@ -46,6 +46,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private LinearLayout myprogressBar;
     private UserBean userBean;
     private FollowUnfollowAPI followUnfollowAPI;
+    private String searchstr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     if (searchListAPI != null) {
                         searchListAPI.doCancel();
                     }
+                    searchstr = s.toString();
                     Call_Search();
                 }
             }
@@ -166,7 +168,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         if (Utils.isOnline(context)) {
 
             myprogressBar.setVisibility(View.VISIBLE);
-            searchListAPI = new SearchListAPI(context, responseListener, "");
+            searchListAPI = new SearchListAPI(context, responseListener, searchstr);
             searchListAPI.execute();
         } else {
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 1).show();
