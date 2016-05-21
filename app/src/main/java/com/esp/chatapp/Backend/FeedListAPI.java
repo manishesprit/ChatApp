@@ -38,7 +38,7 @@ public class FeedListAPI {
         this.context = context;
         this.userBean = userBean;
         this.mParams = new HashMap<String, String>();
-        Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON + Config.userid + "=" + userBean.userid + "&" + Config.myfeed + "=" + (userBean.myFeed == false ? 0 : 1) + "&" + Config.pageid + "=" + userBean.pageno;
+        Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON + Config.userid + "=" + Pref.getValue(context,Config.PREF_USER_ID,0) + "&"+ Config.friendid + "=" + userBean.userid + "&" + Config.myfeed + "=" + (userBean.myFeed == false ? 0 : 1) + "&" + Config.pageid + "=" + userBean.pageno;
 
         Log.print(":::: API_FEED_LIST ::::" + Config.API_FEED_LIST);
         this.responseListener = responseListener;

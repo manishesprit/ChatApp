@@ -79,6 +79,15 @@ public class Config {
     public static String API_FOLLOW_UNFOLLOW_JSON = "follow_unfollow.php?";
     public static String TAG_FOLLOW_UNFOLLOW = "TAG_FOLLOW_UNFOLLOW";
 
+    public static String API_FOLLOWER_LIST = "";
+    public static String API_FOLLOWER_LIST_JSON = "follower_list.php?";
+    public static String TAG_FOLLOWER_LIST = "TAG_FOLLOWER_LIST";
+
+    public static String API_FOLLOWING_LIST = "";
+    public static String API_FOLLOWING_LIST_JSON = "following_list.php?";
+    public static String TAG_FOLLOWING_LIST = "TAG_FOLLOWING_LIST";
+
+
     /*
      * Error and Warnings
      */
@@ -162,6 +171,8 @@ public class Config {
     public static String name = "name";
     public static String feedlist = "feedlist";
     public static String likelist = "likelist";
+    public static String followerlist = "followerlist";
+    public static String followinglist = "followinglist";
     public static String userid = "userid";
     public static String friendid = "friendid";
     public static String feedid = "feedid";

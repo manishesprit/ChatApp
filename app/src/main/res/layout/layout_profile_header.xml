@@ -48,6 +48,7 @@
             android:weightSum="30">
 
             <LinearLayout
+                android:id="@+id/llPost"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
@@ -71,6 +72,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llFollower"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="11"
@@ -94,6 +96,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llFollowing"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="11"

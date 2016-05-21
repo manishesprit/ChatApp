@@ -73,7 +73,8 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
         txtSubmit.setOnClickListener(this);
 
         postBean = new PostBean();
-
+        postBean.image_url = "";
+        postBean.caption = "";
     }
 
     public void CreateFolder() {
@@ -120,7 +121,9 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
                 break;
 
             case R.id.txtSubmit:
+
                 postBean.caption = edtCaption.getText().toString().trim();
+
                 if (!postBean.caption.equals("") || !postBean.image_url.equals("")) {
 
                     if (Utils.isOnline(context)) {
@@ -175,8 +178,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
 
         if (resultCode == RESULT_OK) {
 
-            if (requestCode == OPEN_GALLARY_CODE)
-            {
+            if (requestCode == OPEN_GALLARY_CODE) {
                 try {
                     InputStream is = getContentResolver().openInputStream(data.getData());
                     FileOutputStream fos = new FileOutputStream(upload_file);
@@ -189,16 +191,14 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
                 }
             }
 
-            if (requestCode == OPEN_CAMARA_CODE)
-            {
+            if (requestCode == OPEN_CAMARA_CODE) {
                 startCropImage();
             }
 
-            if (requestCode == OPEN_CROP_CODE)
-            {
+            if (requestCode == OPEN_CROP_CODE) {
                 try {
 
-                    Utils.compressImage(upload_file.getPath(), context,2);
+                    Utils.compressImage(upload_file.getPath(), context, 2);
                     int degree = Utils.getCameraPhotoOrientation(context, Uri.fromFile(upload_file), upload_file.getPath());
                     Utils.rotateBitmap(BitmapFactory.decodeFile(upload_file.getPath()), degree);
                     imgUploadView.setImageBitmap(null);
