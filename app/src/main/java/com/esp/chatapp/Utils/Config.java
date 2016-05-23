@@ -87,6 +87,9 @@ public class Config {
     public static String API_FOLLOWING_LIST_JSON = "following_list.php?";
     public static String TAG_FOLLOWING_LIST = "TAG_FOLLOWING_LIST";
 
+    public static String API_ADD_COMMENT = "";
+    public static String API_ADD_COMMENT_JSON = "add_comment.php?";
+    public static String TAG_ADD_COMMENT = "TAG_ADD_COMMENT";
 
     /*
      * Error and Warnings

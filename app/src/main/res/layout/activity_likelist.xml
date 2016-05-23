@@ -11,14 +11,14 @@
         android:layout_margin="@dimen/padding_thrty"
         android:background="@drawable/corner_drawable_dark"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_five">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtNooflikes"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:background="@color/color_bluedark"
             android:padding="@dimen/padding_ten"
             android:textColor="@color/color_white"
             android:textSize="@dimen/extraMediumText" />
@@ -26,7 +26,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_five" />
 
     </LinearLayout>
 

@@ -87,7 +87,7 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
         Utils.setDefaultRoundImage(context, imgProfileAvatar, R.drawable.default_user);
 
         if (!postBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+postBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + postBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -230,7 +230,7 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
         }
 
         public void onResponce(String tag, int result, Object obj) {
-
+            myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_CHANGE_AVATAR) {
                     RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), BitmapFactory.decodeFile(upload_file.getPath()));

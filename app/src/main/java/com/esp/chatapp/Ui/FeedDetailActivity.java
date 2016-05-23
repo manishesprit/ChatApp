@@ -3,6 +3,7 @@ package com.esp.chatapp.Ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -10,9 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Adapter.CommentRecyclerAdapter;
+import com.esp.chatapp.Backend.AddCommentAPI;
 import com.esp.chatapp.Backend.FeedDetailAPI;
 import com.esp.chatapp.Backend.LikeUnlikeAPI;
 import com.esp.chatapp.Backend.ResponseListener;
@@ -58,6 +63,9 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
     private TextView txtNolike;
     private LinearLayout llComment;
     private LinearLayout llLike;
+    private EditText edtComment;
+    private ImageView imgAdd;
+    private AddCommentAPI addCommentAPI;
 
 
     @Override
@@ -85,6 +93,9 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         llComment = (LinearLayout) findViewById(R.id.llComment);
         llLike = (LinearLayout) findViewById(R.id.llLike);
 
+        edtComment = (EditText) findViewById(R.id.edtComment);
+        imgAdd = (ImageView) findViewById(R.id.imgAddComment);
+
         Utils.setDefaultRoundImage(context, imgAvatar, R.drawable.default_user);
 
         Call_Detail();
@@ -94,6 +105,28 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         imgAvatar.setOnClickListener(this);
         imgLikeUnlike.setOnClickListener(this);
         llLike.setOnClickListener(this);
+        imgAdd.setOnClickListener(this);
+
+        edtComment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().length() > 0) {
+                    imgAdd.setImageResource(R.drawable.send_light);
+                } else {
+                    imgAdd.setImageResource(R.drawable.send_dark);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
     }
 
@@ -128,6 +161,15 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
                 if (tag == Config.TAG_FEED_DETAIL) {
                     postBean = (PostBean) obj;
                     setdata();
+                }
+                if (tag == Config.TAG_ADD_COMMENT) {
+                    edtComment.setText("");
+                    imgAdd.setImageResource(R.drawable.send_dark);
+                    postBean.commentBeanArrayList = (ArrayList<CommentBean>) obj;
+                    if (postBean.commentBeanArrayList.size() > 0) {
+                        commentRecyclerAdapter = new CommentRecyclerAdapter(context, postBean.commentBeanArrayList);
+                        recyclerView.setAdapter(commentRecyclerAdapter);
+                    }
                 }
             } else {
 
@@ -179,8 +221,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         imgLikeUnlike.setSoundEffectsEnabled(false);
         imgLikeUnlike.setImageResource(postBean.islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
 
-        if(postBean.commentBeanArrayList.size() > 0)
-        {
+        if (postBean.commentBeanArrayList.size() > 0) {
             commentRecyclerAdapter = new CommentRecyclerAdapter(context, postBean.commentBeanArrayList);
             recyclerView.setAdapter(commentRecyclerAdapter);
         }
@@ -266,6 +307,16 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
                     Intent intent = new Intent(context, LikeListActivity.class);
                     intent.putExtra("feedid", ((PostBean) txtUserName.getTag()).feedid);
                     context.startActivity(intent);
+                }
+
+                break;
+
+            case R.id.imgAddComment:
+                if (edtComment.getText().toString().trim().length() > 0) {
+                    if (Utils.isOnline(context)) {
+                        addCommentAPI = new AddCommentAPI(context, responseListener, ((PostBean) txtUserName.getTag()).feedid, Uri.encode(edtComment.getText().toString().trim()));
+                        addCommentAPI.execute();
+                    }
                 }
 
                 break;

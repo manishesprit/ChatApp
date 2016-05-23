@@ -21,175 +21,223 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlmain"
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_margin="@dimen/padding_ten"
-            android:background="@color/color_graydark"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/padding_five"
-            android:paddingTop="@dimen/padding_five">
+            android:paddingBottom="@dimen/padding_five">
 
-            <RelativeLayout
-                android:id="@+id/rlFeedHeader"
-                android:layout_width="fill_parent"
+
+            <LinearLayout
+                android:id="@+id/llFeedContain"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_five">
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/padding_ten"
+                android:background="@color/color_graydark"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imgAvatar"
-                    android:layout_width="@dimen/user_avatar_size"
-                    android:layout_height="@dimen/user_avatar_size"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true" />
-
-                <LinearLayout
+                <RelativeLayout
+                    android:id="@+id/rlFeedHeader"
                     android:layout_width="fill_parent"
-                    android:layout_height="@dimen/user_avatar_size"
-                    android:layout_toRightOf="@+id/imgAvatar"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/padding_ten">
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_five">
 
-                    <TextView
-                        android:id="@+id/txtUserName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="@color/color_white"
-                        android:textSize="@dimen/extraMediumText" />
+                    <ImageView
+                        android:id="@+id/imgAvatar"
+                        android:layout_width="@dimen/user_avatar_size"
+                        android:layout_height="@dimen/user_avatar_size"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true" />
 
-                    <TextView
-                        android:id="@+id/txtFeedTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-2dp"
-                        android:text=""
-                        android:textColor="@color/color_whitedark"
-                        android:textSize="@dimen/smallText" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/user_avatar_size"
+                        android:layout_toRightOf="@+id/imgAvatar"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_ten">
 
-            </RelativeLayout>
+                        <TextView
+                            android:id="@+id/txtUserName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/color_white"
+                            android:textSize="@dimen/extraMediumText" />
 
-            <TextView
-                android:id="@+id/txtCaption"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_five"
-                android:textColor="@color/color_whitedark"
-                android:visibility="gone" />
+                        <TextView
+                            android:id="@+id/txtFeedTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-2dp"
+                            android:text=""
+                            android:textColor="@color/color_whitedark"
+                            android:textSize="@dimen/smallText" />
+                    </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imgFeed"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:paddingBottom="@dimen/padding_five"
-                android:paddingTop="@dimen/padding_five"
-                android:scaleType="centerCrop" />
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rlFeedFooter"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_five">
+                <TextView
+                    android:id="@+id/txtCaption"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_five"
+                    android:textColor="@color/color_whitedark"
+                    android:visibility="gone" />
 
                 <ImageView
-                    android:id="@+id/imgLikeUnlike"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/imgFeed"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:padding="3dp"
-                    android:src="@drawable/love_gray" />
+                    android:adjustViewBounds="true"
+                    android:paddingBottom="@dimen/padding_five"
+                    android:paddingTop="@dimen/padding_five"
+                    android:scaleType="centerCrop" />
 
-                <LinearLayout
-                    android:id="@+id/llComment"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rlFeedFooter"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:orientation="horizontal">
+                    android:padding="@dimen/padding_five">
 
-                    <TextView
-                        android:id="@+id/txtNoComment"
+                    <ImageView
+                        android:id="@+id/imgLikeUnlike"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/padding_twenty"
-                        android:text=""
-                        android:textColor="@color/color_white" />
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:padding="3dp"
+                        android:src="@drawable/love_gray" />
 
-                    <TextView
-                        android:id="@+id/txtComment"
+                    <LinearLayout
+                        android:id="@+id/llComment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Comments"
-                        android:textColor="@color/color_whitedark" />
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtNoComment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/padding_twenty"
+                            android:text=""
+                            android:textColor="@color/color_white" />
+
+                        <TextView
+                            android:id="@+id/txtComment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Comments"
+                            android:textColor="@color/color_whitedark" />
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/llLike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@id/llComment"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/txtNolike"
+                    <LinearLayout
+                        android:id="@+id/llLike"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text=""
-                        android:textColor="@color/color_white" />
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/llComment"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/txtlike"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text=" Likes"
-                        android:textColor="@color/color_whitedark" />
+                        <TextView
+                            android:id="@+id/txtNolike"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text=""
+                            android:textColor="@color/color_white" />
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/txtlike"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text=" Likes"
+                            android:textColor="@color/color_whitedark" />
 
-            </RelativeLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
+                android:layout_below="@id/llFeedContain"
+                android:layout_marginLeft="@dimen/padding_ten"
+                android:layout_marginRight="@dimen/padding_ten"
                 android:layout_marginTop="@dimen/padding_twenty"
                 android:background="@color/color_gray"
                 android:padding="@dimen/padding_five" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/myprogressBar"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#80000000"
-            android:gravity="center"
-            android:visibility="gone">
-
-            <ProgressBar
-                style="@style/Base.Widget.AppCompat.ProgressBar"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/rlAddComment"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible" />
-        </LinearLayout>
+                android:layout_below="@id/recyclerView"
+                android:layout_marginLeft="@dimen/padding_ten"
+                android:layout_marginRight="@dimen/padding_ten"
+                android:layout_marginBottom="@dimen/padding_ten"
+                android:elevation="2dp"
+                android:background="@color/color_gray"
+                android:padding="@dimen/padding_ten">
 
-    </RelativeLayout>
+                <ImageView
+                    android:id="@+id/imgAddComment"
+                    android:layout_width="@dimen/comment_avatar"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/send_dark" />
+
+                <EditText
+                    android:id="@+id/edtComment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imgAddComment"
+                    android:background="@color/color_gray"
+                    android:hint="Write comment..."
+                    android:padding="@dimen/padding_five"
+                    android:singleLine="true"
+                    android:textColor="@color/color_white"
+                    android:textColorHint="@color/color_whitedark"
+                    android:textSize="@dimen/extraMediumText" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/myprogressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

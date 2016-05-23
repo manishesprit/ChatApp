@@ -54,7 +54,6 @@
             android:layout_margin="@dimen/padding_ten"
             android:layout_marginBottom="@dimen/padding_twenty"
             android:background="@color/color_graydark"
-            android:elevation="5dp"
             android:orientation="vertical">
 
             <TextView
@@ -124,7 +123,6 @@
                 android:layout_height="wrap_content"
                 android:visibility="visible" />
         </LinearLayout>
-
 
     </RelativeLayout>
 
