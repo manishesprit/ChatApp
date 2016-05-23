@@ -1,5 +1,6 @@
 package com.esp.chatapp.Ui;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -82,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
+                if (s.toString().trim().length() > 0) {
                     view_email.setBackgroundColor(getResources().getColor(R.color.color_whitedark));
                 } else {
                     view_email.setBackgroundColor(getResources().getColor(R.color.color_red));
@@ -162,7 +163,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             valid = getResources().getString(R.string.validusername);
             this.edtEmial.requestFocus();
             this.edtEmial.setSelection(this.edtEmial.length());
-            edtEmial.startAnimation(shake);
+            ObjectAnimator
+                    .ofFloat(edtEmial, "translationX", 0, 25, -25, 25, -25, 15, -15, 6, -6, 0)
+                    .setDuration(1000)
+                    .start();
             view_email.setBackgroundColor(getResources().getColor(R.color.color_red));
 
         } else if (edtPassword.getText().toString().trim().equals("")
@@ -170,7 +174,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             valid = getResources().getString(R.string.validblankpassword);
             this.edtPassword.requestFocus();
             this.edtPassword.setSelection(this.edtPassword.length());
-            edtPassword.startAnimation(shake);
+            ObjectAnimator
+                    .ofFloat(edtPassword, "translationX", 0, 25, -25, 25, -25, 15, -15, 6, -6, 0)
+                    .setDuration(1000)
+                    .start();
             view_password.setBackgroundColor(getResources().getColor(R.color.color_red));
         }
         return valid;

@@ -33,7 +33,7 @@ public class ChangeProfileAPI {
     public ChangeProfileAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_CHANGE_PROFILE = Config.HOST + Config.API_CHANGE_PROFILE_JSON +Config.name+"="+userBean.name+"&"+Config.email+"="+userBean.email+"&"+Config.mobile+"="+userBean.mobile+"&"+Config.city+"="+userBean.city+"&"+Config.status+"="+userBean.status+"&"+Config.latlong+"="+userBean.latlong;
+        Config.API_CHANGE_PROFILE = Config.HOST + Config.API_CHANGE_PROFILE_JSON + Config.userid + "=" + Pref.getValue(context, Config.PREF_USER_ID, 0) + "&" + Config.name + "=" + userBean.name + "&" + Config.mobile + "=" + userBean.mobile + "&" + Config.city + "=" + userBean.city + "&" + Config.status + "=" + userBean.status;
         this.userBean = userBean;
 
         Log.print("::::  ::::" + Config.API_CHANGE_PROFILE);
@@ -99,14 +99,10 @@ public class ChangeProfileAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_EMAIL, userBean.email);
-                Pref.setValue(context, Config.PREF_MOBILE, userBean.mobile);
-                Pref.setValue(context, Config.PREF_NAME, userBean.name.equals("") ? Pref.getValue(context, Config.PREF_USERNAME, "") : userBean.name);
-                Pref.setValue(context, Config.PREF_CITY, userBean.city);
+                Pref.setValue(context, Config.PREF_MOBILE, userBean.mobile.toString().trim());
+                Pref.setValue(context, Config.PREF_NAME, userBean.name.toString().trim());
+                Pref.setValue(context, Config.PREF_CITY, userBean.city.toString().trim());
                 Pref.setValue(context, Config.PREF_STATUS, userBean.status);
-                Pref.setValue(context, Config.PREF_NOOFPOST, jsonObject.getInt(Config.no_post));
-                Pref.setValue(context, Config.PREF_NOOFFOLLOWER, jsonObject.getString(Config.no_follower).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_follower).split(",").length);
-                Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
             }
 
         } catch (Exception e) {

@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esp.chatapp.Backend.ResponseListener;
@@ -35,6 +36,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     private PostBean postBean;
     private Context context;
     private ChangeProfileAPI changeProfileAPI;
+    private LinearLayout myprogressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
         edtCity = (EditText) findViewById(R.id.edtCity);
         edtStatus = (EditText) findViewById(R.id.edtStatus);
         txtupdate = (TextView) findViewById(R.id.txtupdate);
+        myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
 
         if (getIntent().getExtras() != null) {
             postBean = (PostBean) getIntent().getSerializableExtra("beanData");
@@ -72,6 +75,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
                 String valid = validation();
                 if (valid == null) {
                     if (Utils.isOnline(context)) {
+                        myprogressBar.setVisibility(View.VISIBLE);
                         userBean = new UserBean();
                         userBean.name = edtName.getText().toString().trim();
                         userBean.email = edtEmail.getText().toString().trim();
@@ -98,16 +102,11 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
 
     public String validation() {
         String valid = null;
-        if (edtEmail.getText().toString().trim().equals("")
-                || edtEmail.getText().toString().trim().equals(null)) {
-            valid = getResources().getString(R.string.validblankemail);
-            this.edtEmail.requestFocus();
-            this.edtEmail.setSelection(this.edtEmail.length());
-        } else if (!Utils.EMAIL_ADDRESS_PATTERN.matcher(
-                edtEmail.getText().toString()).matches()) {
-            valid = getResources().getString(R.string.invalidblankemail);
-            this.edtEmail.requestFocus();
-            this.edtEmail.setSelection(this.edtEmail.length());
+        if (edtName.getText().toString().trim().equals("")
+                || edtName.getText().toString().trim().equals(null)) {
+            valid = getResources().getString(R.string.validname);
+            this.edtName.requestFocus();
+            this.edtName.setSelection(this.edtName.length());
         } else if (edtMobile.getText().toString().trim().equals("")
                 || edtMobile.getText().toString().trim().equals(null)) {
             valid = getResources().getString(R.string.validblankmobile);
@@ -137,13 +136,10 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     private ResponseListener responseListener = new ResponseListener() {
 
         public void onResponce(String tag, int result, Object obj) {
-
+            myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
-                if (tag == Config.TAG_REGISTRATION) {
-                    intent = new Intent(EditProfileActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    LoginActivity.activity.finish();
-                    finish();
+                if (tag == Config.TAG_CHANGE_PROFILE) {
+                    AlertDailogView.showAlert(EditProfileActivity.this, "Successfull update profile").show();
                 }
             } else {
                 AlertDailogView.showAlert(EditProfileActivity.this, obj.toString()).show();

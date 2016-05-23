@@ -19,6 +19,7 @@
 
 
     <!--LOGIN-->
+    <string name="validname">Name cannot be blank</string>
     <string name="validusername">Username cannot be blank</string>
     <string name="validblankpassword">Password cannot be blank</string>
     <string name="validblankemail">Email cannot be blank</string>

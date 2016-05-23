@@ -314,6 +314,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.imgAddComment:
                 if (edtComment.getText().toString().trim().length() > 0) {
                     if (Utils.isOnline(context)) {
+                        myprogressBar.setVisibility(View.VISIBLE);
                         addCommentAPI = new AddCommentAPI(context, responseListener, ((PostBean) txtUserName.getTag()).feedid, Uri.encode(edtComment.getText().toString().trim()));
                         addCommentAPI.execute();
                     }

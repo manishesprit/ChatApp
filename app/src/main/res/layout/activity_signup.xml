@@ -40,7 +40,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_gray"
-            android:hint="Name"
+            android:hint="Userame"
             android:padding="@dimen/padding_five"
             android:singleLine="true"
             android:textColor="@color/color_white"
@@ -48,8 +48,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_name"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
 
         <EditText
@@ -67,8 +68,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_password"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
 
         <EditText
@@ -86,8 +88,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_repassword"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
 
 
@@ -106,8 +109,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_email"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
 
         <EditText
@@ -126,8 +130,9 @@
             android:textSize="@dimen/extraMediumText" />
 
         <View
+            android:id="@+id/view_mobile"
             android:layout_width="fill_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:background="@color/color_whitedark"></View>
     </LinearLayout>
 
@@ -179,6 +184,21 @@
             android:layout_marginLeft="@dimen/padding_ten"
             android:padding="3dp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myprogressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
     </LinearLayout>
 
 </RelativeLayout>

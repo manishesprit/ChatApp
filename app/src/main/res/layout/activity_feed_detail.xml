@@ -174,53 +174,68 @@
 
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_below="@id/llFeedContain"
                 android:layout_marginLeft="@dimen/padding_ten"
                 android:layout_marginRight="@dimen/padding_ten"
+                android:elevation="3dp"
                 android:layout_marginTop="@dimen/padding_twenty"
-                android:background="@color/color_gray"
-                android:padding="@dimen/padding_five" />
+                android:layout_below="@id/llFeedContain"
+                android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/rlAddComment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/recyclerView"
-                android:layout_marginLeft="@dimen/padding_ten"
-                android:layout_marginRight="@dimen/padding_ten"
-                android:layout_marginBottom="@dimen/padding_ten"
-                android:elevation="2dp"
-                android:background="@color/color_gray"
-                android:padding="@dimen/padding_ten">
-
-                <ImageView
-                    android:id="@+id/imgAddComment"
-                    android:layout_width="@dimen/comment_avatar"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/send_dark" />
-
-                <EditText
-                    android:id="@+id/edtComment"
+                <TextView
+                    android:id="@+id/txtNooflikes"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/imgAddComment"
-                    android:background="@color/color_gray"
-                    android:hint="Write comment..."
-                    android:padding="@dimen/padding_five"
-                    android:singleLine="true"
+                    android:layout_gravity="right"
+                    android:background="@color/color_graydark"
+                    android:padding="@dimen/padding_ten"
                     android:textColor="@color/color_white"
-                    android:textColorHint="@color/color_whitedark"
                     android:textSize="@dimen/extraMediumText" />
-            </RelativeLayout>
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_below="@id/llFeedContain"
+                    android:background="@color/color_gray"
+                    android:padding="@dimen/padding_five" />
+
+                <RelativeLayout
+                    android:id="@+id/rlAddComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recyclerView"
+                    android:background="@color/color_gray"
+                    android:elevation="2dp"
+                    android:padding="@dimen/padding_ten">
+
+                    <ImageView
+                        android:id="@+id/imgAddComment"
+                        android:layout_width="@dimen/comment_avatar"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/send_dark" />
+
+                    <EditText
+                        android:id="@+id/edtComment"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/imgAddComment"
+                        android:background="@color/color_gray"
+                        android:hint="Write comment..."
+                        android:padding="@dimen/padding_five"
+                        android:singleLine="true"
+                        android:textColor="@color/color_white"
+                        android:textColorHint="@color/color_whitedark"
+                        android:textSize="@dimen/extraMediumText" />
+                </RelativeLayout>
+
+            </LinearLayout>
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
