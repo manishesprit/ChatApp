@@ -2,6 +2,7 @@ package com.esp.chatapp.Ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -77,11 +78,11 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
                     if (Utils.isOnline(context)) {
                         myprogressBar.setVisibility(View.VISIBLE);
                         userBean = new UserBean();
-                        userBean.name = edtName.getText().toString().trim();
+                        userBean.name = Uri.encode(edtName.getText().toString().trim());
                         userBean.email = edtEmail.getText().toString().trim();
                         userBean.mobile = edtMobile.getText().toString().trim();
-                        userBean.city = edtCity.getText().toString().trim();
-                        userBean.status = edtStatus.getText().toString().trim();
+                        userBean.city = Uri.encode(edtCity.getText().toString().trim());
+                        userBean.status = Uri.encode(edtStatus.getText().toString().trim());
                         userBean.udID = "";
                         userBean.latlong = "";
 

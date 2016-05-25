@@ -61,8 +61,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onPageSelected(int position) {
                 if (position == 1) {
-//                    ProfileFragment profileFragment = (ProfileFragment) adapter.getFragment(position);
-//                    profileFragment.onResume();
+                    ProfileFragment profileFragment = (ProfileFragment) adapter.getFragment(position);
+                    profileFragment.RefreshData();
                 }
             }
 

@@ -45,17 +45,7 @@ public class ProfileFragment extends Fragment {
         return mView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
+    public void RefreshData() {
         if (feedListAPI != null) {
             feedListAPI.doCancel();
         }
@@ -97,7 +87,13 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+    }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        RefreshData();
     }
 
     private ResponseListener responseListener = new ResponseListener() {

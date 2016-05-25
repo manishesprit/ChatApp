@@ -36,7 +36,7 @@ public class ChangeProfileAPI {
         Config.API_CHANGE_PROFILE = Config.HOST + Config.API_CHANGE_PROFILE_JSON + Config.userid + "=" + Pref.getValue(context, Config.PREF_USER_ID, 0) + "&" + Config.name + "=" + userBean.name + "&" + Config.mobile + "=" + userBean.mobile + "&" + Config.city + "=" + userBean.city + "&" + Config.status + "=" + userBean.status;
         this.userBean = userBean;
 
-        Log.print("::::  ::::" + Config.API_CHANGE_PROFILE);
+        Log.print("::::  API_CHANGE_PROFILE::::" + Config.API_CHANGE_PROFILE);
         this.responseListener = responseListener;
     }
 

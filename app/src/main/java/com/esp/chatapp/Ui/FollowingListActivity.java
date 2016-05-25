@@ -24,6 +24,8 @@ import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class FollowingListActivity extends AppCompatActivity implements OnPopUpDialogButoonClickListener {
 
@@ -106,6 +108,15 @@ public class FollowingListActivity extends AppCompatActivity implements OnPopUpD
 
                     followingBeanArrayList = (ArrayList<UserBean>) obj;
                     if (followingBeanArrayList.size() > 0) {
+
+                        Collections.sort(followingBeanArrayList, new Comparator<UserBean>() {
+                                    @Override
+                                    public int compare(UserBean lhs, UserBean rhs) {
+                                        return lhs.name.compareToIgnoreCase(rhs.name);
+                                    }
+                                }
+                        );
+
                         followingRecyclerAdapter = new FollowingRecyclerAdapter(context, followingBeanArrayList);
                         recyclerView.setAdapter(followingRecyclerAdapter);
                         txtnoSearchdata.setVisibility(View.GONE);
