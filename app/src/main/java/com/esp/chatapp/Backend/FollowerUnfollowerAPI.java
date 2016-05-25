@@ -21,24 +21,24 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class FollowUnfollowAPI {
+public class FollowerUnfollowerAPI {
     private Context context;
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
     private ResponseListener responseListener;
 
 
-    public FollowUnfollowAPI(Context context, ResponseListener responseListener, int friendid, int isfollow) {
+    public FollowerUnfollowerAPI(Context context, ResponseListener responseListener, int friendid, int isfollower) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_FOLLOW_UNFOLLOW = Config.HOST + Config.API_FOLLOW_UNFOLLOW_JSON + Config.userid + "=" + String.valueOf(Pref.getValue(context, Config.PREF_USER_ID, 0)) + "&" + Config.friendid + "=" + friendid + "&" + Config.isfollow + "=" + isfollow;
-        Log.print(":::: API_FOLLOW_UNFOLLOW ::::" + Config.API_FOLLOW_UNFOLLOW);
+        Config.API_FOLLOWER_UNFOLLOWER = Config.HOST + Config.API_FOLLOWER_UNFOLLOWER_JSON + Config.userid + "=" + String.valueOf(Pref.getValue(context, Config.PREF_USER_ID, 0)) + "&" + Config.friendid + "=" + friendid + "&" + Config.isfollower + "=" + isfollower;
+        Log.print(":::: API_FOLLOWER_UNFOLLOWER ::::" + Config.API_FOLLOWER_UNFOLLOWER);
         this.responseListener = responseListener;
     }
 
     public void execute() {
         this.mAdapter = new Adapter(this.context);
-        this.mAdapter.doGet(Config.TAG_FOLLOW_UNFOLLOW, Config.API_FOLLOW_UNFOLLOW, mParams,
+        this.mAdapter.doGet(Config.TAG_FOLLOWER_UNFOLLOWER, Config.API_FOLLOWER_UNFOLLOWER, mParams,
                 new APIResponseListener() {
 
                     @Override
@@ -75,7 +75,7 @@ public class FollowUnfollowAPI {
                             //
                         }
                         // Inform Caller that the API call is failed
-                        responseListener.onResponce(Config.TAG_FOLLOW_UNFOLLOW, Config.API_FAIL, context.getResources()
+                        responseListener.onResponce(Config.TAG_FOLLOWER_UNFOLLOWER, Config.API_FAIL, context.getResources()
                                 .getString(
                                         R.string.connectionErrorMessage));
                     }
@@ -117,13 +117,13 @@ public class FollowUnfollowAPI {
     private void doCallBack(int code, String mesg) {
         try {
             if (code == 0) {
-                responseListener.onResponce(Config.TAG_FOLLOW_UNFOLLOW,
+                responseListener.onResponce(Config.TAG_FOLLOWER_UNFOLLOWER,
                         Config.API_SUCCESS, mesg);
             } else if (code > 0) {
-                responseListener.onResponce(Config.TAG_FOLLOW_UNFOLLOW,
+                responseListener.onResponce(Config.TAG_FOLLOWER_UNFOLLOWER,
                         Config.API_FAIL, mesg);
             } else if (code < 0) {
-                responseListener.onResponce(Config.TAG_FOLLOW_UNFOLLOW,
+                responseListener.onResponce(Config.TAG_FOLLOWER_UNFOLLOWER,
                         Config.API_FAIL, mesg);
             }
         } catch (Exception e) {
@@ -137,7 +137,7 @@ public class FollowUnfollowAPI {
      */
     public void doCancel() {
         if (mAdapter != null) {
-            mAdapter.doCancel(Config.TAG_FOLLOW_UNFOLLOW);
+            mAdapter.doCancel(Config.TAG_FOLLOWER_UNFOLLOWER);
         }
     }
 }

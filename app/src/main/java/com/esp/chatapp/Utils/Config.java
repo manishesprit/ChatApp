@@ -75,9 +75,13 @@ public class Config {
     public static String API_CHANGE_AVATAR_JSON = "change_avatar.php";
     public static String TAG_CHANGE_AVATAR = "TAG_CHANGE_AVATAR";
 
-    public static String API_FOLLOW_UNFOLLOW = "";
-    public static String API_FOLLOW_UNFOLLOW_JSON = "follow_unfollow.php?";
-    public static String TAG_FOLLOW_UNFOLLOW = "TAG_FOLLOW_UNFOLLOW";
+    public static String API_FOLLOWING_UNFOLLOWING = "";
+    public static String API_FOLLOWING_UNFOLLOWING_JSON = "following_unfollowing.php?";
+    public static String TAG_FOLLOWING_UNFOLLOWING = "TAG_FOLLOWING_UNFOLLOWING";
+
+    public static String API_FOLLOWER_UNFOLLOWER = "";
+    public static String API_FOLLOWER_UNFOLLOWER_JSON = "follower_unfollower.php?";
+    public static String TAG_FOLLOWER_UNFOLLOWER = "TAG_FOLLOWER_UNFOLLOWER";
 
     public static String API_FOLLOWER_LIST = "";
     public static String API_FOLLOWER_LIST_JSON = "follower_list.php?";
@@ -165,7 +169,8 @@ public class Config {
     public static String avatar = "avatar";
     public static String avatarfile = "avatarfile";
     public static String feedfile = "feedfile";
-    public static String isfollow = "isfollow";
+    public static String isfollowing = "isfollowing";
+    public static String isfollower = "isfollower";
     public static String islike = "islike";
     public static String posttime = "posttime";
     public static String id = "id";

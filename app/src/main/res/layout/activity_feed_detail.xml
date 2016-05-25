@@ -177,11 +177,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
+                android:layout_below="@id/llFeedContain"
                 android:layout_marginLeft="@dimen/padding_ten"
                 android:layout_marginRight="@dimen/padding_ten"
-                android:elevation="3dp"
                 android:layout_marginTop="@dimen/padding_twenty"
-                android:layout_below="@id/llFeedContain"
+                android:elevation="3dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -189,7 +189,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:background="@color/color_graydark"
+                    android:background="@color/color_bluedark"
                     android:padding="@dimen/padding_ten"
                     android:textColor="@color/color_white"
                     android:textSize="@dimen/extraMediumText" />
@@ -207,7 +207,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/recyclerView"
-                    android:background="@color/color_gray"
+                    android:background="@color/color_graydark"
                     android:elevation="2dp"
                     android:padding="@dimen/padding_ten">
 
@@ -226,7 +226,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/imgAddComment"
-                        android:background="@color/color_gray"
+                        android:background="@color/color_graydark"
                         android:hint="Write comment..."
                         android:padding="@dimen/padding_five"
                         android:singleLine="true"

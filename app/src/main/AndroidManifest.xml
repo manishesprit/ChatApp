@@ -41,7 +41,7 @@
             android:name=".Ui.ProfileDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Ui.MoreActivity"
+            android:name=".Ui.SettingActivity"
             android:screenOrientation="portrait" />
 
         <activity

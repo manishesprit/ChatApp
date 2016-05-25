@@ -134,33 +134,28 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         holder.llComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
                     Intent intent = new Intent(context, FeedDetailActivity.class);
                     intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
                     context.startActivity(intent);
-                }
             }
         });
 
         holder.txtCaption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
                     Intent intent = new Intent(context, FeedDetailActivity.class);
                     intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
                     context.startActivity(intent);
-                }
             }
         });
 
         holder.imgFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((PostBean) holder.txtUserName.getTag()).noOflike > 0) {
                     Intent intent = new Intent(context, FeedDetailActivity.class);
                     intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
                     context.startActivity(intent);
-                }
+
             }
         });
 

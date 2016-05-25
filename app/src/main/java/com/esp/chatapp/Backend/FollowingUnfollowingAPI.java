@@ -12,39 +12,33 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.esp.chatapp.Adapter.Adapter;
-import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
 import com.esp.chatapp.Utils.Pref;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SearchListAPI {
+public class FollowingUnfollowingAPI {
     private Context context;
     private HashMap<String, String> mParams = null;
     private Adapter mAdapter = null;
     private ResponseListener responseListener;
-    private UserBean userBean;
-    private ArrayList<UserBean> userBeanArrayList;
 
 
-    public SearchListAPI(Context context, ResponseListener responseListener, String searchtext) {
+    public FollowingUnfollowingAPI(Context context, ResponseListener responseListener, int friendid, int isfollowing) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_SEARCH_LIST = Config.HOST + Config.API_SEARCH_LIST_JSON + Config.userid + "=" + Pref.getValue(context, Config.PREF_USER_ID, 0) + "&" + Config.search_text + "=" + searchtext;
-
-        Log.print(":::: API_SEARCH_LIST ::::" + Config.API_SEARCH_LIST);
+        Config.API_FOLLOWING_UNFOLLOWING = Config.HOST + Config.API_FOLLOWING_UNFOLLOWING_JSON + Config.userid + "=" + String.valueOf(Pref.getValue(context, Config.PREF_USER_ID, 0)) + "&" + Config.friendid + "=" + friendid + "&" + Config.isfollowing + "=" + isfollowing;
+        Log.print(":::: API_FOLLOWING_UNFOLLOWING ::::" + Config.API_FOLLOWING_UNFOLLOWING);
         this.responseListener = responseListener;
     }
 
     public void execute() {
         this.mAdapter = new Adapter(this.context);
-        this.mAdapter.doGet(Config.TAG_SEARCH_LIST, Config.API_SEARCH_LIST, mParams,
+        this.mAdapter.doGet(Config.TAG_FOLLOWING_UNFOLLOWING, Config.API_FOLLOWING_UNFOLLOWING, mParams,
                 new APIResponseListener() {
 
                     @Override
@@ -81,7 +75,7 @@ public class SearchListAPI {
                             //
                         }
                         // Inform Caller that the API call is failed
-                        responseListener.onResponce(Config.TAG_SEARCH_LIST, Config.API_FAIL, context.getResources()
+                        responseListener.onResponce(Config.TAG_FOLLOWING_UNFOLLOWING, Config.API_FAIL, context.getResources()
                                 .getString(
                                         R.string.connectionErrorMessage));
                     }
@@ -100,22 +94,6 @@ public class SearchListAPI {
             jsonObject = new JSONObject(response);
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
-            if (code == 0) {
-
-                userBeanArrayList = new ArrayList<>();
-                JSONArray feedListArray = jsonObject.getJSONArray(Config.searchlist);
-                if (feedListArray != null && feedListArray.length() > 0) {
-                    for (int i = 0; i < feedListArray.length(); i++) {
-                        JSONObject jsonObject1 = feedListArray.getJSONObject(i);
-                        userBean = new UserBean();
-                        userBean.userid = jsonObject1.getInt(Config.userid);
-                        userBean.name = jsonObject1.getString(Config.name);
-                        userBean.avatar = jsonObject1.getString(Config.avatar);
-                        userBean.isFollow=jsonObject1.getBoolean(Config.isfollowing);
-                        userBeanArrayList.add(userBean);
-                    }
-                }
-            }
 
         } catch (Exception e) {
             code = -1;
@@ -124,7 +102,7 @@ public class SearchListAPI {
             Log.error(this.getClass() + " :: Exception :: ", e);
             Log.print(this.getClass() + " :: Exception :: ", e);
         }
-        doCallBack(code, mesg, userBeanArrayList);
+        doCallBack(code, mesg);
 
         /** release variables */
         response = null;
@@ -136,16 +114,16 @@ public class SearchListAPI {
      *
      * Status: Successful or Failure Message: Its an Object, if required
      */
-    private void doCallBack(int code, String mesg, ArrayList<UserBean> userBeanArrayList) {
+    private void doCallBack(int code, String mesg) {
         try {
             if (code == 0) {
-                responseListener.onResponce(Config.TAG_SEARCH_LIST,
-                        Config.API_SUCCESS, userBeanArrayList);
+                responseListener.onResponce(Config.TAG_FOLLOWING_UNFOLLOWING,
+                        Config.API_SUCCESS, mesg);
             } else if (code > 0) {
-                responseListener.onResponce(Config.TAG_SEARCH_LIST,
+                responseListener.onResponce(Config.TAG_FOLLOWING_UNFOLLOWING,
                         Config.API_FAIL, mesg);
             } else if (code < 0) {
-                responseListener.onResponce(Config.TAG_SEARCH_LIST,
+                responseListener.onResponce(Config.TAG_FOLLOWING_UNFOLLOWING,
                         Config.API_FAIL, mesg);
             }
         } catch (Exception e) {
@@ -159,7 +137,7 @@ public class SearchListAPI {
      */
     public void doCancel() {
         if (mAdapter != null) {
-            mAdapter.doCancel(Config.TAG_SEARCH_LIST);
+            mAdapter.doCancel(Config.TAG_FOLLOWING_UNFOLLOWING);
         }
     }
 }

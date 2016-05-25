@@ -66,6 +66,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
     private EditText edtComment;
     private ImageView imgAdd;
     private AddCommentAPI addCommentAPI;
+    private TextView txtNooflikes;
 
 
     @Override
@@ -81,6 +82,8 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+        txtNooflikes = (TextView) findViewById(R.id.txtNooflikes);
 
         imgAvatar = (ImageView) findViewById(R.id.imgAvatar);
         txtUserName = (TextView) findViewById(R.id.txtUserName);
@@ -166,9 +169,14 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
                     edtComment.setText("");
                     imgAdd.setImageResource(R.drawable.send_dark);
                     postBean.commentBeanArrayList = (ArrayList<CommentBean>) obj;
+                    txtNoComment.setText("" + postBean.commentBeanArrayList.size());
                     if (postBean.commentBeanArrayList.size() > 0) {
+                        txtNooflikes.setVisibility(View.VISIBLE);
+                        txtNooflikes.setText(postBean.commentBeanArrayList.size() + " People comment");
                         commentRecyclerAdapter = new CommentRecyclerAdapter(context, postBean.commentBeanArrayList);
                         recyclerView.setAdapter(commentRecyclerAdapter);
+                    } else {
+                        txtNooflikes.setVisibility(View.GONE);
                     }
                 }
             } else {
@@ -196,7 +204,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         txtUserName.setTag(postBean);
         txtFeedTime.setText(postBean.posttime);
         txtNolike.setText("" + postBean.noOflike);
-        txtNoComment.setText("" + postBean.noOfcomment);
+        txtNoComment.setText("" + postBean.commentBeanArrayList.size());
 
 
         if (postBean.caption.trim().toString().equalsIgnoreCase("")) {
@@ -222,8 +230,12 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         imgLikeUnlike.setImageResource(postBean.islike == true ? R.drawable.love_white_filled : R.drawable.love_gray);
 
         if (postBean.commentBeanArrayList.size() > 0) {
+            txtNooflikes.setVisibility(View.VISIBLE);
+            txtNooflikes.setText(postBean.commentBeanArrayList.size() + " People comment");
             commentRecyclerAdapter = new CommentRecyclerAdapter(context, postBean.commentBeanArrayList);
             recyclerView.setAdapter(commentRecyclerAdapter);
+        } else {
+            txtNooflikes.setVisibility(View.GONE);
         }
 
     }

@@ -139,7 +139,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (item.getItemId()) {
             case R.id.action_setting:
-                intent = new Intent(context, MoreActivity.class);
+                intent = new Intent(context, SettingActivity.class);
                 startActivity(intent);
                 break;
 

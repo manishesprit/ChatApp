@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esp.chatapp.Adapter.SearchRecyclerAdapter;
-import com.esp.chatapp.Backend.FollowUnfollowAPI;
+import com.esp.chatapp.Backend.FollowingUnfollowingAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Backend.SearchListAPI;
 import com.esp.chatapp.Bean.UserBean;
@@ -45,7 +45,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private ArrayList<UserBean> searchBeanArrayList;
     private LinearLayout myprogressBar;
     private UserBean userBean;
-    private FollowUnfollowAPI followUnfollowAPI;
+    private FollowingUnfollowingAPI followingUnfollowingAPI;
     private String searchstr = "";
 
     @Override
@@ -139,7 +139,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                         txtnoofsearch.setVisibility(View.GONE);
                     }
                 }
-                if (tag == Config.TAG_FOLLOW_UNFOLLOW) {
+                if (tag == Config.TAG_FOLLOWING_UNFOLLOWING) {
                     userBean.isFollow = userBean.isFollow == true ? false : true;
                     searchRecyclerAdapter.notifyDataSetChanged();
                 }
@@ -178,8 +178,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private void Call_Follow_Unfollow() {
         if (Utils.isOnline(context)) {
             myprogressBar.setVisibility(View.VISIBLE);
-            followUnfollowAPI = new FollowUnfollowAPI(context, responseListener, userBean.userid, userBean.isFollow == true ? 1 : 0);
-            followUnfollowAPI.execute();
+            followingUnfollowingAPI = new FollowingUnfollowingAPI(context, responseListener, userBean.userid, userBean.isFollow == true ? 1 : 0);
+            followingUnfollowingAPI.execute();
         } else {
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
         }

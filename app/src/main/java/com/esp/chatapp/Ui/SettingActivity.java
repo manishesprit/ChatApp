@@ -20,7 +20,7 @@ import com.esp.chatapp.R;
 /**
  * Created by admin on 2/5/16.
  */
-public class MoreActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private EditText inputName, inputEmail, inputPassword;
@@ -37,7 +37,7 @@ public class MoreActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("More");
+        setTitle("Set");
 
         inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
