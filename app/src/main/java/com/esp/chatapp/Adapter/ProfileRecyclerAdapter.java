@@ -73,7 +73,6 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
             if (!((PostBean) headerHolder.txtName.getTag()).avatar.toString().equalsIgnoreCase("")) {
-                System.out.println("==========AVATAR=====" + Config.IMAGE_PATH_WEB_AVATARS + ((PostBean) headerHolder.txtName.getTag()).avatar.toString());
                 Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + ((PostBean) headerHolder.txtName.getTag()).avatar.toString())
                         .asBitmap()
                         .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
@@ -92,7 +91,6 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         Intent intent = new Intent(context, ChangeAvatarActivity.class);
-                        intent.putExtra("beanData", (PostBean) headerHolder.txtName.getTag());
                         context.startActivity(intent);
                     } else {
                         Intent intent = new Intent(context, ProfileDetailActivity.class);
@@ -108,7 +106,6 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         Intent intent = new Intent(context, EditProfileActivity.class);
-                        intent.putExtra("beanData", (PostBean) headerHolder.txtName.getTag());
                         context.startActivity(intent);
                     } else {
                         Intent intent = new Intent(context, ProfileDetailActivity.class);
@@ -122,11 +119,11 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View v) {
 //                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
-                        if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
-                            Intent intent = new Intent(context, FollowerListActivity.class);
-                            intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
-                            context.startActivity(intent);
-                        }
+                    if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
+                        Intent intent = new Intent(context, FollowerListActivity.class);
+                        intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
+                        context.startActivity(intent);
+                    }
 //                    }
                 }
             });
@@ -135,11 +132,11 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View v) {
 //                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
-                        if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
-                            Intent intent = new Intent(context, FollowingListActivity.class);
-                            intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
-                            context.startActivity(intent);
-                        }
+                    if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
+                        Intent intent = new Intent(context, FollowingListActivity.class);
+                        intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
+                        context.startActivity(intent);
+                    }
 //                    }
                 }
             });

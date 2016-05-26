@@ -29,6 +29,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Setting");
 
         txtEditProfile = (TextView) findViewById(R.id.txtEditProfile);
@@ -59,7 +60,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtEditProfile:
-
+                intent = new Intent(SettingActivity.this, EditProfileActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.txtLogout:

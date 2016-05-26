@@ -28,12 +28,12 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Backend.ChangeAvatarAPI;
 import com.esp.chatapp.Backend.ResponseListener;
-import com.esp.chatapp.Bean.PostBean;
 import com.esp.chatapp.CropImage.CropImage;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 import java.io.File;
@@ -52,7 +52,6 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
     private TextView txtMobile;
     private TextView txtStatus;
     private Context context;
-    private PostBean postBean;
 
     int OPEN_GALLARY_CODE = 200;
     int OPEN_CAMARA_CODE = 400;
@@ -78,16 +77,11 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
         txtStatus = (TextView) findViewById(R.id.txtStatus);
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
 
-        if (getIntent().getExtras() != null) {
-            postBean = (PostBean) getIntent().getSerializableExtra("beanData");
-        } else {
-            finish();
-        }
 
         Utils.setDefaultRoundImage(context, imgProfileAvatar, R.drawable.default_user);
 
-        if (!postBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + postBean.avatar)
+        if (!Pref.getValue(context,Config.PREF_AVATAR,"").toString().trim().equalsIgnoreCase("")) {
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + Pref.getValue(context,Config.PREF_AVATAR,""))
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -99,8 +93,8 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
             });
         }
 
-        txtMobile.setText(postBean.mobile);
-        txtStatus.setText(postBean.status);
+        txtMobile.setText(Pref.getValue(context,Config.PREF_MOBILE,""));
+        txtStatus.setText(Pref.getValue(context,Config.PREF_STATUS,""));
 
         imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
             @Override

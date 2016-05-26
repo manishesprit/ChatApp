@@ -13,14 +13,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Backend.ChangeProfileAPI;
-import com.esp.chatapp.Bean.PostBean;
+import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 public class EditProfileActivity extends AppCompatActivity implements OnPopUpDialogButoonClickListener {
@@ -34,7 +34,6 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     private TextView txtupdate;
     private Intent intent;
     private UserBean userBean;
-    private PostBean postBean;
     private Context context;
     private ChangeProfileAPI changeProfileAPI;
     private LinearLayout myprogressBar;
@@ -57,17 +56,12 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
         txtupdate = (TextView) findViewById(R.id.txtupdate);
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
 
-        if (getIntent().getExtras() != null) {
-            postBean = (PostBean) getIntent().getSerializableExtra("beanData");
-        } else {
-            finish();
-        }
 
-        edtName.setText(postBean.name);
-        edtEmail.setText(postBean.email);
-        edtMobile.setText(postBean.mobile);
-        edtCity.setText(postBean.city);
-        edtStatus.setText(postBean.status);
+        edtName.setText(Pref.getValue(context, Config.PREF_NAME, ""));
+        edtEmail.setText(Pref.getValue(context, Config.PREF_EMAIL, ""));
+        edtMobile.setText(Pref.getValue(context, Config.PREF_MOBILE, ""));
+        edtCity.setText(Pref.getValue(context, Config.PREF_CITY, ""));
+        edtStatus.setText(Pref.getValue(context, Config.PREF_STATUS, ""));
 
         txtupdate.setOnClickListener(new View.OnClickListener() {
             @Override
