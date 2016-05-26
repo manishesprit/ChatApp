@@ -17,6 +17,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -63,6 +64,11 @@ public class FollowingRecyclerAdapter extends RecyclerView.Adapter<FollowingRecy
         holder.txtUserName.setText(userBean.name);
         holder.txtUserName.setTag(userBean);
         holder.txtfollowUnfollow.setText(userBean.isFollowing == true ? "Unfollow" : "Follow");
+        if (userBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+            holder.txtfollowUnfollow.setVisibility(View.GONE);
+        } else {
+            holder.txtfollowUnfollow.setVisibility(View.VISIBLE);
+        }
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

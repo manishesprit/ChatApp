@@ -165,7 +165,7 @@ public class FollowingListActivity extends AppCompatActivity {
 
             if (id == R.id.txtfollowUnfollow) {
                 userBean = (UserBean) object;
-                AlertDailogView.showAlert(context, "Alert", userBean.name +(userBean.isFollowing==true?" unfollow ?":" follow ?"), "Cancel", true,(userBean.isFollowing==true?" Unfollow ?":"Follow"), onPopUpDialogButoonClickListener, 1).show();
+                AlertDailogView.showAlert(context, "Alert", userBean.name +(userBean.isFollowing==true?" unfollow ?":" follow ?"), "Cancel", true,(userBean.isFollowing==true?"Unfollow":"Follow"), onPopUpDialogButoonClickListener, 1).show();
             }
             return false;
         }

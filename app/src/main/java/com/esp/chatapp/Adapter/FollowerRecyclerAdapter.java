@@ -18,6 +18,7 @@ import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -63,6 +64,13 @@ public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecycl
 
         holder.txtUserName.setText(userBean.name);
         holder.txtUserName.setTag(userBean);
+        holder.txtfollowUnfollow.setText(userBean.isFollower == true ? "Unfollow" : "Follow");
+        if (userBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0) || userBean.isFollower == false) {
+            holder.txtfollowUnfollow.setVisibility(View.GONE);
+        } else {
+            holder.txtfollowUnfollow.setVisibility(View.VISIBLE);
+        }
+
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -17,6 +17,7 @@ import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Log;
+import com.esp.chatapp.Utils.Pref;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,7 +36,7 @@ public class FollowerListAPI {
     public FollowerListAPI(Context context, ResponseListener responseListener, int userid) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_FOLLOWER_LIST = Config.HOST + Config.API_FOLLOWER_LIST_JSON + Config.userid + "=" + userid;
+        Config.API_FOLLOWER_LIST = Config.HOST + Config.API_FOLLOWER_LIST_JSON +Config.userid + "=" + Pref.getValue(context, Config.PREF_USER_ID, 0)+"&"+Config.friendid + "=" + userid;
 
         Log.print(":::: API_FOLLOWER_LIST ::::" + Config.API_FOLLOWER_LIST);
         this.responseListener = responseListener;
@@ -112,7 +113,7 @@ public class FollowerListAPI {
                         userBean.userid = jsonObject1.getInt(Config.userid);
                         userBean.name = jsonObject1.getString(Config.name);
                         userBean.avatar = jsonObject1.getString(Config.avatar);
-                        userBean.isFollower = true;
+                        userBean.isFollower = jsonObject1.getBoolean(Config.isfollower);
                         followerBeanArrayList.add(userBean);
                     }
                 }

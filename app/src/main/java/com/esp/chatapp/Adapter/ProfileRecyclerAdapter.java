@@ -121,26 +121,26 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             headerHolder.llFollower.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+//                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
                             Intent intent = new Intent(context, FollowerListActivity.class);
                             intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
                             context.startActivity(intent);
                         }
-                    }
+//                    }
                 }
             });
 
             headerHolder.llFollowing.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+//                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                         if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
                             Intent intent = new Intent(context, FollowingListActivity.class);
                             intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
                             context.startActivity(intent);
                         }
-                    }
+//                    }
                 }
             });
 
