@@ -21,43 +21,23 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
     <RelativeLayout
-        android:id="@+id/rlmain"
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:padding="@dimen/padding_five"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
         <TextView
-            android:id="@+id/txtnoSearchdata"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="No search data"
+            android:text="Edit Profile"
+            android:padding="@dimen/padding_ten"
             android:textColor="@color/color_white"
-            android:visibility="gone" />
-
-
-        <LinearLayout
-            android:id="@+id/myprogressBar"
+            android:textSize="@dimen/extraMediumText"
+            android:layout_margin="@dimen/padding_ten"
+            android:background="@drawable/corner_drawable_dark"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#80000000"
-            android:gravity="center"
-            android:visibility="gone">
+            android:layout_height="wrap_content" />
 
-            <ProgressBar
-                style="@style/Base.Widget.AppCompat.ProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible" />
-        </LinearLayout>
 
     </RelativeLayout>
-
 </android.support.design.widget.CoordinatorLayout>

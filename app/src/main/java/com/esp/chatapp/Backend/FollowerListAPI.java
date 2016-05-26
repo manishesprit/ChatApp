@@ -32,7 +32,7 @@ public class FollowerListAPI {
     private UserBean userBean;
     private ArrayList<UserBean> followerBeanArrayList;
 
-    public FollowerListAPI(Context context, ResponseListener responseListener,int userid) {
+    public FollowerListAPI(Context context, ResponseListener responseListener, int userid) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
         Config.API_FOLLOWER_LIST = Config.HOST + Config.API_FOLLOWER_LIST_JSON + Config.userid + "=" + userid;
@@ -112,6 +112,7 @@ public class FollowerListAPI {
                         userBean.userid = jsonObject1.getInt(Config.userid);
                         userBean.name = jsonObject1.getString(Config.name);
                         userBean.avatar = jsonObject1.getString(Config.avatar);
+                        userBean.isFollower = true;
                         followerBeanArrayList.add(userBean);
                     }
                 }

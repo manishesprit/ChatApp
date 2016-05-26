@@ -27,10 +27,12 @@ public class FollowingRecyclerAdapter extends RecyclerView.Adapter<FollowingRecy
     private ArrayList<UserBean> mItemList;
     private Context context;
     private UserBean userBean;
+    private MyOnClickListner myOnClickListner;
 
-    public FollowingRecyclerAdapter(Context context, ArrayList<UserBean> itemList) {
+    public FollowingRecyclerAdapter(Context context, ArrayList<UserBean> itemList, MyOnClickListner myOnClickListner) {
         this.mItemList = itemList;
         this.context = context;
+        this.myOnClickListner = myOnClickListner;
     }
 
     @Override
@@ -46,7 +48,7 @@ public class FollowingRecyclerAdapter extends RecyclerView.Adapter<FollowingRecy
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!userBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+userBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + userBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -60,6 +62,7 @@ public class FollowingRecyclerAdapter extends RecyclerView.Adapter<FollowingRecy
 
         holder.txtUserName.setText(userBean.name);
         holder.txtUserName.setTag(userBean);
+        holder.txtfollowUnfollow.setText(userBean.isFollowing == true ? "Unfollow" : "Follow");
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +84,13 @@ public class FollowingRecyclerAdapter extends RecyclerView.Adapter<FollowingRecy
 //                }
             }
         });
+
+        holder.txtfollowUnfollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myOnClickListner.IsClick(R.id.txtfollowUnfollow, holder.txtUserName.getTag());
+            }
+        });
     }
 
 
@@ -94,6 +104,7 @@ public class FollowingRecyclerAdapter extends RecyclerView.Adapter<FollowingRecy
         private ImageView imgAvatar;
         private TextView txtUserName;
         private TextView txtfollowUnfollow;
+
         public LikeBeanHolder(View itemView) {
             super(itemView);
             imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);

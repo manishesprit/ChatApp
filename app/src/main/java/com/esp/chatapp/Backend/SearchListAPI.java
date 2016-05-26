@@ -111,7 +111,7 @@ public class SearchListAPI {
                         userBean.userid = jsonObject1.getInt(Config.userid);
                         userBean.name = jsonObject1.getString(Config.name);
                         userBean.avatar = jsonObject1.getString(Config.avatar);
-                        userBean.isFollow=jsonObject1.getBoolean(Config.isfollowing);
+                        userBean.isFollowing =jsonObject1.getBoolean(Config.isfollowing);
                         userBeanArrayList.add(userBean);
                     }
                 }

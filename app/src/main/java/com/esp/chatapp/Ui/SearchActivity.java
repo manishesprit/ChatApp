@@ -140,7 +140,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 }
                 if (tag == Config.TAG_FOLLOWING_UNFOLLOWING) {
-                    userBean.isFollow = userBean.isFollow == true ? false : true;
+                    userBean.isFollowing = userBean.isFollowing == true ? false : true;
                     searchRecyclerAdapter.notifyDataSetChanged();
                 }
             } else {
@@ -178,7 +178,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private void Call_Follow_Unfollow() {
         if (Utils.isOnline(context)) {
             myprogressBar.setVisibility(View.VISIBLE);
-            followingUnfollowingAPI = new FollowingUnfollowingAPI(context, responseListener, userBean.userid, userBean.isFollow == true ? 1 : 0);
+            followingUnfollowingAPI = new FollowingUnfollowingAPI(context, responseListener, userBean.userid, userBean.isFollowing == true ? 1 : 0);
             followingUnfollowingAPI.execute();
         } else {
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();

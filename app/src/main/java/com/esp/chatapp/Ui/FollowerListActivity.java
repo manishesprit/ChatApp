@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esp.chatapp.Adapter.FollowerRecyclerAdapter;
+import com.esp.chatapp.Adapter.MyOnClickListner;
 import com.esp.chatapp.Backend.FollowerListAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class FollowerListActivity extends AppCompatActivity implements OnPopUpDialogButoonClickListener {
+public class FollowerListActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private Intent intent;
@@ -39,6 +40,8 @@ public class FollowerListActivity extends AppCompatActivity implements OnPopUpDi
     private ArrayList<UserBean> followerBeanArrayList;
     private LinearLayout myprogressBar;
     private TextView txtnoSearchdata;
+
+    private UserBean userBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +76,7 @@ public class FollowerListActivity extends AppCompatActivity implements OnPopUpDi
             followerListAPI = new FollowerListAPI(context, responseListener, getIntent().getIntExtra("userid", 0));
             followerListAPI.execute();
         } else {
-            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", onPopUpDialogButoonClickListener, 0).show();
         }
     }
 
@@ -117,7 +120,7 @@ public class FollowerListActivity extends AppCompatActivity implements OnPopUpDi
                                 }
                         );
 
-                        followerRecyclerAdapter = new FollowerRecyclerAdapter(context, followerBeanArrayList);
+                        followerRecyclerAdapter = new FollowerRecyclerAdapter(context, followerBeanArrayList, myOnClickListner);
                         recyclerView.setAdapter(followerRecyclerAdapter);
                         txtnoSearchdata.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
@@ -130,12 +133,27 @@ public class FollowerListActivity extends AppCompatActivity implements OnPopUpDi
         }
     };
 
-    @Override
-    public void OnButtonClick(int tag, int buttonIndex, String input) {
-        if (tag == 0) {
-            if (buttonIndex == 2) {
-                Call_Follower();
+    private OnPopUpDialogButoonClickListener onPopUpDialogButoonClickListener = new OnPopUpDialogButoonClickListener() {
+        @Override
+        public void OnButtonClick(int tag, int buttonIndex, String input) {
+            if (tag == 0) {
+                if (buttonIndex == 2) {
+                    Call_Follower();
+                }
             }
         }
-    }
+    };
+
+    MyOnClickListner myOnClickListner = new MyOnClickListner() {
+        @Override
+        public boolean IsClick(int id, Object object) {
+
+            if (id == R.id.txtfollowUnfollow) {
+                userBean = (UserBean) object;
+                AlertDailogView.showAlert(context, "Alert", userBean.name + " unfollow ?", "Cancel", true, "Unfollow", onPopUpDialogButoonClickListener, 1).show();
+            }
+            return false;
+        }
+
+    };
 }

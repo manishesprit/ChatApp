@@ -138,11 +138,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     MyOnClickListner myOnClickListner = new MyOnClickListner() {
         @Override
-        public boolean IsClick(int id, PostBean postBean1) {
+        public boolean IsClick(int id, Object object) {
             if (id == R.id.imgLikeUnlike) {
                 if (Utils.isOnline(context)) {
                     myprogressBar.setVisibility(View.VISIBLE);
-                    postBean = postBean1;
+                    postBean = (PostBean) object;
                     likeUnlikeAPI = new LikeUnlikeAPI(context, responseListener, postBean.feedid);
                     likeUnlikeAPI.execute();
                 }

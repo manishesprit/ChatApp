@@ -147,11 +147,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(context, SearchActivity.class);
                 startActivity(intent);
                 break;
-
-            case R.id.action_status:
-
-                break;
-
         }
         return true;
     }

@@ -196,7 +196,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myOnClickListner.IsClick(R.id.imgLikeUnlike, (PostBean) holder.txtUserName.getTag());
+                    myOnClickListner.IsClick(R.id.imgLikeUnlike, holder.txtUserName.getTag());
                 }
             });
 

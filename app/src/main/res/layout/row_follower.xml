@@ -44,15 +44,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/padding_ten"
-            android:background="@color/color_dark"
+            android:background="@drawable/corner_drawable_dark"
             android:elevation="3dp"
             android:gravity="center"
             android:paddingBottom="@dimen/padding_five"
             android:paddingTop="@dimen/padding_five"
-            android:text="Unfollow"
+            android:text="Following"
             android:textColor="@color/color_white"
-            android:textSize="@dimen/extraMediumText" />
+            android:textSize="@dimen/mediumText" />
 
     </RelativeLayout>
 

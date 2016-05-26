@@ -112,6 +112,7 @@ public class FollowingListAPI {
                         userBean.userid = jsonObject1.getInt(Config.userid);
                         userBean.name = jsonObject1.getString(Config.name);
                         userBean.avatar = jsonObject1.getString(Config.avatar);
+                        userBean.isFollowing=true;
                         followingBeanArrayList.add(userBean);
                     }
                 }

@@ -148,9 +148,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.txtForgot:
-                intent = new Intent(context, HomeActivity.class);
-                startActivity(intent);
-                finish();
+//                intent = new Intent(context, HomeActivity.class);
+//                startActivity(intent);
+//                finish();
                 break;
         }
     }

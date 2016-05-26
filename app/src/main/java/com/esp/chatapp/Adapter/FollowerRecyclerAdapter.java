@@ -16,21 +16,24 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
+import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
 
 
-public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecyclerAdapter.LikeBeanHolder> {
+public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecyclerAdapter.LikeBeanHolder> implements OnPopUpDialogButoonClickListener {
 
     private ArrayList<UserBean> mItemList;
     private Context context;
     private UserBean userBean;
+    private MyOnClickListner myOnClickListner;
 
-    public FollowerRecyclerAdapter(Context context, ArrayList<UserBean> itemList) {
+    public FollowerRecyclerAdapter(Context context, ArrayList<UserBean> itemList, MyOnClickListner myOnClickListner) {
         this.mItemList = itemList;
         this.context = context;
+        this.myOnClickListner = myOnClickListner;
     }
 
     @Override
@@ -46,7 +49,7 @@ public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecycl
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!userBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+userBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + userBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -81,6 +84,13 @@ public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecycl
 //                }
             }
         });
+
+        holder.txtfollowUnfollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myOnClickListner.IsClick(R.id.txtfollowUnfollow, holder.txtUserName.getTag());
+            }
+        });
     }
 
 
@@ -89,11 +99,17 @@ public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecycl
         return mItemList == null ? 0 : mItemList.size();
     }
 
+    @Override
+    public void OnButtonClick(int tag, int buttonIndex, String input) {
+
+    }
+
     class LikeBeanHolder extends RecyclerView.ViewHolder {
 
         private ImageView imgAvatar;
         private TextView txtUserName;
         private TextView txtfollowUnfollow;
+
         public LikeBeanHolder(View itemView) {
             super(itemView);
             imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
@@ -102,6 +118,5 @@ public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecycl
         }
 
     }
-
 
 }

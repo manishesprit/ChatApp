@@ -46,7 +46,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
         holder.txtUserName.setTag(userBean);
         holder.txtUserName.setText(userBean.name);
-        holder.txtfollowUnfollow.setText(userBean.isFollow == true ? "Unfollow" : "Follow");
+        holder.txtfollowUnfollow.setText(userBean.isFollowing == true ? "Unfollow" : "Follow");
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!userBean.avatar.toString().trim().equalsIgnoreCase("")) {
 

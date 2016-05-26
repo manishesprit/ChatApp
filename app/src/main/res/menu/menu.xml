@@ -3,19 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".HomeActivity">
 
-    <item
-        android:id="@+id/action_setting"
-        android:title="Setting"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_status"
-        android:title="Status"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search"
-        android:title="Status"
         android:icon="@drawable/search"
+        android:title="Status"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_setting"
+        android:icon="@drawable/icon_setting"
+        android:title="Setting"
+        app:showAsAction="ifRoom" />
+
 </menu>

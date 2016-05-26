@@ -136,12 +136,12 @@ public class ProfileFragment extends Fragment {
 
     MyOnClickListner myOnClickListner = new MyOnClickListner() {
         @Override
-        public boolean IsClick(int id, PostBean postBean1) {
+        public boolean IsClick(int id, Object object) {
 
             if (id == R.id.imgLikeUnlike) {
                 if (Utils.isOnline(getContext())) {
                     myprogressBar.setVisibility(View.VISIBLE);
-                    postBean = postBean1;
+                    postBean = (PostBean) object;
                     likeUnlikeAPI = new LikeUnlikeAPI(getContext(), responseListener, postBean.feedid);
                     likeUnlikeAPI.execute();
                 }
