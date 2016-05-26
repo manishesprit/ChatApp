@@ -26,17 +26,30 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/padding_twenty"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
-            android:text="Edit Profile"
-            android:padding="@dimen/padding_ten"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/extraMediumText"
-            android:layout_margin="@dimen/padding_ten"
-            android:background="@drawable/corner_drawable_dark"
+            android:id="@+id/txtEditProfile"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:padding="@dimen/padding_ten"
+            android:text="Edit Profile"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/extraMediumText" />
+
+        <TextView
+            android:id="@+id/txtLogout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:padding="@dimen/padding_ten"
+            android:layout_below="@+id/txtEditProfile"
+            android:layout_marginTop="@dimen/padding_ten"
+            android:text="Logout"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/extraMediumText" />
 
 
     </RelativeLayout>

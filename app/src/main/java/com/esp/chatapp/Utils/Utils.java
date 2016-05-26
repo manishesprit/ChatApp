@@ -397,6 +397,22 @@ public class Utils {
         }
     }
 
+    public static void ClearPref(Context context) {
+        Pref.setValue(context, Config.PREF_USER_ID, 0);
+        Pref.setValue(context, Config.PREF_USERNAME, "");
+        Pref.setValue(context, Config.PREF_NAME, "");
+        Pref.setValue(context, Config.PREF_CITY, "");
+        Pref.setValue(context, Config.PREF_STATUS, "");
+        Pref.setValue(context, Config.PREF_EMAIL, "");
+        Pref.setValue(context, Config.PREF_MOBILE, "");
+        Pref.setValue(context, Config.PREF_AVATAR, "");
+        Pref.setValue(context, Config.PREF_UDID, "");
+        Pref.setValue(context, Config.PREF_NOOFPOST, 0);
+        Pref.setValue(context, Config.PREF_NOOFFOLLOWER, 0);
+        Pref.setValue(context, Config.PREF_NOOFFOLLING, 0);
+        Pref.setValue(context, Config.PREF_ISFIRSTTIME, 0);
+    }
+
     public final static Pattern EMAIL_ADDRESS_PATTERN = Pattern
             .compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
                     + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"

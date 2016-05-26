@@ -148,6 +148,7 @@ public class Config {
     public static String PREF_NOOFFOLLING = "PREF_NOOFFOLLING";
     public static String PREF_AVATAR = "PREF_AVATAR";
     public static String PREF_UDID = "PREF_UDID";
+    public static String PREF_ISFIRSTTIME = "PREF_ISFIRSTTIME";
 
     //    UnFollowerAPI
     public static String code = "code";

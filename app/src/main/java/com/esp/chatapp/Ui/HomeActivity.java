@@ -1,5 +1,6 @@
 package com.esp.chatapp.Ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.esp.chatapp.R;
+import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,16 +35,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Menu menu;
     private Context context;
     private ViewPagerAdapter adapter;
+    public static Activity activityHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         context = this;
+        activityHome = this;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.app_name));
 
+        if (Pref.getValue(context, Config.PREF_ISFIRSTTIME, 0) == 0) {
+            Intent intent = new Intent(context, SearchActivity.class);
+            startActivity(intent);
+        }
+
+        refreshData();
+
+
+    }
+
+    private void refreshData() {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         setupViewPager(viewPager);
 
@@ -51,6 +67,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         fabButton = (FloatingActionButton) findViewById(R.id.fabButton);
         fabButton.setOnClickListener(this);
+
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -71,7 +88,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
     }
 
     private void setupViewPager(ViewPager viewPager) {

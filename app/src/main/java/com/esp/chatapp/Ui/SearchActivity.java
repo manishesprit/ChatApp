@@ -27,6 +27,7 @@ import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
 import com.esp.chatapp.Uc.OnPopUpDialogButoonClickListener;
 import com.esp.chatapp.Utils.Config;
+import com.esp.chatapp.Utils.Pref;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
@@ -53,6 +54,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         context = this;
+
+        Pref.setValue(context, Config.PREF_ISFIRSTTIME, 1);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
