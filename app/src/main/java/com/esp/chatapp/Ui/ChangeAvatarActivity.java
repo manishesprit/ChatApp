@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -58,7 +59,7 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
     int OPEN_CROP_CODE = 600;
     private File upload_file;
     private Dialog dialog;
-
+    private SwipeRefreshLayout swipeContainer;
     private ChangeAvatarAPI changeAvatarAPI;
     private LinearLayout myprogressBar;
 
@@ -76,12 +77,50 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
         txtMobile = (TextView) findViewById(R.id.txtMobile);
         txtStatus = (TextView) findViewById(R.id.txtStatus);
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+
+        setData();
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeContainer.setRefreshing(false);
+                setData();
+            }
+        });
 
 
+        imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show_dialog();
+            }
+        });
+
+        txtMobile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        txtStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private void setData() {
         Utils.setDefaultRoundImage(context, imgProfileAvatar, R.drawable.default_user);
 
-        if (!Pref.getValue(context,Config.PREF_AVATAR,"").toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + Pref.getValue(context,Config.PREF_AVATAR,""))
+        if (!Pref.getValue(context, Config.PREF_AVATAR, "").toString().trim().equalsIgnoreCase("")) {
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + Pref.getValue(context, Config.PREF_AVATAR, ""))
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -93,16 +132,8 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
             });
         }
 
-        txtMobile.setText(Pref.getValue(context,Config.PREF_MOBILE,""));
-        txtStatus.setText(Pref.getValue(context,Config.PREF_STATUS,""));
-
-        imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                show_dialog();
-            }
-        });
-
+        txtMobile.setText(Pref.getValue(context, Config.PREF_MOBILE, ""));
+        txtStatus.setText(Pref.getValue(context, Config.PREF_STATUS, ""));
     }
 
     @Override

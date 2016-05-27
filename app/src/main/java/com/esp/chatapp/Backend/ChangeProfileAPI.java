@@ -2,6 +2,7 @@ package com.esp.chatapp.Backend;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -99,10 +100,10 @@ public class ChangeProfileAPI {
             code = jsonObject.getInt(Config.code);
             mesg = jsonObject.getString(Config.message);
             if (code == 0) {
-                Pref.setValue(context, Config.PREF_MOBILE, userBean.mobile.toString().trim());
-                Pref.setValue(context, Config.PREF_NAME, userBean.name.toString().trim());
-                Pref.setValue(context, Config.PREF_CITY, userBean.city.toString().trim());
-                Pref.setValue(context, Config.PREF_STATUS, userBean.status);
+                Pref.setValue(context, Config.PREF_MOBILE, Uri.decode(userBean.mobile.toString().trim()));
+                Pref.setValue(context, Config.PREF_NAME, Uri.decode(userBean.name.toString().trim()));
+                Pref.setValue(context, Config.PREF_CITY, Uri.decode(userBean.city.toString().trim()));
+                Pref.setValue(context, Config.PREF_STATUS, Uri.decode(userBean.status));
             }
 
         } catch (Exception e) {

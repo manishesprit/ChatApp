@@ -102,6 +102,11 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
             valid = getResources().getString(R.string.validname);
             this.edtName.requestFocus();
             this.edtName.setSelection(this.edtName.length());
+        }else if (edtName.getText().toString().trim().equals("")
+                || edtName.getText().length() > 15) {
+            valid = getResources().getString(R.string.validlengthname);
+            this.edtName.requestFocus();
+            this.edtName.setSelection(this.edtName.length());
         } else if (edtMobile.getText().toString().trim().equals("")
                 || edtMobile.getText().toString().trim().equals(null)) {
             valid = getResources().getString(R.string.validblankmobile);
