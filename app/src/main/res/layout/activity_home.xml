@@ -19,22 +19,123 @@
             android:background="@color/color_graydark"
             app:layout_scrollFlags="scroll|enterAlways" />
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/llTab"
+            android:layout_width="fill_parent"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/color_gray"
-            app:tabIndicatorColor="@android:color/white"
-            app:tabIndicatorHeight="1.5dp"
-            app:tabSelectedTextColor="@color/color_white"
-            app:tabTextColor="@color/color_whitedark" />
+            android:elevation="6dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:id="@+id/llfeed"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/txtFeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="FEED"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/mediumText" />
+
+                <View
+                    android:id="@+id/feedview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_white"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/llprofile"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/txtProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="PROFILE"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/mediumText" />
+
+                <View
+                    android:id="@+id/profileview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_white"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/llnotify"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/txtNotify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="NOTIFY"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/mediumText" />
+
+                <View
+                    android:id="@+id/notifyview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/color_white"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+    <RelativeLayout
+        android:id="@+id/rlHomeMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Feed Fragment Layout -->
+        <FrameLayout
+            android:id="@+id/feedFramlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/color_gray"
+            android:visibility="gone" />
+
+        <!-- Profile Fragment Layout -->
+        <FrameLayout
+            android:id="@+id/profileFramlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/color_gray"
+            android:visibility="gone" />
+
+        <!-- Profile Fragment Layout -->
+        <FrameLayout
+            android:id="@+id/notifyFramlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/color_gray"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabButton"

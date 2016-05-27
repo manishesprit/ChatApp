@@ -2,6 +2,7 @@ package com.esp.chatapp.Ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,7 +39,9 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     private UserBean userBean;
     private PostBean postBean;
     private LinearLayout myprogressBar;
-
+    private SwipeRefreshLayout swipeContainer;
+    private int limit = 30;
+    private int offset = 0;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mview = inflater.inflate(R.layout.fragment_feed, container, false);
@@ -53,35 +56,44 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
             feedListAPI.doCancel();
         }
         myprogressBar = (LinearLayout) mview.findViewById(R.id.myprogressBar);
+        swipeContainer = (SwipeRefreshLayout) mview.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         recyclerView = (RecyclerView) mview.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        postlist = new ArrayList<>();
-        feedRecyclerAdapter = new FeedRecyclerAdapter(getContext(), postlist, myOnClickListner);
-        recyclerView.setAdapter(feedRecyclerAdapter);
 
+        CallFeedList();
 
-        if (Utils.isOnline(getContext())) {
-            myprogressBar.setVisibility(View.VISIBLE);
-            userBean = new UserBean();
-            userBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
-            userBean.pageno = 0;
-            userBean.myFeed = false;
-            feedListAPI = new FeedListAPI(getContext(), responseListener, userBean);
-            feedListAPI.execute();
-        }
-
-        myprogressBar.setOnClickListener(new View.OnClickListener() {
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onRefresh() {
+                swipeContainer.setRefreshing(false);
+                offset = 0;
+                CallFeedList();
             }
         });
 
+        myprogressBar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.myprogressBar:
+                break;
+        }
+    }
 
+    private void CallFeedList() {
+        if (Utils.isOnline(getContext())) {
+            myprogressBar.setVisibility(View.VISIBLE);
+            userBean = new UserBean();
+            userBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
+            userBean.offset = offset;
+            userBean.limit = limit;
+            userBean.myFeed = false;
+            feedListAPI = new FeedListAPI(getContext(), responseListener, userBean);
+            feedListAPI.execute();
+        }
     }
 
     private ResponseListener responseListener = new ResponseListener() {
@@ -94,8 +106,16 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
             myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
+
+                    if (offset <= 0) {
+                        postlist = new ArrayList<>();
+                        feedRecyclerAdapter = new FeedRecyclerAdapter(getContext(), postlist, myOnClickListner);
+                        recyclerView.setAdapter(feedRecyclerAdapter);
+                    }
+
                     ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList.size() > 0) {
+                        offset = offset + limit;
                         postlist.addAll(postBeanArrayList);
                     }
                     feedRecyclerAdapter.notifyDataSetChanged();

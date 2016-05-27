@@ -2,6 +2,7 @@ package com.esp.chatapp.Ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,49 +38,32 @@ public class ProfileFragment extends Fragment {
     private ProfileRecyclerAdapter profileRecyclerAdapter;
     private LikeUnlikeAPI likeUnlikeAPI;
     private LinearLayout myprogressBar;
+    private SwipeRefreshLayout swipeContainer;
+    private int limit = 30;
+    private int offset = 0;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-//        System.out.println("==========ProfileFragment======onCreateView=================");
         return mView;
     }
 
-    public void RefreshData() {
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
         if (feedListAPI != null) {
             feedListAPI.doCancel();
         }
 
         myprogressBar = (LinearLayout) mView.findViewById(R.id.myprogressBar);
+        swipeContainer = (SwipeRefreshLayout) mView.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+
         recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);
-        postBean = new PostBean();
-        postBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
-        postBean.name = Pref.getValue(getContext(), Config.PREF_NAME, "");
-        postBean.avatar = Pref.getValue(getContext(), Config.PREF_AVATAR, "");
-        postBean.email = Pref.getValue(getContext(), Config.PREF_EMAIL, "");
-        postBean.mobile = Pref.getValue(getContext(), Config.PREF_MOBILE, "");
-        postBean.noOfpost = Pref.getValue(getContext(), Config.PREF_NOOFPOST, 0);
-        postBean.noOffollowers = Pref.getValue(getContext(), Config.PREF_NOOFFOLLOWER, 0);
-        postBean.noOffollowing = Pref.getValue(getContext(), Config.PREF_NOOFFOLLING, 0);
-        postBean.status = Pref.getValue(getContext(), Config.PREF_STATUS, "");
-
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        postBeanArrayList = new ArrayList<>();
 
-        postBeanArrayList.add(postBean);
-        profileRecyclerAdapter = new ProfileRecyclerAdapter(getContext(), postBeanArrayList, myOnClickListner);
-        recyclerView.setAdapter(profileRecyclerAdapter);
-
-        if (Utils.isOnline(getContext())) {
-            myprogressBar.setVisibility(View.VISIBLE);
-            userBean = new UserBean();
-            userBean.userid = postBean.userid;
-            userBean.myFeed = true;
-            userBean.pageno = 0;
-            feedListAPI = new FeedListAPI(getContext(), responseListener, userBean);
-            feedListAPI.execute();
-        }
+        CallFeedList();
 
         myprogressBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,13 +71,29 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeContainer.setRefreshing(false);
+                offset = 0;
+                CallFeedList();
+            }
+        });
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    private void CallFeedList() {
+        if (Utils.isOnline(getContext())) {
 
-        RefreshData();
+            myprogressBar.setVisibility(View.VISIBLE);
+            userBean = new UserBean();
+            userBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
+            userBean.myFeed = true;
+            userBean.offset = offset;
+            userBean.limit = limit;
+            feedListAPI = new FeedListAPI(getContext(), responseListener, userBean);
+            feedListAPI.execute();
+        }
     }
 
     private ResponseListener responseListener = new ResponseListener() {
@@ -102,6 +102,24 @@ public class ProfileFragment extends Fragment {
             myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag.equals(Config.TAG_FEED_LIST)) {
+
+                    if (offset <= 0) {
+                        postBean = new PostBean();
+                        postBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
+                        postBean.name = Pref.getValue(getContext(), Config.PREF_NAME, "");
+                        postBean.avatar = Pref.getValue(getContext(), Config.PREF_AVATAR, "");
+                        postBean.email = Pref.getValue(getContext(), Config.PREF_EMAIL, "");
+                        postBean.mobile = Pref.getValue(getContext(), Config.PREF_MOBILE, "");
+                        postBean.noOfpost = Pref.getValue(getContext(), Config.PREF_NOOFPOST, 0);
+                        postBean.noOffollowers = Pref.getValue(getContext(), Config.PREF_NOOFFOLLOWER, 0);
+                        postBean.noOffollowing = Pref.getValue(getContext(), Config.PREF_NOOFFOLLING, 0);
+                        postBean.status = Pref.getValue(getContext(), Config.PREF_STATUS, "");
+
+                        postBeanArrayList = new ArrayList<>();
+                        postBeanArrayList.add(postBean);
+                        profileRecyclerAdapter = new ProfileRecyclerAdapter(getContext(), postBeanArrayList, myOnClickListner);
+                        recyclerView.setAdapter(profileRecyclerAdapter);
+                    }
 
                     postBeanArrayList.get(0).userid = ((PostBean) obj1).userid;
                     postBeanArrayList.get(0).name = ((PostBean) obj1).name;
@@ -115,6 +133,7 @@ public class ProfileFragment extends Fragment {
 
                     ArrayList<PostBean> postBeanArrayList1 = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList1.size() > 0) {
+                        offset = offset + limit;
                         postBeanArrayList.addAll(postBeanArrayList1);
 
                     }

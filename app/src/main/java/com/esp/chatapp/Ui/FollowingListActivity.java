@@ -26,8 +26,6 @@ import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class FollowingListActivity extends AppCompatActivity {
 
@@ -43,6 +41,8 @@ public class FollowingListActivity extends AppCompatActivity {
     private TextView txtnoSearchdata;
     private UserBean userBean;
     private FollowingUnfollowingAPI followingUnfollowingAPI;
+    private int limit = 50;
+    private int offset = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,9 @@ public class FollowingListActivity extends AppCompatActivity {
         txtnoSearchdata = (TextView) findViewById(R.id.txtnoSearchdata);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        followingBeanArrayList = new ArrayList<>();
+        followingRecyclerAdapter = new FollowingRecyclerAdapter(context, followingBeanArrayList, myOnClickListner);
+        recyclerView.setAdapter(followingRecyclerAdapter);
 
         Call_Following();
 
@@ -74,7 +77,7 @@ public class FollowingListActivity extends AppCompatActivity {
     private void Call_Following() {
         if (Utils.isOnline(context)) {
             myprogressBar.setVisibility(View.VISIBLE);
-            followingListAPI = new FollowingListAPI(context, responseListener, getIntent().getIntExtra("userid", 0));
+            followingListAPI = new FollowingListAPI(context, responseListener, getIntent().getIntExtra("userid", 0),offset,limit);
             followingListAPI.execute();
         } else {
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", onPopUpDialogButoonClickListener, 0).show();
@@ -110,25 +113,24 @@ public class FollowingListActivity extends AppCompatActivity {
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_FOLLOWING_LIST) {
 
-                    followingBeanArrayList = (ArrayList<UserBean>) obj;
-                    if (followingBeanArrayList.size() > 0) {
+                    ArrayList<UserBean> followinglist = (ArrayList<UserBean>) obj;
+                    if (followinglist.size() > 0) {
+                        offset = offset + limit;
+                        followingBeanArrayList.addAll(followinglist);
+                    }
 
-                        Collections.sort(followingBeanArrayList, new Comparator<UserBean>() {
-                                    @Override
-                                    public int compare(UserBean lhs, UserBean rhs) {
-                                        return lhs.name.compareToIgnoreCase(rhs.name);
-                                    }
-                                }
-                        );
-
-                        followingRecyclerAdapter = new FollowingRecyclerAdapter(context, followingBeanArrayList, myOnClickListner);
-                        recyclerView.setAdapter(followingRecyclerAdapter);
+                    if(followingBeanArrayList.size() > 0)
+                    {
+                        followingRecyclerAdapter.notifyDataSetChanged();
                         txtnoSearchdata.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
-                    } else {
+                    }
+                    else
+                    {
                         txtnoSearchdata.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                     }
+
                 }
                 if (tag == Config.TAG_FOLLOWING_UNFOLLOWING) {
                     userBean.isFollowing = userBean.isFollowing == true ? false : true;
@@ -165,7 +167,7 @@ public class FollowingListActivity extends AppCompatActivity {
 
             if (id == R.id.txtfollowUnfollow) {
                 userBean = (UserBean) object;
-                AlertDailogView.showAlert(context, "Alert", userBean.name +(userBean.isFollowing==true?" unfollow ?":" follow ?"), "Cancel", true,(userBean.isFollowing==true?"Unfollow":"Follow"), onPopUpDialogButoonClickListener, 1).show();
+                AlertDailogView.showAlert(context, "Alert", userBean.name + (userBean.isFollowing == true ? " unfollow ?" : " follow ?"), "Cancel", true, (userBean.isFollowing == true ? "Unfollow" : "Follow"), onPopUpDialogButoonClickListener, 1).show();
             }
             return false;
         }

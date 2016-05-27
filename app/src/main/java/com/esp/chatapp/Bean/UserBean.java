@@ -20,7 +20,8 @@ public class UserBean implements Serializable {
     public String mobile;
     public String status;
     public String city;
-    public int pageno;
+    public int offset;
+    public int limit;
     public boolean myFeed;
     public boolean isFollowing;
     public boolean isFollower;

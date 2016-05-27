@@ -64,7 +64,12 @@ public class FollowerRecyclerAdapter extends RecyclerView.Adapter<FollowerRecycl
 
         holder.txtUserName.setText(userBean.name);
         holder.txtUserName.setTag(userBean);
-        holder.txtfollowUnfollow.setText(userBean.isFollower == true ? "Unfollow" : "Follow");
+        holder.txtfollowUnfollow.setText(userBean.isFollower == true ? "Unfollow" : "");
+        if (userBean.isFollower == true) {
+            holder.txtfollowUnfollow.setVisibility(View.VISIBLE);
+        } else {
+            holder.txtfollowUnfollow.setVisibility(View.GONE);
+        }
         if (userBean.userid == Pref.getValue(context, Config.PREF_USER_ID, 0) || userBean.isFollower == false) {
             holder.txtfollowUnfollow.setVisibility(View.GONE);
         } else {

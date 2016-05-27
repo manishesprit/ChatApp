@@ -33,10 +33,10 @@ public class FollowingListAPI {
     private UserBean userBean;
     private ArrayList<UserBean> followingBeanArrayList;
 
-    public FollowingListAPI(Context context, ResponseListener responseListener,int userid) {
+    public FollowingListAPI(Context context, ResponseListener responseListener,int userid, int offset, int limit) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        Config.API_FOLLOWING_LIST = Config.HOST + Config.API_FOLLOWING_LIST_JSON + Config.userid + "=" + Pref.getValue(context,Config.PREF_USER_ID,0)+"&"+Config.friendid + "=" + userid;
+        Config.API_FOLLOWING_LIST = Config.HOST + Config.API_FOLLOWING_LIST_JSON + Config.userid + "=" + Pref.getValue(context,Config.PREF_USER_ID,0)+"&"+Config.friendid + "=" + userid+ "&" + Config.offset + "=" + offset + "&" + Config.limit + "=" + limit;;
 
         Log.print(":::: API_FOLLOWING_LIST ::::" + Config.API_FOLLOWING_LIST);
         this.responseListener = responseListener;

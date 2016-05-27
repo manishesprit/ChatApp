@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RelativeLayout;
 
 import com.esp.chatapp.R;
 import com.esp.chatapp.Uc.AlertDailogView;
@@ -17,12 +18,14 @@ public class SplashActivity extends AppCompatActivity implements OnPopUpDialogBu
 
     private Intent intent;
     private Context context;
+    private RelativeLayout rlSplashMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         context = this;
+        rlSplashMain = (RelativeLayout) findViewById(R.id.rlSplashMain);
         setHandler();
     }
 
@@ -43,6 +46,7 @@ public class SplashActivity extends AppCompatActivity implements OnPopUpDialogBu
                 }
             }, 2000);
         } else {
+
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
         }
     }

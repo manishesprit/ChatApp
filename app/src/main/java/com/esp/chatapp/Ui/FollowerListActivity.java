@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.esp.chatapp.Adapter.FollowerRecyclerAdapter;
 import com.esp.chatapp.Adapter.MyOnClickListner;
 import com.esp.chatapp.Backend.FollowerListAPI;
+import com.esp.chatapp.Backend.FollowerUnfollowerAPI;
 import com.esp.chatapp.Backend.ResponseListener;
 import com.esp.chatapp.Bean.UserBean;
 import com.esp.chatapp.R;
@@ -25,8 +26,6 @@ import com.esp.chatapp.Utils.Config;
 import com.esp.chatapp.Utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class FollowerListActivity extends AppCompatActivity {
 
@@ -40,8 +39,11 @@ public class FollowerListActivity extends AppCompatActivity {
     private ArrayList<UserBean> followerBeanArrayList;
     private LinearLayout myprogressBar;
     private TextView txtnoSearchdata;
-
+    private FollowerUnfollowerAPI followerUnfollowerAPI;
     private UserBean userBean;
+
+    private int limit = 50;
+    private int offset = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,9 @@ public class FollowerListActivity extends AppCompatActivity {
         txtnoSearchdata = (TextView) findViewById(R.id.txtnoSearchdata);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
+        followerBeanArrayList = new ArrayList<>();
+        followerRecyclerAdapter = new FollowerRecyclerAdapter(context, followerBeanArrayList, myOnClickListner);
+        recyclerView.setAdapter(followerRecyclerAdapter);
         Call_Follower();
 
         myprogressBar.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +77,7 @@ public class FollowerListActivity extends AppCompatActivity {
     private void Call_Follower() {
         if (Utils.isOnline(context)) {
             myprogressBar.setVisibility(View.VISIBLE);
-            followerListAPI = new FollowerListAPI(context, responseListener, getIntent().getIntExtra("userid", 0));
+            followerListAPI = new FollowerListAPI(context, responseListener, getIntent().getIntExtra("userid", 0), offset, limit);
             followerListAPI.execute();
         } else {
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", onPopUpDialogButoonClickListener, 0).show();
@@ -109,19 +113,14 @@ public class FollowerListActivity extends AppCompatActivity {
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_FOLLOWER_LIST) {
 
-                    followerBeanArrayList = (ArrayList<UserBean>) obj;
+                    ArrayList<UserBean> followerlist = (ArrayList<UserBean>) obj;
+                    if (followerlist.size() > 0) {
+                        offset = offset + limit;
+                        followerBeanArrayList.addAll(followerlist);
+                    }
+
                     if (followerBeanArrayList.size() > 0) {
-
-                        Collections.sort(followerBeanArrayList, new Comparator<UserBean>() {
-                                    @Override
-                                    public int compare(UserBean lhs, UserBean rhs) {
-                                        return lhs.name.compareToIgnoreCase(rhs.name);
-                                    }
-                                }
-                        );
-
-                        followerRecyclerAdapter = new FollowerRecyclerAdapter(context, followerBeanArrayList, myOnClickListner);
-                        recyclerView.setAdapter(followerRecyclerAdapter);
+                        followerRecyclerAdapter.notifyDataSetChanged();
                         txtnoSearchdata.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     } else {
@@ -129,6 +128,12 @@ public class FollowerListActivity extends AppCompatActivity {
                         recyclerView.setVisibility(View.GONE);
                     }
                 }
+
+                if (tag == Config.TAG_FOLLOWER_UNFOLLOWER) {
+                    userBean.isFollower = userBean.isFollower == true ? false : true;
+                    followerRecyclerAdapter.notifyDataSetChanged();
+                }
+
             }
         }
     };
@@ -139,6 +144,16 @@ public class FollowerListActivity extends AppCompatActivity {
             if (tag == 0) {
                 if (buttonIndex == 2) {
                     Call_Follower();
+                }
+            }
+
+            if (tag == 1) {
+                if (buttonIndex == 2) {
+                    if (Utils.isOnline(context)) {
+                        myprogressBar.setVisibility(View.VISIBLE);
+                        followerUnfollowerAPI = new FollowerUnfollowerAPI(context, responseListener, userBean.userid, userBean.isFollower == true ? 1 : 0);
+                        followerUnfollowerAPI.execute();
+                    }
                 }
             }
         }

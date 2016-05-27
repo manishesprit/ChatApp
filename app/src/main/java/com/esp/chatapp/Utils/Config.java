@@ -176,7 +176,8 @@ public class Config {
     public static String posttime = "posttime";
     public static String id = "id";
     public static String myfeed = "myfeed";
-    public static String pageid = "pageid";
+    public static String offset = "offset";
+    public static String limit = "limit";
     public static String name = "name";
     public static String feedlist = "feedlist";
     public static String likelist = "likelist";

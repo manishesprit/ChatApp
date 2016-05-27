@@ -2,6 +2,7 @@ package com.esp.chatapp.Ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +40,9 @@ public class ProfileActivity extends AppCompatActivity {
     private FeedListAPI feedListAPI;
     private LikeUnlikeAPI likeUnlikeAPI;
     private LinearLayout myprogressBar;
+    private int limit = 30;
+    private int offset = 0;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,9 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         postlist = new ArrayList<>();
@@ -65,15 +72,16 @@ public class ProfileActivity extends AppCompatActivity {
         profileRecyclerAdapter = new ProfileRecyclerAdapter(context, postlist, myOnClickListner);
         recyclerView.setAdapter(profileRecyclerAdapter);
 
-        if (Utils.isOnline(context)) {
-            myprogressBar.setVisibility(View.VISIBLE);
-            userBean = new UserBean();
-            userBean.userid = postBean.userid;
-            userBean.myFeed = true;
-            userBean.pageno = 0;
-            feedListAPI = new FeedListAPI(context, responseListener, userBean);
-            feedListAPI.execute();
-        }
+        CallFeedList();
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeContainer.setRefreshing(false);
+                offset = 0;
+                CallFeedList();
+            }
+        });
+
 
         myprogressBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +89,19 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void CallFeedList() {
+        if (Utils.isOnline(context)) {
+            myprogressBar.setVisibility(View.VISIBLE);
+            userBean = new UserBean();
+            userBean.userid = postBean.userid;
+            userBean.myFeed = true;
+            userBean.offset = offset;
+            userBean.limit = limit;
+            feedListAPI = new FeedListAPI(context, responseListener, userBean);
+            feedListAPI.execute();
+        }
     }
 
     @Override
@@ -117,6 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList.size() > 0) {
+                        offset = offset + limit;
                         postlist.addAll(postBeanArrayList);
 
                     }
