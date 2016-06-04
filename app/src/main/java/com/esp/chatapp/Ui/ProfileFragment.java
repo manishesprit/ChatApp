@@ -41,6 +41,10 @@ public class ProfileFragment extends Fragment {
     private SwipeRefreshLayout swipeContainer;
     private int limit = 30;
     private int offset = 0;
+    private LinearLayoutManager linearLayoutManager;
+
+    private boolean loading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_profile, container, false);
@@ -61,7 +65,8 @@ public class ProfileFragment extends Fragment {
         swipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
 
         recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         CallFeedList();
 
@@ -78,6 +83,26 @@ public class ProfileFragment extends Fragment {
                 swipeContainer.setRefreshing(false);
                 offset = 0;
                 CallFeedList();
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) //check for scroll down
+                {
+                    visibleItemCount = linearLayoutManager.getChildCount();
+                    totalItemCount = linearLayoutManager.getItemCount();
+                    pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            loading = false;
+                            CallFeedList();
+                        }
+                    }
+
+                }
             }
         });
     }
@@ -134,6 +159,7 @@ public class ProfileFragment extends Fragment {
                     ArrayList<PostBean> postBeanArrayList1 = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList1.size() > 0) {
                         offset = offset + limit;
+                        loading = true;
                         postBeanArrayList.addAll(postBeanArrayList1);
 
                     }

@@ -23,11 +23,11 @@
     <!--Login Logo-->
     <dimen name="login_logo_size">100dp</dimen>
 
+    <!--CHANGE AVATAR IMAGE-->
+    <dimen name="change_user_avatar_size">170dp</dimen>
     <!--Feed USER AVATAR-->
     <dimen name="user_avatar_size">45dp</dimen>
-
     <dimen name="comment_avatar">35dp</dimen>
-    <dimen name="search_image_half">17dp</dimen>
 
     <!--Profile AVATAR-->
     <dimen name="profile_avatar_size">130dp</dimen>

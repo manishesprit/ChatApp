@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,10 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     private SwipeRefreshLayout swipeContainer;
     private int limit = 30;
     private int offset = 0;
+    private LinearLayoutManager linearLayoutManager;
+
+    private boolean loading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mview = inflater.inflate(R.layout.fragment_feed, container, false);
@@ -59,7 +64,8 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
         swipeContainer = (SwipeRefreshLayout) mview.findViewById(R.id.swipeContainer);
         swipeContainer.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         recyclerView = (RecyclerView) mview.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         CallFeedList();
 
@@ -73,6 +79,26 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
         });
 
         myprogressBar.setOnClickListener(this);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) //check for scroll down
+                {
+                    visibleItemCount = linearLayoutManager.getChildCount();
+                    totalItemCount = linearLayoutManager.getItemCount();
+                    pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            loading = false;
+                            CallFeedList();
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
     @Override
@@ -116,6 +142,7 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
                     ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList.size() > 0) {
                         offset = offset + limit;
+                        loading = true;
                         postlist.addAll(postBeanArrayList);
                     }
                     feedRecyclerAdapter.notifyDataSetChanged();

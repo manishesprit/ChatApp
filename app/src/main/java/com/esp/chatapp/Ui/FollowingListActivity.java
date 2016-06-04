@@ -44,6 +44,10 @@ public class FollowingListActivity extends AppCompatActivity {
     private int limit = 50;
     private int offset = 0;
 
+    private LinearLayoutManager linearLayoutManager;
+    private boolean loading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,9 @@ public class FollowingListActivity extends AppCompatActivity {
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
         txtnoSearchdata = (TextView) findViewById(R.id.txtnoSearchdata);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+        linearLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(linearLayoutManager);
         followingBeanArrayList = new ArrayList<>();
         followingRecyclerAdapter = new FollowingRecyclerAdapter(context, followingBeanArrayList, myOnClickListner);
         recyclerView.setAdapter(followingRecyclerAdapter);
@@ -72,12 +78,32 @@ public class FollowingListActivity extends AppCompatActivity {
             }
         });
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) //check for scroll down
+                {
+                    visibleItemCount = linearLayoutManager.getChildCount();
+                    totalItemCount = linearLayoutManager.getItemCount();
+                    pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            loading = false;
+                            Call_Following();
+                        }
+                    }
+
+                }
+            }
+        });
+
     }
 
     private void Call_Following() {
         if (Utils.isOnline(context)) {
             myprogressBar.setVisibility(View.VISIBLE);
-            followingListAPI = new FollowingListAPI(context, responseListener, getIntent().getIntExtra("userid", 0),offset,limit);
+            followingListAPI = new FollowingListAPI(context, responseListener, getIntent().getIntExtra("userid", 0), offset, limit);
             followingListAPI.execute();
         } else {
             AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", onPopUpDialogButoonClickListener, 0).show();
@@ -116,17 +142,15 @@ public class FollowingListActivity extends AppCompatActivity {
                     ArrayList<UserBean> followinglist = (ArrayList<UserBean>) obj;
                     if (followinglist.size() > 0) {
                         offset = offset + limit;
+                        loading = true;
                         followingBeanArrayList.addAll(followinglist);
                     }
 
-                    if(followingBeanArrayList.size() > 0)
-                    {
+                    if (followingBeanArrayList.size() > 0) {
                         followingRecyclerAdapter.notifyDataSetChanged();
                         txtnoSearchdata.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
-                    }
-                    else
-                    {
+                    } else {
                         txtnoSearchdata.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                     }

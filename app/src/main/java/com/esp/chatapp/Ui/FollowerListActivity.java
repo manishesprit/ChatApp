@@ -44,6 +44,9 @@ public class FollowerListActivity extends AppCompatActivity {
 
     private int limit = 50;
     private int offset = 0;
+    private LinearLayoutManager linearLayoutManager;
+    private boolean loading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +58,13 @@ public class FollowerListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Follower");
 
-
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
         txtnoSearchdata = (TextView) findViewById(R.id.txtnoSearchdata);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        linearLayoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(linearLayoutManager);
         followerBeanArrayList = new ArrayList<>();
+
         followerRecyclerAdapter = new FollowerRecyclerAdapter(context, followerBeanArrayList, myOnClickListner);
         recyclerView.setAdapter(followerRecyclerAdapter);
         Call_Follower();
@@ -69,6 +73,26 @@ public class FollowerListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) //check for scroll down
+                {
+                    visibleItemCount = linearLayoutManager.getChildCount();
+                    totalItemCount = linearLayoutManager.getItemCount();
+                    pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                            loading = false;
+                            Call_Follower();
+                        }
+                    }
+
+                }
             }
         });
 
@@ -116,6 +140,7 @@ public class FollowerListActivity extends AppCompatActivity {
                     ArrayList<UserBean> followerlist = (ArrayList<UserBean>) obj;
                     if (followerlist.size() > 0) {
                         offset = offset + limit;
+                        loading = true;
                         followerBeanArrayList.addAll(followerlist);
                     }
 
