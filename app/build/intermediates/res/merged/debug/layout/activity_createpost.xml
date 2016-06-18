@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llDialogMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colortrans">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/padding_thrty"
+        android:background="@drawable/corner_drawable"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding_ten"
+            android:text="New Post"
+            android:textColor="@color/color_dark"
+            android:textSize="@dimen/largeText" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/color_whitedark"
+            android:elevation="2dp"></View>
+
+        <EditText
+            android:id="@+id/edtCaption"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_five"
+            android:background="@color/color_white"
+            android:gravity="top"
+            android:hint="what's our mind!"
+            android:lines="4"
+            android:padding="@dimen/padding_five" />
+
+        <RelativeLayout
+            android:id="@+id/rlUploadView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_ten"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/imgUploadView"
+                android:layout_width="@dimen/user_avatar_size"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/txtRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_five"
+                android:layout_toRightOf="@+id/imgUploadView"
+                android:text="remove"
+                android:textColor="@color/color_blue"
+                android:textSize="@dimen/extraSmallText" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/txtGallary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/color_white"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="@dimen/padding_ten"
+                android:text="Gallery"
+                android:textColor="@color/color_bluedark"
+                android:textSize="@dimen/medium1Text" />
+
+            <TextView
+                android:id="@+id/txtCamara"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/color_white"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="@dimen/padding_ten"
+                android:text="Camera"
+                android:textColor="@color/color_bluedark"
+                android:textSize="@dimen/medium1Text" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txtSubmit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_corner_drawable"
+            android:elevation="3dp"
+            android:gravity="center"
+            android:padding="@dimen/padding_ten"
+            android:text="Submit"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/largeText" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/myprogressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#80000000"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="@style/Base.Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</RelativeLayout>

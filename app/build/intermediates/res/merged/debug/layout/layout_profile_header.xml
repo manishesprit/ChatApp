@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_dark"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_fifteen"
+    android:paddingLeft="@dimen/padding_ten"
+    android:paddingRight="@dimen/padding_ten"
+    android:paddingTop="@dimen/padding_fifteen">
+
+    <ImageView
+        android:id="@+id/imgProfileAvatar"
+        android:layout_width="@dimen/profile_avatar_size"
+        android:layout_height="@dimen/profile_avatar_size"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/profile_avatar_size"
+        android:layout_toRightOf="@+id/imgProfileAvatar"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_five">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding_ten">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test User"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/largeText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_five"
+            android:weightSum="30">
+
+            <LinearLayout
+                android:id="@+id/llPost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="posts"
+                    android:textColor="@color/color_whitedark"
+                    android:textSize="@dimen/smallText" />
+
+                <TextView
+                    android:id="@+id/txtNoofPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="27"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/extraMediumText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFollower"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="followers"
+                    android:textColor="@color/color_whitedark"
+                    android:textSize="@dimen/smallText" />
+
+                <TextView
+                    android:id="@+id/txtNoofFollowers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1420"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/extraMediumText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFollowing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="following"
+                    android:textColor="@color/color_whitedark"
+                    android:textSize="@dimen/smallText" />
+
+                <TextView
+                    android:id="@+id/txtNoofFollowing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="144"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/extraMediumText" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

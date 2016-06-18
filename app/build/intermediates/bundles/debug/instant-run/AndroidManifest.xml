@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:amazon="http://schemas.amazon.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rs.timepass"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="com.rs.timepass.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- PERMISSIONS FOR GCM -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.rs.timepass.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission
+        android:name="com.rs.timepass.permission.UA_DATA"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.rs.timepass.permission.UA_DATA" /> <!-- ADM -->
+    <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" />
+
+    <permission
+        android:name="com.rs.timepass.permission.RECEIVE_ADM_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.rs.timepass.permission.RECEIVE_ADM_MESSAGE" />
+
+    <application
+        name="com.rs.timepass.TimePassApplication"
+        android:name="com.android.tools.fd.runtime.BootstrapApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/reguler_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.rs.timepass.Ui.SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.rs.timepass.Ui.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.RegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.ProfileDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.ChangeAvatarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.FeedDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.CreatePostActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyTransparent" />
+        <activity
+            android:name="com.rs.timepass.Ui.LikeListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyTransparent" />
+        <activity
+            android:name="com.rs.timepass.Ui.FollowerListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.Ui.FollowingListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.rs.timepass.CropImage.CropImage"
+            android:screenOrientation="portrait" />
+
+        <!-- FaceBook -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/fbAppid" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider225648301108104"
+            android:exported="true" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- END FACEBOOK -->
+
+
+        <!-- Airship RECEIVER START -->
+
+        <receiver
+            android:name="com.urbanairship.CoreReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="-999" >
+                <action android:name="com.urbanairship.push.OPENED" />
+
+                <category android:name="com.rs.timepass" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.urbanairship.push.GcmPushReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.rs.timepass" />
+            </intent-filter>
+            <!-- REQUIRED for detecting when the application is upgraded so it can request a new GCM ID -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.urbanairship.push.PushService"
+            android:label="Push Notification Service" />
+        <service
+            android:name="com.urbanairship.analytics.EventService"
+            android:label="Event Service" />
+
+        <provider
+            android:name="com.urbanairship.UrbanAirshipProvider"
+            android:authorities="com.rs.timepass.urbanairship.provider"
+            android:exported="true"
+            android:multiprocess="true"
+            android:permission="com.rs.timepass.permission.UA_DATA" />
+
+        <receiver
+            android:name="com.rs.timepass.Utils.PushNotificationReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.urbanairship.push.CHANNEL_UPDATED" />
+                <action android:name="com.urbanairship.push.OPENED" />
+                <action android:name="com.urbanairship.push.RECEIVED" />
+                <action android:name="com.urbanairship.push.DISMISSED" />
+
+                <category android:name="com.rs.timepass" />
+            </intent-filter>
+        </receiver>
+
+        <!-- End Airship RECEIVER START -->
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true" >
+        </activity> <!-- ADM -->
+        <amazon:enable-feature
+            android:name="com.amazon.device.messaging"
+            android:required="false" />
+
+        <activity
+            android:name="com.urbanairship.actions.ActionActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.urbanairship.CoreActivity" />
+        <activity
+            android:name="com.urbanairship.google.PlayServicesErrorActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.urbanairship.messagecenter.MessageActivity" />
+        <activity
+            android:name="com.urbanairship.messagecenter.MessageCenterActivity"
+            android:label="@string/ua_message_center_title" />
+        <activity
+            android:name="com.urbanairship.actions.LandingPageActivity"
+            android:exported="false"
+            android:theme="@style/LandingPageStyle" >
+            <meta-data
+                android:name="com.urbanairship.action.LANDING_PAGE_VIEW"
+                android:resource="@layout/ua_activity_landing_page" />
+            <meta-data
+                android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW"
+                android:value="true" />
+
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_LANDING_PAGE_INTENT_ACTION" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="message" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="com.urbanairship.actions.ActionService" />
+        <service android:name="com.urbanairship.richpush.RichPushUpdateService" />
+        <service
+            android:name="com.urbanairship.location.LocationService"
+            android:label="Segments Service" />
+        <service
+            android:name="com.urbanairship.push.UAInstanceIDListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.urbanairship.push.AdmPushReceiver"
+            android:permission="com.amazon.device.messaging.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.amazon.device.messaging.intent.REGISTRATION" />
+                <action android:name="com.amazon.device.messaging.intent.RECEIVE" />
+
+                <category android:name="com.rs.timepass" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:name="com.google.android.gms.measurement.AppMeasurementContentProvider"
+            android:authorities="com.rs.timepass.google_measurement_service"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>

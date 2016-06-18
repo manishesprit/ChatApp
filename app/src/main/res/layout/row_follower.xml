@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:elevation="3dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlFeedHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_ten"
+        android:paddingLeft="@dimen/padding_five"
+        android:paddingRight="@dimen/padding_five"
+        android:paddingTop="@dimen/padding_ten">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="@dimen/user_avatar_size"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_toLeftOf="@+id/txtfollowUnfollow"
+            android:layout_toRightOf="@+id/imgAvatar"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_ten">
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/extraMediumText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtfollowUnfollow"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/corner_drawable_dark"
+            android:elevation="3dp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_five"
+            android:paddingTop="@dimen/padding_five"
+            android:text="Following"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/mediumText" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_graydark"></View>
+
+</LinearLayout>

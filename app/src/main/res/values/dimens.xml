@@ -1,0 +1,43 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="smallText">12dp</dimen>
+    <dimen name="extraSmallText">10dp</dimen>
+    <dimen name="mediumText">14dp</dimen>
+    <dimen name="medium1Text">16dp</dimen>
+    <dimen name="extraMediumText">18dp</dimen>
+    <dimen name="largeText">22dp</dimen>
+    <dimen name="extraLargeText">26dp</dimen>
+
+    <dimen name="padding_five">5dp</dimen>
+    <dimen name="padding_ten">10dp</dimen>
+    <dimen name="padding_fifteen">15dp</dimen>
+    <dimen name="padding_twenty">20dp</dimen>
+    <dimen name="padding_thrty">30dp</dimen>
+
+    <!--Splash Logo-->
+    <dimen name="splash_logo_size">150dp</dimen>
+
+    <!--Login Logo-->
+    <dimen name="login_logo_size">100dp</dimen>
+
+    <!--CHANGE AVATAR IMAGE-->
+    <dimen name="change_user_avatar_size">170dp</dimen>
+    <!--Feed USER AVATAR-->
+    <dimen name="user_avatar_size">45dp</dimen>
+    <dimen name="comment_avatar">35dp</dimen>
+
+    <!--Profile AVATAR-->
+    <dimen name="profile_avatar_size">130dp</dimen>
+
+    <dimen name="fab_margin">0dp</dimen>
+
+    <dimen name="dailog_frame_margin">15dp</dimen>
+    <dimen name="dailog_button_frame_height">55dp</dimen>
+
+    <dimen name="dialog_width">330dp</dimen>
+    <dimen name="dialog_height">200dp</dimen>
+
+</resources>

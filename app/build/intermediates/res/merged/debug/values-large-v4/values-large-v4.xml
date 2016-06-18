@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="abc_action_bar_embed_tabs_pre_jb">true</bool>
+    <bool name="abc_config_allowActionMenuItemTextWithIcon">true</bool>
+    <dimen name="abc_config_prefDialogWidth">440dp</dimen>
+    <item name="abc_dialog_fixed_height_major" type="dimen">60%</item>
+    <item name="abc_dialog_fixed_height_minor" type="dimen">90%</item>
+    <item name="abc_dialog_fixed_width_major" type="dimen">60%</item>
+    <item name="abc_dialog_fixed_width_minor" type="dimen">90%</item>
+    <item name="abc_dialog_min_width_major" type="dimen">55%</item>
+    <item name="abc_dialog_min_width_minor" type="dimen">80%</item>
+    <dimen name="abc_search_view_text_min_width">192dip</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="change_user_avatar_size">180dp</dimen>
+    <dimen name="comment_avatar">40dp</dimen>
+    <dimen name="dailog_button_frame_height">60dp</dimen>
+    <dimen name="dailog_frame_margin">25dp</dimen>
+    <dimen name="dialog_height">220dp</dimen>
+    <dimen name="dialog_width">350dp</dimen>
+    <dimen name="extraLargeText">28dp</dimen>
+    <dimen name="extraMediumText">20dp</dimen>
+    <dimen name="extraSmallText">12dp</dimen>
+    <dimen name="fab_margin">0dp</dimen>
+    <dimen name="largeText">24dp</dimen>
+    <dimen name="login_logo_size">120dp</dimen>
+    <dimen name="medium1Text">18dp</dimen>
+    <dimen name="mediumText">16dp</dimen>
+    <dimen name="padding_fifteen">17dp</dimen>
+    <dimen name="padding_five">7dp</dimen>
+    <dimen name="padding_ten">12dp</dimen>
+    <dimen name="padding_thrty">32dp</dimen>
+    <dimen name="padding_twenty">22dp</dimen>
+    <dimen name="profile_avatar_size">150dp</dimen>
+    <dimen name="smallText">14dp</dimen>
+    <dimen name="splash_logo_size">170dp</dimen>
+    <dimen name="user_avatar_size">50dp</dimen>
+    <integer name="abc_max_action_buttons">4</integer>
+    <style name="Base.Theme.AppCompat.DialogWhenLarge" parent="Base.Theme.AppCompat.Dialog.FixedSize"/>
+    <style name="Base.Theme.AppCompat.Light.DialogWhenLarge" parent="Base.Theme.AppCompat.Light.Dialog.FixedSize"/>
+</resources>
