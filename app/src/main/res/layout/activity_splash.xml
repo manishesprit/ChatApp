@@ -10,7 +10,7 @@
         android:layout_width="@dimen/splash_logo_size"
         android:layout_height="@dimen/splash_logo_size"
         android:layout_centerInParent="true"
-        android:src="@drawable/reguler_icon" />
+        android:src="@drawable/large_icon" />
 
     <TextView
         android:layout_width="wrap_content"

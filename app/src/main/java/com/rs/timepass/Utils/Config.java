@@ -138,6 +138,7 @@ public class Config {
 
     public static String PREF_USER_ID = "PREF_USER_ID";
     public static String PREF_USER_FB_ID = "PREF_USER_FB_ID";
+    public static String PREF_URBUN_PUSH_ID = "PREF_URBUN_PUSH_ID";
     public static String PREF_USERNAME = "PREF_USERNAME";
     public static String PREF_NAME = "PREF_NAME";
     public static String PREF_CITY = "PREF_CITY";

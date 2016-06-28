@@ -1,6 +1,7 @@
 package com.rs.timepass.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -14,9 +15,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.rs.timepass.Bean.PostBean;
 import com.rs.timepass.Bean.UserBean;
 import com.rs.timepass.R;
+import com.rs.timepass.Ui.ProfileActivity;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
 import java.util.ArrayList;
@@ -66,22 +70,30 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
         holder.txtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (((PostBean) holder.txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
-//                    Intent intent = new Intent(context, ProfileActivity.class);
-//                    intent.putExtra("beanData", (PostBean) holder.txtUserName.getTag());
-//                    context.startActivity(intent);
-//                }
+                if (((UserBean) holder.txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    PostBean postBean = new PostBean();
+                    postBean.userid = ((UserBean) holder.txtUserName.getTag()).userid;
+                    postBean.name=((UserBean) holder.txtUserName.getTag()).name;
+                    postBean.avatar=((UserBean) holder.txtUserName.getTag()).avatar;
+                    intent.putExtra("beanData", postBean);
+                    context.startActivity(intent);
+                }
             }
         });
 
         holder.imgAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (((PostBean) holder.txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
-//                    Intent intent = new Intent(context, ProfileActivity.class);
-//                    intent.putExtra("beanData", (PostBean) holder.txtUserName.getTag());
-//                    context.startActivity(intent);
-//                }
+                if (((UserBean) holder.txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    PostBean postBean = new PostBean();
+                    postBean.userid = ((UserBean) holder.txtUserName.getTag()).userid;
+                    postBean.name=((UserBean) holder.txtUserName.getTag()).name;
+                    postBean.avatar=((UserBean) holder.txtUserName.getTag()).avatar;
+                    intent.putExtra("beanData", postBean);
+                    context.startActivity(intent);
+                }
             }
         });
         holder.txtfollowUnfollow.setTag(userBean);

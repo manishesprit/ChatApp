@@ -6,8 +6,10 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.rs.timepass.Utils.MyCustomeNotificationFactory;
+import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Pref;
 import com.urbanairship.UAirship;
+import com.urbanairship.push.notifications.CustomLayoutNotificationFactory;
 
 import java.io.File;
 
@@ -32,12 +34,13 @@ public class TimePassApplication extends Application {
             }
         });
 
-        String channelId = UAirship.shared().getPushManager().getChannelId();
-        System.out.println("============My Application Channel ID: ============" + channelId);
+        if (UAirship.shared().getPushManager().getChannelId() != null) {
+            Pref.setValue(this, Config.PREF_URBUN_PUSH_ID, UAirship.shared().getPushManager().getChannelId());
+        }
 
-        MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(this);
+//        MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(urbunAirship);
+        CustomLayoutNotificationFactory myCustomeNotificationFactory = new CustomLayoutNotificationFactory(this);
         UAirship.shared().getPushManager().setNotificationFactory(myCustomeNotificationFactory);
-
     }
 
     public static synchronized TimePassApplication getInstance() {
