@@ -15,6 +15,7 @@ import com.rs.timepass.R;
 import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Uc.OnPopUpDialogButoonClickListener;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Log;
 import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
@@ -45,7 +46,7 @@ public class SplashActivity extends AppCompatActivity implements OnPopUpDialogBu
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                System.out.println("KeyHash:" + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                Log.print("KeyHash:" + Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (PackageManager.NameNotFoundException e) {
 

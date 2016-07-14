@@ -254,7 +254,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult result) {
-                        System.out.println("onSuccess");
+                        Log.print("onSuccess");
                         GraphRequest request = GraphRequest.newMeRequest(
                                 result.getAccessToken(),
                                 new GraphRequest.GraphJSONObjectCallback() {

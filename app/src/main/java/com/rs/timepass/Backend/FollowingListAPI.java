@@ -92,7 +92,7 @@ public class FollowingListAPI {
      * Parse the response and prepare for callback
      */
     private void parse(String response) {
-        System.out.println("===========response============" + response);
+        Log.print("===========response============" + response);
         int code = 0;
         String mesg = null;
         JSONObject jsonObject = null;

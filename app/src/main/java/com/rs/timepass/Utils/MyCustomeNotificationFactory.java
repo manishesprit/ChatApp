@@ -37,11 +37,11 @@ public class MyCustomeNotificationFactory extends NotificationFactory {
             return null;
         }
 
-        System.out.println("=====pushMessage MSG======" + pushMessage.getAlert());
+        Log.print("=====pushMessage MSG======" + pushMessage.getAlert());
         Bundle bundle = pushMessage.getPushBundle();
-        System.out.println("==========Bundle=======");
-        System.out.println(bundle.toString());
-        System.out.println("==========End Bundle=======");
+        Log.print("==========Bundle=======");
+        Log.print(bundle.toString());
+        Log.print("==========End Bundle=======");
 
         if (Pref.getValue(getContext(), Config.PREF_USER_ID, 0) != 0) {
 

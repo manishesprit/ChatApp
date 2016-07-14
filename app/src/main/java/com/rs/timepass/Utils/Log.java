@@ -23,7 +23,7 @@ public class Log {
                         + title + "</TD>" + "<TD>" + mesg + "</TD></TR>");
             }
         } catch (Exception exception) {
-            System.out.println("Log :: Debug :: " + exception.getMessage());
+            Log.print("Log :: Debug :: " + exception.getMessage());
             exception.printStackTrace();
         } finally {
             if (raf != null) {

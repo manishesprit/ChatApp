@@ -34,6 +34,7 @@ import com.rs.timepass.R;
 import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Uc.OnPopUpDialogButoonClickListener;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Log;
 import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
@@ -232,7 +233,7 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
 
 
                 } catch (Exception e) {
-                    System.out.println("ERROR========" + e.toString());
+                    Log.print("ERROR========" + e.toString());
                 }
             }
         }
@@ -281,7 +282,7 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
 
         File dir = new File(Config.DIR_USERDATA);
         if (dir.exists() == true) {
-            System.out.println("delete Derectory");
+            Log.print("delete Derectory");
             dir.delete();
             dir.mkdirs();
         } else {

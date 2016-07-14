@@ -23,6 +23,7 @@ import com.rs.timepass.CropImage.CropImage;
 import com.rs.timepass.R;
 import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Log;
 import com.rs.timepass.Utils.Utils;
 
 import java.io.File;
@@ -84,7 +85,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
 
         File dir = new File(Config.DIR_FEEDDATA);
         if (dir.exists() == true) {
-            System.out.println("delete Derectory");
+            Log.print("delete Derectory");
             dir.delete();
             dir.mkdirs();
         } else {
@@ -125,7 +126,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
                 if (!postBean.caption.equals("") || !postBean.image_url.equals("")) {
 
                     if (Utils.isOnline(context)) {
-                        System.out.println("=======postBean.image_url=====" + postBean.image_url);
+                        Log.print("=======postBean.image_url=====" + postBean.image_url);
                         myprogressBar.setVisibility(View.VISIBLE);
                         createFeedAPI = new CreateFeedAPI(context, responseListener, postBean);
                         createFeedAPI.execute();
@@ -206,7 +207,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
                     postBean.image_url = upload_file.getName();
 
                 } catch (Exception e) {
-                    System.out.println("ERROR========" + e.toString());
+                    Log.print("ERROR========" + e.toString());
                 }
             }
         }

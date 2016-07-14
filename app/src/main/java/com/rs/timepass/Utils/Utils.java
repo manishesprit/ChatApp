@@ -191,8 +191,8 @@ public class Utils {
         // max Height and width values of the compressed image is taken as
         // 816x612
 
-        System.out.println("actualHeight :: " + actualHeight);
-        System.out.println(" actualWidth :: " + actualWidth);
+        Log.print("actualHeight :: " + actualHeight);
+        Log.print(" actualWidth :: " + actualWidth);
 
         float maxWidth;
         float maxHeight;
@@ -332,7 +332,7 @@ public class Utils {
 
     public static Bitmap rotateBitmap(Bitmap b, int degrees) {
 
-        System.out.println("rotateBitmap=====>>" + b.getWidth() + ":::" + b.getHeight() + ":::" + degrees);
+        Log.print("rotateBitmap=====>>" + b.getWidth() + ":::" + b.getHeight() + ":::" + degrees);
         Matrix m = new Matrix();
         if (degrees != 0) {
             // clockwise
@@ -374,8 +374,8 @@ public class Utils {
                     break;
             }
 
-            System.out.println("RotateImage Exif orientation: " + orientation);
-            System.out.println("RotateImage Rotate value: " + rotate);
+            Log.print("RotateImage Exif orientation: " + orientation);
+            Log.print("RotateImage Rotate value: " + rotate);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -383,7 +383,7 @@ public class Utils {
     }
 
     public static void DownloadImage(Context context, Bitmap bitmap, String name, String path) {
-        System.out.println("width==" + bitmap.getWidth() + "===height===" + bitmap.getHeight());
+        Log.print("width==" + bitmap.getWidth() + "===height===" + bitmap.getHeight());
         try {
 
             Storage.verifyDataPath();
@@ -397,7 +397,7 @@ public class Utils {
             os.close();
             Toast.makeText(context, "Download complete", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            System.out.println("Error writing bitmap" + e);
+            Log.print("Error writing bitmap" + e);
         }
     }
 
@@ -418,7 +418,7 @@ public class Utils {
                 }
 
                 String channelId = UAirship.shared().getPushManager().getChannelId();
-                System.out.println("============My Application Channel ID: ============" + channelId);
+                Log.print("============My Application Channel ID: ============" + channelId);
 
                 MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(application.getApplicationContext());
                 UAirship.shared().getPushManager().setNotificationFactory(myCustomeNotificationFactory);

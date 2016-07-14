@@ -14,7 +14,7 @@ public class PushNotificationReceiver extends BaseIntentReceiver {
 
     @Override
     protected void onChannelRegistrationSucceeded(@NonNull Context context, @NonNull String s) {
-        System.out.println("=============onChannelRegistrationSucceeded===============");
+        Log.print("=============onChannelRegistrationSucceeded===============");
     }
 
     @Override
@@ -24,25 +24,25 @@ public class PushNotificationReceiver extends BaseIntentReceiver {
 
     @Override
     protected void onPushReceived(@NonNull Context context, @NonNull PushMessage pushMessage, int i) {
-        System.out.println("=============onPushReceived===============");
+        Log.print("=============onPushReceived===============");
 
     }
 
     @Override
     protected void onBackgroundPushReceived(@NonNull Context context, @NonNull PushMessage pushMessage) {
-        System.out.println("=============onBackgroundPushReceived===============");
+        Log.print("=============onBackgroundPushReceived===============");
 
     }
 
     @Override
     protected boolean onNotificationOpened(@NonNull Context context, @NonNull PushMessage pushMessage, int i) {
-        System.out.println("=============onNotificationOpened===============");
+        Log.print("=============onNotificationOpened===============");
         return false;
     }
 
     @Override
     protected boolean onNotificationActionOpened(@NonNull Context context, @NonNull PushMessage pushMessage, int i, @NonNull String s, boolean b) {
-        System.out.println("=============onNotificationActionOpened===============");
+        Log.print("=============onNotificationActionOpened===============");
         return false;
     }
 }

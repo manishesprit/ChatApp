@@ -130,7 +130,7 @@ public class InstagramApp {
                     urlConnection.setDoInput(true);
                     urlConnection.connect();
                     String response = streamToString(urlConnection.getInputStream());
-                    System.out.println(response);
+                    com.rs.timepass.Utils.Log.print(response);
                     JSONObject jsonObj = (JSONObject) new JSONTokener(response).nextValue();
                     String name = jsonObj.getJSONObject("data").getString("full_name");
                     String bio = jsonObj.getJSONObject("data").getString("bio");
