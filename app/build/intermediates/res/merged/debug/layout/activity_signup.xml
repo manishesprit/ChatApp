@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/padding_thrty"
-        android:src="@drawable/reguler_icon" />
+        android:src="@drawable/large_icon" />
 
     <TextView
         android:id="@+id/txtappName"

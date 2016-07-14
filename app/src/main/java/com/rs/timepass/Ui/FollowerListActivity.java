@@ -196,4 +196,10 @@ public class FollowerListActivity extends AppCompatActivity {
         }
 
     };
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
+    }
 }

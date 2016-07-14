@@ -17,7 +17,6 @@ import com.rs.timepass.Uc.OnPopUpDialogButoonClickListener;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
-import com.urbanairship.UAirship;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,6 +33,13 @@ public class SplashActivity extends AppCompatActivity implements OnPopUpDialogBu
         setContentView(R.layout.activity_splash);
         context = this;
 
+        if (Utils.isOnline(context)) {
+            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
+                Utils.setPushId(getApplication());
+            }
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
+        }
         try {
             PackageInfo info = getPackageManager().getPackageInfo("com.esp.chatapp", PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
@@ -45,11 +51,6 @@ public class SplashActivity extends AppCompatActivity implements OnPopUpDialogBu
 
         } catch (NoSuchAlgorithmException e) {
 
-        }
-        if (UAirship.shared().getPushManager().getChannelId() != null) {
-            Pref.setValue(getApplicationContext(), Config.PREF_URBUN_PUSH_ID, UAirship.shared().getPushManager().getChannelId());
-        } else {
-            System.out.println("====Null =======");
         }
 
 

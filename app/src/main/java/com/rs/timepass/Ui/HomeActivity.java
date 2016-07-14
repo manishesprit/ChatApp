@@ -16,8 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rs.timepass.R;
+import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Pref;
+import com.rs.timepass.Utils.Utils;
 
 
 /**
@@ -68,6 +70,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (Pref.getValue(context, Config.PREF_ISFIRSTTIME, 0) == 0) {
             Intent intent = new Intent(context, SearchActivity.class);
             startActivity(intent);
+        }
+
+        if (Utils.isOnline(context)) {
+            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
+                Utils.setPushId(getApplication());
+            }
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Try again").show();
         }
 
         fabButton = (FloatingActionButton) findViewById(R.id.fabButton);

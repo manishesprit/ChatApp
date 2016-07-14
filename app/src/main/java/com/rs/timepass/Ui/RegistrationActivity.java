@@ -30,6 +30,7 @@ import com.rs.timepass.R;
 import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Log;
+import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
 import org.json.JSONObject;
@@ -91,6 +92,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
 
+
+        if (Utils.isOnline(context)) {
+            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
+                Utils.setPushId(getApplication());
+            }
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Try again").show();
+        }
 
         Utils.setDefaultRoundImage(context, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(context, imgFacebook, R.drawable.facebook);
@@ -328,6 +337,16 @@ public class RegistrationActivity extends AppCompatActivity {
                     .setDuration(1000)
                     .start();
             view_password.setBackgroundColor(getResources().getColor(R.color.color_red));
+        } else if (edtPassword.getText().toString().trim().length() < 8 || edtPassword.getText().toString().trim().length() > 20) {
+            valid = getResources().getString(R.string.validlengthpassword);
+            this.edtPassword.requestFocus();
+            this.edtPassword.setSelection(this.edtPassword.length());
+            AlertDailogView.showAlert(context, valid).show();
+        } else if (edtPassword.getText().toString().trim().contains(" ")) {
+            valid = getResources().getString(R.string.invalidspacepassword);
+            this.edtPassword.requestFocus();
+            this.edtPassword.setSelection(this.edtPassword.length());
+            AlertDailogView.showAlert(context, valid).show();
         } else if (edtRePassword.getText().toString().trim().equals("")
                 || edtRePassword.getText().toString().trim().equals(null)) {
             valid = getResources().getString(R.string.validblankconfirmpassword);
@@ -338,6 +357,16 @@ public class RegistrationActivity extends AppCompatActivity {
                     .setDuration(1000)
                     .start();
             view_repassword.setBackgroundColor(getResources().getColor(R.color.color_red));
+        } else if (edtRePassword.getText().toString().trim().length() < 8 || edtRePassword.getText().toString().trim().length() > 20) {
+            valid = getResources().getString(R.string.validlengthconfirmpassword);
+            this.edtRePassword.requestFocus();
+            this.edtRePassword.setSelection(this.edtRePassword.length());
+            AlertDailogView.showAlert(context, valid).show();
+        } else if (edtRePassword.getText().toString().trim().contains(" ")) {
+            valid = getResources().getString(R.string.invalidspacepassword);
+            this.edtRePassword.requestFocus();
+            this.edtRePassword.setSelection(this.edtRePassword.length());
+            AlertDailogView.showAlert(context, valid).show();
         } else if (!edtPassword.getText().toString().trim().equals(edtRePassword.getText().toString().trim())) {
             valid = getResources().getString(R.string.notmatchconfirmpassword);
             this.edtRePassword.requestFocus();
@@ -420,5 +449,11 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
     }
 }

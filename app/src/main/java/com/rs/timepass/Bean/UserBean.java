@@ -9,6 +9,7 @@ public class UserBean implements Serializable {
     public int userid;
     public String username;
     public String password;
+    public String newpassword;
     public String email;
     public String fbid;
     public int noOfpost;

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:2:1-162:12
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:2:1-165:12
 	package
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:3:5-30
 		INJECTED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml
@@ -18,6 +18,7 @@ ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatAp
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:12:5-67
 MERGED from [com.google.android.gms:play-services-gcm:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:21:5-67
+MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:21:5-66
 	android:name
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.READ_CONTACTS
@@ -30,6 +31,7 @@ ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatAp
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:7:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:8:5-81
+MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:22:5-80
 	android:name
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:8:22-78
 uses-permission#android.permission.CAMERA
@@ -40,6 +42,7 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:10:5-79
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:13:5-79
 MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:20:5-78
 	android:name
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:10:22-76
 uses-permission#android.permission.CHANGE_NETWORK_STATE
@@ -83,7 +86,7 @@ MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/
 	android:name
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:21:9-62
 application
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:25:5-160:19
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:25:5-163:19
 MERGED from [com.android.support:appcompat-v7:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/AndroidManifest.xml:7:5-20
@@ -102,11 +105,11 @@ MERGED from [com.android.support:support-vector-drawable:23.2.1] /Users/hardikja
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
-MERGED from [com.facebook.android:facebook-android-sdk:4.13.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/AndroidManifest.xml:28:5-37:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.13.2] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/AndroidManifest.xml:28:5-37:19
+MERGED from [com.android.support:cardview-v7:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:customtabs:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:cardview-v7:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:palette-v7:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/palette-v7/23.2.1/AndroidManifest.xml:22:5-23:19
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:41:5-136:19
@@ -117,6 +120,12 @@ MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hard
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-location:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.1.0/AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:28:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:22:5-20
 MERGED from [ChatApp:volley:unspecified] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/AndroidManifest.xml:11:5-20
 	android:label
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:29:9-41
@@ -125,7 +134,7 @@ MERGED from [ChatApp:volley:unspecified] /Users/hardikjani/Desktop/Manish/Studio
 	android:allowBackup
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:27:9-35
 	android:icon
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:28:9-46
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:28:9-44
 	android:theme
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:31:9-40
 	android:name
@@ -232,126 +241,132 @@ ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatAp
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:90:13-49
 	android:name
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:89:13-53
-activity#com.rs.timepass.CropImage.CropImage
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:92:9-94:61
+activity#com.rs.timepass.Ui.PhotoViewActivity
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:92:9-94:52
 	android:screenOrientation
 		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:94:13-49
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:93:13-48
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:93:13-49
+activity#com.rs.timepass.CropImage.CropImage
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:96:9-98:61
+	android:screenOrientation
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:98:13-49
+	android:name
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:97:13-48
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:97:9-99:47
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:101:9-103:47
 	android:value
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:99:13-44
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:103:13-44
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:98:13-58
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:102:13-58
 provider#com.facebook.FacebookContentProvider
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:100:9-103:39
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:104:9-107:39
 	android:authorities
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:102:13-90
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:106:13-90
 	android:exported
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:103:13-36
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:107:13-36
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:101:13-64
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:105:13-64
 activity#com.facebook.FacebookActivity
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:104:9-108:75
-MERGED from [com.facebook.android:facebook-android-sdk:4.13.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/AndroidManifest.xml:29:9-32:75
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:108:9-112:75
+MERGED from [com.facebook.android:facebook-android-sdk:4.13.2] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/AndroidManifest.xml:29:9-32:75
 	android:label
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:107:13-45
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:111:13-45
 	android:configChanges
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:106:13-96
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:110:13-96
 	android:theme
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:108:13-72
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:112:13-72
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:105:13-57
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:109:13-57
 receiver#com.urbanairship.CoreReceiver
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:115:9-66
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:119:9-66
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:100:9-108:20
 	android:exported
 		ADDED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:102:13-37
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:115:19-63
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:119:19-63
 receiver#com.urbanairship.push.GcmPushReceiver
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:116:9-131:20
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:120:9-135:20
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:109:9-118:20
 	android:permission
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:118:13-73
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:122:13-73
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:117:13-65
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:121:13-65
 intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION+com.rs.timepass
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:119:13-124:29
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:123:13-128:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:120:17-81
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:124:17-81
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:120:25-78
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:124:25-78
 action#com.google.android.c2dm.intent.REGISTRATION
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:121:17-86
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:125:17-86
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:121:25-83
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:125:25-83
 category#com.rs.timepass
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:123:17-60
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:127:17-60
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:123:27-57
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:127:27-57
 intent-filter#android.intent.action.PACKAGE_REPLACED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:126:13-130:29
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:130:13-134:29
 action#android.intent.action.PACKAGE_REPLACED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:127:17-81
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:131:17-81
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:127:25-78
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:131:25-78
 data
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:129:17-50
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:133:17-50
 	android:scheme
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:129:23-47
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:133:23-47
 service#com.urbanairship.push.PushService
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:133:9-135:57
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:137:9-139:57
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:81:9-83:57
 	android:label
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:135:13-54
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:139:13-54
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:134:13-61
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:138:13-61
 service#com.urbanairship.analytics.EventService
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:136:9-138:45
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:140:9-142:45
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:84:9-86:45
 	android:label
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:138:13-42
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:142:13-42
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:137:13-67
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:141:13-67
 provider#com.urbanairship.UrbanAirshipProvider
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:140:9-143:43
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:144:9-147:43
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:130:9-135:72
 	android:authorities
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:142:13-72
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:146:13-72
 	android:multiprocess
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:143:13-40
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:147:13-40
 	android:exported
 		ADDED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:133:13-36
 	android:permission
 		ADDED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:135:13-69
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:141:13-65
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:145:13-65
 receiver#com.rs.timepass.Utils.PushNotificationReceiver
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:145:9-157:20
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:149:9-161:20
 	android:exported
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:147:13-37
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:151:13-37
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:146:13-59
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:150:13-59
 intent-filter#com.rs.timepass+com.urbanairship.push.CHANNEL_UPDATED+com.urbanairship.push.DISMISSED+com.urbanairship.push.OPENED+com.urbanairship.push.RECEIVED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:149:13-156:29
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:153:13-160:29
 action#com.urbanairship.push.CHANNEL_UPDATED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:150:17-80
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:154:17-80
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:150:25-77
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:154:25-77
 action#com.urbanairship.push.OPENED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:151:17-71
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:155:17-71
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:151:25-68
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:155:25-68
 action#com.urbanairship.push.RECEIVED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:152:17-73
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:156:17-73
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:152:25-70
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:156:25-70
 action#com.urbanairship.push.DISMISSED
-ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:153:17-74
+ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:157:17-74
 	android:name
-		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:153:25-71
+		ADDED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml:157:25-71
 uses-sdk
 INJECTED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:21:5-23:78
@@ -373,11 +388,11 @@ MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Ma
 MERGED from [com.android.support:recyclerview-v7:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
-MERGED from [com.facebook.android:facebook-android-sdk:4.13.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.13.2] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:cardview-v7:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:customtabs:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.4.0/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:cardview-v7:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:palette-v7:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/palette-v7/23.2.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
 MERGED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:8:5-10:41
@@ -389,6 +404,14 @@ MERGED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hard
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-location:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.1.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:27:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/AndroidManifest.xml:20:5-43
 MERGED from [ChatApp:volley:unspecified] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.2.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/AndroidManifest.xml:23:9-75
@@ -399,11 +422,11 @@ MERGED from [ChatApp:volley:unspecified] /Users/hardikjani/Desktop/Manish/Studio
 		INJECTED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/src/main/AndroidManifest.xml
 activity#com.facebook.CustomTabActivity
-ADDED from [com.facebook.android:facebook-android-sdk:4.13.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/AndroidManifest.xml:33:9-36:20
+ADDED from [com.facebook.android:facebook-android-sdk:4.13.2] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/AndroidManifest.xml:33:9-36:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-android-sdk:4.13.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/AndroidManifest.xml:35:13-36
+		ADDED from [com.facebook.android:facebook-android-sdk:4.13.2] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/AndroidManifest.xml:35:13-36
 	android:name
-		ADDED from [com.facebook.android:facebook-android-sdk:4.13.1] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/AndroidManifest.xml:34:13-58
+		ADDED from [com.facebook.android:facebook-android-sdk:4.13.2] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/AndroidManifest.xml:34:13-58
 uses-permission#android.permission.VIBRATE
 ADDED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/AndroidManifest.xml:15:5-66
 	android:name
@@ -547,6 +570,8 @@ ADDED from [com.urbanairship.android:urbanairship-sdk:7.1.5] /Users/hardikjani/D
 meta-data#com.google.android.gms.version
 ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
 	android:value
 		ADDED from [com.google.android.gms:play-services-basement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:23:13-66
 	android:name
@@ -579,3 +604,9 @@ ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hardi
 		ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:44:11-35
 	android:name
 		ADDED from [com.google.android.gms:play-services-measurement:8.4.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/AndroidManifest.xml:42:11-82
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:23:5-25:33
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:24:8-40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:8.1.0] /Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/AndroidManifest.xml:25:8-31

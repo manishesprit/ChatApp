@@ -26,7 +26,7 @@ public class Storage {
     }
 
     public static File verifyLogFile() throws IOException {
-        File logFile = new File(Config.DIR_LOG + "/Inkskill_Log_"
+        File logFile = new File(Config.DIR_LOG + "/Timepass_Log_"
                 + new SimpleDateFormat("yyyy_MM_dd").format(new Date())
                 + ".html");
         FileOutputStream fos = null;
@@ -131,6 +131,18 @@ public class Storage {
             dir.mkdirs();
         }
 
+        dir = new File(Config.DIR_USERDATA);
+
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        dir = new File(Config.DIR_FEEDDATA);
+
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
 
         dir = null;
     }
@@ -147,7 +159,7 @@ public class Storage {
     public static void copyDB() {
         try {
             verifyDataPath();
-            Storage.copy_DB("/data/data/com.esp.inkskill/databases/"
+            Storage.copy_DB("/data/data/com.rs.timepass/databases/"
                     + Config.DB_NAME, Config.DIR_DATA + "/" + Config.DB_NAME);
         } catch (Exception e) {
             e.printStackTrace();

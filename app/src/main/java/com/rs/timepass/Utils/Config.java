@@ -6,22 +6,22 @@ import android.os.Environment;
 import java.util.HashMap;
 
 public class Config {
-    public static String TAG = "ChatApp";
-    public static String DB_NAME = "chatapp.db";
+    public static String TAG = "TimePass";
+    public static String DB_NAME = "timepass.db";
     public static String APP_HOME = Environment.getExternalStorageDirectory().getPath() + "/" + TAG;
     public static String DIR_LOG = APP_HOME + "/log";
 
     // preference file name
     public static final String PREF_FILE = TAG + "_PREF";
-    public static String DIR_USERDATA = APP_HOME + "/userdata";
-    public static String DIR_FEEDDATA = APP_HOME + "/feeddata";
+    public static String DIR_USERDATA = APP_HOME + "/TimePass Profile Photos";
+    public static String DIR_FEEDDATA = APP_HOME + "/TimePass Feed Photos";
     public static String DIR_DATA = APP_HOME + "/data";
 
     public static String DIR_MAGIC = DIR_USERDATA;
     /*
      * API BASIC INFO
      */
-    public static String API_KEY = "INKSKILL@#2016!";
+    public static String API_KEY = "TIMEPASS@#2016!";
     public static String API_VERSION = "v1";
 
     public static String ORIGINAL_HOST = "http://manikom.net23.net/";
@@ -50,6 +50,10 @@ public class Config {
     public static String API_CHANGE_PROFILE = "";
     public static String API_CHANGE_PROFILE_JSON = "change_profile.php?";
     public static String TAG_CHANGE_PROFILE = "TAG_CHANGE_PROFILE";
+
+    public static String API_CHANGE_PASSWORD = "";
+    public static String API_CHANGE_PASSWORD_JSON = "change_password.php?";
+    public static String TAG_CHANGE_PASSWORD = "TAG_CHANGE_PASSWORD";
 
     public static String API_CREATE_FEED = "";
     public static String API_CREATE_FEED_JSON = "create_feed.php";
@@ -157,7 +161,9 @@ public class Config {
     public static String message = "message";
     public static String username = "username";
     public static String password = "password";
+    public static String newpassword = "newpassword";
     public static String fbid = "fbid";
+    public static String pushid = "pushid";
     public static String email = "email";
     public static String mobile = "mobile";
     public static String city = "city";

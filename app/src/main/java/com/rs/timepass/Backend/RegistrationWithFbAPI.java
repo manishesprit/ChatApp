@@ -36,7 +36,7 @@ public class RegistrationWithFbAPI {
         this.context = context;
         this.mParams = new HashMap<String, String>();
         this.userBean = userBean;
-        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_FB_JSON + Config.username + "=" + Uri.encode(userBean.username) + "&" + Config.email + "=" + Uri.encode(userBean.email) + "&" + Config.fbid + "=" + Uri.encode(userBean.fbid) + "&" + Config.name + "=" + Uri.encode(userBean.name) + "&" + Config.avatar + "=" + userBean.avatar + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context);
+        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_FB_JSON + Config.username + "=" + Uri.encode(userBean.username) + "&" + Config.email + "=" + Uri.encode(userBean.email) + "&" + Config.fbid + "=" + Uri.encode(userBean.fbid) + "&" + Config.name + "=" + Uri.encode(userBean.name) + "&" + Config.avatar + "=" + userBean.avatar + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context) + "&" + Config.pushid + "=" + Pref.getValue(context, Config.PREF_URBUN_PUSH_ID, "");
 
 
         Log.print(":::: API_REGISTRATION ::::" + Config.API_REGISTRATION);

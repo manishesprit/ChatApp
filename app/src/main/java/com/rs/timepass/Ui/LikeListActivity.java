@@ -109,4 +109,10 @@ public class LikeListActivity extends Activity implements OnPopUpDialogButoonCli
             }
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
+    }
 }

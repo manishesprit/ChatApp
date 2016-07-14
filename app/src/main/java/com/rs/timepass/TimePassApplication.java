@@ -7,9 +7,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.MyCustomeNotificationFactory;
 import com.rs.timepass.Utils.Pref;
 import com.urbanairship.UAirship;
-import com.urbanairship.push.notifications.CustomLayoutNotificationFactory;
 
 import java.io.File;
 
@@ -38,8 +38,7 @@ public class TimePassApplication extends Application {
             Pref.setValue(this, Config.PREF_URBUN_PUSH_ID, UAirship.shared().getPushManager().getChannelId());
         }
 
-//        MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(urbunAirship);
-        CustomLayoutNotificationFactory myCustomeNotificationFactory = new CustomLayoutNotificationFactory(this);
+        MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(getApplicationContext());
         UAirship.shared().getPushManager().setNotificationFactory(myCustomeNotificationFactory);
     }
 

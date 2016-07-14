@@ -107,6 +107,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
         txtUserName.setOnClickListener(this);
         imgAvatar.setOnClickListener(this);
         imgLikeUnlike.setOnClickListener(this);
+        imgFeed.setOnClickListener(this);
         llLike.setOnClickListener(this);
         imgAdd.setOnClickListener(this);
 
@@ -277,14 +278,21 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.myprogressBar:
+                break;
+
+            case R.id.imgFeed:
+                intent = new Intent(context, PhotoViewActivity.class);
+                intent.putExtra("beanData", (PostBean) txtUserName.getTag());
+                context.startActivity(intent);
                 break;
 
             case R.id.txtUserName:
 
                 if (((PostBean) txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
-                    Intent intent = new Intent(context, ProfileActivity.class);
+                    intent = new Intent(context, ProfileActivity.class);
                     intent.putExtra("beanData", (PostBean) txtUserName.getTag());
                     context.startActivity(intent);
                 }
@@ -294,7 +302,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.imgAvatar:
 
                 if (((PostBean) txtUserName.getTag()).userid != Pref.getValue(context, Config.PREF_USER_ID, 0)) {
-                    Intent intent = new Intent(context, ProfileActivity.class);
+                    intent = new Intent(context, ProfileActivity.class);
                     intent.putExtra("beanData", (PostBean) txtUserName.getTag());
                     context.startActivity(intent);
                 }
@@ -316,7 +324,7 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
             case R.id.llLike:
 
                 if (((PostBean) txtUserName.getTag()).noOflike > 0) {
-                    Intent intent = new Intent(context, LikeListActivity.class);
+                    intent = new Intent(context, LikeListActivity.class);
                     intent.putExtra("feedid", ((PostBean) txtUserName.getTag()).feedid);
                     context.startActivity(intent);
                 }
@@ -334,5 +342,11 @@ public class FeedDetailActivity extends AppCompatActivity implements View.OnClic
 
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
     }
 }

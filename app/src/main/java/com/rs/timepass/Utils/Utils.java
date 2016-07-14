@@ -2,6 +2,7 @@ package com.rs.timepass.Utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -18,6 +19,9 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.urbanairship.UAirship;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -378,7 +382,7 @@ public class Utils {
         return rotate;
     }
 
-    public static void DownloadImage(Bitmap bitmap, String name, String path) {
+    public static void DownloadImage(Context context, Bitmap bitmap, String name, String path) {
         System.out.println("width==" + bitmap.getWidth() + "===height===" + bitmap.getHeight());
         try {
 
@@ -391,14 +395,42 @@ public class Utils {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
             os.flush();
             os.close();
-            System.out.println("Download complet");
+            Toast.makeText(context, "Download complete", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             System.out.println("Error writing bitmap" + e);
         }
     }
 
+    public static void setPushId(Application application) {
+        try {
+            Log.print("=========== EXIST PUSH ID ======" + Pref.getValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, null));
+            if (Pref.getValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, null) == null ||
+                    Pref.getValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, "").equals("")) {
+                UAirship.takeOff(application, new UAirship.OnReadyCallback() {
+                    @Override
+                    public void onAirshipReady(UAirship uAirship) {
+                        uAirship.shared().getPushManager().setUserNotificationsEnabled(true);
+                    }
+                });
+
+                if (UAirship.shared().getPushManager().getChannelId() != null) {
+                    Pref.setValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, UAirship.shared().getPushManager().getChannelId().toString());
+                }
+
+                String channelId = UAirship.shared().getPushManager().getChannelId();
+                System.out.println("============My Application Channel ID: ============" + channelId);
+
+                MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(application.getApplicationContext());
+                UAirship.shared().getPushManager().setNotificationFactory(myCustomeNotificationFactory);
+            }
+        } catch (Exception e) {
+            Log.error(application.getApplicationContext().getClass().getName() + "GetGCM()", e);
+        }
+    }
+
     public static void ClearPref(Context context) {
         Pref.setValue(context, Config.PREF_USER_ID, 0);
+        Pref.setValue(context, Config.PREF_USER_FB_ID, "");
         Pref.setValue(context, Config.PREF_USERNAME, "");
         Pref.setValue(context, Config.PREF_NAME, "");
         Pref.setValue(context, Config.PREF_CITY, "");

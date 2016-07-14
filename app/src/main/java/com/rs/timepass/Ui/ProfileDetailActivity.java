@@ -13,7 +13,9 @@ import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -22,6 +24,10 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.rs.timepass.Bean.PostBean;
 import com.rs.timepass.R;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -35,13 +41,16 @@ public class ProfileDetailActivity extends AppCompatActivity {
     private Context context;
     private TextView txtMobile;
     private TextView txtStatus;
+    private Bitmap bitmap;
+    private LinearLayout llDownload;
+    private TextView txtDownload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActivityTransitions();
         setContentView(R.layout.activity_profiledetail);
-        context=this;
+        context = this;
 
         if (getIntent().getExtras() != null) {
             postBean = (PostBean) getIntent().getSerializableExtra("beanData");
@@ -59,17 +68,20 @@ public class ProfileDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(postBean.name);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
         image = (ImageView) findViewById(R.id.image);
+        llDownload = (LinearLayout) findViewById(R.id.llDownload);
+        txtDownload = (TextView) findViewById(R.id.txtDownload);
 
         txtMobile = (TextView) findViewById(R.id.txtMobile);
         txtStatus = (TextView) findViewById(R.id.txtStatus);
 
 
-        Glide.with(ProfileDetailActivity.this).load(Config.IMAGE_PATH_WEB_AVATARS+postBean.avatar)
+        Glide.with(ProfileDetailActivity.this).load(Config.IMAGE_PATH_WEB_AVATARS + postBean.avatar)
                 .asBitmap()
                 .error(R.drawable.default_user).placeholder(R.drawable.default_user).error(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                 image.setImageBitmap(resource);
+                bitmap = resource;
                 Palette.from(resource).generate(new Palette.PaletteAsyncListener() {
                     public void onGenerated(Palette palette) {
 
@@ -78,6 +90,31 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 });
             }
         });
+
+        image.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                llDownload.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+        llDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                llDownload.setVisibility(View.GONE);
+            }
+        });
+
+
+        txtDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                llDownload.setVisibility(View.GONE);
+                Utils.DownloadImage(context, bitmap, "Image_" + new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()).toString() + ".jpg", Config.DIR_USERDATA);
+            }
+        });
+
 
         txtMobile.setText(postBean.mobile);
         txtStatus.setText(postBean.status);

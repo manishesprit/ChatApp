@@ -157,4 +157,10 @@ public class EditProfileActivity extends AppCompatActivity implements OnPopUpDia
     public void OnButtonClick(int tag, int buttonIndex, String input) {
 
     }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
+    }
 }

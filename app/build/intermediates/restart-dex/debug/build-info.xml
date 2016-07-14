@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
-    api-level="23"
-    density="xxhdpi"
+    abi="armeabi-v7a,armeabi"
+    api-level="22"
+    density="xhdpi"
     format="7"
-    timestamp="6856617795374" >
+    timestamp="1576505903911" >
 
     <task
         name="javac"
-        duration="4057" />
+        duration="2457" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="1190" />
+        duration="1723" />
     <task
         name="verifier"
-        duration="218" />
+        duration="601" />
 
     <artifact
         location="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="6856617795374" >
+    <build timestamp="1576505903911" >
         <artifact
             location="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />

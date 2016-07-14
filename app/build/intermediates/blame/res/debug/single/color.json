@@ -41,7 +41,7 @@
     },
     {
         "merged": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/res/merged/debug/color/com_facebook_button_text_color.xml",
-        "source": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/res/color/com_facebook_button_text_color.xml"
+        "source": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/color/com_facebook_button_text_color.xml"
     },
     {
         "merged": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/res/merged/debug/color/common_plus_signin_btn_text_dark.xml",
@@ -57,6 +57,6 @@
     },
     {
         "merged": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/res/merged/debug/color/com_facebook_send_button_text_color.xml",
-        "source": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/res/color/com_facebook_send_button_text_color.xml"
+        "source": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/color/com_facebook_send_button_text_color.xml"
     }
 ]

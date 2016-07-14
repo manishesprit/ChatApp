@@ -34,16 +34,11 @@ public class LoginAPI {
     public LoginAPI(Context context, ResponseListener responseListener, UserBean userBean) {
         this.context = context;
         this.mParams = new HashMap<String, String>();
-        if(userBean.fbid == null) {
-            Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON + Config.username + "=" + userBean.username + "&" + Config.password + "=" + userBean.password + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context);
-            this.userBean = userBean;
-            Log.print(":::: API_LOGIN ::::" + Config.API_LOGIN);
-        }
-        else
-        {
 
-        }
-            this.responseListener = responseListener;
+        Config.API_LOGIN = Config.HOST + Config.API_LOGIN_JSON + Config.username + "=" + userBean.username + "&" + Config.password + "=" + userBean.password + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context) + "&" + Config.pushid + "=" + Pref.getValue(context, Config.PREF_URBUN_PUSH_ID, "");
+        this.userBean = userBean;
+        Log.print(":::: API_LOGIN ::::" + Config.API_LOGIN);
+        this.responseListener = responseListener;
     }
 
     public void execute() {

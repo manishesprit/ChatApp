@@ -313,4 +313,10 @@ public class ChangeAvatarActivity extends AppCompatActivity implements OnPopUpDi
             }
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
+    }
 }

@@ -202,4 +202,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
+    }
 }

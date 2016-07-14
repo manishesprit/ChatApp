@@ -34,6 +34,7 @@ import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Uc.OnPopUpDialogButoonClickListener;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Log;
+import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
 import org.json.JSONObject;
@@ -89,6 +90,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Utils.setDefaultRoundImage(LoginActivity.this, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(LoginActivity.this, imgFacebook, R.drawable.facebook);
+
+        if (Utils.isOnline(context)) {
+            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
+                Utils.setPushId(getApplication());
+            }
+        } else {
+            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
+        }
 
 
         txtlogin.setOnClickListener(this);
@@ -309,6 +318,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
     }
 
 }

@@ -3,56 +3,47 @@ package com.rs.timepass.Utils;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.urbanairship.AirshipReceiver;
+import com.urbanairship.push.BaseIntentReceiver;
 import com.urbanairship.push.PushMessage;
 
 /**
  * Created by admin on 4/6/16.
  */
-public class PushNotificationReceiver extends AirshipReceiver {
+public class PushNotificationReceiver extends BaseIntentReceiver {
 
-    private static final String TAG = "SampleAirshipReceiver";
 
     @Override
-    protected void onChannelRegistrationSucceeded(Context context, String channelId) {
-        System.out.println(TAG+ "Channel registration updated. Channel Id:" + channelId + ".");
+    protected void onChannelRegistrationSucceeded(@NonNull Context context, @NonNull String s) {
+        System.out.println("=============onChannelRegistrationSucceeded===============");
     }
 
     @Override
-    protected void onChannelRegistrationFailed(Context context) {
-        System.out.println(TAG+ "Channel registration failed.");
+    protected void onChannelRegistrationFailed(@NonNull Context context) {
+
     }
 
     @Override
-    protected void onPushReceived(@NonNull Context context, @NonNull PushMessage message, boolean notificationPosted) {
-        System.out.println(TAG+"Received push message. Alert: " + message.getAlert() + ". posted notification: " + notificationPosted);
+    protected void onPushReceived(@NonNull Context context, @NonNull PushMessage pushMessage, int i) {
+        System.out.println("=============onPushReceived===============");
+
     }
 
     @Override
-    protected void onNotificationPosted(@NonNull Context context, @NonNull NotificationInfo notificationInfo) {
-        System.out.println(TAG+ "Notification posted. Alert: " + notificationInfo.getMessage().getAlert() + ". NotificationId: " + notificationInfo.getNotificationId());
+    protected void onBackgroundPushReceived(@NonNull Context context, @NonNull PushMessage pushMessage) {
+        System.out.println("=============onBackgroundPushReceived===============");
+
     }
 
     @Override
-    protected boolean onNotificationOpened(@NonNull Context context, @NonNull NotificationInfo notificationInfo) {
-        System.out.println(TAG+ "Notification opened. Alert: " + notificationInfo.getMessage().getAlert() + ". NotificationId: " + notificationInfo.getNotificationId());
-
-        // Return false here to allow Urban Airship to auto launch the launcher activity
+    protected boolean onNotificationOpened(@NonNull Context context, @NonNull PushMessage pushMessage, int i) {
+        System.out.println("=============onNotificationOpened===============");
         return false;
     }
 
     @Override
-    protected boolean onNotificationOpened(@NonNull Context context, @NonNull NotificationInfo notificationInfo, @NonNull ActionButtonInfo actionButtonInfo) {
-        System.out.println(TAG+ "Notification action button opened. Button ID: " + actionButtonInfo.getButtonId() + ". NotificationId: " + notificationInfo.getNotificationId());
-
-        // Return false here to allow Urban Airship to auto launch the launcher
-        // activity for foreground notification action buttons
+    protected boolean onNotificationActionOpened(@NonNull Context context, @NonNull PushMessage pushMessage, int i, @NonNull String s, boolean b) {
+        System.out.println("=============onNotificationActionOpened===============");
         return false;
-    }
-
-    @Override
-    protected void onNotificationDismissed(@NonNull Context context, @NonNull NotificationInfo notificationInfo) {
-        System.out.println(TAG+ "Notification dismissed. Alert: " + notificationInfo.getMessage().getAlert() + ". Notification ID: " + notificationInfo.getNotificationId());
     }
 }
 

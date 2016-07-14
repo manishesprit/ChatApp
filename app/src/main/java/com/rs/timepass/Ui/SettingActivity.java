@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rs.timepass.R;
+import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
 
@@ -20,6 +22,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     private Toolbar toolbar;
     private TextView txtEditProfile;
+    private TextView txtChangePassword;
     private TextView txtLogout;
     private Intent intent;
 
@@ -34,9 +37,17 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         setTitle("Setting");
 
         txtEditProfile = (TextView) findViewById(R.id.txtEditProfile);
+        txtChangePassword = (TextView) findViewById(R.id.txtChangePassword);
         txtLogout = (TextView) findViewById(R.id.txtLogout);
 
+        if (Pref.getValue(this, Config.PREF_USER_FB_ID, "") != "") {
+            txtChangePassword.setVisibility(View.VISIBLE);
+        } else {
+            txtChangePassword.setVisibility(View.GONE);
+        }
+
         txtEditProfile.setOnClickListener(this);
+        txtChangePassword.setOnClickListener(this);
         txtLogout.setOnClickListener(this);
 
     }
@@ -62,6 +73,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.txtEditProfile:
                 intent = new Intent(SettingActivity.this, EditProfileActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.txtChangePassword:
+                intent = new Intent(SettingActivity.this, ChangePasswordActivity.class);
                 startActivity(intent);
                 break;
 

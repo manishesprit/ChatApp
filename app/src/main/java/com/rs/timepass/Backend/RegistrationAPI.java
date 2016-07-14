@@ -35,7 +35,7 @@ public class RegistrationAPI {
         this.context = context;
         this.mParams = new HashMap<String, String>();
         this.userBean = userBean;
-        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_JSON + Config.username + "=" + userBean.username + "&" + Config.password + "=" + userBean.password + "&" + Config.email + "=" + userBean.email + "&" + Config.mobile + "=" + userBean.mobile + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context);
+        Config.API_REGISTRATION = Config.HOST + Config.API_REGISTRATION_JSON + Config.username + "=" + userBean.username + "&" + Config.password + "=" + userBean.password + "&" + Config.email + "=" + userBean.email + "&" + Config.mobile + "=" + userBean.mobile + "&" + Config.latlong + "=" + userBean.latlong + "&" + Config.udid + "=" + Utils.getDeviceID(context) + "&" + Config.pushid + "=" + Pref.getValue(context, Config.PREF_URBUN_PUSH_ID, "");
 
 
         Log.print(":::: API_REGISTRATION ::::" + Config.API_REGISTRATION);

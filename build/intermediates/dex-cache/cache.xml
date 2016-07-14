@@ -2,179 +2,186 @@
 <items version="2" >
 
     <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.2.1_a5690dc65a8599c24899995f4e2d7e44c932169a/classes.dex" />
-    </item>
-    <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="2d1eaa9e0b98f8fc4c2b989d9b30d4f1480648ac">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-customtabs-23.4.0_744481d71b2357edb85e53201cadf6e8b6bf4b7f/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-customtabs-23.4.0_744481d71b2357edb85e53201cadf6e8b6bf4b7f.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-23.4.0_bc2bf2febcceeb1021d1e05cc840477b878c0a94/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.4.0_bc2bf2febcceeb1021d1e05cc840477b878c0a94.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="673d77a5bbddd766037f088e775df525c46407f0">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.2.1_c053de26d7438d45c5dc68619eac0ebac7853952/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.1_c053de26d7438d45c5dc68619eac0ebac7853952.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.2.1_03bd9240d85452481c74ff58e318b795facc92c2/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.2.1_70868fc0c05898dc46c0e669af6b3c103e5ee694/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/jars/libs/okio-1.1.0 .jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="f5ec71cc5146add40d027bbbdfab04bb520b549d">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/8/okio-1.1.0 _01638f0d472dd1260625c6464ab9d0c8a112df05/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.1_03bd9240d85452481c74ff58e318b795facc92c2.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_202ea423f92ae2c12b832e545b37bb9fbf898fb5/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0_202ea423f92ae2c12b832e545b37bb9fbf898fb5.jar" />
     </item>
     <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.1/jars/classes.jar"
-        jumboMode="true"
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/jars/libs/okio-1.1.0 .jar"
+        jumboMode="false"
         revision="23.0.2"
-        sha1="ad4d4c5914b7b25e51e66f8e2d1b842c67dd63a9">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.android-facebook-android-sdk-4.13.1_29086f4ac9080c3145a1d51b79de455129355207/classes.dex" />
+        sha1="f5ec71cc5146add40d027bbbdfab04bb520b549d">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/okio-1.1.0 _01638f0d472dd1260625c6464ab9d0c8a112df05.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_0c54cd932ce03f79da9af9f50142104146998350/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="0c74577bd5ee941011d7e74bedbb9fff75f21b76">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_e8cda6c11efcb67a650e5a6c394bfcea22f251d8/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/jars/libs/okhttp-2.1.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="5a6351a556af0bf75737aed4b8fd7c1d08819214">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/8/okhttp-2.1.0_d2726b828e30aff433757c06c24f121a57ecdf33/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_ec22732bc9a54826019d614b791ab2a57947cdee/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_7a8904a8826bd2980e627a4db5923068dcbafc92/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.5.2/ecf534dba3a8446ce84cbb797d314763be212a68/glide-3.5.2.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.5.2_03aac248708e09f4ba17650580d88d7f7de2d2ed/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.4.0_0c54cd932ce03f79da9af9f50142104146998350.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-8.4.0_c9e7aa72dd2475275187e7f3f1ca1d674201b2f5/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-8.4.0_c9e7aa72dd2475275187e7f3f1ca1d674201b2f5.jar" />
     </item>
     <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/jars/classes.jar"
+        jumboMode="false"
         revision="23.0.2"
-        sha1="e736c469aa3203d771cf0ce44afa5934305f7c99">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_9fc66b7bbef9bde1e983618f26042990599d1c77/classes.dex" />
+        sha1="3322df7b184ab5c8e8341508431cb3fcf395d13f">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.13.2_3df3b783a728d9ad437dc34b225d20374ca7a6dd.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-8.4.0_b705ee990000d6b58e2c943f7ac94d036980c99e/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-8.4.0_b705ee990000d6b58e2c943f7ac94d036980c99e.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-location-8.1.0_f3795e92d01ead7374d4c4ed521861f7171c661a.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-measurement-8.4.0_820f116a5af87bf5fd255ae97246944a413f4a4f/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-applinks-1.4.0_71fcd0808614dd964c74ee1fe26512bbc9592c9c/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/palette-v7/23.2.1/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="bcee2598dbb74f6d043225a0d7e178b0c7ea4006">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-palette-v7-23.2.1_b79b0b0f9c8f927369ae7f10535a27f0e5cdb84c/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.2.1_3196319fbff1ed3a58bc5d7785eb5d8d6ea413de/classes.dex" />
-    </item>
-    <item
-        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="144993841278ab938b64aa9ed675cd2b21ebc2e6">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.urbanairship.android-urbanairship-sdk-7.1.5_d3e54354182531ba2ec094b3ca37a4e5c64db688/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-measurement-8.4.0_820f116a5af87bf5fd255ae97246944a413f4a4f.jar" />
     </item>
     <item
         jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/jars/libs/okhttp-urlconnection-2.1.0.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="074a22a78595470db4a2a8dc86b3436e55316a88">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/8/okhttp-urlconnection-2.1.0_ff2bfa5d46f954350e2a7f874df8bcc910f66cb0/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.1.0_ff2bfa5d46f954350e2a7f874df8bcc910f66cb0.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.1_a5690dc65a8599c24899995f4e2d7e44c932169a.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.1_70868fc0c05898dc46c0e669af6b3c103e5ee694.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="07e7a57eee4acc452245e3cb0ad91fb964dd0d8f">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/ChatApp-volley-unspecified_800ed50c6c36d23f96164f495bea93bb3851c312.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/ChatApp/volley/unspecified/jars/libs/okhttp-2.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5a6351a556af0bf75737aed4b8fd7c1d08819214">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/okhttp-2.1.0_d2726b828e30aff433757c06c24f121a57ecdf33.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-8.4.0_ec22732bc9a54826019d614b791ab2a57947cdee.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_7a8904a8826bd2980e627a4db5923068dcbafc92.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.5.2/ecf534dba3a8446ce84cbb797d314763be212a68/glide-3.5.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/glide-3.5.2_03aac248708e09f4ba17650580d88d7f7de2d2ed.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-8.1.0_5385bd245f2bb7bb114bb7a410e691dcb76867ab.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/palette-v7/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bcee2598dbb74f6d043225a0d7e178b0c7ea4006">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-palette-v7-23.2.1_b79b0b0f9c8f927369ae7f10535a27f0e5cdb84c.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0_71fcd0808614dd964c74ee1fe26512bbc9592c9c.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="144993841278ab938b64aa9ed675cd2b21ebc2e6">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.urbanairship.android-urbanairship-sdk-7.1.5_d3e54354182531ba2ec094b3ca37a4e5c64db688.jar" />
+    </item>
+    <item
+        jar="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.1_3196319fbff1ed3a58bc5d7785eb5d8d6ea413de.jar" />
     </item>
     <item
         jar="/Users/hardikjani/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
-        jumboMode="true"
+        jumboMode="false"
         revision="23.0.2"
         sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-tasks-1.4.0_8c5a1de652697340439ca7d3ab407e0a9d87ad6f/classes.dex" />
+        <dex dex="/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_8c5a1de652697340439ca7d3ab407e0a9d87ad6f.jar" />
     </item>
 
 </items>

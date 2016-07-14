@@ -94,11 +94,6 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtGallary:
@@ -229,5 +224,11 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (myprogressBar.getVisibility() == View.GONE)
+            super.onBackPressed();
     }
 }
