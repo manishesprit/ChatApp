@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.rs.timepass.Bean.NotificationBean;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,65 +52,36 @@ public class Pref {
         Pref.sharedPreferences = null;
     }
 
-//    public static ArrayList<StyleBean> getArrayValue(Context context, String key, ArrayList<StyleBean> defaultValue) {
-//        Pref.openPref(context);
-//        ArrayList<StyleBean> set = null;
-//        try {
-//            set = (ArrayList<StyleBean>) ObjectSerializer
-//                    .deserialize(Pref.sharedPreferences.getString(key,
-//                            ObjectSerializer.serialize(defaultValue)));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Pref.sharedPreferences = null;
-//        return set;
-//    }
 //
-//    public static void setArrayValue(Context context, String key, ArrayList<StyleBean> value) {
-//        Pref.openPref(context);
-//        Editor prefsPrivateEditor = Pref.sharedPreferences.edit();
-//        ArrayList<StyleBean> s = new ArrayList<StyleBean>();
-//        s.addAll(value);
-//
-//        try {
-//            prefsPrivateEditor.putString(key, ObjectSerializer.serialize(s));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        prefsPrivateEditor.commit();
-//        prefsPrivateEditor = null;
-//        Pref.sharedPreferences = null;
-//    }
-//
-//    public static ArrayList<FeedBean> getNotificationArray(Context context, String key, ArrayList<FeedBean> defaultValue) {
-//        Pref.openPref(context);
-//        ArrayList<FeedBean> set = null;
-//        try {
-//            set = (ArrayList<FeedBean>) ObjectSerializer
-//                    .deserialize(Pref.sharedPreferences.getString(key,
-//                            ObjectSerializer.serialize(defaultValue)));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Pref.sharedPreferences = null;
-//        return set;
-//    }
-//
-//    public static void setNotificationArray(Context context, String key, ArrayList<FeedBean> value) {
-//        Pref.openPref(context);
-//        Editor prefsPrivateEditor = Pref.sharedPreferences.edit();
-//        ArrayList<FeedBean> s = new ArrayList<FeedBean>();
-//        s.addAll(value);
-//
-//        try {
-//            prefsPrivateEditor.putString(key, ObjectSerializer.serialize(s));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        prefsPrivateEditor.commit();
-//        prefsPrivateEditor = null;
-//        Pref.sharedPreferences = null;
-//    }
+    public static ArrayList<NotificationBean> getNotificationArray(Context context, String key, ArrayList<NotificationBean> defaultValue) {
+        Pref.openPref(context);
+        ArrayList<NotificationBean> set = null;
+        try {
+            set = (ArrayList<NotificationBean>) ObjectSerializer
+                    .deserialize(Pref.sharedPreferences.getString(key,
+                            ObjectSerializer.serialize(defaultValue)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Pref.sharedPreferences = null;
+        return set;
+    }
+
+    public static void setNotificationArray(Context context, String key, ArrayList<NotificationBean> value) {
+        Pref.openPref(context);
+        Editor prefsPrivateEditor = Pref.sharedPreferences.edit();
+        ArrayList<NotificationBean> s = new ArrayList<NotificationBean>();
+        s.addAll(value);
+
+        try {
+            prefsPrivateEditor.putString(key, ObjectSerializer.serialize(s));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        prefsPrivateEditor.commit();
+        prefsPrivateEditor = null;
+        Pref.sharedPreferences = null;
+    }
 
     public static <T> Set<T> copy(Set<T> source) {
         return new HashSet<T>(source);

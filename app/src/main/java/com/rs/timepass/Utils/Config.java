@@ -13,8 +13,8 @@ public class Config {
 
     // preference file name
     public static final String PREF_FILE = TAG + "_PREF";
-    public static String DIR_USERDATA = APP_HOME + "/TimePass Profile Photos";
-    public static String DIR_FEEDDATA = APP_HOME + "/TimePass Feed Photos";
+    public static String DIR_USERDATA = APP_HOME + "/TimePassProfilePhotos";
+    public static String DIR_FEEDDATA = APP_HOME + "/TimePassFeedPhotos";
     public static String DIR_DATA = APP_HOME + "/data";
 
     public static String DIR_MAGIC = DIR_USERDATA;
@@ -62,6 +62,10 @@ public class Config {
     public static String API_LIKEUNLIKE = "";
     public static String API_LIKEUNLIKE_JSON = "feed_likeUnlike.php?";
     public static String TAG_LIKEUNLIKE = "TAG_LIKEUNLIKE";
+
+    public static String API_DELETE_FEED = "";
+    public static String API_DELETE_FEED_JSON = "delete_feed.php?";
+    public static String TAG_DELETE_FEED = "TAG_DELETE_FEED";
 
     public static String API_FEED_DETAIL = "";
     public static String API_FEED_DETAIL_JSON = "feed_detail.php?";
@@ -142,7 +146,6 @@ public class Config {
 
     public static String PREF_USER_ID = "PREF_USER_ID";
     public static String PREF_USER_FB_ID = "PREF_USER_FB_ID";
-    public static String PREF_URBUN_PUSH_ID = "PREF_URBUN_PUSH_ID";
     public static String PREF_USERNAME = "PREF_USERNAME";
     public static String PREF_NAME = "PREF_NAME";
     public static String PREF_CITY = "PREF_CITY";
@@ -155,6 +158,7 @@ public class Config {
     public static String PREF_AVATAR = "PREF_AVATAR";
     public static String PREF_UDID = "PREF_UDID";
     public static String PREF_ISFIRSTTIME = "PREF_ISFIRSTTIME";
+    public static String PREF_NOTIFICATION = "PREF_NOTIFICATION";
 
     //    UnFollowerAPI
     public static String code = "code";

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,15 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.rs.timepass.Bean.NotificationBean;
+import com.rs.timepass.Bean.PostBean;
 import com.rs.timepass.R;
-import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Pref;
-import com.rs.timepass.Utils.Utils;
+
+import java.util.ArrayList;
 
 
 /**
@@ -55,7 +59,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private FeedFragment feedFragment;
     private ProfileFragment profileFragment;
-    private NotifyFragment notifyFragment;
+    private ChatFragment notifyFragment;
+    private boolean doubleBackToExitPressedOnce = false;
+
+    public static int CODE_NEWPOST = 1560;
+    public static boolean isRefresh = false;
+    private ArrayList<NotificationBean> notificationBeanArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +81,36 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
 
-        if (Utils.isOnline(context)) {
-            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
-                Utils.setPushId(getApplication());
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getInt("type") == 1) {
+                notificationBeanArrayList = Pref.getNotificationArray(context, Config.PREF_NOTIFICATION, new ArrayList<NotificationBean>());
+                if (notificationBeanArrayList.size() == 1) {
+                    Intent intent = new Intent(context, FeedDetailActivity.class);
+                    intent.putExtra("feedid", notificationBeanArrayList.get(0).feedid);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, NotificationActivity.class);
+                    startActivity(intent);
+                }
+            } else if (bundle.getInt("type") == 2) {
+                notificationBeanArrayList = Pref.getNotificationArray(context, Config.PREF_NOTIFICATION, new ArrayList<NotificationBean>());
+                if (notificationBeanArrayList.size() == 1) {
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    PostBean postBean = new PostBean();
+                    postBean.userid = notificationBeanArrayList.get(0).userid;
+                    postBean.name = notificationBeanArrayList.get(0).msg;
+                    postBean.avatar = notificationBeanArrayList.get(0).avatar;
+                    postBean.noOfpost = 0;
+                    postBean.noOffollowers = 0;
+                    postBean.noOffollowing = 0;
+                    intent.putExtra("beanData", postBean);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, NotificationActivity.class);
+                    startActivity(intent);
+                }
             }
-        } else {
-            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Try again").show();
         }
 
         fabButton = (FloatingActionButton) findViewById(R.id.fabButton);
@@ -117,7 +150,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentManager.beginTransaction().add(R.id.feedFramlayout, feedFragment).commit();
                 isFeed = true;
             } else {
-
+                if (isRefresh == true) {
+                    feedFragment.setRefresh();
+                    isRefresh = false;
+                }
             }
 
             feedFramlayout.setVisibility(View.VISIBLE);
@@ -139,7 +175,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentManager.beginTransaction().add(R.id.profileFramlayout, profileFragment).commit();
                 isProfile = true;
             } else {
-
+                if (isRefresh == true) {
+                    profileFragment.setRefresh();
+                    isRefresh = false;
+                }
             }
 
             feedFramlayout.setVisibility(View.GONE);
@@ -158,11 +197,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         } else if (pos == 2) {
 
             if (!isNotfy) {
-                notifyFragment = new NotifyFragment();
+                notifyFragment = new ChatFragment();
                 fragmentManager.beginTransaction().add(R.id.notifyFramlayout, notifyFragment).commit();
                 isNotfy = true;
-            } else {
-
             }
 
             feedFramlayout.setVisibility(View.GONE);
@@ -184,7 +221,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.fabButton:
                 Intent intent = new Intent(context, CreatePostActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, CODE_NEWPOST);
                 break;
 
             case R.id.llfeed:
@@ -201,6 +238,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finish();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast toast = Toast.makeText(this, getResources().getString(R.string.appExitMessage), Toast.LENGTH_SHORT);
+        toast.show();
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -225,5 +280,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CODE_NEWPOST && resultCode == CODE_NEWPOST) {
+            if (isFeed) {
+                feedFragment.setRefresh();
+            } else if (isProfile) {
+                profileFragment.setRefresh();
+            }
+        }
     }
 }

@@ -2,7 +2,6 @@ package com.rs.timepass.Utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -11,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.media.ExifInterface;
+import android.media.MediaScannerConnection;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -20,8 +20,6 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.urbanairship.UAirship;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -396,35 +394,16 @@ public class Utils {
             os.flush();
             os.close();
             Toast.makeText(context, "Download complete", Toast.LENGTH_LONG).show();
+//            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+            MediaScannerConnection.scanFile(context, new String[]{imageFile.toString()}, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.print("ExternalStorage", "Scanned " + path + ":");
+                            Log.print("ExternalStorage", "-> uri=" + uri);
+                        }
+                    });
         } catch (Exception e) {
             Log.print("Error writing bitmap" + e);
-        }
-    }
-
-    public static void setPushId(Application application) {
-        try {
-            Log.print("=========== EXIST PUSH ID ======" + Pref.getValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, null));
-            if (Pref.getValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, null) == null ||
-                    Pref.getValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, "").equals("")) {
-                UAirship.takeOff(application, new UAirship.OnReadyCallback() {
-                    @Override
-                    public void onAirshipReady(UAirship uAirship) {
-                        uAirship.shared().getPushManager().setUserNotificationsEnabled(true);
-                    }
-                });
-
-                if (UAirship.shared().getPushManager().getChannelId() != null) {
-                    Pref.setValue(application.getApplicationContext(), Config.PREF_URBUN_PUSH_ID, UAirship.shared().getPushManager().getChannelId().toString());
-                }
-
-                String channelId = UAirship.shared().getPushManager().getChannelId();
-                Log.print("============My Application Channel ID: ============" + channelId);
-
-                MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(application.getApplicationContext());
-                UAirship.shared().getPushManager().setNotificationFactory(myCustomeNotificationFactory);
-            }
-        } catch (Exception e) {
-            Log.error(application.getApplicationContext().getClass().getName() + "GetGCM()", e);
         }
     }
 

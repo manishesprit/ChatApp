@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.rs.timepass.Adapter.FeedRecyclerAdapter;
 import com.rs.timepass.Adapter.MyOnClickListner;
+import com.rs.timepass.Backend.DeleteFeedAPI;
 import com.rs.timepass.Backend.FeedListAPI;
 import com.rs.timepass.Backend.LikeUnlikeAPI;
 import com.rs.timepass.Backend.ResponseListener;
@@ -37,13 +38,13 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     private FeedListAPI feedListAPI;
     private LikeUnlikeAPI likeUnlikeAPI;
     private UserBean userBean;
-    private PostBean postBean;
+    private PostBean postBeanTemp;
     private LinearLayout myprogressBar;
     private SwipeRefreshLayout swipeContainer;
     private int limit = 30;
     private int offset = 0;
     private LinearLayoutManager linearLayoutManager;
-
+    private DeleteFeedAPI deleteFeedAPI;
     private boolean loading = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
 
@@ -124,7 +125,13 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
     private ResponseListener responseListener = new ResponseListener() {
         @Override
         public void onResponce(String tag, int result, Object obj) {
-
+            myprogressBar.setVisibility(View.GONE);
+            if (result == Config.API_SUCCESS) {
+                if (tag == Config.TAG_DELETE_FEED) {
+                    offset = 0;
+                    CallFeedList();
+                }
+            }
         }
 
         public void onResponce(String tag, int result, Object obj, Object obj1) {
@@ -148,9 +155,10 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
                 }
 
                 if (tag.equals(Config.TAG_LIKEUNLIKE)) {
-                    postBean.islike = (int) obj == 0 ? false : true;
-                    postBean.noOflike = (int) obj1;
+                    postBeanTemp.islike = (int) obj == 0 ? false : true;
+                    postBeanTemp.noOflike = (int) obj1;
                     feedRecyclerAdapter.notifyDataSetChanged();
+                    HomeActivity.isRefresh = true;
                 }
             }
         }
@@ -162,14 +170,25 @@ public class FeedFragment extends Fragment implements View.OnClickListener {
             if (id == R.id.imgLikeUnlike) {
                 if (Utils.isOnline(getContext())) {
                     myprogressBar.setVisibility(View.VISIBLE);
-                    postBean = (PostBean) object;
-                    likeUnlikeAPI = new LikeUnlikeAPI(getContext(), responseListener, postBean.feedid);
+                    postBeanTemp = (PostBean) object;
+                    likeUnlikeAPI = new LikeUnlikeAPI(getContext(), responseListener, postBeanTemp.feedid);
                     likeUnlikeAPI.execute();
+                }
+            } else if (id == R.id.imgDeleteFeed) {
+                if (Utils.isOnline(getContext())) {
+                    myprogressBar.setVisibility(View.VISIBLE);
+                    deleteFeedAPI = new DeleteFeedAPI(getContext(), responseListener, (int) object);
+                    deleteFeedAPI.execute();
                 }
             }
             return false;
         }
 
     };
+
+    public void setRefresh() {
+        offset = 0;
+        CallFeedList();
+    }
 
 }

@@ -95,7 +95,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             this.edtOldpassword.requestFocus();
             this.edtOldpassword.setSelection(this.edtOldpassword.length());
         } else if (edtNewpassword.getText().toString().trim().equals("")
-                || edtNewpassword.getText().length() > 15) {
+                || edtNewpassword.getText().toString().trim().equals(null)) {
             valid = getResources().getString(R.string.validblanknewpassword);
             this.edtNewpassword.requestFocus();
             this.edtNewpassword.setSelection(this.edtNewpassword.length());
@@ -120,8 +120,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
             valid = getResources().getString(R.string.invalidspacepassword);
             this.edtConfirmpassword.requestFocus();
             this.edtConfirmpassword.setSelection(this.edtConfirmpassword.length());
-        } else if (edtNewpassword.getText().toString().trim().equals(edtConfirmpassword.getText().toString().trim())) {
-            valid = getResources().getString(R.string.notmatchconfirmpassword);
+        } else if (!edtNewpassword.getText().toString().trim().equals(edtConfirmpassword.getText().toString().trim())) {
+            valid = getResources().getString(R.string.notmatchnewconfirmpassword);
             this.edtConfirmpassword.requestFocus();
             this.edtConfirmpassword.setSelection(this.edtConfirmpassword.length());
         }

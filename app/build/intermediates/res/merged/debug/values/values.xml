@@ -128,7 +128,6 @@
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <color name="urban_airship_blue">#003f61</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -157,7 +156,6 @@
     <declare-styleable name="LinearLayoutCompat_Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_weight"/><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ListPopupWindow"><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/></declare-styleable>
     <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
-    <declare-styleable name="MapAttrs"><attr format="enum" name="mapType"><enum name="none" value="0"/><enum name="normal" value="1"/><enum name="satellite" value="2"/><enum name="terrain" value="3"/><enum name="hybrid" value="4"/></attr><attr format="float" name="cameraBearing"/><attr format="float" name="cameraTargetLat"/><attr format="float" name="cameraTargetLng"/><attr format="float" name="cameraTilt"/><attr format="float" name="cameraZoom"/><attr format="boolean" name="liteMode"/><attr format="boolean" name="uiCompass"/><attr format="boolean" name="uiRotateGestures"/><attr format="boolean" name="uiScrollGestures"/><attr format="boolean" name="uiTiltGestures"/><attr format="boolean" name="uiZoomControls"/><attr format="boolean" name="uiZoomGestures"/><attr format="boolean" name="useViewLifecycle"/><attr format="boolean" name="zOrderOnTop"/><attr format="boolean" name="uiMapToolbar"/><attr format="boolean" name="ambientEnabled"/></declare-styleable>
     <declare-styleable name="MenuGroup"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:checkableBehavior"/><attr name="android:visible"/><attr name="android:enabled"/></declare-styleable>
     <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="android:numericShortcut"/><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction"><flag name="never" value="0"/><flag name="ifRoom" value="1"/><flag name="always" value="2"/><flag name="withText" value="4"/><flag name="collapseActionView" value="8"/></attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/></declare-styleable>
     <declare-styleable name="MenuView"><attr name="android:itemTextAppearance"/><attr name="android:horizontalDivider"/><attr name="android:verticalDivider"/><attr name="android:headerBackground"/><attr name="android:itemBackground"/><attr name="android:windowAnimationStyle"/><attr name="android:itemIconDisabledAlpha"/><attr format="boolean" name="preserveIconSpacing"/></declare-styleable>
@@ -177,8 +175,6 @@
     <declare-styleable name="TextAppearance"><attr name="android:textSize"/><attr name="android:textColor"/><attr name="android:textStyle"/><attr name="android:typeface"/><attr name="textAllCaps"/><attr name="android:shadowColor"/><attr name="android:shadowDy"/><attr name="android:shadowDx"/><attr name="android:shadowRadius"/></declare-styleable>
     <declare-styleable name="TextInputLayout"><attr format="reference" name="hintTextAppearance"/><attr name="android:hint"/><attr format="boolean" name="hintEnabled"/><attr format="boolean" name="errorEnabled"/><attr format="reference" name="errorTextAppearance"/><attr format="boolean" name="counterEnabled"/><attr format="integer" name="counterMaxLength"/><attr format="reference" name="counterTextAppearance"/><attr format="reference" name="counterOverflowTextAppearance"/><attr name="android:textColorHint"/><attr format="boolean" name="hintAnimationEnabled"/></declare-styleable>
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="collapseIcon"/><attr format="string" name="collapseContentDescription"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/><attr name="logo"/><attr format="string" name="logoDescription"/><attr format="color" name="titleTextColor"/><attr format="color" name="subtitleTextColor"/></declare-styleable>
-    <declare-styleable name="UAWebView"><attr format="enum" name="mixed_content_mode"><enum name="always_allow" value="0"/><enum name="never_allow" value="1"/><enum name="compatibility_mode" value="2"/></attr></declare-styleable>
-    <declare-styleable name="UrbanAirshipActionButton"><attr name="android:icon"/><attr name="android:label"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/></declare-styleable>
     <declare-styleable name="ViewBackgroundHelper"><attr name="android:background"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
@@ -336,6 +332,7 @@
     <dimen name="padding_fifteen">15dp</dimen>
     <dimen name="padding_five">5dp</dimen>
     <dimen name="padding_ten">10dp</dimen>
+    <dimen name="padding_three">3dp</dimen>
     <dimen name="padding_thrty">30dp</dimen>
     <dimen name="padding_twenty">20dp</dimen>
     <dimen name="profile_avatar_size">130dp</dimen>
@@ -360,12 +357,8 @@
     <integer name="bottom_sheet_slide_duration">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
-    <integer name="google_play_services_version">8487000</integer>
+    <integer name="google_play_services_version">9080000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <plurals name="ua_selected_count">
-        <item quantity="one"><ns1:g example="1" id="count">%1$d</ns1:g> selected</item>
-        <item quantity="other"><ns1:g example="3" id="count">%1$d</ns1:g> selected</item>
-    </plurals>
     <string name="Alert">Alert</string>
     <string name="OK">Ok</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
@@ -388,14 +381,13 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_settings">Settings</string>
+    <string name="appExitMessage"> Please click BACK again to exit</string>
     <string name="app_name">TimePass</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
-    <string name="auth_google_play_services_client_google_display_name">Google</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="btn_sign_up">Sign Up</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
-    <string name="com_facebook_device_auth_instructions">Visit &lt;b>facebook.com/device&lt;/b>&lt;br />on your smartphone or computer&lt;br />and enter this code</string>
+    <string name="com_facebook_device_auth_instructions">Visit &lt;b>facebook.com/device&lt;/b> on your smartphone or computer and enter this code</string>
     <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
     <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
@@ -425,6 +417,8 @@
     <string name="common_google_play_services_network_error_text">A data connection is required to connect to Google Play services.</string>
     <string name="common_google_play_services_network_error_title">Network Error</string>
     <string name="common_google_play_services_notification_ticker">Google Play services error</string>
+    <string name="common_google_play_services_resolution_required_text">Please complete action required by <ns1:g id="app_name">%1$s</ns1:g>.</string>
+    <string name="common_google_play_services_resolution_required_title">Google Play services requires an action</string>
     <string name="common_google_play_services_restricted_profile_text">Accessing accounts from a restricted profile is not supported.</string>
     <string name="common_google_play_services_restricted_profile_title">Restricted Profile</string>
     <string name="common_google_play_services_sign_in_failed_text">Error signing in the specified account. Please choose a different account.</string>
@@ -445,6 +439,7 @@
     <string name="crop__pick_error">No image sources available</string>
     <string name="crop__saving">Saving picture…</string>
     <string name="crop__wait">Please wait…</string>
+    <string name="default_web_client_id" translatable="false">193333249498-ceis9nrrq2cqvlb8mokcj7pcgp6vakq2.apps.googleusercontent.com</string>
     <string name="err_msg_email">Enter valid email address</string>
     <string name="err_msg_name">Enter your full name</string>
     <string name="err_msg_password">Enter the password</string>
@@ -452,6 +447,12 @@
     <string name="error_server_not_responding">Invalid URL or Server is not responding, please try again</string>
     <string name="error_timeout">Connection timeout, please try again</string>
     <string name="fbAppid">829023363908632</string>
+    <string name="firebase_database_url" translatable="false">https://timepass-3c99f.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">193333249498</string>
+    <string name="google_api_key" translatable="false">AIzaSyAaKaJJrORGUAC6H9mBUBdGLVzW3nu3Vog</string>
+    <string name="google_app_id" translatable="false">1:193333249498:android:b74412f8a7e80bd6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAaKaJJrORGUAC6H9mBUBdGLVzW3nu3Vog</string>
+    <string name="google_storage_bucket" translatable="false">timepass-3c99f.appspot.com</string>
     <string name="hint_email">Email</string>
     <string name="hint_name">Full Name</string>
     <string name="hint_password">Password</string>
@@ -461,59 +462,19 @@
     <string name="invalidspacepassword">Password in space not allow</string>
     <string name="messenger_send_button_text">Send</string>
     <string name="notmatchconfirmpassword">Password or Confirm password cannot be match</string>
+    <string name="notmatchnewconfirmpassword">New password and confirm password cannot be match</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="txtlike">☞</string>
     <string name="txtliked">☛</string>
-    <string name="ua_cancel">Cancel</string>
-    <string name="ua_channel_copy_toast">Channel copied to clipboard!</string>
-    <string name="ua_channel_notification_ticker">Urban Airship Channel</string>
-    <string name="ua_connection_error">Connection Error</string>
-    <string name="ua_delete">Delete</string>
-    <string name="ua_empty_message_list">No Messages</string>
-    <string name="ua_mark_read">Mark Read</string>
-    <string name="ua_mc_failed_to_load">Unable to load message. Please try again later.</string>
-    <string name="ua_message_center_title">Message Center</string>
-    <string name="ua_message_not_selected">No Message Selected</string>
-    <string name="ua_notification_button_accept">Accept</string>
-    <string name="ua_notification_button_add">Add</string>
-    <string name="ua_notification_button_add_to_calendar">Add To Calendar</string>
-    <string name="ua_notification_button_book_now">Book Now</string>
-    <string name="ua_notification_button_buy_now">Buy Now</string>
-    <string name="ua_notification_button_copy">Copy</string>
-    <string name="ua_notification_button_decline">Decline</string>
-    <string name="ua_notification_button_dislike">Dislike</string>
-    <string name="ua_notification_button_download">Download</string>
-    <string name="ua_notification_button_follow">Follow</string>
-    <string name="ua_notification_button_less_like">Less Like This</string>
-    <string name="ua_notification_button_like">Like</string>
-    <string name="ua_notification_button_more_like">More Like This</string>
-    <string name="ua_notification_button_no">No</string>
-    <string name="ua_notification_button_opt_in">Opt-in</string>
-    <string name="ua_notification_button_opt_out">Opt-out</string>
-    <string name="ua_notification_button_rate_now">Rate Now</string>
-    <string name="ua_notification_button_remind">Remind Me Later</string>
-    <string name="ua_notification_button_save">Save</string>
-    <string name="ua_notification_button_search">Search</string>
-    <string name="ua_notification_button_send_info">Send Info</string>
-    <string name="ua_notification_button_share">Share</string>
-    <string name="ua_notification_button_shop_now">Shop Now</string>
-    <string name="ua_notification_button_tell_me_more">Tell Me More</string>
-    <string name="ua_notification_button_unfollow">Unfollow</string>
-    <string name="ua_notification_button_yes">Yes</string>
-    <string name="ua_ok">Ok</string>
-    <string name="ua_retry_button">Retry</string>
-    <string name="ua_select_all">Select All</string>
-    <string name="ua_select_none">Select None</string>
-    <string name="ua_share_dialog_title">Share</string>
     <string name="validblankconfirmpassword">Confirm password cannot be blank</string>
     <string name="validblankemail">Email cannot be blank</string>
     <string name="validblankmobile">Mobile number cannot be blank</string>
     <string name="validblanknewpassword">New password cannot be blank</string>
     <string name="validblankoldpassword">Old password cannot be blank</string>
     <string name="validblankpassword">Password cannot be blank</string>
-    <string name="validlengthconfirmpassword">Old password min 8 character and max 20 character</string>
+    <string name="validlengthconfirmpassword">Confirm password min 8 character and max 20 character</string>
     <string name="validlengthname">Name max 15 character</string>
-    <string name="validlengthnewpassword">Old password min 8 character and max 20 character</string>
+    <string name="validlengthnewpassword">New password min 8 character and max 20 character</string>
     <string name="validlengtholdpassword">Old password min 8 character and max 20 character</string>
     <string name="validlengthpassword">Password min 8 character and max 20 character</string>
     <string name="validlengthusername">Username min 8 character and max 20 character</string>
@@ -1515,13 +1476,6 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
-    <style name="LandingPageStyle">
-        <item name="android:windowBackground">@android:drawable/screen_background_dark_transparent</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:padding">8dp</item>
-    </style>
     <style name="MessengerButton">
     <item name="android:clickable">true</item>
   </style>
@@ -2032,7 +1986,12 @@
         <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>
         <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>
     </style>
-    <style name="com_facebook_auth_dialog" parent="android:style/Theme.Dialog">
+    <style name="com_facebook_activity_theme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="com_facebook_auth_dialog" parent="@style/Theme.AppCompat.Dialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>

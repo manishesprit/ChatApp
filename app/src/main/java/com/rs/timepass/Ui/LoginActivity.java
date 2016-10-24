@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -34,7 +36,6 @@ import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Uc.OnPopUpDialogButoonClickListener;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Log;
-import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
 import org.json.JSONObject;
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private View view_password;
     private LinearLayout myprogressBar;
     private CallbackManager callbackManager;
+    private boolean doubleBackToExitPressedOnce = false;
 
 
     @Override
@@ -90,14 +92,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Utils.setDefaultRoundImage(LoginActivity.this, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(LoginActivity.this, imgFacebook, R.drawable.facebook);
-
-        if (Utils.isOnline(context)) {
-            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
-                Utils.setPushId(getApplication());
-            }
-        } else {
-            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
-        }
 
 
         txtlogin.setOnClickListener(this);
@@ -323,7 +317,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onBackPressed() {
         if (myprogressBar.getVisibility() == View.GONE)
-            super.onBackPressed();
-    }
+            if (doubleBackToExitPressedOnce) {
+                finish();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast toast = Toast.makeText(this, getResources().getString(R.string.appExitMessage), Toast.LENGTH_SHORT);
+            toast.show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
 
 }

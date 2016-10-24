@@ -127,9 +127,17 @@
             android:background="@color/color_gray"
             android:visibility="gone" />
 
-        <!-- Profile Fragment Layout -->
+        <!-- Notification Fragment Layout -->
         <FrameLayout
             android:id="@+id/notifyFramlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/color_gray"
+            android:visibility="gone" />
+
+        <!-- Chat Fragment Layout -->
+        <FrameLayout
+            android:id="@+id/chatFramlayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/color_gray"

@@ -11,6 +11,7 @@
     <dimen name="largeText">24dp</dimen>
     <dimen name="extraLargeText">28dp</dimen>
 
+    <dimen name="padding_three">5dp</dimen>
     <dimen name="padding_five">7dp</dimen>
     <dimen name="padding_ten">12dp</dimen>
     <dimen name="padding_fifteen">17dp</dimen>

@@ -26,6 +26,7 @@ import com.rs.timepass.Ui.FollowingListActivity;
 import com.rs.timepass.Ui.LikeListActivity;
 import com.rs.timepass.Ui.ProfileDetailActivity;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Log;
 import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
@@ -71,6 +72,12 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             headerHolder.txtName.setText(postBean.name);
             headerHolder.txtName.setTag(postBean);
 
+            if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                headerHolder.btnFollowUnfollow.setVisibility(View.GONE);
+            } else {
+                headerHolder.btnFollowUnfollow.setVisibility(View.VISIBLE);
+                headerHolder.btnFollowUnfollow.setText(((PostBean) headerHolder.txtName.getTag()).isFollowing == true ? "UNFOLLOWING" : "FOLLOWING");
+            }
             Utils.setDefaultRoundImage(context, headerHolder.imgProfileAvatar, R.drawable.default_user);
             if (!((PostBean) headerHolder.txtName.getTag()).avatar.toString().equalsIgnoreCase("")) {
                 Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + ((PostBean) headerHolder.txtName.getTag()).avatar.toString())
@@ -84,6 +91,13 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     }
                 });
             }
+
+            headerHolder.btnFollowUnfollow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myOnClickListner.IsClick(R.id.txtfollowUnfollow, headerHolder.txtName.getTag());
+                }
+            });
 
 
             headerHolder.imgProfileAvatar.setOnClickListener(new View.OnClickListener() {
@@ -118,26 +132,22 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             headerHolder.llFollower.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                     if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
                         Intent intent = new Intent(context, FollowerListActivity.class);
                         intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
                         context.startActivity(intent);
                     }
-//                    }
                 }
             });
 
             headerHolder.llFollowing.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    if (((PostBean) headerHolder.txtName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
                     if (((PostBean) headerHolder.txtName.getTag()).noOffollowers > 0) {
                         Intent intent = new Intent(context, FollowingListActivity.class);
                         intent.putExtra("userid", ((PostBean) headerHolder.txtName.getTag()).userid);
                         context.startActivity(intent);
                     }
-//                    }
                 }
             });
 
@@ -170,6 +180,20 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 });
             }
 
+            if (((PostBean) holder.txtUserName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                holder.imgDeleteFeed.setVisibility(View.VISIBLE);
+            } else {
+                holder.imgDeleteFeed.setVisibility(View.GONE);
+            }
+
+            holder.imgDeleteFeed.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.print("====imgDeleteFeed===");
+                    myOnClickListner.IsClick(R.id.imgDeleteFeed, ((PostBean) holder.txtUserName.getTag()).feedid);
+                }
+            });
+
 
             if (((PostBean) holder.txtUserName.getTag()).caption.trim().toString().equalsIgnoreCase("")) {
                 holder.txtCaption.setVisibility(View.GONE);
@@ -193,9 +217,10 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    myOnClickListner.IsClick(R.id.imgLikeUnlike, holder.txtUserName.getTag());
+                    myOnClickListner.IsClick(R.id.imgLikeUnlike, ((PostBean) holder.txtUserName.getTag()));
                 }
             });
+
 
             holder.llLike.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -267,6 +292,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private LinearLayout llPost;
         private LinearLayout llFollower;
         private LinearLayout llFollowing;
+        private TextView btnFollowUnfollow;
 
 
         public HeaderViewHolder(View itemView) {
@@ -280,6 +306,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             llPost = (LinearLayout) itemView.findViewById(R.id.llPost);
             llFollower = (LinearLayout) itemView.findViewById(R.id.llFollower);
             llFollowing = (LinearLayout) itemView.findViewById(R.id.llFollowing);
+            btnFollowUnfollow = (TextView) itemView.findViewById(R.id.btnFollowUnfollow);
         }
     }
 
@@ -295,6 +322,8 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private TextView txtNolike;
         private LinearLayout llComment;
         private LinearLayout llLike;
+        private ImageView imgDeleteFeed;
+
 
         public PostBeanHolder(View itemView) {
             super(itemView);
@@ -308,6 +337,7 @@ public class ProfileRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             txtNolike = (TextView) itemView.findViewById(R.id.txtNolike);
             llComment = (LinearLayout) itemView.findViewById(R.id.llComment);
             llLike = (LinearLayout) itemView.findViewById(R.id.llLike);
+            imgDeleteFeed = (ImageView) itemView.findViewById(R.id.imgDeleteFeed);
         }
 
     }

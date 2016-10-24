@@ -24,6 +24,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="@dimen/user_avatar_size"
+            android:layout_toLeftOf="@+id/imgDeleteFeed"
             android:layout_toRightOf="@+id/imgAvatar"
             android:gravity="center_vertical"
             android:orientation="vertical"
@@ -47,6 +48,17 @@
                 android:textSize="@dimen/smallText" />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imgDeleteFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:padding="5dp"
+            android:src="@drawable/delete"
+            android:visibility="gone" />
+
+
     </RelativeLayout>
 
     <TextView
@@ -64,8 +76,8 @@
         android:adjustViewBounds="true"
         android:paddingBottom="@dimen/padding_five"
         android:paddingTop="@dimen/padding_five"
-        android:src="@drawable/feed_default"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/feed_default" />
 
     <RelativeLayout
         android:id="@+id/rlFeedFooter"

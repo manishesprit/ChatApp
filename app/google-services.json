@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "193333249498",
+    "firebase_url": "https://timepass-3c99f.firebaseio.com",
+    "project_id": "timepass-3c99f",
+    "storage_bucket": "timepass-3c99f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193333249498:android:b74412f8a7e80bd6",
+        "android_client_info": {
+          "package_name": "com.rs.timepass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193333249498-ceis9nrrq2cqvlb8mokcj7pcgp6vakq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaKaJJrORGUAC6H9mBUBdGLVzW3nu3Vog"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

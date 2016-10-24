@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <plurals name="ua_selected_count">
-    <item quantity="one">
-      <ns1:g example="1" id="count">%1$d</ns1:g> geselecteerd</item>
-    <item quantity="other">
-      <ns1:g example="3" id="count">%1$d</ns1:g> geselecteerd</item>
-  </plurals>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Navigeren naar startpositie"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -25,7 +19,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Delen met"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Delen met %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Samenvouwen"</string>
-    <string name="com_facebook_device_auth_instructions">Ga op je smartphone of computer naar &lt;b>facebook.com/device&lt;/b>&lt;br /> en voer deze code in:</string>
+    <string name="com_facebook_device_auth_instructions">Ga op je smartphone of computer naar &lt;b>facebook.com/device&lt;/b> en voer deze code in:</string>
     <string name="com_facebook_image_download_unknown_error">Onverwachte fout tijdens het downloaden van een afbeelding.</string>
     <string name="com_facebook_internet_permission_error_message">Voor aanmelding via webweergave is de toestemming INTERNET vereist</string>
     <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
@@ -42,76 +36,37 @@
     <string name="com_facebook_send_button_text">Verzenden</string>
     <string name="com_facebook_share_button_text">Delen</string>
     <string name="com_facebook_tooltip_default">Nieuw! Jij hebt de controle. Kies welke informatie je met apps wilt delen.</string>
-    <string msgid="2785372108150982144" name="common_google_play_services_api_unavailable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> vereist een of meer Google Play-services die momenteel niet beschikbaar zijn. Neem contact op met de ontwikkelaar voor ondersteuning."</string>
-    <string msgid="7334167077229901382" name="common_google_play_services_enable_button">"Google Play-services inschakelen"</string>
-    <string msgid="2016066508617425489" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> werkt niet, tenzij je Google Play-services inschakelt."</string>
-    <string msgid="4763733806837472840" name="common_google_play_services_enable_title">"Google Play-services inschakelen"</string>
-    <string msgid="5765996826213593005" name="common_google_play_services_install_button">"Google Play-services ophalen"</string>
-    <string msgid="1545874412485515659" name="common_google_play_services_install_text_phone">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd zonder Google Play-services, die ontbreken op je telefoon."</string>
-    <string msgid="2742131317258851812" name="common_google_play_services_install_text_tablet">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd zonder Google Play-services, die ontbreken op je tablet."</string>
-    <string msgid="2110712637922504348" name="common_google_play_services_install_title">"Google Play-services ophalen"</string>
-    <string msgid="8004809446015217370" name="common_google_play_services_invalid_account_text">"Het opgegeven account bestaat niet op dit apparaat. Kies een ander account."</string>
-    <string msgid="9894539456463288" name="common_google_play_services_invalid_account_title">"Ongeldig account"</string>
-    <string msgid="2602915190038884860" name="common_google_play_services_network_error_text">"Er is een gegevensverbinding nodig om verbinding te maken met Google Play-services."</string>
-    <string msgid="5183831421651758225" name="common_google_play_services_network_error_title">"Netwerkfout"</string>
-    <string msgid="3936796119014022295" name="common_google_play_services_notification_ticker">"Fout met Google Play-services"</string>
-    <string msgid="6951442375899151085" name="common_google_play_services_restricted_profile_text">"Toegang tot accounts uit een beperkt profiel wordt niet ondersteund."</string>
-    <string msgid="4958149393843193760" name="common_google_play_services_restricted_profile_title">"Beperkt profiel"</string>
-    <string msgid="59739986196915578" name="common_google_play_services_sign_in_failed_text">"Fout bij inloggen op het opgegeven account. Kies een ander account."</string>
-    <string msgid="8431204498860131150" name="common_google_play_services_sign_in_failed_title">"Inloggen mislukt"</string>
-    <string msgid="7170719956698345984" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> ondervindt problemen met Google Play-services. Als het probleem aanhoudt, neem je contact op met de ontwikkelaar voor ondersteuning."</string>
-    <string msgid="4291190028362992831" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> werkt met Google Play-services. Dit wordt niet ondersteund door je apparaat. Neem contact op met de fabrikant voor ondersteuning."</string>
-    <string msgid="909734065366822541" name="common_google_play_services_unsupported_title">"Google Play-services"</string>
-    <string msgid="2221302284291941971" name="common_google_play_services_update_button">"Updaten"</string>
-    <string msgid="6230553430311881723" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd, tenzij je Google Play-services updatet."</string>
-    <string msgid="2926201203597631481" name="common_google_play_services_update_title">"Google Play-services updaten"</string>
-    <string msgid="1576144479907495032" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd zonder Google Play-services, die momenteel worden geüpdatet."</string>
-    <string msgid="1604540693139938838" name="common_google_play_services_updating_title">"Google Play-services worden geüpdatet"</string>
-    <string msgid="8334920661858223093" name="common_google_play_services_wear_update_text">"Er is een nieuwe versie van Google Play-services vereist. De update wordt binnenkort automatisch uitgevoerd."</string>
-    <string msgid="311697239335516384" name="common_open_on_phone">"Openen op telefoon"</string>
-    <string msgid="3156914698180786012" name="common_signin_button_text">"Inloggen"</string>
-    <string msgid="1483290677806110088" name="common_signin_button_text_long">"Inloggen met Google"</string>
+    <string msgid="4770915072144378781" name="common_google_play_services_api_unavailable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> vereist een of meer Google Play-services die momenteel niet beschikbaar zijn. Neem contact op met de ontwikkelaar voor ondersteuning."</string>
+    <string msgid="2050101795821476669" name="common_google_play_services_enable_button">"Google Play-services inschak."</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> werkt niet, tenzij je Google Play-services inschakelt."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Google Play-services inschakelen"</string>
+    <string msgid="7118643132557593940" name="common_google_play_services_install_button">"Google Play-services ophalen"</string>
+    <string msgid="1666261992894286769" name="common_google_play_services_install_text_phone">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd zonder Google Play-services, die ontbreken op je telefoon."</string>
+    <string msgid="1701766622451829291" name="common_google_play_services_install_text_tablet">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd zonder Google Play-services, die ontbreken op je tablet."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"Google Play-services ophalen"</string>
+    <string msgid="479501935061677276" name="common_google_play_services_invalid_account_text">"Het gespecificeerde account bestaat niet op dit apparaat. Kies een ander account."</string>
+    <string msgid="5775407690646375078" name="common_google_play_services_invalid_account_title">"Ongeldig account"</string>
+    <string msgid="6857745590248226927" name="common_google_play_services_network_error_text">"Er is een gegevensverbinding nodig om verbinding te maken met Google Play-services."</string>
+    <string msgid="4183541461338112307" name="common_google_play_services_network_error_title">"Netwerkfout"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Fout met Google Play-services"</string>
+    <string msgid="8897126254633757462" name="common_google_play_services_resolution_required_text">"Voltooi de actie die wordt vereist door <ns1:g id="APP_NAME">%1$s</ns1:g>."</string>
+    <string msgid="7524004365913123453" name="common_google_play_services_resolution_required_title">"Actie vereist voor Google Play-services"</string>
+    <string msgid="3111284987662714014" name="common_google_play_services_restricted_profile_text">"Toegang tot accounts uit een beperkt profiel wordt niet ondersteund."</string>
+    <string msgid="8137798410446890929" name="common_google_play_services_restricted_profile_title">"Beperkt profiel"</string>
+    <string msgid="2431909537598981235" name="common_google_play_services_sign_in_failed_text">"Fout bij inloggen op het opgegeven account. Kies een ander account."</string>
+    <string msgid="4402642931312190213" name="common_google_play_services_sign_in_failed_title">"Inloggen mislukt"</string>
+    <string msgid="9089562800660647919" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g> ondervindt problemen met Google Play-services. Als het probleem aanhoudt, neem je contact op met de ontwikkelaar voor ondersteuning."</string>
+    <string msgid="1064791666906610763" name="common_google_play_services_unsupported_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> werkt met Google Play-services. Dit wordt niet ondersteund door je apparaat. Neem contact op met de fabrikant voor ondersteuning."</string>
+    <string msgid="539866123733096737" name="common_google_play_services_unsupported_title">"Google Play-services"</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"Updaten"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd, tenzij je Google Play-services updatet."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"Google Play-services updaten"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> kan niet worden uitgevoerd zonder Google Play-services, die momenteel worden geüpdatet."</string>
+    <string msgid="2270671469198016014" name="common_google_play_services_updating_title">"Google Play-services worden geüpdatet"</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"Er is een nieuwe versie van Google Play-services vereist. De update wordt binnenkort automatisch uitgevoerd."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"Openen op telefoon"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"Inloggen"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"Inloggen met Google"</string>
     <string name="messenger_send_button_text">Verzenden</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
-    <string name="ua_cancel">Annuleer</string>
-    <string name="ua_channel_copy_toast">Kanaal gekopieerd naar het klembord!</string>
-    <string name="ua_channel_notification_ticker">Urban Airship Kanaal</string>
-    <string name="ua_connection_error">Verbindingsfout</string>
-    <string name="ua_delete">Verwijder</string>
-    <string name="ua_empty_message_list">Geen Berichten</string>
-    <string name="ua_mark_read">Markeer als Gelezen</string>
-    <string name="ua_mc_failed_to_load">Kan bericht niet laden. Probeer het later opnieuw.</string>
-    <string name="ua_message_center_title">Berichtencentrum</string>
-    <string name="ua_message_not_selected">Geen Bericht Geselecteerd</string>
-    <string name="ua_notification_button_accept">Accepteer</string>
-    <string name="ua_notification_button_add">Voeg toe</string>
-    <string name="ua_notification_button_add_to_calendar">Voeg toe aan kalender</string>
-    <string name="ua_notification_button_book_now">Boek Nu</string>
-    <string name="ua_notification_button_buy_now">Koop nu</string>
-    <string name="ua_notification_button_copy">Kopieer</string>
-    <string name="ua_notification_button_decline">Wijs af</string>
-    <string name="ua_notification_button_dislike">Vind ik niet leuk</string>
-    <string name="ua_notification_button_download">Download</string>
-    <string name="ua_notification_button_follow">Volg</string>
-    <string name="ua_notification_button_less_like">Minder \"Vind Dit Leuk\"</string>
-    <string name="ua_notification_button_like">Vind ik leuk</string>
-    <string name="ua_notification_button_more_like">Meer \"Vind Dit Leuk\"</string>
-    <string name="ua_notification_button_no">Nee</string>
-    <string name="ua_notification_button_opt_in">Aanmelden</string>
-    <string name="ua_notification_button_opt_out">Afmelden</string>
-    <string name="ua_notification_button_rate_now">Beoordeel Nu</string>
-    <string name="ua_notification_button_remind">Herinner mij later</string>
-    <string name="ua_notification_button_save">Sla op</string>
-    <string name="ua_notification_button_search">Zoek</string>
-    <string name="ua_notification_button_send_info">Stuur Info</string>
-    <string name="ua_notification_button_share">Deel</string>
-    <string name="ua_notification_button_shop_now">Winkel nu</string>
-    <string name="ua_notification_button_tell_me_more">Vertel Mij Neer</string>
-    <string name="ua_notification_button_unfollow">Ontvolg</string>
-    <string name="ua_notification_button_yes">Ja</string>
-    <string name="ua_ok">OK</string>
-    <string name="ua_retry_button">Probeer opnieuw</string>
-    <string name="ua_select_all">Selecteer Alle</string>
-    <string name="ua_select_none">Selecteer Geen</string>
-    <string name="ua_share_dialog_title">Deel</string>
 </resources>

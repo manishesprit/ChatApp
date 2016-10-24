@@ -11,6 +11,7 @@
     <string name="crop__pick_error">No image sources available</string>
     <string name="crop__saving">Saving picture…</string>
     <string name="crop__wait">Please wait…</string>
+    <string name="appExitMessage"> Please click BACK again to exit</string>
 
     <string name="error_invalid_URL">Invalid URL or Server not available, please try again</string>
     <string name="error_timeout">Connection timeout, please try again</string>
@@ -35,8 +36,9 @@
     <string name="validlengthusername">Username min 8 character and max 20 character</string>
     <string name="validlengthpassword">Password min 8 character and max 20 character</string>
     <string name="validlengtholdpassword">Old password min 8 character and max 20 character</string>
-    <string name="validlengthnewpassword">Old password min 8 character and max 20 character</string>
-    <string name="validlengthconfirmpassword">Old password min 8 character and max 20 character</string>
+    <string name="validlengthnewpassword">New password min 8 character and max 20 character</string>
+    <string name="validlengthconfirmpassword">Confirm password min 8 character and max 20 character</string>
+    <string name="notmatchnewconfirmpassword">New password and confirm password cannot be match</string>
     <string name="invalidspacepassword">Password in space not allow</string>
 
     <string name="action_settings">Settings</string>

@@ -22,13 +22,14 @@
         android:layout_toRightOf="@+id/imgProfileAvatar"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:padding="@dimen/padding_five">
+        android:paddingLeft="@dimen/padding_five"
+        android:paddingRight="@dimen/padding_five">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="@dimen/padding_ten">
+            android:padding="@dimen/padding_five">
 
             <TextView
                 android:id="@+id/txtName"
@@ -119,5 +120,19 @@
                     android:textSize="@dimen/extraMediumText" />
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnFollowUnfollow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_five"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:textSize="@dimen/smallText"
+            android:paddingTop="@dimen/padding_three"
+            android:textColor="@color/color_dark"
+            android:paddingBottom="@dimen/padding_three"
+            android:background="@color/color_whitedark"
+            android:visibility="visible"></TextView>
     </LinearLayout>
 </RelativeLayout>

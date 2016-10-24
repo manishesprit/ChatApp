@@ -34,13 +34,6 @@ public class SplashActivity extends AppCompatActivity implements OnPopUpDialogBu
         setContentView(R.layout.activity_splash);
         context = this;
 
-        if (Utils.isOnline(context)) {
-            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
-                Utils.setPushId(getApplication());
-            }
-        } else {
-            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Cancel", true, "Try again", this, 0).show();
-        }
         try {
             PackageInfo info = getPackageManager().getPackageInfo("com.esp.chatapp", PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {

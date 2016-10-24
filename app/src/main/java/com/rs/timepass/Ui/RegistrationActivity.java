@@ -30,7 +30,6 @@ import com.rs.timepass.R;
 import com.rs.timepass.Uc.AlertDailogView;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Log;
-import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
 import org.json.JSONObject;
@@ -91,15 +90,6 @@ public class RegistrationActivity extends AppCompatActivity {
         view_mobile = (View) findViewById(R.id.view_mobile);
 
         myprogressBar = (LinearLayout) findViewById(R.id.myprogressBar);
-
-
-        if (Utils.isOnline(context)) {
-            if (Pref.getValue(context, Config.PREF_PUSH_ID, "") == null || Pref.getValue(context, Config.PREF_PUSH_ID, "").equals("")) {
-                Utils.setPushId(getApplication());
-            }
-        } else {
-            AlertDailogView.showAlert(context, "Internet Error", "Internet not available", "Try again").show();
-        }
 
         Utils.setDefaultRoundImage(context, imgInsta, R.drawable.insta);
         Utils.setDefaultRoundImage(context, imgFacebook, R.drawable.facebook);

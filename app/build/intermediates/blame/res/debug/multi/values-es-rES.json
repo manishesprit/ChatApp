@@ -6,20 +6,113 @@
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
-                    "startOffset": 105,
-                    "endLine": 7,
-                    "endColumn": 12,
-                    "endOffset": 345
+                    "startOffset": 55,
+                    "endColumn": 159,
+                    "endOffset": 210
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 105,
-                        "endLine": 7,
-                        "endColumn": 12,
-                        "endOffset": 345
+                        "startOffset": 55,
+                        "endColumn": 159,
+                        "endOffset": 210
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 215,
+                    "endColumn": 111,
+                    "endOffset": 322
+                },
+                "from": {
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 215,
+                        "endColumn": 111,
+                        "endOffset": 322
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 327,
+                    "endColumn": 136,
+                    "endOffset": 459
+                },
+                "from": {
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 327,
+                        "endColumn": 136,
+                        "endOffset": 459
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 464,
+                    "endColumn": 97,
+                    "endOffset": 557
+                },
+                "from": {
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 464,
+                        "endColumn": 97,
+                        "endOffset": 557
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 562,
+                    "endColumn": 67,
+                    "endOffset": 625
+                },
+                "from": {
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 562,
+                        "endColumn": 67,
+                        "endOffset": 625
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 630,
+                    "endColumn": 71,
+                    "endOffset": 697
+                },
+                "from": {
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 630,
+                        "endColumn": 71,
+                        "endOffset": 697
                     }
                 }
             },
@@ -27,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 350,
-                    "endColumn": 168,
-                    "endOffset": 514
+                    "startOffset": 702,
+                    "endColumn": 60,
+                    "endOffset": 758
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 168,
-                        "endOffset": 219
+                        "startOffset": 702,
+                        "endColumn": 60,
+                        "endOffset": 758
                     }
                 }
             },
@@ -46,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 519,
-                    "endColumn": 111,
-                    "endOffset": 626
+                    "startOffset": 763,
+                    "endColumn": 73,
+                    "endOffset": 832
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 224,
-                        "endColumn": 111,
-                        "endOffset": 331
+                        "startOffset": 763,
+                        "endColumn": 73,
+                        "endOffset": 832
                     }
                 }
             },
@@ -65,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 631,
-                    "endColumn": 136,
-                    "endOffset": 763
+                    "startOffset": 837,
+                    "endColumn": 81,
+                    "endOffset": 914
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 336,
-                        "endColumn": 136,
-                        "endOffset": 468
+                        "startOffset": 837,
+                        "endColumn": 81,
+                        "endOffset": 914
                     }
                 }
             },
@@ -84,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 768,
+                    "startOffset": 919,
                     "endColumn": 97,
-                    "endOffset": 861
+                    "endOffset": 1012
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 473,
+                        "startOffset": 919,
                         "endColumn": 97,
-                        "endOffset": 566
+                        "endOffset": 1012
                     }
                 }
             },
@@ -103,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 866,
-                    "endColumn": 67,
-                    "endOffset": 929
+                    "startOffset": 1017,
+                    "endColumn": 71,
+                    "endOffset": 1084
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 571,
-                        "endColumn": 67,
-                        "endOffset": 634
+                        "startOffset": 1017,
+                        "endColumn": 71,
+                        "endOffset": 1084
                     }
                 }
             },
@@ -122,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 934,
+                    "startOffset": 1089,
                     "endColumn": 71,
-                    "endOffset": 1001
+                    "endOffset": 1156
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 639,
+                        "startOffset": 1089,
                         "endColumn": 71,
-                        "endOffset": 706
+                        "endOffset": 1156
                     }
                 }
             },
@@ -141,18 +234,18 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 1006,
-                    "endColumn": 60,
-                    "endOffset": 1062
+                    "startOffset": 1161,
+                    "endColumn": 90,
+                    "endOffset": 1247
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 711,
-                        "endColumn": 60,
-                        "endOffset": 767
+                        "startOffset": 1161,
+                        "endColumn": 90,
+                        "endOffset": 1247
                     }
                 }
             },
@@ -160,18 +253,18 @@
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 1067,
-                    "endColumn": 73,
-                    "endOffset": 1136
+                    "startOffset": 1252,
+                    "endColumn": 104,
+                    "endOffset": 1352
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 772,
-                        "endColumn": 73,
-                        "endOffset": 841
+                        "startOffset": 1252,
+                        "endColumn": 104,
+                        "endOffset": 1352
                     }
                 }
             },
@@ -179,18 +272,18 @@
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 1141,
-                    "endColumn": 81,
-                    "endOffset": 1218
+                    "startOffset": 1357,
+                    "endColumn": 64,
+                    "endOffset": 1417
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 846,
-                        "endColumn": 81,
-                        "endOffset": 923
+                        "startOffset": 1357,
+                        "endColumn": 64,
+                        "endOffset": 1417
                     }
                 }
             },
@@ -198,18 +291,18 @@
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 1223,
-                    "endColumn": 97,
-                    "endOffset": 1316
+                    "startOffset": 1422,
+                    "endColumn": 68,
+                    "endOffset": 1486
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 928,
-                        "endColumn": 97,
-                        "endOffset": 1021
+                        "startOffset": 1422,
+                        "endColumn": 68,
+                        "endOffset": 1486
                     }
                 }
             },
@@ -217,18 +310,18 @@
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 1321,
-                    "endColumn": 71,
-                    "endOffset": 1388
+                    "startOffset": 1491,
+                    "endColumn": 155,
+                    "endOffset": 1642
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 1026,
-                        "endColumn": 71,
-                        "endOffset": 1093
+                        "startOffset": 1491,
+                        "endColumn": 155,
+                        "endOffset": 1642
                     }
                 }
             },
@@ -236,911 +329,18 @@
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 1393,
-                    "endColumn": 71,
-                    "endOffset": 1460
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1098,
-                        "endColumn": 71,
-                        "endOffset": 1165
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 1465,
-                    "endColumn": 90,
-                    "endOffset": 1551
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1170,
-                        "endColumn": 90,
-                        "endOffset": 1256
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 21,
-                    "startColumn": 4,
-                    "startOffset": 1556,
-                    "endColumn": 104,
-                    "endOffset": 1656
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 1261,
-                        "endColumn": 104,
-                        "endOffset": 1361
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 22,
-                    "startColumn": 4,
-                    "startOffset": 1661,
-                    "endColumn": 64,
-                    "endOffset": 1721
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 1366,
-                        "endColumn": 64,
-                        "endOffset": 1426
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 23,
-                    "startColumn": 4,
-                    "startOffset": 1726,
-                    "endColumn": 68,
-                    "endOffset": 1790
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 1431,
-                        "endColumn": 68,
-                        "endOffset": 1495
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 24,
-                    "startColumn": 4,
-                    "startOffset": 1795,
-                    "endColumn": 155,
-                    "endOffset": 1946
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 1500,
-                        "endColumn": 155,
-                        "endOffset": 1651
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 25,
-                    "startColumn": 4,
-                    "startOffset": 1951,
+                    "startOffset": 1647,
                     "endColumn": 61,
-                    "endOffset": 2008
+                    "endOffset": 1704
                 },
                 "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.13.2/res/values-es-rES/values-es-rES.xml",
+                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-es-rES/values-es-rES.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 1656,
+                        "startOffset": 1647,
                         "endColumn": 61,
-                        "endOffset": 1713
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 26,
-                    "startColumn": 4,
-                    "startOffset": 2013,
-                    "endColumn": 46,
-                    "endOffset": 2055
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 350,
-                        "endColumn": 46,
-                        "endOffset": 392
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 27,
-                    "startColumn": 4,
-                    "startOffset": 2060,
-                    "endColumn": 81,
-                    "endOffset": 2137
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 397,
-                        "endColumn": 81,
-                        "endOffset": 474
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 28,
-                    "startColumn": 4,
-                    "startOffset": 2142,
-                    "endColumn": 77,
-                    "endOffset": 2215
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 479,
-                        "endColumn": 77,
-                        "endOffset": 552
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 29,
-                    "startColumn": 4,
-                    "startOffset": 2220,
-                    "endColumn": 65,
-                    "endOffset": 2281
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 557,
-                        "endColumn": 65,
-                        "endOffset": 618
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 30,
-                    "startColumn": 4,
-                    "startOffset": 2286,
-                    "endColumn": 46,
-                    "endOffset": 2328
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 623,
-                        "endColumn": 46,
-                        "endOffset": 665
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 31,
-                    "startColumn": 4,
-                    "startOffset": 2333,
-                    "endColumn": 65,
-                    "endOffset": 2394
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 670,
-                        "endColumn": 65,
-                        "endOffset": 731
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 32,
-                    "startColumn": 4,
-                    "startOffset": 2399,
-                    "endColumn": 58,
-                    "endOffset": 2453
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 736,
-                        "endColumn": 58,
-                        "endOffset": 790
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 33,
-                    "startColumn": 4,
-                    "startOffset": 2458,
-                    "endColumn": 107,
-                    "endOffset": 2561
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 795,
-                        "endColumn": 107,
-                        "endOffset": 898
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 34,
-                    "startColumn": 4,
-                    "startOffset": 2566,
-                    "endColumn": 70,
-                    "endOffset": 2632
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 903,
-                        "endColumn": 70,
-                        "endOffset": 969
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 35,
-                    "startColumn": 4,
-                    "startOffset": 2637,
-                    "endColumn": 80,
-                    "endOffset": 2713
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 974,
-                        "endColumn": 80,
-                        "endOffset": 1050
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 36,
-                    "startColumn": 4,
-                    "startOffset": 2718,
-                    "endColumn": 65,
-                    "endOffset": 2779
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 1055,
-                        "endColumn": 65,
-                        "endOffset": 1116
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 37,
-                    "startColumn": 4,
-                    "startOffset": 2784,
-                    "endColumn": 61,
-                    "endOffset": 2841
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 4,
-                        "startOffset": 1121,
-                        "endColumn": 61,
-                        "endOffset": 1178
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 38,
-                    "startColumn": 4,
-                    "startOffset": 2846,
-                    "endColumn": 87,
-                    "endOffset": 2929
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 1183,
-                        "endColumn": 87,
-                        "endOffset": 1266
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 39,
-                    "startColumn": 4,
-                    "startOffset": 2934,
-                    "endColumn": 74,
-                    "endOffset": 3004
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 1271,
-                        "endColumn": 74,
-                        "endOffset": 1341
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 40,
-                    "startColumn": 4,
-                    "startOffset": 3009,
-                    "endColumn": 72,
-                    "endOffset": 3077
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 22,
-                        "startColumn": 4,
-                        "startOffset": 1346,
-                        "endColumn": 72,
-                        "endOffset": 1414
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 41,
-                    "startColumn": 4,
-                    "startOffset": 3082,
-                    "endColumn": 62,
-                    "endOffset": 3140
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 23,
-                        "startColumn": 4,
-                        "startOffset": 1419,
-                        "endColumn": 62,
-                        "endOffset": 1477
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 42,
-                    "startColumn": 4,
-                    "startOffset": 3145,
-                    "endColumn": 67,
-                    "endOffset": 3208
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 24,
-                        "startColumn": 4,
-                        "startOffset": 1482,
-                        "endColumn": 67,
-                        "endOffset": 1545
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 43,
-                    "startColumn": 4,
-                    "startOffset": 3213,
-                    "endColumn": 70,
-                    "endOffset": 3279
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 25,
-                        "startColumn": 4,
-                        "startOffset": 1550,
-                        "endColumn": 70,
-                        "endOffset": 1616
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 44,
-                    "startColumn": 4,
-                    "startOffset": 3284,
-                    "endColumn": 69,
-                    "endOffset": 3349
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 1621,
-                        "endColumn": 69,
-                        "endOffset": 1686
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 45,
-                    "startColumn": 4,
-                    "startOffset": 3354,
-                    "endColumn": 64,
-                    "endOffset": 3414
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 27,
-                        "startColumn": 4,
-                        "startOffset": 1691,
-                        "endColumn": 64,
-                        "endOffset": 1751
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 46,
-                    "startColumn": 4,
-                    "startOffset": 3419,
-                    "endColumn": 76,
-                    "endOffset": 3491
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 28,
-                        "startColumn": 4,
-                        "startOffset": 1756,
-                        "endColumn": 76,
-                        "endOffset": 1828
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 47,
-                    "startColumn": 4,
-                    "startOffset": 3496,
-                    "endColumn": 64,
-                    "endOffset": 3556
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 29,
-                        "startColumn": 4,
-                        "startOffset": 1833,
-                        "endColumn": 64,
-                        "endOffset": 1893
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 48,
-                    "startColumn": 4,
-                    "startOffset": 3561,
-                    "endColumn": 74,
-                    "endOffset": 3631
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 30,
-                        "startColumn": 4,
-                        "startOffset": 1898,
-                        "endColumn": 74,
-                        "endOffset": 1968
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 49,
-                    "startColumn": 4,
-                    "startOffset": 3636,
-                    "endColumn": 56,
-                    "endOffset": 3688
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 31,
-                        "startColumn": 4,
-                        "startOffset": 1973,
-                        "endColumn": 56,
-                        "endOffset": 2025
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 50,
-                    "startColumn": 4,
-                    "startOffset": 3693,
-                    "endColumn": 64,
-                    "endOffset": 3753
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 32,
-                        "startColumn": 4,
-                        "startOffset": 2030,
-                        "endColumn": 64,
-                        "endOffset": 2090
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 51,
-                    "startColumn": 4,
-                    "startOffset": 3758,
-                    "endColumn": 68,
-                    "endOffset": 3822
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 33,
-                        "startColumn": 4,
-                        "startOffset": 2095,
-                        "endColumn": 68,
-                        "endOffset": 2159
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 52,
-                    "startColumn": 4,
-                    "startOffset": 3827,
-                    "endColumn": 75,
-                    "endOffset": 3898
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 34,
-                        "startColumn": 4,
-                        "startOffset": 2164,
-                        "endColumn": 75,
-                        "endOffset": 2235
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 53,
-                    "startColumn": 4,
-                    "startOffset": 3903,
-                    "endColumn": 80,
-                    "endOffset": 3979
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 35,
-                        "startColumn": 4,
-                        "startOffset": 2240,
-                        "endColumn": 80,
-                        "endOffset": 2316
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 54,
-                    "startColumn": 4,
-                    "startOffset": 3984,
-                    "endColumn": 63,
-                    "endOffset": 4043
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 36,
-                        "startColumn": 4,
-                        "startOffset": 2321,
-                        "endColumn": 63,
-                        "endOffset": 2380
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 55,
-                    "startColumn": 4,
-                    "startOffset": 4048,
-                    "endColumn": 64,
-                    "endOffset": 4108
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 37,
-                        "startColumn": 4,
-                        "startOffset": 2385,
-                        "endColumn": 64,
-                        "endOffset": 2445
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 56,
-                    "startColumn": 4,
-                    "startOffset": 4113,
-                    "endColumn": 79,
-                    "endOffset": 4188
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 38,
-                        "startColumn": 4,
-                        "startOffset": 2450,
-                        "endColumn": 79,
-                        "endOffset": 2525
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 57,
-                    "startColumn": 4,
-                    "startOffset": 4193,
-                    "endColumn": 66,
-                    "endOffset": 4255
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 39,
-                        "startColumn": 4,
-                        "startOffset": 2530,
-                        "endColumn": 66,
-                        "endOffset": 2592
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 58,
-                    "startColumn": 4,
-                    "startOffset": 4260,
-                    "endColumn": 73,
-                    "endOffset": 4329
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 40,
-                        "startColumn": 4,
-                        "startOffset": 2597,
-                        "endColumn": 73,
-                        "endOffset": 2666
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 59,
-                    "startColumn": 4,
-                    "startOffset": 4334,
-                    "endColumn": 72,
-                    "endOffset": 4402
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 41,
-                        "startColumn": 4,
-                        "startOffset": 2671,
-                        "endColumn": 72,
-                        "endOffset": 2739
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 60,
-                    "startColumn": 4,
-                    "startOffset": 4407,
-                    "endColumn": 75,
-                    "endOffset": 4478
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 42,
-                        "startColumn": 4,
-                        "startOffset": 2744,
-                        "endColumn": 75,
-                        "endOffset": 2815
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 61,
-                    "startColumn": 4,
-                    "startOffset": 4483,
-                    "endColumn": 57,
-                    "endOffset": 4536
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 43,
-                        "startColumn": 4,
-                        "startOffset": 2820,
-                        "endColumn": 57,
-                        "endOffset": 2873
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 62,
-                    "startColumn": 4,
-                    "startOffset": 4541,
-                    "endColumn": 41,
-                    "endOffset": 4578
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 44,
-                        "startColumn": 4,
-                        "startOffset": 2878,
-                        "endColumn": 41,
-                        "endOffset": 2915
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 63,
-                    "startColumn": 4,
-                    "startOffset": 4583,
-                    "endColumn": 61,
-                    "endOffset": 4640
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 45,
-                        "startColumn": 4,
-                        "startOffset": 2920,
-                        "endColumn": 61,
-                        "endOffset": 2977
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 64,
-                    "startColumn": 4,
-                    "startOffset": 4645,
-                    "endColumn": 58,
-                    "endOffset": 4699
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 46,
-                        "startColumn": 4,
-                        "startOffset": 2982,
-                        "endColumn": 58,
-                        "endOffset": 3036
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 65,
-                    "startColumn": 4,
-                    "startOffset": 4704,
-                    "endColumn": 61,
-                    "endOffset": 4761
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 47,
-                        "startColumn": 4,
-                        "startOffset": 3041,
-                        "endColumn": 61,
-                        "endOffset": 3098
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 66,
-                    "startColumn": 4,
-                    "startOffset": 4766,
-                    "endColumn": 59,
-                    "endOffset": 4821
-                },
-                "from": {
-                    "file": "/Users/hardikjani/Desktop/Manish/StudioWorkSpace/TestWorkSpace/ChatApp/app/build/intermediates/exploded-aar/com.urbanairship.android/urbanairship-sdk/7.1.5/res/values-es-rES/values-es-rES.xml",
-                    "position": {
-                        "startLine": 48,
-                        "startColumn": 4,
-                        "startOffset": 3103,
-                        "endColumn": 59,
-                        "endOffset": 3158
+                        "endOffset": 1704
                     }
                 }
             }

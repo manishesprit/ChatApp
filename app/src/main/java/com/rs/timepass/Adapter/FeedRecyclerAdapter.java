@@ -23,6 +23,7 @@ import com.rs.timepass.Ui.FeedDetailActivity;
 import com.rs.timepass.Ui.LikeListActivity;
 import com.rs.timepass.Ui.ProfileActivity;
 import com.rs.timepass.Utils.Config;
+import com.rs.timepass.Utils.Log;
 import com.rs.timepass.Utils.Pref;
 import com.rs.timepass.Utils.Utils;
 
@@ -56,7 +57,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
 
         Utils.setDefaultRoundImage(context, holder.imgAvatar, R.drawable.default_user);
         if (!postBean.avatar.toString().trim().equalsIgnoreCase("")) {
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS+postBean.avatar)
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_AVATARS + postBean.avatar)
                     .asBitmap()
                     .error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
@@ -92,6 +93,22 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         });
         holder.txtFeedTime.setText(postBean.posttime);
 
+
+        if (((PostBean) holder.txtUserName.getTag()).userid == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+            holder.imgDeleteFeed.setVisibility(View.VISIBLE);
+        } else {
+            holder.imgDeleteFeed.setVisibility(View.GONE);
+        }
+
+        holder.imgDeleteFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.print("====imgDeleteFeed===");
+                myOnClickListner.IsClick(R.id.imgDeleteFeed, ((PostBean) holder.txtUserName.getTag()).feedid);
+            }
+        });
+
+
         if (postBean.caption.trim().toString().equalsIgnoreCase("")) {
             holder.txtCaption.setVisibility(View.GONE);
         } else {
@@ -101,7 +118,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
 
         if (!postBean.image_url.toString().equals("")) {
             holder.imgFeed.setVisibility(View.VISIBLE);
-            Glide.with(context).load(Config.IMAGE_PATH_WEB_FEED+postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
+            Glide.with(context).load(Config.IMAGE_PATH_WEB_FEED + postBean.image_url).asBitmap().error(R.drawable.default_user).placeholder(R.drawable.default_user).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
                     holder.imgFeed.setImageBitmap(resource);
@@ -116,7 +133,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         holder.imgLikeUnlike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myOnClickListner.IsClick(R.id.imgLikeUnlike,holder.txtUserName.getTag());
+                myOnClickListner.IsClick(R.id.imgLikeUnlike, holder.txtUserName.getTag());
             }
         });
 
@@ -134,31 +151,30 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         holder.llComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(context, FeedDetailActivity.class);
-                    intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
-                    context.startActivity(intent);
+                Intent intent = new Intent(context, FeedDetailActivity.class);
+                intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
+                context.startActivity(intent);
             }
         });
 
         holder.txtCaption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(context, FeedDetailActivity.class);
-                    intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
-                    context.startActivity(intent);
+                Intent intent = new Intent(context, FeedDetailActivity.class);
+                intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
+                context.startActivity(intent);
             }
         });
 
         holder.imgFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(context, FeedDetailActivity.class);
-                    intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
-                    context.startActivity(intent);
+                Intent intent = new Intent(context, FeedDetailActivity.class);
+                intent.putExtra("feedid", ((PostBean) holder.txtUserName.getTag()).feedid);
+                context.startActivity(intent);
 
             }
         });
-
 
 
         holder.txtNolike.setText("" + postBean.noOflike);
@@ -182,6 +198,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         private TextView txtNolike;
         private LinearLayout llComment;
         private LinearLayout llLike;
+        private ImageView imgDeleteFeed;
 
         public PostBeanHolder(View itemView) {
             super(itemView);
@@ -195,6 +212,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
             txtNolike = (TextView) itemView.findViewById(R.id.txtNolike);
             llComment = (LinearLayout) itemView.findViewById(R.id.llComment);
             llLike = (LinearLayout) itemView.findViewById(R.id.llLike);
+            imgDeleteFeed = (ImageView) itemView.findViewById(R.id.imgDeleteFeed);
         }
 
     }

@@ -6,10 +6,6 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.rs.timepass.Utils.Config;
-import com.rs.timepass.Utils.MyCustomeNotificationFactory;
-import com.rs.timepass.Utils.Pref;
-import com.urbanairship.UAirship;
 
 import java.io.File;
 
@@ -27,19 +23,6 @@ public class TimePassApplication extends Application {
         super.onCreate();
         mInstance = this;
 
-        UAirship.takeOff(this, new UAirship.OnReadyCallback() {
-            @Override
-            public void onAirshipReady(UAirship uAirship) {
-                uAirship.shared().getPushManager().setUserNotificationsEnabled(true);
-            }
-        });
-
-        if (UAirship.shared().getPushManager().getChannelId() != null) {
-            Pref.setValue(this, Config.PREF_URBUN_PUSH_ID, UAirship.shared().getPushManager().getChannelId());
-        }
-
-        MyCustomeNotificationFactory myCustomeNotificationFactory = new MyCustomeNotificationFactory(getApplicationContext());
-        UAirship.shared().getPushManager().setNotificationFactory(myCustomeNotificationFactory);
     }
 
     public static synchronized TimePassApplication getInstance() {

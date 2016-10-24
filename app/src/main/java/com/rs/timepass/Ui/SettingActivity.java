@@ -1,5 +1,7 @@
 package com.rs.timepass.Ui;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +42,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         txtChangePassword = (TextView) findViewById(R.id.txtChangePassword);
         txtLogout = (TextView) findViewById(R.id.txtLogout);
 
-        if (Pref.getValue(this, Config.PREF_USER_FB_ID, "") != "") {
+        if (Pref.getValue(this, Config.PREF_USER_FB_ID, "").equalsIgnoreCase("")) {
             txtChangePassword.setVisibility(View.VISIBLE);
         } else {
             txtChangePassword.setVisibility(View.GONE);
@@ -82,6 +84,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 break;
 
             case R.id.txtLogout:
+                NotificationManager nMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                nMgr.cancelAll();
                 Utils.ClearPref(SettingActivity.this);
                 HomeActivity.activityHome.finish();
                 finish();

@@ -14,12 +14,16 @@ import android.widget.LinearLayout;
 
 import com.rs.timepass.Adapter.MyOnClickListner;
 import com.rs.timepass.Adapter.ProfileRecyclerAdapter;
+import com.rs.timepass.Backend.DeleteFeedAPI;
 import com.rs.timepass.Backend.FeedListAPI;
+import com.rs.timepass.Backend.FollowingUnfollowingAPI;
 import com.rs.timepass.Backend.LikeUnlikeAPI;
 import com.rs.timepass.Backend.ResponseListener;
 import com.rs.timepass.Bean.PostBean;
 import com.rs.timepass.Bean.UserBean;
 import com.rs.timepass.R;
+import com.rs.timepass.Uc.AlertDailogView;
+import com.rs.timepass.Uc.OnPopUpDialogButoonClickListener;
 import com.rs.timepass.Utils.Config;
 import com.rs.timepass.Utils.Utils;
 
@@ -43,6 +47,9 @@ public class ProfileActivity extends AppCompatActivity {
     private int limit = 30;
     private int offset = 0;
     private SwipeRefreshLayout swipeContainer;
+    private PostBean postBeanTemp;
+    private FollowingUnfollowingAPI followingUnfollowingAPI;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
         recyclerView.setAdapter(profileRecyclerAdapter);
 
         CallFeedList();
+
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -135,6 +143,7 @@ public class ProfileActivity extends AppCompatActivity {
                     postlist.get(0).noOfpost = ((PostBean) obj1).noOfpost;
                     postlist.get(0).mobile = ((PostBean) obj1).mobile;
                     postlist.get(0).email = ((PostBean) obj1).email;
+                    postlist.get(0).isFollowing = ((PostBean) obj1).isFollowing;
 
                     ArrayList<PostBean> postBeanArrayList = (ArrayList<PostBean>) obj;
                     if (postBeanArrayList.size() > 0) {
@@ -143,18 +152,22 @@ public class ProfileActivity extends AppCompatActivity {
 
                     }
                     profileRecyclerAdapter.notifyDataSetChanged();
-                }
-
-                if (tag.equals(Config.TAG_LIKEUNLIKE)) {
-                    postBean.islike = (int) obj == 0 ? false : true;
-                    postBean.noOflike = (int) obj1;
+                } else if (tag.equals(Config.TAG_LIKEUNLIKE)) {
+                    postBeanTemp.islike = (int) obj == 0 ? false : true;
+                    postBeanTemp.noOflike = (int) obj1;
                     profileRecyclerAdapter.notifyDataSetChanged();
                 }
             }
         }
 
         public void onResponce(String tag, int result, Object obj) {
-
+            myprogressBar.setVisibility(View.GONE);
+            if (result == Config.API_SUCCESS) {
+                if (tag == Config.TAG_FOLLOWING_UNFOLLOWING) {
+                    postlist.get(0).isFollowing = postBeanTemp.isFollowing == true ? false : true;
+                    profileRecyclerAdapter.notifyDataSetChanged();
+                }
+            }
         }
     };
 
@@ -164,14 +177,32 @@ public class ProfileActivity extends AppCompatActivity {
             if (id == R.id.imgLikeUnlike) {
                 if (Utils.isOnline(context)) {
                     myprogressBar.setVisibility(View.VISIBLE);
-                    postBean = (PostBean) object;
-                    likeUnlikeAPI = new LikeUnlikeAPI(context, responseListener, postBean.feedid);
+                    postBeanTemp = (PostBean) object;
+                    likeUnlikeAPI = new LikeUnlikeAPI(context, responseListener, postBeanTemp.feedid);
                     likeUnlikeAPI.execute();
                 }
+            } else if (id == R.id.txtfollowUnfollow) {
+                postBeanTemp = (PostBean) object;
+                AlertDailogView.showAlert(context, "Alert", postBeanTemp.name + (postBeanTemp.isFollowing == true ? " unfollow ?" : " follow ?"), "Cancel", true, (postBeanTemp.isFollowing == true ? "Unfollow" : "Follow"), onPopUpDialogButoonClickListener, 1).show();
             }
             return false;
         }
 
+    };
+
+    private OnPopUpDialogButoonClickListener onPopUpDialogButoonClickListener = new OnPopUpDialogButoonClickListener() {
+        @Override
+        public void OnButtonClick(int tag, int buttonIndex, String input) {
+            if (tag == 1) {
+                if (buttonIndex == 2) {
+                    if (Utils.isOnline(context)) {
+                        myprogressBar.setVisibility(View.VISIBLE);
+                        followingUnfollowingAPI = new FollowingUnfollowingAPI(context, responseListener, postBeanTemp.userid, postBeanTemp.isFollowing == true ? 1 : 0);
+                        followingUnfollowingAPI.execute();
+                    }
+                }
+            }
+        }
     };
 
     @Override

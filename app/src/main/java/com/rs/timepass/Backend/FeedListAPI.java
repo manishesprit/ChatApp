@@ -38,7 +38,7 @@ public class FeedListAPI {
         this.context = context;
         this.userBean = userBean;
         this.mParams = new HashMap<String, String>();
-        Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON + Config.userid + "=" + Pref.getValue(context,Config.PREF_USER_ID,0) + "&"+ Config.friendid + "=" + userBean.userid + "&" + Config.myfeed + "=" + (userBean.myFeed == false ? 0 : 1) + "&" + Config.offset + "=" + userBean.offset+ "&" + Config.limit + "=" + userBean.limit;
+        Config.API_FEED_LIST = Config.HOST + Config.API_FEED_LIST_JSON + Config.userid + "=" + Pref.getValue(context, Config.PREF_USER_ID, 0) + "&" + Config.friendid + "=" + userBean.userid + "&" + Config.myfeed + "=" + (userBean.myFeed == false ? 0 : 1) + "&" + Config.offset + "=" + userBean.offset + "&" + Config.limit + "=" + userBean.limit;
 
         Log.print(":::: API_FEED_LIST ::::" + Config.API_FEED_LIST);
         this.responseListener = responseListener;
@@ -94,7 +94,7 @@ public class FeedListAPI {
      * Parse the response and prepare for callback
      */
     private void parse(String response) {
-        Log.print("===========response============"+response);
+        Log.print("===========response============" + response);
         int code = 0;
         String mesg = null;
         JSONObject jsonObject = null;
@@ -127,8 +127,7 @@ public class FeedListAPI {
                     Pref.setValue(context, Config.PREF_NOOFFOLLING, jsonObject.getString(Config.no_following).toString().equalsIgnoreCase("") ? 0 : jsonObject.getString(Config.no_following).split(",").length);
                     Pref.setValue(context, Config.PREF_AVATAR, jsonObject.getString(Config.avatar).toString());
 
-                }
-                else if (userBean.myFeed == true) {
+                } else if (userBean.myFeed == true) {
                     postBean1 = new PostBean();
                     postBean1.userid = userBean.userid;
                     postBean1.name = jsonObject.getString(Config.name);
@@ -139,10 +138,9 @@ public class FeedListAPI {
                     postBean1.noOfpost = jsonObject.getInt(Config.no_post);
                     postBean1.mobile = jsonObject.getString(Config.mobile);
                     postBean1.email = jsonObject.getString(Config.email);
+                    postBean1.isFollowing = isfollow(jsonObject.getString(Config.no_follower).toString());
 
-                }
-                else
-                {
+                } else {
                     Pref.setValue(context, Config.PREF_STATUS, jsonObject.getString(Config.status));
                     Pref.setValue(context, Config.PREF_EMAIL, jsonObject.getString(Config.email));
                     Pref.setValue(context, Config.PREF_MOBILE, jsonObject.getString(Config.mobile));
@@ -218,5 +216,23 @@ public class FeedListAPI {
         if (mAdapter != null) {
             mAdapter.doCancel(Config.TAG_FEED_LIST);
         }
+    }
+
+    public boolean isfollow(String list) {
+        if (list.equalsIgnoreCase("")) {
+            return false;
+        } else {
+            String[] followlist = list.split(",");
+            if (followlist.length > 0) {
+                for (int i = 0; i < followlist.length; i++) {
+                    if (Integer.parseInt(followlist[i]) == Pref.getValue(context, Config.PREF_USER_ID, 0)) {
+                        return true;
+                    }
+                }
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 }

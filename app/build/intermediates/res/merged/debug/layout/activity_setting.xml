@@ -46,7 +46,7 @@
             android:layout_below="@+id/txtEditProfile"
             android:elevation="3dp"
             android:padding="@dimen/padding_ten"
-            android:text="Edit Profile"
+            android:text="Change password"
             android:textColor="@color/color_white"
             android:textSize="@dimen/extraMediumText" />
 

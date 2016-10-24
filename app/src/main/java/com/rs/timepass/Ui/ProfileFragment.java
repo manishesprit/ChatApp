@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.rs.timepass.Adapter.MyOnClickListner;
 import com.rs.timepass.Adapter.ProfileRecyclerAdapter;
+import com.rs.timepass.Backend.DeleteFeedAPI;
 import com.rs.timepass.Backend.FeedListAPI;
 import com.rs.timepass.Backend.LikeUnlikeAPI;
 import com.rs.timepass.Backend.ResponseListener;
@@ -32,6 +33,7 @@ public class ProfileFragment extends Fragment {
     private RecyclerView recyclerView;
     private View mView;
     private PostBean postBean;
+    private PostBean postBeanTemp;
     private UserBean userBean;
     private ArrayList<PostBean> postBeanArrayList;
     private FeedListAPI feedListAPI;
@@ -42,7 +44,7 @@ public class ProfileFragment extends Fragment {
     private int limit = 30;
     private int offset = 0;
     private LinearLayoutManager linearLayoutManager;
-
+    private DeleteFeedAPI deleteFeedAPI;
     private boolean loading = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
 
@@ -109,7 +111,6 @@ public class ProfileFragment extends Fragment {
 
     private void CallFeedList() {
         if (Utils.isOnline(getContext())) {
-
             myprogressBar.setVisibility(View.VISIBLE);
             userBean = new UserBean();
             userBean.userid = Pref.getValue(getContext(), Config.PREF_USER_ID, 0);
@@ -167,14 +168,23 @@ public class ProfileFragment extends Fragment {
                 }
 
                 if (tag.equals(Config.TAG_LIKEUNLIKE)) {
-                    postBean.islike = (int) obj == 0 ? false : true;
-                    postBean.noOflike = (int) obj1;
+                    HomeActivity.isRefresh = true;
+                    postBeanTemp.islike = (int) obj == 0 ? false : true;
+                    postBeanTemp.noOflike = (int) obj1;
                     profileRecyclerAdapter.notifyDataSetChanged();
                 }
             }
         }
 
         public void onResponce(String tag, int result, Object obj) {
+            myprogressBar.setVisibility(View.GONE);
+            if (result == Config.API_SUCCESS) {
+                if (tag == Config.TAG_DELETE_FEED) {
+                    HomeActivity.isRefresh = true;
+                    offset = 0;
+                    CallFeedList();
+                }
+            }
 
         }
     };
@@ -186,9 +196,15 @@ public class ProfileFragment extends Fragment {
             if (id == R.id.imgLikeUnlike) {
                 if (Utils.isOnline(getContext())) {
                     myprogressBar.setVisibility(View.VISIBLE);
-                    postBean = (PostBean) object;
-                    likeUnlikeAPI = new LikeUnlikeAPI(getContext(), responseListener, postBean.feedid);
+                    postBeanTemp = (PostBean) object;
+                    likeUnlikeAPI = new LikeUnlikeAPI(getContext(), responseListener, postBeanTemp.feedid);
                     likeUnlikeAPI.execute();
+                }
+            } else if (id == R.id.imgDeleteFeed) {
+                if (Utils.isOnline(getContext())) {
+                    myprogressBar.setVisibility(View.VISIBLE);
+                    deleteFeedAPI = new DeleteFeedAPI(getContext(), responseListener, (int) object);
+                    deleteFeedAPI.execute();
                 }
             }
 
@@ -196,4 +212,9 @@ public class ProfileFragment extends Fragment {
         }
 
     };
+
+    public void setRefresh() {
+        offset = 0;
+        CallFeedList();
+    }
 }

@@ -155,7 +155,7 @@ public class CreatePostActivity extends Activity implements View.OnClickListener
             myprogressBar.setVisibility(View.GONE);
             if (result == Config.API_SUCCESS) {
                 if (tag == Config.TAG_CREATE_FEED) {
-                    setResult(RESULT_OK);
+                    setResult(HomeActivity.CODE_NEWPOST);
                     finish();
                 }
             } else {

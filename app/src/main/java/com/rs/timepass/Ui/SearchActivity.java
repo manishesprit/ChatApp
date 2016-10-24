@@ -73,7 +73,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
 
-        Call_Search();
+
 
         myprogressBar.setOnClickListener(this);
 
@@ -116,6 +116,13 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Call_Search();
     }
 
     private ResponseListener responseListener = new ResponseListener() {
